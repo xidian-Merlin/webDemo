@@ -1,0 +1,59 @@
+<tem> <!-- 编辑 -->
+<div class="template" id="edit_template">
+
+	<div class="panel-body no-tb-padder">
+		<!--  空的iframe 用于协助处理form表单提交后不进行页面跳转的问题-->
+		<iframe id="iframe_display" name="iframe_display"
+			style="display: none;"> </iframe>
+		<form class="bs-example form-horizontal xs-form" method="POST"
+			enctype="multipart/form-data" action="alertManage/alertTypeModify"
+			target="iframe_display">
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">告警类型</label>
+				<div class="col-lg-8">
+					<input type="hidden" name="operateType" value=2> 
+				</div>
+				<div class="col-lg-8">
+					<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="typeName" name="typeName"
+						validate="required,stringLimit">
+						<div class="col-lg-8">
+					<input type="hidden" data-id="alertTypeId"  name="alertTypeId" value=2> 
+				</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">描述</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="description" name="description"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">混合类型</label>
+				<div class="col-lg-8">
+					<select class="form-control input-sm" data-type="select"
+						data-id="mixType" name="mixType">
+					</select>
+				</div>
+			</div>
+			<div  class="form-group" data-id="mixTypeValueDiv">
+				<label class="col-lg-3 control-label">混合类型值</label>
+				<div class="col-lg-8">
+					<select class="form-control input-sm" data-type="select"
+						data-id="mixTypeValue" name="mixTypeValue" multiple="multiple">
+					</select>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+
+</tem>

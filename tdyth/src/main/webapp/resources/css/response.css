@@ -1,0 +1,243 @@
+@media screen and (min-height: 789px){
+	.umDialog .modal-body{
+		/** max-height: 500px !important; */
+	}
+}
+
+@media screen and (max-height: 788px) and (min-height: 550px){
+	.umDialog .modal-body{
+		/**max-height: 400px !important; */
+	}
+}
+
+@media screen and (max-height: 549px){
+	.umDialog .modal-body{
+		/**max-height: 300px !important; */
+	}
+}
+
+@media screen and (max-width: 1100px){
+	.hor-menu{
+		display: none;
+	}
+	#response_menu_btn{
+		float:right;
+		margin-right: 40px;
+    	margin-top: 15px;
+		font-size:26px;
+		color:#ccc;
+		display: block!important;
+	}
+	#user_btn{
+		display: none;
+		padding:0 10px;
+		float:right;
+		margin-right:33px;
+		font-size:26px;
+		color:#ccc;
+	}
+	#full_screen_menu{
+		padding: 5% 0 5% 11%;
+	}
+}
+
+@media screen {
+
+	#full_screen_menu{
+		z-index: 1007;
+		position: absolute;
+		display:block;
+		width: 110%;
+		height: 100vh;
+		top: 0;
+		left: -5%;
+		color: #fff;
+		overflow-y: scroll;
+	}
+	#full_screen_menu ul{
+		width:90%;
+		height:auto;
+		margin:0 auto;
+	}
+	.full_screen_menu_li{
+		padding: 5px 0;
+		box-sizing: border-box;
+	    -webkit-border-radius: 3px;
+	    -moz-border-radius: 3px;
+	    -ms-border-radius: 3px;
+	    -o-border-radius: 3px;
+		border-radius: 3px;
+		margin:10px;
+		width:130px;
+		height:100px;
+		transition: all 0.28s;
+	}
+	.full_screen_menu_li:hover{
+		background: rgba(255,255,255,0.2);
+	}
+	.full_screen_menu_li div{
+		margin:0 auto;
+	}
+	.full_screen_menu_li .label{
+		width:100%;
+		display:block;
+		text-align:center;
+	}
+	.full_screen_menu_li a{
+		text-align:center;
+		color:#ffffff;
+		font-size: 16px;
+	}
+	#full_screen_menu_mask{
+		display: block;
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background: rgba(0,0,0,0.7);
+		background-image: url("../img/blurBg.png");
+		background-size: cover;
+		z-index: 1006;
+	}
+}
+
+@media screen and (min-width: 1100px){
+	#user_btn{
+		display: block;
+		padding:0 10px;
+		float:right;
+		margin-right:45px;
+		font-size:26px;
+		color:#ccc;
+		width: 200px;
+		position: relative;
+		z-index: 10;
+	}
+	#user_name{
+		font-size: 12px;
+		width: auto;
+		height: 49px;
+		line-height: 49px;
+		left: 20px;
+		position: absolute;
+		display: block;
+		right: 30px;
+		text-align: right;
+	}
+	#user_pop_div{
+		display: block!important;
+		width:180px;
+		height:0;
+		position:absolute;
+		right:-43px;
+		top:70px;
+		background-color: #296eb1;
+		color:#fff;
+		font-size:12px;
+		z-index:1005;
+		overflow: hidden;
+		transition: width 0.4s, height 0.4s;
+		-moz-transition: width 0.4s, height 0.4s;
+		-webkit-transition: width 0.4s, height 0.4s;
+		-o-transition: width 0.4s, height 0.4s;
+	}
+	#user_icon:hover+#user_pop_div ,#user_pop_div:hover{
+		height:290px; 
+	}
+	#user_icon.admin:hover+#user_pop_div ,#user_pop_div.admin:hover{
+		height:190px; 
+	}
+	#user_icon.normal:hover+#user_pop_div ,#user_pop_div.normal:hover{
+		height:220px; 
+	}
+	#user_icon{
+		background: rgba(0, 0, 0, 0) url("/img/user.png") no-repeat scroll 5px 5px / 22px auto;
+	    cursor: pointer;
+	    height: 30px;
+	    margin-top: 25px;
+	    position: absolute;
+	    right: 80px;
+	    width: 30px;
+	    line-height: 36px;
+	    font-size: 16px!important;
+	}
+	#user_icon:hover{
+		background: url("/img/user_active.png") no-repeat 5px 5px;
+		background-size: 22px;
+	}
+	#user_icon i{
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: #ffa880;
+		position: absolute;
+		right: 0;
+		top: 0;
+		box-shadow: 0 0 3px #ffa880;
+		-webkit-box-shadow: 0 0 3px #ffa880;
+		-moz-box-shadow: 0 0 3px #ffa880;
+		-ms-box-shadow: 0 0 3px #ffa880;
+		-o-box-shadow: 0 0 3px #ffa880;
+	}
+	#user_account{
+		padding-left:35px;
+		width:130px;
+		display:block;
+		overflow: hidden;
+	}
+	.user_pop_list ,.user_log_in_out{
+		font-size:14px;
+		cursor:pointer;
+		position:relative;
+		height:24px;
+		width:100%;
+		line-height:24px;
+		padding-left:35px;
+		letter-spacing:0.2em;
+		margin:10px 0;
+    transition: all 0.2s ease 0s;
+	}
+	.user_pop_list:hover ,.user_log_in_out:hover{
+		/*background:#1199c4;*/
+		background-color: #275db3;
+	}
+	.user_pop_list span{
+		width:auto;
+		min-width:17px;
+		height:17px;
+		border-radius:9.5px;
+		padding: 0 2px;
+		background:#ffa880;
+		color:#fff;
+		font-size:10px;
+		position:absolute;
+		letter-spacing: 0;
+		left:137px;
+		top:3.5px;
+		line-height:17px;
+		text-align:center;
+		font-style:normal;
+	} 
+	#msg_nav_inbox_btn{
+		height:30px;
+		line-height:30px;
+		float:left;
+		text-align:center;
+		cursor:pointer;
+	}
+	#msg_nav_outbox_btn{
+		height:30px;
+		line-height:30px;
+		float:left;
+		text-align:center;
+		cursor:pointer;
+	}
+	.msg_nav_btn_active{
+		background:#F2F2F2;
+	}
+	#full_screen_menu{
+		padding: 5%;
+		min-width: 1000px;
+	}
+}

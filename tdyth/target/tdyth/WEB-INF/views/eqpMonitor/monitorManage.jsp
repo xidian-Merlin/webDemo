@@ -1,0 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<script src="${pageContext.request.contextPath}/resources/lib/jquery/jquery.timer.js"></script>
+<script src="${pageContext.request.contextPath}/resources/lib/jquery/jquery.slimScroll.js"></script>	
+<script src="${pageContext.request.contextPath}/resources/js/monitor.js"></script>
+<style type="text/css">
+	#monitor_obj_monitor_alarm_div{
+		padding-left: 32px;
+    	margin-top: -12px;
+    	border-bottom: 1px dashed #dee5e7;
+    	height:40px;
+    	width: 260px;
+	}
+	#monitor_obj_monitor_alarm_div > div{
+	    border-radius: 10px;
+	    float: left;
+	    height: 26px;
+	    margin: 2px;
+	    width: 45px;
+	    color: #fff!important;
+	    line-height: 26px;
+	    text-align: center;
+	    font-size: 16px;
+	}
+	#monitor_obj_moniotr_tree_div{
+		clear: both;
+	}
+
+</style>
+
+<!-- 左侧 -->
+<div class="p-panel um-panel left-panel" id="left-panel" style="width:260px">
+	<div class="um-panel-head" id="accordion_icon">
+		<div class="col-lg-3 unit-col" data-url="queryTreeByDeviceType" data-type="MONITOR_TYPE_TREE" style="padding:0 5px">监控器</div>
+		<div class="col-lg-3 unit-col" data-url="queryTreeLiablePerson" data-type="RESPONSIBLE_USER_TREE" style="padding:0 5px">责任人</div>
+		<div class="col-lg-3 unit-col" data-url="getBussinessDomainTree" data-type="BUSSINESS_DOMAIN_TREE" style="padding:0 5px">业务域</div>
+		<div class="col-lg-3 unit-col" data-url="getSecurityDomainTree" data-type="SECURITY_DOMAIN_TREE" style="padding:0 5px">安全域</div>
+	</div>
+	
+	<div class="um-panel-body ovh">
+		<div id="monitor_obj_monitor_alarm_div">
+			<div class="bggreen" id="0" title="正常"></div>
+			<div class="bgorange" id="3" title="性能"></div>
+			<div class="bgred" id="4" title="故障"></div>
+			<div class="bgdeepblue" id="2" title="凭证"></div>
+			<div class="bggrey" id="1" title="未知" style="display:none"></div>
+		</div>
+		<div id="monitor_obj_moniotr_tree_div">
+			<ul id="accordion" class="ztree"
+				style="height:auto;overflow:hidden;overflow-y:hidden;padding-bottom: 50px"></ul>
+		</div>
+	</div>
+	
+</div>
+
+<!-- 右侧 -->
+<div class="p-panel um-panel right-panel" id="right-panel"
+		style="left:500px;overflow-x:hidden">
+
+	<div class="um-panel-head">
+		<div class="table-oper" id="table_oper">
+			<a href="javascript:void(0);" id="process_test_btn" class="bgblue">
+				<i class="btn-commen process-btn"></i>
+				<span>进程探测</span>
+			</a>
+			<a href="javascript:void(0);" id="refresh_btn">
+				<i class="btn-commen refresh-btn"></i>
+				<span>刷新</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="um-panel-body">
+		<div id="table_div" class="table-div table-list"></div>
+	</div>
+	
+	<div id="table_slide_btn" class="slide_btn" style="display:none">
+		<i data-status="active" data-id="slide_left" class="icon-double-angle-left"></i>
+		<i id="slide_right" data-id="slide_right" class="icon-double-angle-right dn h-all" style="line-height:70px;"></i>
+	</div>
+</div>
+
+<!-- 监控器弹出框 -->
+<div data-id="tem" style="height:470px;display:none"></div>

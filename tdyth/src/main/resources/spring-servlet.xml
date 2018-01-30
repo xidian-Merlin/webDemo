@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jee="http://www.springframework.org/schema/jee"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/jee
+       http://www.springframework.org/schema/jee/spring-jee-4.1.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+       http://www.springframework.org/schema/util 
+       http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+       
+	<!-- 作用是向 Spring 容器注册 AutowiredAnnotationBeanPostProcessor、CommonAnnotationBeanPostProcessor、
+	PersistenceAnnotationBeanPostProcessor 以及 RequiredAnnotationBeanPostProcessor 这 4 个BeanPostProcessor。
+	注册这4个 BeanPostProcessor的作用，就是为了你的系统能够识别相应的注解。
+	例如：如果你想使用@Autowired注解，那么就必须事先在 Spring 容器中声明 AutowiredAnnotationBeanPostProcessor Bean。传统声明方式如下
+	<bean class="org.springframework.beans.factory.annotation. AutowiredAnnotationBeanPostProcessor "/>  -->
+    <context:annotation-config />  
+    
+    <!-- spring可以自动去扫描base-pack下面或者子包下面的java文件，如果扫描到有@Component @Controller@Service等这些注解的类，
+        则把这些类注册为bean。一句话就是：扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入
+      该配置项其实也包含了自动注入上述processor的功能，因此当使用 <context:component-scan/>后，就可以将 <context:annotation-config/>移除了--> 
+    <context:component-scan base-package="cas.iie.nsp.controller" />
+    <context:component-scan base-package="cas.iie.nsp.service" />
+    <context:component-scan base-package="cas.iie.nsp.dao" />
+    <context:component-scan base-package="cas.iie.nsp.shiro" />
+	<mvc:default-servlet-handler/>
+     <!-- 注解驱动 -->
+    <mvc:annotation-driven />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <!-- 视图解析 --> 
+    <bean
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!-- Invokes Spring MVC @Controller methods -->  
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+        <property name="webBindingInitializer">  
+            <!-- Configures Spring MVC DataBinder instances -->  
+            <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">  
+                <property name="validator" ref="validator" />  
+            </bean>  
+        </property>  
+
+        <!-- <property name="messageConverters">  
+            <util:list id="beanList">  
+                <ref bean="mappingJacksonHttpMessageConverter"/>  
+            </util:list>  
+        </property>   -->
+    </bean> 
+
+    <!-- 输出对象转JSON支持 -->  
+    <bean id="jsonConverter"  
+        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>  
+    <bean  
+        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+        <property name="messageConverters">  
+            <list>  
+                <ref bean="jsonConverter" />  
+            </list>  
+        </property>  
+    </bean>  
+
+    <!-- <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  
+        <property name="supportedMediaTypes">  
+            <list>  
+                <value>text/html;charset=UTF-8</value>  
+            </list>  
+        </property>  
+    </bean>   -->
+
+    <!-- Creates the JSR-303 Validator -->  
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+    <!-- 配置一个MultipartResolver，在这里我们使用支持Commons FileUpload的CommonsMultipartResolver:  -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" p:defaultEncoding="utf-8" p:maxUploadSize="5000000"/>
+
+
+
+     <!-- 全局异常配置 start -->     
+   <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">     
+         <property name="exceptionMappings">     
+             <props>     
+                 <prop key="cas.iie.nsp.exception.UserException">errors/error</prop> 
+                 <prop key="java.lang.Exception">errors/error</prop>     
+                 <prop key="java.lang.Throwable">errors/err</prop>     
+             </props>     
+         </property>     
+         <property name="statusCodes">     
+             <props>     
+                 <prop key="errors/error">500</prop>     
+                 <prop key="errors/404">404</prop>     
+             </props>     
+         </property>     
+         <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息      -->
+         <property name="warnLogCategory" value="WARN"></property>     
+         <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->     
+         <property name="defaultErrorView" value="errors/error"></property>     
+         <!-- 默认HTTP状态码    -->  
+         <property name="defaultStatusCode" value="500"></property>   
+     </bean>      
+     <!-- 全局异常配置 end -->   
+
+</beans>

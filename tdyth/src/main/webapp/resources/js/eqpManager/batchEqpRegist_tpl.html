@@ -1,0 +1,30 @@
+<tem> <!-- 编辑 -->
+<div class="template" id="edit_template">
+
+	<div class="panel-body no-tb-padder">
+		<!--  空的iframe 用于协助处理form表单提交后不进行页面跳转的问题-->
+		<iframe id="iframe_display" name="iframe_display"
+			style="display: none;"> </iframe>
+			
+		
+		<form class="bs-example form-horizontal xs-form" method="POST"
+			enctype="multipart/form-data" action="eqpManage/excelUpload"
+			target="iframe_display">
+			
+		<div class="form-group">
+				<label class="col-lg-3 control-label ">批量新增模板下载:</label>
+				<div class="col-lg-8">
+				<a href="eqpManage/templateDownload?fileName=Template.xlsx"><input type="button" name="downLoad" value="  点击下载     "/></a>
+			
+				</div>
+			</div>	
+			<div class="form-group">
+				<label class="col-lg-3 control-label" id="batch_upLoad">批量上传</label>
+				<div class="col-lg-8">
+					<div id="fileName" type="file" name="fileName" accept="xlsx"></div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</tem>

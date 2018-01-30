@@ -1,0 +1,436 @@
+<tem> <!-- 编辑 -->
+<div class="template" id="edit_template">
+
+	<div class="panel-body no-tb-padder">
+		<!--  空的iframe 用于协助处理form表单提交后不进行页面跳转的问题-->
+		<iframe id="iframe_display" name="iframe_display"
+			style="display: none;"> </iframe>
+		<form class="bs-example form-horizontal xs-form" method="POST"
+			enctype="multipart/form-data" action="alertManage/alertTypeModify"
+			target="iframe_display">
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">action</label>
+				<div class="col-lg-8">
+					<select class="form-control input-sm" data-type="select"
+						data-id="loop" name="action">
+					</select>
+				</div>
+			</div>
+			
+		
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">smac</label>
+				<div class="col-lg-8 form-inline" data-id="loop">
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac"
+						validate="required,stringLimit">
+				<label value=":">:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac"
+						validate="required,stringLimit">
+				<label value=":">:</label>
+				<input 
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac"
+						validate="required,stringLimit">
+				<label value=":">:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac"
+						validate="required,stringLimit">
+				<label value=":">:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac"
+						validate="required,stringLimit">
+				<label value=":">:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac"
+						validate="required,stringLimit">
+				
+				</div>
+			</div>
+			
+			
+			
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">smac_wildcard</label>
+				<div class="col-lg-8 form-inline" data-id="loop">
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac_wildcard"
+						validate="required,stringLimit">
+				<label value=":">:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac_wildcard"
+						validate="required,stringLimit">
+				<label value=":">:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac_wildcard"
+						validate="required,stringLimit">
+				<label value=":">:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac_wildcard"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac_wildcard"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="smac_wildcard"
+						validate="required,stringLimit">
+				
+				</div>
+			</div>
+			
+			
+			
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">dmac</label>
+				<div class="col-lg-8 form-inline" data-id="loop">
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						name="dmac"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac"
+						validate="required,stringLimit">
+				
+				</div>
+			</div>
+			
+			
+			
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">dmac_wildcard</label>
+				<div class="col-lg-8 form-inline" data-id="loop">
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac_wildcard"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac_wildcard"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac_wildcard"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac_wildcard"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac_wildcard"
+						validate="required,stringLimit">
+				<label>:</label>
+				<input
+						type="text" style="width:50px" maxlength="2" class="form-control input-sm"
+						 name="dmac_wildcard"
+						validate="required,stringLimit">
+				
+				</div>
+			</div>
+			
+			
+		
+		
+		<div class="form-group">
+				<label class="col-lg-3 control-label required">sip</label>
+				<div class="col-lg-8 form-inline" data-id="loop">
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="sip"
+						validate="required,stringLimit">
+				<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="sip"
+						validate="required,stringLimit">
+				<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="sip"
+						validate="required,stringLimit">
+				<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="sip"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">swildcard</label>
+				<div class="col-lg-8 form-inline" data-id="loop">
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="swildcard"
+						validate="required,stringLimit">
+				<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+					 name="swildcard"
+						validate="required,stringLimit">
+					<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="swildcard"
+						validate="required,stringLimit">
+				<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+					 name="swildcard"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">dip</label>
+				<div class="col-lg-8 form-inline" data-id="loop">
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="dip"
+						validate="required,stringLimit">
+					<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="dip"
+						validate="required,stringLimit">
+					<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="dip"
+						validate="required,stringLimit">
+					<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="dip"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">dwildcard</label>
+				<div class="col-lg-8 form-inline" data-id="loop">
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="dwildcard"
+						validate="required,stringLimit">
+					<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="dwildcard"
+						validate="required,stringLimit">
+					<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="dwildcard"
+						validate="required,stringLimit">
+				<label style="vertical-align:bottom;">.</label>
+				<input
+						type="text" style="width:70px" maxlength="3" class="form-control input-sm"
+						 name="dwildcard"
+						validate="required,stringLimit">
+				</div>
+			</div>
+		
+			
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">sport</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="sport"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">sport-end</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="sport-end"
+						validate="required,stringLimit">
+				</div>
+			</div>
+				
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">dport</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="dport"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">dport-end</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="dport-end"
+						validate="required,stringLimit">
+				</div>
+				
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">protocol</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="protocol"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">year-star-data</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="year-star-data"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">hour-star-time</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="hour-star-time"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">year-end-data</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="year-end-data"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">hour-end-time</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="hour-end-time"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">log</label>
+				<div class="col-lg-8">
+					<select class="form-control input-sm" data-type="select"
+						data-id="loop" name="log">
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">vsid</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="vsid"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">ruleid</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="ruleid"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">precede</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="precede"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">area1</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="area1"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">area2</label>
+				<div class="col-lg-8">
+				<input
+						type="text" maxlength="256" class="form-control input-sm"
+						data-id="loop" name="area2"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label">direction</label>
+				<div class="col-lg-8">
+					<select class="form-control input-sm" data-type="select"
+						data-id="loop" name="direction">
+					</select>
+				</div>
+			</div>
+			
+			
+			
+			
+		</form>
+	</div>
+</div>
+
+
+</tem>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+<![CDATA[
+	.st0{opacity:0;fill:#FFFFFF;}
+	.st1{fill:url(#SVGID_1_);}
+	.st2{fill:url(#SVGID_2_);}
+	.st3{fill:url(#SVGID_3_);}
+]]>
+</style>
+<rect class="st0" width="100" height="100"/>
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="50.0005" y1="100" x2="50.0005" y2="4.882813e-004">
+		<stop  offset="0" style="stop-color:#64ED33"/>
+		<stop  offset="1" style="stop-color:#DBF9F3"/>
+	</linearGradient>
+	<path class="st1" d="M0,81.8h18.2V100H0V81.8z M22.7,81.8h54.5v9.1H22.7V81.8z M9.1,22.7h9.1v54.5H9.1V22.7z M0,0h18.2v18.2H0V0z
+		 M22.7,9.1h54.5v9.1H22.7V9.1z M81.8,81.8H100V100H81.8V81.8z M81.8,0H100v18.2H81.8V0z M81.8,22.7h9.1v54.5h-9.1V22.7z"/>
+	<g>
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="36.8511" y1="64.7705" x2="36.8511" y2="35.23">
+			<stop  offset="0" style="stop-color:#64ED33"/>
+			<stop  offset="1" style="stop-color:#DBF9F3"/>
+		</linearGradient>
+		<path class="st2" d="M30.5,55.4l-2,5.4c-0.8,2.7-2.8,4.1-5.9,3.9c1.4-1.9,2.4-3.8,3-5.7l8.6-23.8h5.2l8.6,24
+			c1.2,2.7,2.2,4.6,3,5.5c-3.9,0.2-6.2-1.4-6.8-4.8l-1.4-4.5H30.5z M42.3,54.2l-5.4-16.3L31,54.2H42.3z"/>
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="65.2969" y1="64.748" x2="65.2969" y2="35.23">
+			<stop  offset="0" style="stop-color:#64ED33"/>
+			<stop  offset="1" style="stop-color:#DBF9F3"/>
+		</linearGradient>
+		<path class="st3" d="M53.2,35.2h3.6v3c0.8-1.9,2.1-2.9,3.8-3h10.9c3.9,0,5.9,2,5.9,6.1v17.4c0,4.1-2,6.1-5.9,6.1H60.6
+			c-1.8-0.1-3-1-3.8-2.5v2.5h-3.6V35.2z M60.2,63.5h12.2c1.1,0.1,1.6-0.5,1.6-1.8V38.5c0-1.2-0.5-1.8-1.6-1.8H59.8
+			c-1.8,0.4-2.8,1.3-3,2.7v21.3C57,62.3,58.2,63.3,60.2,63.5z"/>
+	</g>
+</g>
+</svg>

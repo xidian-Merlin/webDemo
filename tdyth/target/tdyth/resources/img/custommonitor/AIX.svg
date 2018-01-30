@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="16px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_2_);}
+</style>
+<g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="-14" x2="60" y2="-14" gradientTransform="matrix(0.2667 0 0 -0.2667 0 4.2667)">
+		<stop  offset="0" style="stop-color:#B9BBBD"/>
+		<stop  offset="3.208770e-002" style="stop-color:#B6B8BA"/>
+		<stop  offset="5.619587e-002" style="stop-color:#ADAEB1"/>
+		<stop  offset="8.827712e-002" style="stop-color:#9D9EA1"/>
+		<stop  offset="0.1241" style="stop-color:#C1C1C2"/>
+		<stop  offset="0.1924" style="stop-color:#F0F0F0"/>
+		<stop  offset="0.2083" style="stop-color:#FBFBFB"/>
+		<stop  offset="0.2247" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.3015" style="stop-color:#EEEEEF"/>
+		<stop  offset="0.3853" style="stop-color:#E3E3E4"/>
+		<stop  offset="0.4775" style="stop-color:#DFE0E1"/>
+		<stop  offset="0.7191" style="stop-color:#FFFFFF"/>
+		<stop  offset="0.779" style="stop-color:#FDFDFD"/>
+		<stop  offset="0.8065" style="stop-color:#F6F5F5"/>
+		<stop  offset="0.8258" style="stop-color:#EBEAEA"/>
+		<stop  offset="0.927" style="stop-color:#797A7D"/>
+		<stop  offset="1" style="stop-color:#BEC0C1"/>
+	</linearGradient>
+	<path class="st0" d="M13.5,16h-11C1.1,16,0,14.9,0,13.5v-11C0,1.1,1.1,0,2.5,0h11C14.9,0,16,1.1,16,2.5v11C16,14.9,14.9,16,13.5,16
+		z"/>
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="5" y1="-13.9958" x2="55" y2="-13.9958" gradientTransform="matrix(0.2667 0 0 -0.2667 0 4.2667)">
+		<stop  offset="0" style="stop-color:#050505"/>
+		<stop  offset="1" style="stop-color:#1E1E21"/>
+	</linearGradient>
+	<path class="st1" d="M2.8,6.4h1.6l0.5,1.3c0,0,6.2-5.4,9.7-1.3C12.3,5,10.6,5.2,8,6.6c0,1,0,4.5,0,4.5H6.7V7.5H6.4L5.2,8.6L6,11.1
+		H4.5L4.3,9.6l-1.1,1.5H1.3L2.8,6.4z M3.6,7.6l-0.5,2L4,8.7L3.6,7.6z M8.5,6.6h1.6l0.7,1.1l0.7-1.1h1.6l-1.5,2V9l1.5,2.1h-1.6
+		l-0.8-1.3l-0.8,1.3H8.3l1.6-2.3V8.6L8.5,6.6z"/>
+</g>
+</svg>

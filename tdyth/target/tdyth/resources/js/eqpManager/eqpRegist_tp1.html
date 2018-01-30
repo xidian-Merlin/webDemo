@@ -1,0 +1,150 @@
+<tem> <!-- 编辑 -->
+<div class="template" id="edit_template">
+
+	<div class="panel-body no-tb-padder">
+		<!--  空的iframe 用于协助处理form表单提交后不进行页面跳转的问题-->
+		<iframe id="iframe_display" name="iframe_display"
+			style="display: none;"> </iframe>
+		<form class="bs-example form-horizontal xs-form" method="POST"
+			enctype="multipart/form-data" action="eqpManage/eqpRegManualAdd"
+			target="iframe_display">
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">设备编号</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="eqpNo" name="eqpNo"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">设备ID</label>
+				<div class="col-lg-8">
+					
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="" name="eqpID"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">设备名字</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="name" name="name"
+						validate="required,stringLimit">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">设备类型</label>
+				<div class="col-lg-8">
+					<select class="form-control input-sm" data-type="select"
+						data-id="assetType" name="assetType">
+					</select>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">设备值</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="assetValue" name="assetValue"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">安全域</label>
+				<div class="col-lg-8">
+					<select class="form-control input-sm" data-type="select"
+						data-id="securityDomain" name="securityDomain">
+					</select>
+				</div>
+			</div>
+			
+				<div class="form-group">
+				<label class="col-lg-3 control-label ">工作模式</label>
+				<div class="col-lg-8">
+						<select class="form-control input-sm" data-type="select"
+						data-id="workMode" name="workMode">
+					</select>
+				</div>
+			</div>
+				<div class="form-group">
+				<label class="col-lg-3 control-label ">管理模式</label>
+				<div class="col-lg-8">
+						<select class="form-control input-sm" data-type="select"
+						data-id="manageMode" name="manageMode">
+					</select>
+				</div>
+			</div>
+				<div class="form-group">
+				<label class="col-lg-3 control-label required">操作系统</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="os" name="os"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label ">账号</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="account" name="account"
+						>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label ">Pass</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="pass" name="pass"
+						>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">ip</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="ip" name="ip"
+						validate="required,stringLimit">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label ">location</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="location" name="location"
+						>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label ">serial</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="serial" name="serial"
+						>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label ">contaction</label>
+				<div class="col-lg-8">
+				 <input
+						type="text" maxlength="32" class="form-control input-sm"
+						data-id="contaction" name="contaction"
+						>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</tem>

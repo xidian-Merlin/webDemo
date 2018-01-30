@@ -1,0 +1,170 @@
+<tem>
+	<div class="template" id="change_record_detail_template" >
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group" >
+				<label class="col-lg-4 control-label tr">变更项目 :</label>
+				<label class="col-lg-7 control-label tl" data-id="changeProperty"></label>
+			</div>
+
+			<div class="form-group" >
+				<label class="col-lg-4 control-label tr">变更类型 :</label>
+				<label class="col-lg-7 control-label tl" data-id="changeType"></label>
+			</div>
+
+			<div class="form-group" >
+				<label class="col-lg-4 control-label tr">原始内容 :</label>
+				<label class="col-lg-7 control-label tl" data-id="oldValue"></label>
+			</div>
+
+			<div class="form-group" >
+				<label class="col-lg-4 control-label tr">变更内容 :</label>
+				<label class="col-lg-7 control-label tl" data-id="newValue"></label>
+			</div>
+
+			<div class="form-group" >
+				<label class="col-lg-4 control-label tr">修改人 :</label>
+				<label class="col-lg-7 control-label tl" data-id="persion"></label>
+			</div>
+
+			<div class="form-group" >
+				<label class="col-lg-4 control-label tr">修改日期 :</label>
+				<label class="col-lg-7 control-label tl" data-id="updateDate"></label>
+			</div>
+		</form>
+	</div>
+
+	<!-- 资产查询 -->
+	<div class="template" id="query_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form">
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">资产名称 :</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" 
+							data-id="assetName" validate="stringLimit0"/>
+					</div> 
+
+					<label class="col-lg-2 control-label tr">操作系统类型 :</label>
+					<div class="col-lg-3">
+						<select class="form-control input-sm" data-id="osType" data-type="select">
+						</select>
+					</div>   
+				</div>
+
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">安全域 :</label>
+					<div class="col-lg-3">
+						<div class="inputdrop" id="securityDomain"></div>
+					</div> 
+
+					<label class="col-lg-2 control-label tr">资产类型 :</label>
+					<div class="col-lg-3">
+						<div class="inputdrop" id="assetType"></div>
+					</div>					
+				</div>
+
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">业务域 :</label>
+					<div class="col-lg-3">
+						<div class="inputdrop" id="bussinessDomain"></div>
+					</div>   
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-3 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="0" name="ipRadioStatus" data-id="ipRadioStatus" checked>
+							  <i></i>
+							  IPV4 :
+							</label>
+						</div>
+					</div>
+
+					<div class="col-lg-2" style="padding-right:0">
+				        <input type="text" class="form-control input-sm" data-id="ipRadioStatusStartIp" id="ipRadioStatusStartIp" validate="ipv4" queryValue>
+			        </div>
+
+			        <div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+			        	-
+			        </div>
+
+			        <div class="col-lg-2" style="padding-left:0">
+			        	<input type="text" class="form-control input-sm" data-id="ipRadioStatusEndIp" id="ipRadioStatusEndIp" validate="ipv4" queryValue>
+			        </div>
+				</div>
+
+		        <div class="form-group" style="margin-bottom:31px">
+					<div class="col-lg-3 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="1" name="ipRadioStatus">
+							  <i></i>
+							  IPV6 :
+							</label>
+						</div>
+					</div>
+
+					<div class="col-lg-5" style="width:35%">
+				        <input type="text" class="form-control input-sm" data-id="ipRadioStatusIpv6" id="ipRadioStatusIpv6" validate="ipv6" queryValue disabled>
+			        </div>
+		        </div>
+			</form>
+		</div>
+	</div>
+
+	<!-- 流量 -->
+	<div class="template" id="flow_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form">
+				<div class="form-group">
+				    <label class="col-lg-1 control-label tr" style="width:100px">资产IP :</label>
+					<label class="col-lg-2 control-label tl" data-id="assetIp"></label>
+					<!-- <label class="col-lg-3 control-label tr">点击进入端口详细信息</label> -->
+				</div>
+			</form>
+
+			<!-- 面板图 -->
+			<div class="clearfix" style="min-height:15px;text-align: center;margin-bottom:51px;margin-top: -5px;padding-left: 18px;" id="port_div">
+				
+				<!-- 面板tip -->
+				<form class="bs-example form-horizontal xs-form p10 pt15 ovh" data-name="interfaceTip" hidden="hidden" style="position: absolute;width: auto;min-width:400px;height: auto;min-height: 100px;background: #fff; border: 1px solid #333; border-radius: 3px;box-sizing: border-box;z-index: 9999;box-shadow: 5px 5px 3px rgba(0,0,0,0.2);top: 40px;left: 10px;">
+					<div class="form-group">
+						<label class="col-lg-3 control-label tr p0">接口索引：</label>
+						<label class="col-lg-3 control-label tl p0" data-id="interfaceInd"></label>
+						<label class="col-lg-3 control-label tr p0">接口名称：</label>
+						<label class="col-lg-3 control-label tl p0" data-id="interfaceName"></label>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label tr p0">接口状态：</label>
+						<label class="col-lg-3 control-label tl p0" data-id="currentStatusName"></label>
+						<label class="col-lg-3 control-label tr p0">管理状态：</label>
+						<label class="col-lg-3 control-label tl p0" data-id="adminStatusName"></label>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label tr p0">入口流速：</label>
+						<label class="col-lg-3 control-label tl p0" data-id="portalFlux"></label>
+						<label class="col-lg-3 control-label tr p0">出口流速：</label>
+						<label class="col-lg-3 control-label tl p0" data-id="exportFlux"></label>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label tr p0">入口流量：</label>
+						<label class="col-lg-3 control-label tl p0" data-id="fluxIn"></label>
+						<label class="col-lg-3 control-label tr p0">出口流量：</label>
+						<label class="col-lg-3 control-label tl p0" data-id="fluxOut"></label>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-3 control-label tr p0">总流量：</label>
+						<label class="col-lg-3 control-label tl p0" data-id="totalFlux"></label>
+					</div>
+				</form>
+			</div>
+			<div class="prel" style="width:900px;height:280px;" id="table_flow_div_outer">
+				<input class="pabs form-control input-sm" type="text"
+						style="width:150px;top:-5px;left:0;display:none"
+						id="table_flow_search_inp" placeholder="搜索">
+				<div id="table_flow_div" class="table-div w-all h-all"></div>
+			</div>
+		</div>
+	</div>
+</tem>
