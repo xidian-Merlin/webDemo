@@ -1,0 +1,33 @@
+<script src="/module/sys_manage/monitor_config/log_occur_source_config.js"></script>
+
+
+<!-- 左侧 -->
+<div class="p-panel um-panel left-panel" id="left-panel" style="width:210px">
+	<div class="um-panel-head" id="accordion_icon">
+		<div class="col-lg-6 unit-col" data-name="assetTypeTreeWithCnt" data-type="4" style="padding:0 5px">资产类型</div>
+		<div class="col-lg-6 unit-col" data-name="sdTreeWithCnt" data-type="3" style="padding:0 5px">代理服务器</div>
+	</div>
+	<div class="um-panel-body">
+		<ul id="accordion" class="ztree" style="height:100%;overflow:hidden;overflow-y:auto"></ul>
+	</div>
+</div>
+
+<!-- 右侧 -->
+<div class="p-panel um-panel right-panel" id="right-panel" style="left:210px;overflow-x:hidden">
+<!-- <div id="table_div_outer" class="table-div-outer" style="padding:50px 10px 50px 10px"> -->
+	<div class="um-panel-head">
+		<div class="table-oper" id="table_oper">
+			<a href="javascript:void(0);" id="candidate_asset_btn" class="bgblue">
+				<i class="btn-commen candidate_asset-btn"></i>
+				<span>待选资产</span>
+			</a>
+			<a href="javascript:void(0);" id="delete_btn">
+				<i class="btn-commen delete-btn"></i>
+				<span>批量删除</span>
+			</a>
+		</div>
+	</div>
+	<div class="um-panel-body">
+		<div id="table_div1" class="table-div table-list" ></div>
+	</div>
+</div>

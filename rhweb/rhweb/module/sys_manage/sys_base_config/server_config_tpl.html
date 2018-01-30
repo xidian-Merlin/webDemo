@@ -1,0 +1,173 @@
+<tem>
+<!-- 应用服务器添加模板 -->
+<div class="template" id="application_server_config_add_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-5 control-label" queryStr>应用服务器名称</label>
+			    <div class="col-lg-7">
+			        <input type="text" maxlength="50" class="form-control input-sm" data-id="nodeName"  validate="required,stringLimit0">
+			        <input type="hidden" data-id="nodeId">
+		        	<input type="hidden" data-id="nodeUid">
+		        	<input type="hidden" data-id="nodeType">
+		        	<input type="hidden" data-id="appserStatus">
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-5 control-label" queryStr>应用服务器IP(IPv4)</label>
+			    <div class="col-lg-7">
+			        <input type="text" class="form-control input-sm" maxlength="15" data-id="nodeIpv"  validate="required,ipv4">
+			    </div>		    
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<!-- 代理服务器添加模板 -->
+<div class="template" id="proxy_server_config_add_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div id="agent_name_div">
+				<div class="form-group" data-id="agentStore_div">
+			        <label class="col-lg-2 control-label required">代理服务器名称</label>
+			        <div class="col-lg-3">
+			        	<input type="text" maxlength="50" class="form-control input-sm" data-id="nodeName"
+			        	validate="required,stringLimit">
+			        </div>
+			        <label class="col-lg-3 control-label required">代理服务器IP(IPv4)</label>
+			        <div class="col-lg-3">
+			        	<input type="text" class="form-control input-sm" data-id="nodeIpv" id="proxy_ipv4" maxlength="15" validate="required,ipv4">
+			        	<input type="hidden" data-id="preNodeIpv">
+			        </div>
+			    </div>
+
+			    <div class="form-group" data-id="agentStore_div">
+			        <label class="col-lg-2 control-label" ></label>
+			        <div class="col-lg-3">
+			        	<input type="hidden" class="form-control input-sm no-write" data-id="appId" readonly>
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label required">漏洞扫描器</label>
+			        <div class="col-lg-3">
+				        <select class="form-control input-sm" data-type="select" data-id="scannerType" validate="required">
+						</select>
+				    </div>
+			    </div>
+			</div>
+
+		    <!-- 日志转发配置 -->
+		    <div id="log_relay_config_div" data-id="logInfoStore_div" style="display:none">
+				<div class="form-group">
+					<div class="border-text">
+					  <div id="log_relay"  style="margin-left:-20px;">日志转发配置
+					  <i class="icon-chevron-down" style="margin:0 2px;opacity: 0.6"></i></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-6" id="left">
+						<!-- 右移箭头 -->
+						<div style="right:0;top:41px;font-size:20px;z-index:2000" 
+						id="chevron-right" class="pabs square">
+							<i class="icon-chevron-right"></i>
+						</div>
+						
+						<!-- 左移箭头 -->
+						<div style="right:0;top:85px;font-size:20px;z-index:2000" 
+						id="chevron-left" class="pabs square">
+							<i class="icon-chevron-left"></i>
+						</div>
+
+						<div class="form-group">
+							<div class="col-lg-4 tr">
+								<div class="radio">
+									<label class="i-checks">
+									  <input type="radio" value="1" name="source" checked>
+									  <i></i>
+									  发生源IPV4
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-3" style="width:28%;padding-right:0">
+						        <input type="text" class="form-control input-sm" data-id="recordStartIp" id="recordStartIp" maxlength="15" validate="ipv4" >
+					        </div>
+					        <div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+					          -
+					        </div>
+					        <div class="col-lg-3" style="width:28%;padding-left:0">
+					          <input type="text" class="form-control input-sm" maxlength="15" data-id="recordEndIp" id="recordEndIp"
+					          	validate="ipv4" >
+					        </div>
+				        </div>
+				        <div class="form-group">
+							<div class="col-lg-4 tr">
+								<div class="radio">
+									<label class="i-checks">
+									  <input type="radio" value="2" name="source">
+									  <i></i>
+									  发生源IPV6
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-7" style="width:60%">
+						        <input type="text" class="form-control input-sm" data-id="srcipv6" id="srcipv6" maxlength="39" validate="ipv6"  disabled>
+					        </div>
+				        </div>
+
+				        <div class="form-group">
+							<div class="col-lg-4 tr">
+								<div class="radio">
+									<label class="i-checks">
+									  <input type="radio" value="1" name="forwardTo" checked>
+									  <i></i>
+									  转发至IPV4
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-7" style="width:60%">
+						        <input type="text" class="form-control input-sm" data-id="recordAimIp" id="recordAimIp" maxlength="15" validate="ipv4" >
+					        </div>
+				        </div>
+				        <div class="form-group">
+							<div class="col-lg-4 tr">
+								<div class="radio">
+									<label class="i-checks">
+									  <input type="radio" value="2" name="forwardTo">
+									  <i></i>
+									  转发至IPV6
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-7" style="width:60%">
+						        <input type="text" class="form-control input-sm" data-id="aimipv6" id="aimipv6" maxlength="39" validate="ipv6" disabled>
+					        </div>
+				        </div>
+
+				         <div class="form-group">
+					        <label class="col-lg-4 control-label" queryStr>转发至端口</label>
+						    <div class="col-lg-7" style="width:60%" >
+						        <input type="text" class="form-control input-sm" data-id="recordAimPort"
+						        	validate="number" maxlength="5">
+						    </div>
+				        </div>	
+					</div>
+					<div class="col-lg-6" id="right">
+						<div id="ipList_table" class="table-div" style="height:200px"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" data-id="agentStore_div">
+				<label class="col-lg-2 control-label " queryStr>备注</label>
+		      	<div class="col-lg-9">
+		        	<textarea type="text" class="form-control input-sm" data-id="nodeDesc"></textarea> 
+		      	</div>
+			</div>
+		</form>
+	</div>
+</div>
+</tem>

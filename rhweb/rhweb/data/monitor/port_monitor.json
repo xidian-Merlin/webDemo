@@ -1,0 +1,12 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Port Monitor",
+					"fileName"  : "port_monitor",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "port_monitor/base.html","icon" : "monitor-base-info"},
+								{"text" : "事件信息" ,"href" : "common/event_and_config.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

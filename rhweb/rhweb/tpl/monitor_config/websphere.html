@@ -1,0 +1,67 @@
+<div data-id="monitor_index" class="h-all">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+
+			<div id="detail_store_form">
+	      <div class="form-group">
+	        <label class="col-lg-2 control-label pt0">用户名</label>
+	        <div class="col-lg-3">
+	          <input type="text" class="form-control input-sm" data-id="monitorUserName" />
+	        </div>
+	        <div id="snmp_v1">
+	          <label class="col-lg-2 control-label pt0">密码</label>
+	          <div class="col-lg-4">
+	            <input type="password" class="form-control input-sm" data-id="monitorPassWord" />
+	          </div>
+	        </div>
+	      </div>
+
+	      <div class="form-group">
+	        <label class="col-lg-2 control-label pt0">端口</label>
+	        <div class="col-lg-3">
+	          <input type="text" class="form-control input-sm" data-id="monitorPort" maxlength="5" validate="between1~65535" value="9080"/>
+	        </div>
+		      <label class="col-lg-2 control-label required">连接方式</label>
+		      <div class="col-lg-4">
+		        <select data-id="connectType" data-type="select">
+		        	<option value="SOAP">SOAP</option>
+		        	<option value="RIM">RIM</option>
+		        </select>
+		      </div>
+	      </div>
+
+				<div class="form-group">
+		      <label class="col-lg-2 control-label">上下文根</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="commandPrompt" value="wasPerfTool"/>
+		      </div>
+				</div>
+			</div>
+
+			<div class="form-group" id="app_url">
+				<label class="control-label col-lg-2">应用URL</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="urlAddress" data-flag="url_flag" validate="required,url">
+				</div>
+				<div class="col-lg-1">
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="url_add" title="添加">
+				  	  	<i class="icon-chevron-right"></i>
+				    </div>
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="url_remove" title="删除">
+				    	<i class="icon-chevron-left"></i>
+				    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-he" style="height:200px;"></div>
+				</div>
+			</div>
+
+      <div class="table-oper" style="padding-right:8.33%;">
+        <a href="javascript:void(0);" class="dib monitor_btn_styl" data-type="test_btn_in_step5">
+          <span>测试配置</span>
+          <i></i>
+        </a> 
+      </div> 
+		</form>
+	</div>
+</div>

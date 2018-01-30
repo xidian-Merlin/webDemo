@@ -1,0 +1,16 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "IIS6",
+					"fileName"  : "iis6",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "iis6/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "用户访问信息" ,"href" : "iis6/user_accesss.html" ,"icon" : "monitor-user-access"},
+								{"text" : "内存信息" ,"href" : "iis6/memory.html" ,"icon" : "monitor-data-table"},
+								{"text" : "流量信息" ,"href" : "iis6/stream.html" ,"icon" : "monitor-system"},
+								{"text" : "线程信息" ,"href" : "iis6/process.html" ,"icon" : "monitor-thread-pool"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

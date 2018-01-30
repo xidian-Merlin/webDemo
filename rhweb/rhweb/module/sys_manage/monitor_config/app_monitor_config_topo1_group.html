@@ -1,0 +1,109 @@
+<tem>
+
+<div id="modifygroup" class="template">
+<div id="modifyGroupStlye">
+        	<input id="groupId" type="hidden"/>
+        	<div class="table-oper" >
+				<a id="modifyGroupStlye_remove" href="javascript:void(0);" style="display: none;">
+		            <i class="btn-commen"></i>
+		            <span class="" >删除分组</span><span name="canhide"></span>
+		        </a>
+		       <!--  <a id="modifyGroupStlye_close" href="javascript:void(0);">
+		            <i class="btn-commen"></i>
+		            <span class="" >关闭</span><span name="canhide"></span>
+		        </a>
+		        <a id="modifyGroupStlye_reset" href="javascript:void(0);">
+		            <i class="btn-commen"></i>
+		            <span name="" class="">修改</span>
+		        </a> -->
+		    </div>
+		    <div class="panel-body" id="" style="">
+		    	<div class="form-group">
+					<label class="col-lg-2 control-label" style="text-align: right;"></label>
+				    <div class="col-lg-10">
+				    	<input name="slider" type="hidden" trgfunction="setSlider"/>
+				         <iframe style="border: none;" scrolling="no" name="slideriframe2" id="slideriframe2" src="/slider/slider.html" width="420px" height="60px" onload="setSlider($(this).parent().find('input[name=slider]').val(),'isGroup');"></iframe>
+				    </div>
+				</div>
+		    	<div class="form-group">
+				    <label class="col-lg-2 control-label" style="text-align: right;">背景颜色</label>
+				    <div class="col-lg-10">
+				         <input name="color" type="hidden" trgfunction="setColor" myatr="test"/>
+				         <iframe style="border: none;" scrolling="no" name="groupcoloriframe" id="groupcoloriframe" src=""  width="420px" height="220px" ></iframe>
+				    </div>
+				</div>
+
+					
+				<div class="form-group" style="display: none;">
+				    <label class="col-lg-2 control-label" style="text-align: right;">字体颜色</label>
+				    <div class="col-lg-10">
+    					     <input name="color" type="hidden" trgfunction="setColor" myatr="test"/>
+				         <iframe style="border: none;" scrolling="no" name="fontcoloriframe" id="fontcoloriframe" src=""  width="420px" height="220px" onload=""></iframe>
+				    </div>
+				</div>
+<!-- 				<div class="form-group">
+				    <label class="col-lg-2 control-label" style="color: white;text-align: right;">分组名称</label>
+				    <div class="col-lg-10">
+				        <input name="groupname" class="form-control input-sm" type="text" trgfunction="setLineSize"/>
+				    </div>
+				</div> -->
+
+				<div class="form-group" style="display: none;">
+				    <label class="col-lg-2 control-label" style="text-align: right;">文本模式</label>
+				    <div class="col-lg-10">
+				        <p style="color: white;">
+				        <input name="textPosition" value="Middle_Center" type="radio"/>居中
+				        <input name="textPosition" value="Top_Center" type="radio"/>居上
+				        <input name="textPosition" value="Bottom_Center" type="radio"/>居下
+				        <input name="textPosition" value="Middle_Left" type="radio"/>居左
+				        <input name="textPosition" value="Middle_Right" type="radio"/>居右
+				        <input name="textPosition" value="Bottom_Right" type="radio"/>右下
+				        <input name="textPosition" value="Bottom_Left" type="radio"/>左下
+				        <input name="textPosition" value="Top_Right" type="radio"/>右上
+				        <input name="textPosition" value="Top_Left" type="radio"/>左上
+				    	</p>
+				    </div>
+				</div>
+				<div class="form-group" style="display: none;">
+					    <label class="col-lg-2 control-label" style="text-align: right;">分组名称</label>
+					    <div class="col-lg-4">
+					        <input name="groupname" class="form-control input-sm" type="text" trgfunction="setLineSize"/>
+					    </div>
+					    <label class="col-lg-2 control-label" style="text-align: right;">字号</label>
+					    <div class="col-lg-4">
+					        <select class="form-control input-sm" name="fontsize">
+					        	<option value="12">12</option>
+					        	<option value="24">24</option>
+					        	<option value="36">36</option>
+					        	<option value="48">48</option>
+					        	<option value="60">60</option>
+					        	<option value="72">72</option>
+					        	<option value="84">84</option>
+					        </select>
+					    </div>
+				</div>
+		    </div>
+        </div>
+    </div>
+    
+    
+    
+<div id="addnodeForGroup" class="template">
+<div id="modifyGroupStlye">
+        	<input id="groupId" type="hidden"/>
+   			<div class="form-group">
+  	        		<div>
+					<p>为容器添加/或删除节点</p>
+				    <div class="centent">
+				    	<select multiple id="select1" style="width:240px;height:200px;color: black;">
+				    	</select>
+				    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				    	<select multiple id="select2" style="width:240px;height:200px;color: black;">
+				    	</select>
+				    </div>
+        		</div>
+			</div>
+        </div>
+    </div>
+	
+</tem>

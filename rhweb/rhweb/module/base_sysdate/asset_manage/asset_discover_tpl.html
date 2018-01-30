@@ -1,0 +1,337 @@
+<tem>
+<!-- 编辑模板 -->
+<div class="template" id="discover_edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label required">任务名称</label>
+			    <div class="col-lg-4">
+			        <input type="text" maxlength="32" class="form-control input-sm" data-id="name"
+			         validate="required,stringLimit0">
+			    </div>
+			    <div class="col-lg-6" style="margin-top:5px;">
+						<label class="i-checks col-lg-4">
+							<input type="checkbox" data-id="status" checked="checked" value="1"><i></i> 启用任务
+						</label>
+						<label class="i-checks col-lg-8">
+							<input type="checkbox" data-id="auto" value="1"><i></i> 自动更新
+						</label>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">扫描方式</label>
+			    <div class="col-lg-4">
+			        <select class="form-control input-sm" data-type="select" data-id="findWay" validate="required">
+						<option value="2">IP段发现</option>
+						<option value="1">资产发现</option>
+					</select>
+			    </div>
+			    <label data-type="choose" class="col-lg-2 control-label required">选择代理</label>
+			    <div class="col-lg-4">
+			    	<!-- <div data-type="choose" id="agentId" class="inputdrop" required></div> -->
+			    	<select data-type="select" data-id="agentId" validate="required"></select>
+			    </div>
+			</div>
+			<!--Ip-->
+			<div id="file_baseline_template">
+				<div class="form-group">
+					<div class="border-text" style="margin-right:13px;">
+						<div id="selected_name">IP段</div>
+					</div>
+					<div class="col-lg-6">
+						<!-- 右移箭头 -->
+						<div style="right:0;top:21px;font-size:20px;z-index:2000" 
+								id="chevron-right" class="pabs square">
+							<i class="icon-chevron-right"></i>
+						</div>
+						<!-- 左移箭头 -->
+						<div style="right:0;top:67px;font-size:20px;z-index:2000" 
+								id="chevron-left" class="pabs square">
+							<i class="icon-chevron-left"></i>
+						</div>
+
+						<div class="form-group" style="margin-top:20px;">
+							<div class="col-lg-3 tr">
+								<div class="radio">
+									<label class="i-checks">
+										<input type="radio" value="1" data-id="IPV4" name="ipVersion" checked>
+											<i></i>
+											  IPV4
+										</label>
+									</div>
+							</div>
+							<div class="col-lg-3" style="width:31%;padding-right:0;padding-left:0">
+								<input type="text" class="form-control input-sm" data-flag="startIp" data-id="startIp" id="startIp" maxlength="15" validate="required,ipv4">
+							</div>
+							<div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+							    -
+							</div>
+							<div class="col-lg-3" style="width:31%;padding-left:0;padding-right:0">
+							    <input type="text" class="form-control input-sm" data-flag="endIp" data-id="endIp" id="endIp" maxlength="15" validate="ipv4">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-3 tr">
+								<div class="radio">
+									<label class="i-checks">
+										<input type="radio" value="0" data-id="IPV6" name="ipVersion">
+											<i></i>
+											  IPV6
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-7" style="width:66%;padding:0">
+								<input type="text" class="form-control input-sm" data-flag="mainIp" data-id="ipV6"  id="mainIp" maxlength="39" validate="ipv6" queryValue disabled>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div id="ipList_table" data-id="ipRange" class="table-div" style="height:120px"></div>
+					</div>
+				</div>
+			</div>
+			<!--资产-->
+			<div id="asset_baseline_template">
+				<div class="form-group">
+					<div class="border-text" style="margin-right:13px;">
+						<div id="selected_name">资产</div>
+					</div>
+					<div class="col-lg-12">
+						<div class="table-oper" id="table_oper">
+							<a href="javascript:void(0);" id="asset_add_btn">
+								<span>新增</span>
+								<i class="icon-plus"></i>
+							</a>
+						</div>
+						<div id="asset_table_div" data-id="asset_table" class="table-div" 
+								style="height:160px"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="border-text" style="margin-right:13px;">
+					<div id="selected_name" style="position:absolute; left:34%;">定时任务(不配置此区域内容为立即扫描任务)</div>
+				</div>
+				<div class="col-lg-12">
+					<label class="col-lg-2 control-label">开启功能：</label>
+			    	<div class="col-lg-10">
+			    		<label class="i-checks col-lg-3" style="margin-top:5px;">
+			        		<input type="checkbox" data-id="taskStatus" name="typeOpen" value="1"><i></i>
+			        	</label>
+			    	</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" style="margin-left:10px;">周期类型：</label>
+			    <div class="col-lg-3">
+			      <select class="form-control input-sm" value="typeWeek" data-type="select" data-id="periodType" validate="required" disabled>
+			        <option value=""></option>
+							<option value="1">每月</option>
+							<option value="2">每周</option>
+							<option value="3">每天</option>
+						</select>
+			    </div>
+			    <div class="col-lg-3">
+			        <select class="form-control input-sm" value="typeWeek" data-type="select" data-id="period" disabled></select>
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" style="margin-left:10px;">运行时间：</label>
+				<div class="col-lg-3">
+			         <timeinp id="time"></timeinp>
+			    </div>
+			    <label class="col-lg-2 control-label tl" style="width:100px">HH:MM:SS</label>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<!--资产信息模板-->
+<div id="asset_dialog_div" class="template">
+	<div id="asset_dialog_dialog_div" class="table-div" style="height:300px;"></div>
+</div>
+
+<!-- 查询模板 -->
+<div class="template" id="discover_query_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">任务名称：</label>
+			    <div class="col-lg-8">
+			        <input type="text" class="form-control input-sm" data-id="name">
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-3 control-label">任务类型：</label>
+			    <div class="col-lg-8">
+			        <select class="form-control input-sm" data-type="select" data-id="supContacts">
+						<option value="">---</option>
+						<option value="1">定时扫描任务</option>
+						<option value="2">立即扫描任务</option>
+					</select>
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-3 control-label">创建人：</label>
+			    <div class="col-lg-8">
+			    <div type="text" class="inputdrop" data-id="createPerson" style="height:28px;"></div>
+
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">创建开始时间：</label>
+			    <div class="col-lg-8">
+			    	<div class="input-group w-all">
+			        	<input type="text" class="form-control input-sm" data-type="date" data-id="startTime" queryValue>
+			    	</div>
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">创建结束时间：</label>
+			    <div class="col-lg-8">
+			    	<div class="input-group w-all">
+			        	<input type="text" class="form-control input-sm" data-type="date" data-id="endDate" queryValue>
+			    	</div>
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">修改人：</label>
+			    <div class="col-lg-8">
+			        <select class="form-control input-sm" data-type="select" data-id="updatePerson">
+						<option value="">------</option>
+					</select>
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">修改开始时间：</label>
+			    <div class="col-lg-8">
+			        <div class="input-group w-all">
+			        	<input type="text" class="form-control input-sm" data-type="date" data-id="startUpdDate" queryValue>
+			    	</div>
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">修改结束时间：</label>
+			    <div class="col-lg-8">
+			        <div class="input-group w-all">
+			        	<input type="text" class="form-control input-sm" data-type="date" data-id="endUpdDate" queryValue>
+			    	</div>
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">是否启用：</label>
+			    <div class="col-lg-8">
+			    	<select class="form-control input-sm" data-type="select" data-id="status">
+						<option value="">---</option>
+						<option value="1">启用</option>
+						<option value="2">停用</option>
+					</select>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 详情模板 -->
+<div class="template detail-info" id="discover_detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">任务名称：</label>
+			    <label class="col-lg-4 control-label tl" data-id="name"></label>	    
+			    <label class="col-lg-2 control-label">运行状态：</label>
+			    <label class="col-lg-4 control-label tl" data-id="runStatus"></label>	    
+			</div>
+
+			<!-- <div class="form-group">
+			    <label class="col-lg-2 control-label">创建人：</label>
+			    <label class="col-lg-4 control-label tl" data-id="createPerson"></label>	    
+			    <label class="col-lg-2 control-label">创建时间：</label>
+			    <label class="col-lg-4 control-label tl" data-id="createDate"></label>	    
+			</div> -->
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">修改人：</label>
+			    <label class="col-lg-4 control-label tl" data-id="updatePerson"></label>
+			    <label class="col-lg-2 control-label">修改时间：</label>
+			    <label class="col-lg-4 control-label tl" data-id="updateDate"></label>
+			</div>
+
+			<!-- IP段发现时显示 -->
+			<div class="form-group" id="show_for_ip">
+				<label class="col-lg-2 control-label">扫描IP：</label>
+				<label class="col-lg-4 control-label tl" data-id="ips"></label>
+				<label class="col-lg-2 control-label">代理服务器：</label>
+				<label class="col-lg-4 control-label tl" data-id="agentName"></label>
+			</div>
+
+			<!-- 定时任务时显示 -->
+			<div class="form-group" id="show_for_timed_task">
+			    <label class="col-lg-2 control-label">周期类型：</label>
+			    <label class="col-lg-4 control-label tl" data-id="periodType"></label>
+			    <label class="col-lg-2 control-label">运行时间：</label>
+			    <label class="col-lg-4 control-label tl" data-id="startTime"></label>
+			</div>
+
+			<!-- 资产发现时显示 -->
+			<div class="form-group" id="show_for_asset">
+				<label class="col-lg-2 control-label">扫描资产：</label>
+				<label class="col-lg-4 control-label tl" data-id="assetName"></label>
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">任务类型：</label>
+			    <label class="col-lg-4 control-label tl" data-id="taskStatue"></label>
+			</div>
+			<div class="form-group" style="margin:5px 0;display:none" id="discover_gif_div">
+				<label class="col-lg-2 control-label"></label>
+				<div class="col-lg-6">
+						<div class="loadinggif"></div>
+				</div>
+			</div>
+
+			<div class="form-group" style="margin-bottom:5px;position: relative;">
+			    <label class="col-lg-2 control-label"></label>
+			    <div class="col-lg-4">
+			    	<div class="form-control input-sm prel" data-id="finishedPercent" style="padding:2px">
+			    		<div class="prel w-all h-all">
+			    			<div id="finishedPercent_div" 
+			    				class="pabs tran" style="left:0;top:0;width:0;height:100%;background:#bae0ba"></div>
+			    		</div>	
+			    	</div>
+			    </div>
+			    <label class="col-lg-6 control-label" style="text-align:left;" id="run_status_info"></label>
+			    <div class="col-lg-4 check-result-canvas-div pabs" style="top:0;right:0;height: 50px;margin-top: -20px;" data-name="canvas-div">
+			    	<canvas id="canvasDiv" width="50px" height="50px"></canvas>
+			    </div>
+			    
+			</div>
+
+			<!-- 有详细信息时显示 -->
+			<div  class="mt20 bdc pt20 prel">
+				<div style=" top:-10px; left:20px; padding: 0 5px;" class="pabs g6 bgwh">详细信息</div>
+				<label class=" form-control input-sm no-write" readonly="true" style="border:none; height:auto;" data-id="resultInfo"></label>
+			</div>
+			<!-- <div class="form-group" id="show_when_has_result_info">
+			    <label class="col-lg-2 control-label" queryStr>详细信息：</label>
+			    <div class="col-lg-10">
+			        <textarea class="form-control input-sm" data-id="resultInfo" style="height:200px"></textarea>
+			    </div>
+			</div> -->
+
+			<div class="form-group">
+			<label class="col-lg-3 control-label"><a id="jumpToBackupAsset">跳转至备用资产页面</a></label>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+
+
+</tem>

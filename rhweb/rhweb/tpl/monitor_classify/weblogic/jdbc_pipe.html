@@ -1,0 +1,110 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>JDBC信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="jdbc_info"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>通道信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="pipe_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var jdbc_info_url = "monitorview/middleware/weblogic/queryWeblJDBC";
+var jdbc_info_header = [
+                            {text:'名称',name:"name"},
+                            {text:'描述',name:"desc",render:function(text){
+                                if(text=="null" || text==null){
+                                    return "----";
+                                }
+                                return text;
+                            }},
+                            {text:'状态',name:"state"},
+                            {text:'当前活动连接数',name:"activeConnectionsCurrentCount"},
+                            {text:'活动连接平均数',name:"activeConnectionsAverageCount"},
+                            {text:'最大活动连接计数',name:"activeConnectionsHighCount"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var pipe_info_url = "monitorview/middleware/weblogic/queryWeblChannel";
+var pipe_info_header = [
+                            {text:'名称',name:"name"},
+                            {text:'描述',name:"desc",render:function(text){
+                                if(text=="null" || text==null){
+                                    return "----";
+                                }
+                                return text;
+                            }},
+                            {text:'公共URL',name:"publicURL"},
+                            {text:'已收到字节数（b）',name:"bytesReceivedCount"},
+                            {text:'已发送字节数（b）',name:"bytesSentCount"},
+                            {text:'接受计数',name:"acceptCount"},
+                            {text:'已收到消息数',name:"messagesReceivedCount"},
+                            {text:'已发送消息数',name:"messagesSentCount"},
+                            {text:'连接数',name:"connectionsCount"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    jdbc_info();
+    pipe_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+
+function jdbc_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#jdbc_info"),{
+         header:jdbc_info_header,
+         url:jdbc_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+function pipe_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#pipe_info"),{
+         header:pipe_info_header,
+         url:pipe_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         wholly : true,
+         allowCheckBox : false
+    });
+}
+
+
+
+});
+});
+</script>

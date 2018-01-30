@@ -1,0 +1,16 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "NETAPP",
+					"fileName"  : "netapp",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "netapp/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "CPU使用率" ,"href" : "netapp/cpu.html" ,"icon" : "monitor-cpu-percent"},
+								{"text" : "存储空间信息" ,"href" : "netapp/page.html" ,"icon" : "monitor-page"},
+								{"text" : "RAID信息" ,"href" : "netapp/disk.html" ,"icon" : "monitor-disk"},
+								{"text" : "I/O信息" ,"href" : "netapp/io.html" ,"icon" : "monitor-io"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

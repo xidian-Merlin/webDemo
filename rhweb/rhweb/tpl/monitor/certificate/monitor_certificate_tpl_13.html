@@ -1,0 +1,137 @@
+<div style="height: 400px;">
+  <div class="w-all h-all prel" style="padding:0 40px 0 150px;" data-id="monitor_certificate">
+      <div class="w-all h-all bdd" style="padding-top:20px;margin-bottom:30px;">
+          <div class="tab-content">
+            <!-- tab1 -->
+            <div class="tab-pane" id="tab_telnet">
+              <form class="bs-example form-horizontal xs-form form-plr5">
+                <div class="form-group">
+                  <label class="col-lg-2 control-label">用户名</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorUserName" />
+                  </div>
+                  <label class="col-lg-2 control-label">密码</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPassWord" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2 control-label">端口</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPort" validate="number"/>
+                  </div>
+                  <label class="col-lg-2 control-label">上下文根</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPort" validate="number"/>
+                  </div>
+                </div>
+                <div class="form-group" data-id="show_for_colony" style="display: none;">
+                  <label class="col-lg-2 control-label">虚拟IP</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPort" validate="number"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-10">
+                      <div class="table-oper">
+                          <a href="javascript:void(0);" data-type="test_btn">
+                            <span>测试</span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- tab2 -->
+            <div class="tab-pane" id="tab_ssh">
+              <form class="bs-example form-horizontal xs-form form-plr5">
+                <div class="form-group">
+                  <label class="col-lg-2 control-label">用户名</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorUserName" />
+                  </div>
+                  <label class="col-lg-2 control-label">密码</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPassWord" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2 control-label">端口</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPort" validate="number"/>
+                  </div>
+                  <label class="col-lg-2 control-label">上下文根</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPort" validate="number"/>
+                  </div>
+                </div>
+                <div class="form-group" data-id="show_for_colony" style="display: none;">
+                  <label class="col-lg-2 control-label">虚拟IP</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPort" validate="number"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-10">
+                      <div class="table-oper">
+                          <a href="javascript:void(0);" data-type="test_btn">
+                            <span>测试</span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+      <ul class="pabs v-ul" data-id="tab-ul" style="top:0;left:70px;width:80px">
+          <li>SOAP</li>
+          <li>RMI</li>
+      </ul>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+require(["js/plugin/tab/tab.js"] ,function(tab) {
+  $.ajax({
+    type : "GET",
+    url : "tpl/monitor/monitor_certificate_tpl.html",
+    success : function(data) 
+    {
+      $("[data-id="+$("[data-id=temp_name]").val()+"]").one(function(){
+        $("[data-id="+$("[data-id=temp_name]").val()+"]").append(data);
+      });
+      tab.tab($("[data-id="+$("[data-id=temp_name]").val()+"]") ,{
+        oper : [],
+      });
+
+      $("[data-id=snmpVersion]").change(function (){
+        var id = $(this).val();
+        if (id == "1" || id == "2")
+        {
+          $("[data-id=show_for_snmp_v1]").show();
+          $("[data-id=show_for_snmp_v3]").hide();
+        }
+        else
+        {
+          $("[data-id=show_for_snmp_v1]").hide();
+          $("[data-id=show_for_snmp_v3]").show();
+        }
+      });
+
+      ($("[data-id=tab-ul]>li.active").html() === "SNMP")
+      ? $("[data-id=temp_show_index_for_ssh]").val("hide")
+      : $("[data-id=temp_show_index_for_ssh]").val("show");
+
+      $("[data-id=tab-ul]>li").click(function(){
+        ($("[data-id=tab-ul]>li.active").html() === "SNMP")
+        ? $("[data-id=temp_show_index_for_ssh]").val("hide")
+        : $("[data-id=temp_show_index_for_ssh]").val("show");
+      });
+    }
+  });
+});
+});
+</script>

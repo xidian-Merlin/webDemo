@@ -1,0 +1,246 @@
+<div data-id="monitor_certificate" data-type="tpl" class="h-all">
+  <form class="bs-example form-horizontal xs-form form-plr5 h-all">
+    <div data-id="oracle-tip" class="w-all" style="height:36px;border:1px solid #fff370;background:#fffcda;color:#333;margin-top:-30px;line-height:36px;text-align:center;color:#333333;">说明：凭证信息配置方式只能选择一种，默认SSH2</div>
+    <div class="table-div w-all h-all" data-id="certificate-div" style="border:1px solid #dddddd;">
+
+      <div class="form-group" id="iloveu" style="width:100%;height:36px;line-height:36px;background:#F2F2F2;color:#58666E;font-weight:bold;margin:0 auto;border-bottom:1px solid #DDDDDD;">
+        <div class="col-lg-5" style="text-align:center;">被监控资产IP</div>
+        <div class="col-lg-5" style="text-align:left;">凭证配置方式</div>
+      </div>
+
+      <div class="certificate-list form-group" data-id="data-list">
+        <!-- 记录添加位置 -->
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<script>
+$(document).ready(function(){
+
+
+  var monitored_asset_id = $("[data-id=temp_monitored_asset]").val();
+  var url = {
+    p1 : "AssetOperation/queryAssetTelnetAndSSHAndSnmp"
+  };
+  $("[data-id=edit_box]").hide();
+  um_ajax_post({
+    url : url.p1,
+    paramObj : {edIds:monitored_asset_id},
+    successCallBack : function(data) 
+    {
+      var tpl_con = "";
+      var num = null;
+      var ip = $("[data-id=temp_monitored_asset_ip]").val().split(",");
+      var buff = [];
+      var buffer = [];
+      //渲染资产列表
+      for (var i = 0; i < data.length; i++) 
+      {
+        num = i;
+        buffer.push('<div data-id="data-row" data-eq="'+i+'" class="w-all" style="line-height:36px;border-bottom:1px solid #dddddd;margin:0 auto;position:relative;">');
+        buffer.push('<div class="row" style="height:36px;">');
+        buffer.push('<div class="col-lg-5" style="text-align:center;">'+ip[i]+'</div>');
+        buffer.push('<div class="col-lg-6">');
+        buffer.push('<form data-type="cert_type">');
+        buffer.push('<input type="radio" data-type="cert_type" name="cert_type" value="ssh2" style="margin-right:5px;" checked> SSH2');
+        buffer.push('<input type="radio" data-type="cert_type" name="cert_type" value="telnet" style="margin-right:5px;"> TELNET');
+        buffer.push('</form>');
+        buffer.push('</div>');
+        buffer.push('<div class="col-lg-1">');
+        buffer.push('<i class="icon-plus" data-type="btn" data-id="monitored_asset_edit_btn" data-fn="edit_show" style="cursor:pointer;" title="配置该资产凭证信息"></i>');
+        buffer.push('<i class="icon-minus" data-type="btn" data-id="monitored_asset_edit_hide_btn" data-fn="edit_hide" title="收起该资产凭证信息" style="display:none;cursor:pointer;"></i>');
+        buffer.push('</div>');
+        buffer.push('</div>');
+        buffer.push('<div data-id="monitored_asset_edit_box" style="width:100%;height:auto;overflow:hidden;">');
+        buffer.push('</div>');
+        buffer.push('</div>');
+        $("[data-id=data-list]").append(buffer.join(""));
+        buffer = [];
+      }
+
+      //行事件绑定
+      $("[data-id=data-list]").find("[data-id=data-row]").each(function() 
+      {
+        var self_row = $(this);
+        var bro_row = self_row.siblings();
+        var bro_len = bro_row.length;
+        var eq = self_row.attr("data-eq");
+
+        //展开按钮事件
+        self_row.find("[data-fn=edit_show]").click(function() 
+        {
+          //兄弟行存在展开的情况
+          for (var i = 0; i < bro_len; i++) {
+            //收起兄弟行的展示盒子
+            bro_row.find("[data-id=monitored_asset_edit_box]").hide();
+            //显示兄弟行的展开按钮
+            bro_row.find("[data-fn=edit_show]").show();
+            //隐藏兄弟行的收起按钮
+            bro_row.find("[data-fn=edit_hide]").hide();
+          }
+
+          //隐藏本行展开按钮
+          self_row.find("[data-fn=edit_show]").hide();
+          //显示本行收起按钮
+          self_row.find("[data-fn=edit_hide]").show();
+
+          //展开本行展示盒子
+          self_row.find("[data-id=monitored_asset_edit_box]").show();
+          //SSH2,TELNET展示，二选一.初始化展示盒子
+          //self_row.find("[data-id=monitored_asset_edit_box]").remove();
+          //渲染展示盒子内的表单
+          var tarType = self_row.find("[data-type=cert_type]:radio:checked").val();
+          if (self_row.find("[data-id=monitored_asset_edit_box]").children().length > 0) 
+          {
+            return true;
+          }
+          self_row.find("[data-id=monitored_asset_edit_box]").append(editDivRender(tarType));
+          self_row.find("[data-id=monitored_asset_edit_box]").find("[data-id="+tarType+"]").show();
+        });
+
+        //收起按钮事件
+        self_row.find("[data-fn=edit_hide]").click(function() 
+        {
+          //隐藏本行展示盒子
+          self_row.find("[data-id=monitored_asset_edit_box]").hide();
+          //隐藏本行收起按钮
+          self_row.find("[data-fn=edit_hide]").hide();
+          //显示本行展开按钮
+          self_row.find("[data-fn=edit_show]").show();
+        });
+
+        //radio change事件,不change的有默认值SSH模板在渲染资产列表是渲染
+        self_row.find("[data-type=cert_type]:radio").change(function() 
+        {
+          //兄弟行存在展开的情况
+          for (var i = 0; i < bro_len; i++) {
+            //收起兄弟行的展示盒子
+            bro_row.find("[data-id=monitored_asset_edit_box]").hide();
+            //显示兄弟行的展开按钮
+            bro_row.find("[data-fn=edit_show]").show();
+            //隐藏兄弟行的收起按钮
+            bro_row.find("[data-fn=edit_hide]").hide();
+          }
+          //隐藏本行展开按钮
+          self_row.find("[data-fn=edit_show]").hide();
+          //显示本行收起按钮
+          self_row.find("[data-fn=edit_hide]").show();
+
+          //获取radio值
+          var radio_val = self_row.find("[data-type=cert_type]:radio:checked").val();
+          //本行展示盒子初始化
+          self_row.find("[data-id=monitored_asset_edit_box]").children().remove();
+          //展开本行展示盒子
+          self_row.find("[data-id=monitored_asset_edit_box]").show();
+          //渲染展示盒子内的表单
+          if (self_row.find("[data-id=monitored_asset_edit_box]").children().length > 0) 
+          {
+            return true;
+          }
+          self_row.find("[data-id=monitored_asset_edit_box]").append(editDivRender(radio_val));
+        });
+
+        //条件渲染
+        function editDivRender(type) 
+        {
+          //构建form表单模板
+          var kid = [];
+          if (type === "ssh2") 
+          {
+            kid.push('<form class="bs-example form-horizontal xs-form" data-type="form" data-id="ssh_form" style="padding-top:10px;border-top:1px solid #dddddd;">');
+            kid.push('<div class="form-group">');
+            kid.push('<label class="col-lg-2 control-label">用户名</label>');
+            kid.push('<div class="col-lg-3">');
+            kid.push('<input type="text" class="form-control input-sm" data-id="trustName">');
+            kid.push('</div>');
+            kid.push('<label class="col-lg-2 control-label">密码</label>');
+            kid.push('<div class="col-lg-3">');
+            kid.push('<input type="password" class="form-control input-sm" data-id="trustPassWord">');
+            kid.push('</div>');
+            kid.push('</div>');
+            kid.push('<div class="form-group">');
+            kid.push('<label class="col-lg-2 control-label">端口</label>');
+            kid.push('<div class="col-lg-3">');
+            kid.push('<input type="text" class="form-control input-sm" data-id="consolePort">');
+            kid.push('</div>');
+            kid.push('</div>');
+            kid.push('</form>');
+          } 
+          else if (type === "telnet") 
+          {
+            kid.push('<form class="bs-example form-horizontal xs-form" data-type="form" data-id="telnet_form" style="padding-top:10px;border-top:1px solid #dddddd;">');
+            kid.push('<div class="form-group">');
+            kid.push('<label class="col-lg-2 control-label">用户名</label>');
+            kid.push('<div class="col-lg-3">');
+            kid.push('<input type="text" class="form-control input-sm" data-id="trustName">');
+            kid.push('</div>');
+            kid.push('<label class="col-lg-2 control-label">密码</label>');
+            kid.push('<div class="col-lg-3">');
+            kid.push('<input type="password" class="form-control input-sm" data-id="trustPassWord">');
+            kid.push('</div>');
+            kid.push('</div>');
+            kid.push('<div class="form-group">');
+            kid.push('<label class="col-lg-2 control-label">端口</label>');
+            kid.push('<div class="col-lg-3">');
+            kid.push('<input type="text" class="form-control input-sm" data-id="consolePort">');
+            kid.push('</div>');
+            kid.push('<label class="col-lg-2 control-label">登录提示符</label>');
+            kid.push('<div class="col-lg-3">');
+            kid.push('<input type="text" class="form-control input-sm" data-id="loginPrompt">');
+            kid.push('</div>');
+            kid.push('</div>');
+            kid.push('<div class="form-group">');
+            kid.push('<label class="col-lg-2 control-label">密码提示符</label>');
+            kid.push('<div class="col-lg-3">');
+            kid.push('<input type="text" class="form-control input-sm" data-id="passwordPrompt">');
+            kid.push('</div>');
+            kid.push('<label class="col-lg-2 control-label">命令提示符</label>');
+            kid.push('<div class="col-lg-3">');
+            kid.push('<input type="text" class="form-control input-sm" data-id="commandPrompt">');
+            kid.push('</div>');
+            kid.push('</div>');
+            kid.push('</form>');
+          }
+          return kid.join("");
+        }
+
+      });
+
+      function form_data_get(){
+        var bean = "";
+        var rowBean = "";
+        var monitorIdList = $("[data-id=temp_monitored_asset]").val().split(",");
+        for (var i = 0; i < $("[data-id=data-list]").find("[data-id=data-row]").length; i++) {
+          var form_type = $("[data-id=data-list]").find("[data-eq="+i+"]").find("[data-type=cert_type]:radio:checked").val();
+          var form_len = $("[data-id=data-list]").find("[data-eq="+i+"]").find("[data-type=form] input").length;
+          var inp = $("[data-id=data-list]").find("[data-eq="+i+"]").find("[data-type=form] input");
+          form_type = form_type.toUpperCase();
+          var trustName = (typeof inp[0] ==="undefined")? "''" : (inp[0].value || "''");
+          var trustPassWord = (typeof inp[1] === "undefined")? "''" : (inp[1].value || "''");
+          var consolePort = (typeof inp[2] === "undefined")? "''" : (inp[2].value || "''");
+          var loginPrompt = (typeof inp[3] === "undefined")? "''" : (inp[3].value || "''");
+          var passwordPrompt = (typeof inp[4] === "undefined")? "''" : (inp[4].value || "''");
+          var commandPrompt = (typeof inp[5] === "undefined")? "''" : (inp[5].value || "''");
+          rowBean = "connectType,"+form_type+",loginPrompt,"+loginPrompt+",passwordPrompt,"+passwordPrompt+",commandPrompt,"+commandPrompt+",trustName,"+trustName+",trustPassWord,"+trustPassWord+",consolePort,"+consolePort+",monitorId,"+monitorIdList[i]+"|";
+          bean += rowBean;
+        }
+        bean = bean.substring(0,bean.length-1);
+        $("[data-id=temp_cert]").val(bean);
+      }
+      $("[data-id=data-list]").mouseout(function(){
+        form_data_get();
+      });
+
+
+    }
+  });
+
+
+
+
+});
+</script>
+
+

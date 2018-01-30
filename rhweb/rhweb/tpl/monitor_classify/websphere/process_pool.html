@@ -1,0 +1,60 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>进程池动态信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="process_pool_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var process_pool_url = "monitorview/middleware/websphere/queryProcessList";
+
+var process_pool_header = [
+                            {text:'名称',name:"name"},
+                            {text:'类型',name:"type"},
+                            {text:'高范围',name:"highBound"},
+                            {text:'低范围',name:"lowBound"},
+                            {text:'当前',name:"currentWaterMark"},
+                            {text:'高水平',name:"highWaterMark"},
+                            {text:'低水平',name:"lowWaterMark"},
+                            {text:'并发活动或池中线程状态',name:"status"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    process_pool_list();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function process_pool_list()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#process_pool_div"),{
+         header:process_pool_header,
+         url:process_pool_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

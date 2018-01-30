@@ -1,0 +1,36 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+
+/* CSS file */
+ToolTip{
+	font-size: 12;
+}
+
+.myFontStyle
+{
+	font-size:12;
+	color:#0e478e;
+}	
+
+.actionScriptStyle
+{
+	background-image: Embed('../canvas/background.jpg');
+	font-size:12;
+	color:#0e478e;
+}
+
+.headerFontStyle
+{
+	font-size:12;
+}
+
+.canvasStyle
+{
+	background-image: Embed('../canvas/background.jpg');
+}
+
+Application {
+	font-size:12px;
+}

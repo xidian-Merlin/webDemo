@@ -1,0 +1,137 @@
+<div class="mt5 mb5" style="height:30px" id="instance_sel_div">
+    <select class="form-control input-sm" data-type="select" id="instance_sel">
+    </select>
+</div>
+
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>回退块</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="rollback_list_div" style="height:360px"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>内存块</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="memory_list_div" style="height:360px"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+
+
+var rollback_list_url = "/monitorview/db/oracle/queryOracleRoll";
+var rollback_list_header = [
+						      {text:"段名" ,name:"segName"},
+						      {text:"表空间名" ,name:"tablespaceName"},
+						      {text:"状态" ,name:"status"},
+						      {text:"当前大小" ,name:"curSize"},
+						      {text:"初始长度" ,name:"initLength"},
+						      {text:"下一个长度" ,name:"nextLength"},
+						      {text:"最小长度" ,name:"minLength"},
+						      {text:"最大长度" ,name:"maxLength"},
+						      {text:"命中率" ,name:"hitRate", render : function(text){
+						      	if(text !=null)
+						      		return text+"%";
+						      }},
+						      {text:"HWM大小" ,name:"hwmSize"},
+						      {text:"收缩" ,name:"shrinks"},
+						      {text:"WRAPS" ,name:"wraps"},
+						      {text:"扩展" ,name:"extendsInfo"},
+						      {text:"更新时间" ,name:"enterDate"}
+						   ];
+
+var memory_list_url = "monitorview/db/oracle/queryOracleBufferBlock";
+var memory_list_header = [
+						      {text:"物理读取块数" ,name:"physicalReads"},
+						      {text:"物理写入块数" ,name:"physicalWrites"},
+						      {text:"内存读取块数" ,name:"cacheReads"},
+						      {text:"内存写入块数" ,name:"cacheWrites"},
+						      {text:"内存扫描块数" ,name:"cacheScans"},
+						      {text:"每秒物理读取块数" ,name:"physicalReadsPerSec"},
+						      {text:"每秒物理写入块数" ,name:"physicalWritesPerSec"},
+						      {text:"每秒内存读入块数" ,name:"cacheReadsPerSec"},
+						      {text:"每秒内存写入块数" ,name:"cacheWritesPerSec"},
+						      {text:"每秒内存扫描次数" ,name:"cacheScansPerSec"},
+						      {text:"更新时间" ,name:"updateDate"}
+						   ];
+
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+
+
+function view_init()
+{
+    index_form_init($("#instance_sel_div"));
+    index_ed_monitor_get(urlParamObj ,[$("#instance_sel")]);
+}
+
+function event_init()
+{
+    $("#instance_sel").change(function (){
+        rollback_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+        memory_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+    });
+}
+
+window.index_monitor_init = function ()
+{
+	index_ed_monitor_get(urlParamObj ,[$("#instance_sel")]);
+}
+
+function rollback_list(opt)
+{
+	g_grid.render($("#rollback_list_div") ,{
+		url : rollback_list_url,
+		header : rollback_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+
+function memory_list(opt)
+{
+	g_grid.render($("#memory_list_div") ,{
+		url : memory_list_url,
+		header : memory_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+
+
+
+});
+
+
+</script>

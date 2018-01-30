@@ -1,0 +1,173 @@
+
+  <div class="panel-body no-tb-padder" data-getter="cert">
+    <form class="bs-example form-horizontal xs-form" data-type="form">
+
+      <!-- 保存本条资产的连接方式 -->
+      <input type="hidden" data-store="connectType" />
+
+      <div class="form-group p0 m0" style="margin-top: -20px;">
+        <div class="col-lg-12">
+          <label class="tc" style="height: 30px; line-height: 30px;color: #e74c3c;"><i class="icon-warning-sign pr5" style="opacity: 1;"></i>注意：以最后配置的连接方式为有效配置。</label>
+        </div>
+      </div>
+
+      <div class="h-all prel" data-box="tab-div" style="min-height: 150px;padding-bottom: 50px;">
+        <ul class="pabs v-ul" data-id="tab-ul" style="top:0;left:20px;width:80px"> <!--connectType-->
+            <li value="WMI">WMI</li><!-- 显示端口、用户名、密码 -->
+            <!-- <li value="TRAY">托盘程序</li>--><!-- 显示端口和脚本grid -->
+            <li value="SNMP">SNMP</li>
+        </ul>
+
+        <div class="tab-content bdd pt10 pb10 mb10" style="margin-left: 100px;min-height: 350px;">
+          <!-- wmi -->
+          <div class="tab-pane" data-getter="wmi">
+            <div class="form-group">
+              <label class="col-lg-2 control-label required">用户名</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" maxlength="32" data-id="monitorUserName" validate="required">
+              </div>
+              <label class="col-lg-2 control-label required">密码</label>
+              <div class="col-lg-3">
+                <input type="password" class="form-control input-sm" data-id="monitorPassWord" validate="required">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label required">端口</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="monitorPort" maxlength="5" validate="required,between1~65535" value="135">
+              </div>
+            </div>
+            <div class="table-oper" style="padding-right:16.67%;">
+              <a href="javascript:void(0);" class="dib monitor_btn_styl" data-test="wmi">
+                <span>测试</span>
+              </a>
+            </div>  
+          </div>
+          <!-- tray -->
+          <!-- <div class="tab-pane" data-getter="tray">
+            <div class="form-group">
+              <label class="col-lg-2 control-label required">端口</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="monitorPort" maxlength="5" validate="required,between1~65535" value="37179" disabled="disabled">
+              </div>
+            </div>
+            <div class="table-oper" style="padding-right:16.67%;">
+              <a href="javascript:void(0);" class="dib monitor_btn_styl" data-type="test_btn_in_step5">
+                <span>测试</span>
+              </a>
+            </div> 
+          </div> -->
+          <!-- snmp -->
+          <div class="tab-pane" data-getter="snmp">
+            <div class="form-group">
+              <label class="col-lg-2 control-label pt0">SNMP版本</label>
+              <div class="col-lg-3">
+                <select class="form-control input-sm clrss" data-type="select" data-id="snmpVersion">
+                    <option value="1">SNMP V1</option>
+                    <option value="2">SNMP V2c</option>
+                    <option value="3">SNMP V3</option>
+                </select> 
+              </div>
+            </div>
+
+            <div data-getter="v1" class="dn" style="display: none;">
+              <div class="form-group">
+                <label class="col-lg-2 control-label required pt0">端口</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" data-id="snmpPort" disabled="disabled" validate="required,port" value="161"/>
+                </div>
+                <label class="col-lg-2 control-label required pt0">读COMMUNITY</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" data-id="snmpCommunity" disabled="disabled" validate="required"/>
+                </div>
+              </div>
+            </div>
+
+            <div data-getter="v2" class="dn">
+              <label class="col-lg-2 control-label required pt0">端口</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="snmpPort" validate="required,port" value="161"/>
+              </div>
+              <label class="col-lg-2 control-label required pt0">读COMMUNITY</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="snmpCommunity" validate="required"/>
+              </div>
+            </div>
+
+            <div data-getter="v3" class="dn">
+              <div class="form-group">
+                <label class="col-lg-2 control-label required pt0">端口</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" data-id="snmpPort" validate="required,port" value="161"/>
+                </div>
+                <label class="col-lg-2 control-label pt0">用户名</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" maxlength="32" data-id="snmpUserName" validate="stringLimit1"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-2 control-label required pt0">安全级别</label>
+                <div class="col-lg-3">
+                  <select class="form-control input-sm clrss" data-id="securityLevel" data-type="select" validate="required">
+                    <option value="-1">---</option>
+                    <option value="1">NOAUTH_NOPRIV</option>
+                    <option value="2">AUTH_NOPRIV</option>
+                    <option value="3">AUTH_PRIV</option>
+                  </select>
+                </div>
+                <label class="col-lg-2 control-label pt0">认证方式</label>
+                <div class="col-lg-3">
+                  <select class="form-control input-sm clrss " data-id="authWay" data-type="select">
+                    <option value="-1">---</option>
+                    <option value="1">SHA</option>
+                    <option value="2">MD5</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-2 control-label pt0">认证口令</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" data-disable="authWay" data-id="authPwd" disabled="disabled"/>
+                </div>
+                <label class="col-lg-2 control-label pt0">加密方式</label>
+                <div class="col-lg-3">
+                  <select class="form-control input-sm clrss" data-disable="authWay" data-id="encryptionWay" data-type="select" disabled="disabled">
+                    <option value="-1">---</option>
+                    <option value="1">3DES</option>
+                    <option value="2">AES128</option>
+                    <option value="3">AES192</option>
+                    <option value="4">AES256</option>
+                    <option value="5">DES</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-2 control-label pt0">加密口令</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" data-disable="encryptionWay" data-id="encryptionPwd" disabled="disabled"/>
+                </div>
+                <label class="col-lg-2 control-label pt0">Context ID</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" data-id="context"/>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-lg-2 control-label pt0">Context Name</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" data-id="contextName"/>
+                </div>
+              </div>
+            </div>
+            <div class="table-oper" style="padding-right:16.67%;">
+              <a href="javascript:void(0);" class="dib monitor_btn_styl" data-test="snmp">
+                <span>测试</span>
+              </a>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

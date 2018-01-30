@@ -1,0 +1,13 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "LINUX SNMP",
+					"fileName"  : "linux_snmp",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "linux_snmp/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "系统概述" ,"href" : "linux_snmp/system.html" ,"icon" : "monitor-system"},
+							    {"text" : "事件信息" ,"href" : "common/event_and_config.html" ,"icon" : "monitor-event"}
+							]
+				 }
+}

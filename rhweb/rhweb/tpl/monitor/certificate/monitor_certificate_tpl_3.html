@@ -1,0 +1,241 @@
+<div style="height: 400px;">
+  <div class="w-all h-all prel" style="padding:0 40px 0 150px;" data-id="monitor_certificate">
+      <div class="w-all h-all bdd" style="padding-top:20px;margin-bottom:30px;">
+          <div class="tab-content">
+            <!-- tab1 -->
+            <div class="tab-pane" id="tab_snmp">
+                <form class="bs-example form-horizontal xs-form form-plr5">
+                    <div class="form-group">
+                      <label class="col-lg-2 control-label">版本</label>
+                      <div class="col-lg-3" data-id="snmp">
+                        <select class="form-control input-sm" data-type="select" data-id="snmpVersion">
+                            <option value="1">SNMP V1</option>
+                            <option value="2">SNMP V2c</option>
+                            <option value="3">SNMP V3</option>
+                        </select> 
+                      </div>
+                      <label class="col-lg-2 control-label">SNMP模板</label>
+                      <div class="col-lg-3" data-id="snmp">
+                        <select class="form-control input-sm" data-type="select" data-id="snmpName">
+                        <option value="1">public</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div id="snmp_v1">
+                      <div class="form-group">
+                        <label class="col-lg-2 control-label">读COMMUNITY</label>
+                        <div class="col-lg-3" data-id="snmp">
+                          <input type="text" class="form-control input-sm" data-id="snmpCommunity" />
+                        </div>
+                        <label class="col-lg-2 control-label">端口</label>
+                        <div class="col-lg-3" data-id="snmp">
+                          <input type="text" class="form-control input-sm" data-id="snmpWCommunity" />
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div id="snmp_v3" style="display:none">
+                      <div class="form-group">
+                        <label class="col-lg-2 control-label">用户名</label>
+                        <div class="col-lg-3" data-id="snmp">
+                          <input type="text" class="form-control input-sm" data-id="snmpUserName"/>
+                        </div>
+                        <label class="col-lg-2 control-label">安全级别</label>
+                        <div class="col-lg-3" drta-id="snmp">
+                        	<select class="form-control input-sm" data-id="secLevel" data-type="select">
+                        		<option value="-1">---</option>
+                        		<option value="1">NOAUTH_NOPRIV</option>
+                        		<option value="2">AUTH_NOPRIV</option>
+                        		<option value="3">AUTH_PRIV</option>
+                        	</select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-lg-2 control-label">认证方式</label>
+                        <div class="col-lg-3" data-id="snmp">
+                          <select class="form-control input-sm" data-id="authWay" data-type="select">
+                            <option value="-1">---</option>
+                            <option value="1">SHA</option>
+                            <option value="2">MD5</option>
+                          </select>
+                        </div>
+                        <label class="col-lg-2 control-label">认证口令</label>
+                        <div class="col-lg-3" data-id="snmp">
+                          <input type="text" class="form-control input-sm" data-id="snmpPort"/>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-lg-2 control-label">加密方式</label>
+                        <div class="col-lg-3" data-id="snmp">
+                          <select class="form-control input-sm" data-id="encryptionWay" data-type="select">
+                            <option value="-1">---</option>
+                            <option value="1">3DES</option>
+                            <option value="2">AES128</option>
+                            <option value="3">AES192</option>
+                            <option value="4">AES256</option>
+                            <option value="5">DES</option>
+                          </select>
+                        </div>
+                        <label class="col-lg-2 control-label">加密口令</label>
+                        <div class="col-lg-3" data-id="snmp">
+                          <input type="text" class="form-control input-sm" data-id="snmpPort"/>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label class="col-lg-2 control-label">Context ID</label>
+                        <div class="col-lg-3" data-id="snmp">
+                          <input type="text" class="form-control input-sm" data-id="snmpPort"/>
+                        </div>
+                        <label class="col-lg-2 control-label">Context Name</label>
+                        <div class="col-lg-3" data-id="snmp">
+                          <input type="text" class="form-control input-sm" data-id="snmpPort"/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-lg-10">
+                          <div class="table-oper">
+                              <a href="javascript:void(0);" data-type="test_btn">
+                                <span>测试</span>
+                              </a>
+                          </div>
+                      </div>
+                    </div>
+                </form>
+            </div>
+            <!-- tab2 -->
+            <div class="tab-pane" id="tab_telnet">
+              <form class="bs-example form-horizontal xs-form form-plr5">
+                <div class="form-group">
+                  <label class="col-lg-2 control-label">用户名</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorUserName" />
+                  </div>
+                  <label class="col-lg-2 control-label">密码</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPassWord" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2 control-label">命令行提示符</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="commandPrompt" />
+                  </div>
+                  <label class="col-lg-2 control-label">登录提示符</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="loginPrompt" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2 control-label">密码提示符</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="passwordPrompt" />
+                  </div>
+                  <label class="col-lg-2 control-label">端口号</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPort"
+                          validate="number"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-10">
+                      <div class="table-oper">
+                          <a href="javascript:void(0);" data-type="test_btn">
+                            <span>测试</span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- tab3 -->
+            <div class="tab-pane" id="tab_ssh">
+              <form class="bs-example form-horizontal xs-form form-plr5">
+                <div class="form-group">
+                  <label class="col-lg-2 control-label">用户名</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorUserName" />
+                  </div>
+                  <label class="col-lg-2 control-label">密码</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm" data-id="monitorPassWord" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2 control-label">端口号</label>
+                  <div class="col-lg-3" data-id="snmp">
+                    <input type="text" class="form-control input-sm"
+                      data-id="monitorPort" validate="number"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-10">
+                      <div class="table-oper">
+                          <a href="javascript:void(0);" data-type="test_btn">
+                            <span>测试</span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+      <ul class="pabs v-ul" data-id="tab-ul" style="top:0;left:70px;width:80px">
+          <li>SNMP</li>
+          <li>TELNET</li>
+          <li>SSH2</li>
+      </ul>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+require(["js/plugin/tab/tab.js"] ,function(tab) {
+  $.ajax({
+    type : "GET",
+    url : "tpl/monitor/monitor_certificate_tpl.html",
+    success : function(data) 
+    {
+      $("[data-id="+$("[data-id=temp_name]").val()+"]").one(function(){
+        $("[data-id="+$("[data-id=temp_name]").val()+"]").append(data);
+      });
+      tab.tab($("[data-id="+$("[data-id=temp_name]").val()+"]") ,{
+        oper : [],
+      });
+
+      $("[data-id=snmpVersion]").change(function (){
+        var id = $(this).val();
+        if (id == "1" || id == "2")
+        {
+          $("#snmp_v1").show();
+          $("#snmp_v3").hide();
+        }
+        else
+        {
+          $("#snmp_v1").hide();
+          $("#snmp_v3").show();
+        }
+      });
+
+      ($("[data-id=tab-ul]>li.active").html() === "SNMP")
+      ? $("[data-id=temp_show_index_for_ssh]").val("hide")
+      : $("[data-id=temp_show_index_for_ssh]").val("show");
+
+      $("[data-id=tab-ul]>li").click(function(){
+        ($("[data-id=tab-ul]>li.active").html() === "SNMP")
+        ? $("[data-id=temp_show_index_for_ssh]").val("hide")
+        : $("[data-id=temp_show_index_for_ssh]").val("show");
+      });
+    }
+  });
+});
+});
+</script>

@@ -1,0 +1,301 @@
+<div class="row">
+	<div class="col-md-6 pr5 pl5">
+		<div class="panel panel-default panel-style" id="receive_div">
+		    <div class="panel-heading font-bold prel">
+		        <span>Tomcat接收字节数（MB）</span>
+		    </div>
+		    <div class="panel-body p1" style="padding: 10px">
+		    	<div style="height:290px" id="receive_chart"></div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="col-md-6 pr5 pl5">
+		<div class="panel panel-default panel-style" id="sent_div">
+		    <div class="panel-heading font-bold prel">
+		        <span>Tomcat发送字节数（MB）</span>
+		    </div>
+		    <div class="panel-body p1" style="padding: 10px">
+		    	 <div style="height:290px" id="sent_chart"></div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-md-6 pr5 pl5">
+		<div class="panel panel-default panel-style" id="request_count_div">
+		    <div class="panel-heading font-bold prel">
+		        <span>Tomcat请求数</span>
+		    </div>
+		    <div class="panel-body p1" style="padding: 10px">
+		   		<div style="height:290px" id="request_count_chart"></div>
+		    </div>
+		</div>
+	</div>
+
+	<div class="col-md-6 pr5 pl5">
+		<div class="panel panel-default panel-style" id="error_count_div">
+		    <div class="panel-heading font-bold prel">
+		        <span>Tomcat错误数</span>
+		    </div>
+		    <div class="panel-body p1" style="padding: 10px">
+		    	<div style="height:290px" id="error_count_chart"></div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 pr5 pl5">
+		<div class="panel panel-default panel-style">
+			<div class="panel-heading font-bold prel">
+		        <span>Tomcat请求处理信息</span>
+		    </div>
+			<div class="panel-body p1 monitor-panel" style="padding: 10px">
+				<div class="table_div " id="request_div" ></div>
+			</div>
+		</div> 
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 pr5 pl5">
+		<div class="panel panel-default panel-style">
+			<div class="panel-heading font-bold prel">
+		        <span>Tomcat连接器信息</span>
+		    </div>
+			<div class="panel-body p1 monitor-panel" style="padding: 10px">
+				<div class="table_div " id="connect_div" ></div>
+			</div>
+		</div> 
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	require(['/js/plugin/plot/plot.js'] ,function (plot){
+
+
+var receive_url = "monitorview/middleware/tomcat/queryTomcatReceivedInfo";
+var sent_url = "monitorview/middleware/tomcat/queryTomcatSenttInfo";
+var request_count_url = "monitorview/middleware/tomcat/queryTomcatRequestCountInfo";
+var error_count_url = "monitorview/middleware/tomcat/queryTomcatErrorCountInfo";
+
+var request_list_url = "monitorview/middleware/tomcat/queryRequestList";
+var request_list_header = [
+							  {text:"协议" ,name:"protocol"},
+							  {text:"发送字节数(B)" ,name:"bytesSent"},
+							  {text:"接收字节数(B)" ,name:"bytesReceived"},
+							  {text:"错误数" ,name:"errorCount"},
+							  {text:"请求数" ,name:"requestCount"},
+							  // {text:"最大时间(ms)" ,name:"maxTime"},
+							  // {text:"模式类型" ,name:"modeType"},
+							  // {text:"进程时间(ms)" ,name:"processTime"},
+							  {text:"更新时间" ,name:"enterDate"}
+						   ];
+
+var connect_list_url = "monitorview/middleware/tomcat/queryConnectList";	
+var connect_list_header = [
+							  {text:"协议" ,name:"protocol"},
+							  {text:"端口" ,name:"port"},
+							  {text:"最大线程数" ,name:"maxThreads"},
+							  {text:"最大POST请求大小" ,name:"maxPortSize"},
+							  {text:"最大HTTP队头大小" ,name:"maxHttpHeaderSize"},
+							  {text:"最大活动请求" ,name:"maxAliveRequests"},
+							  {text:"更新时间" ,name:"enterDate"},
+						   ];					 
+
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+function view_init()
+{
+	request_list();
+	connect_list();
+	receive_chart();
+	sent_chart();
+	request_count_chart();
+	error_count_chart();
+}
+
+
+function request_list()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	g_grid.render($("#request_div"),{
+		 header:request_list_header,
+		 url:request_list_url,
+ 		 paramObj:urlParamObj,
+		 gridCss : "um-grid-style",
+		 hasBorder : false,
+		 hideSearch : true,
+		 dbThLine : true,
+		 allowCheckBox : false
+	});
+}
+
+function connect_list()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	g_grid.render($("#connect_div"),{
+		 header:connect_list_header,
+		 url:connect_list_url,
+ 		 paramObj:urlParamObj,
+		 gridCss : "um-grid-style",
+		 hasBorder : false,
+		 hideSearch : true,
+		 allowCheckBox : false
+	});
+}
+
+
+function receive_chart()
+{
+	urlParamObj.time = $("#query_time_label").text();		
+	um_ajax_get({
+		url : receive_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			var legendArray = [];
+			var categoryArray = [];
+			var seriesArray = [];
+			for (var i = 0; i < data.length; i++) {
+				legendArray.push(data[i].lineName);
+				var seriesObj = new Object();
+				seriesObj.name = data[i].lineName;
+				seriesObj.type = "line";
+				seriesObj.data = [];
+				for (var j = 0; j < data[i].items.length; j++) {
+					seriesObj.data.push(data[i].items[j].value);
+					if (i == 0)
+					{
+						categoryArray.push(data[i].items[j].lable);
+					}
+				}
+				seriesArray.push(seriesObj);
+			}
+			plot.lineRender($("#receive_chart") ,{
+				legend : legendArray,
+				category :categoryArray,
+				series : seriesArray
+			});
+		}
+	});
+}
+
+function sent_chart()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	um_ajax_get({
+		url : sent_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			var legendArray = [];
+			var categoryArray = [];
+			var seriesArray = [];
+			for (var i = 0; i < data.length; i++) {
+				legendArray.push(data[i].lineName);
+				var seriesObj = new Object();
+				seriesObj.name = data[i].lineName;
+				seriesObj.type = "line";
+				seriesObj.data = [];
+				for (var j = 0; j < data[i].items.length; j++) {
+					seriesObj.data.push(data[i].items[j].value);
+					if (i == 0)
+					{
+						categoryArray.push(data[i].items[j].lable);
+					}
+				}
+				seriesArray.push(seriesObj);
+			}
+			plot.lineRender($("#sent_chart") ,{
+				legend : legendArray,
+				category :categoryArray,
+				series : seriesArray
+			});
+		}
+	});
+}
+
+function request_count_chart()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	um_ajax_get({
+		url :request_count_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			var legendArray = [];
+			var categoryArray = [];
+			var seriesArray = [];
+			for (var i = 0; i < data.length; i++) {
+				legendArray.push(data[i].lineName);
+				var seriesObj = new Object();
+				seriesObj.name = data[i].lineName;
+				seriesObj.type = "line";
+				seriesObj.data = [];
+				for (var j = 0; j < data[i].items.length; j++) {
+					seriesObj.data.push(data[i].items[j].value);
+					if (i == 0)
+					{
+						categoryArray.push(data[i].items[j].lable);
+					}
+				}
+				seriesArray.push(seriesObj);
+			}
+			plot.lineRender($("#request_count_chart") ,{
+				legend : legendArray,
+				category :categoryArray,
+				series : seriesArray
+			});
+		}
+	});
+}
+
+function error_count_chart()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	um_ajax_get({
+		url : error_count_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			var legendArray = [];
+			var categoryArray = [];
+			var seriesArray = [];
+			for (var i = 0; i < data.length; i++) {
+				legendArray.push(data[i].lineName);
+				var seriesObj = new Object();
+				seriesObj.name = data[i].lineName;
+				seriesObj.type = "line";
+				seriesObj.data = [];
+				for (var j = 0; j < data[i].items.length; j++) {
+					seriesObj.data.push(data[i].items[j].value);
+					if (i == 0)
+					{
+						categoryArray.push(data[i].items[j].lable);
+					}
+				}
+				seriesArray.push(seriesObj);
+			}
+			plot.lineRender($("#error_count_chart") ,{
+				legend : legendArray,
+				category :categoryArray,
+				series : seriesArray
+			});
+		}
+	});
+}
+});
+});
+</script>

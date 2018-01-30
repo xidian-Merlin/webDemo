@@ -1,0 +1,58 @@
+<script type="text/javascript" src="/module/sys_manage/monitor_config/monitor_config.js"></script>
+<!-- 搜索结果显示 -->
+<div class="search-div">
+	<span>搜索条件</span>
+	<i class="icon-remove icon-animate r" id="search-remove-i"></i>
+</div>
+
+<!-- 左侧 -->
+<div class="p-panel um-panel left-panel" id="left-panel" style="width:210px">
+	<div class="um-panel-head" id="accordion_icon">
+		<div class="col-lg-4 unit-col" data-url="queryTreeByDeviceType" data-type="MONITOR_TYPE_TREE" style="padding:0 5px">监控器</div>
+		<div class="col-lg-4 unit-col dn" data-url="queryTreeLiablePerson" data-type="RESPONSIBLE_USER_TREE" style="padding:0 5px">责任人</div>
+		<div class="col-lg-4 unit-col dn" data-url="getBussinessDomainTree" data-type="BUSSINESS_DOMAIN_TREE" style="padding:0 5px">业务域</div>
+	</div>
+	
+	<div class="um-panel-body">
+		<ul id="monitor_tree" class="ztree" style="height:100%;overflow:hidden;overflow-y:auto"></ul>
+	</div>
+</div>
+
+<!-- 右侧 -->
+<div class="p-panel um-panel right-panel" id="right-panel" style="left:210px;overflow-x:hidden">
+	<div class="um-panel-head">
+		<div class="table-oper" id="table_oper">
+			<a href="javascript:void(0);" id="add_btn" class="bgblue">
+				<i class="btn-commen add-btn"></i>
+				<span>新增</span>
+			</a>
+			<a href="javascript:void(0);" id="start_btn">
+				<i class="btn-commen start-btn"></i>
+				<span>批量启用</span>
+				<!-- <i class="icon-pause"></i> -->
+			</a>
+			<a href="javascript:void(0);" id="stop_btn">
+				<i class="btn-commen stopl-btn"></i>
+				<span>批量停用</span>
+				<!-- <i class="icon-pause"></i> -->
+			</a>
+			<a href="javascript:void(0);" id="custom_col_btn">
+				<i class="btn-commen delete-btn"></i>
+				<span>批量删除</span>
+			</a>
+			<a href="javascript:void(0);" id="refresh_btn">
+				<i class="btn-commen refresh-btn"></i>
+				<span>刷新</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="um-panel-body">
+		<div id="table_div" class="table-div table-list"></div>
+	</div>
+
+	<div id="table_slide_btn" class="slide_btn" style="display:none">
+		<i data-status="active" data-id="slide_left" class="icon-double-angle-left"></i>
+		<i id="slide_right" data-id="slide_right" class="icon-double-angle-right dn h-all" style="line-height:70px;"></i>
+	</div>
+</div>

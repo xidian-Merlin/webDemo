@@ -1,0 +1,660 @@
+<tem>
+<!-- 编辑 -->
+<div class="template" id="edit_template">
+	<form class="bs-example form-horizontal xs-form">
+		<div class="panel-body no-tb-padder">
+			<div id="main_div">
+				<div class="form-group">
+			        <label class="col-lg-2 control-label required">策略名称</label>
+			        <div class="col-lg-4">
+			        	<input type="text" class="form-control input-sm" data-id="policyName" validate="required">
+			        </div>
+			        <label class="col-lg-2 control-label">策略状态</label>
+			        <div class="col-lg-4">
+				        <select class="form-control input-sm" data-type="select" data-id="polStatus">
+							<option value="1">启用</option>
+							<option value="0">停用</option>
+						</select>
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">事件类型</label>
+				    <div class="col-lg-4">
+					    <select class="form-control input-sm" data-id="eventType" data-type="select">
+					 	    <!-- <option value="-1">----</option> -->
+						    <!-- <option value="1">安全事件</option> -->
+						    <option value="2">故障事件</option>
+						    <option value="3">性能事件</option>
+						    <!--  <option value="5">智能关联事件</option>
+						    <option value="10">数据挖掘事件</option> -->
+						    <option value="13">配置事件</option>
+						    <!-- <option value="14">脆弱性事件</option> -->
+						    <!-- <option value="15">基线检查事件</option> -->
+					    </select>
+				    </div>
+				    <label class="col-lg-2 control-label">执行间隔(分)</label>
+				    <div class="col-lg-4">
+					    <select class="form-control input-sm" data-type="select" data-id="polInterval">
+						    <option value="5">5</option>
+						    <option value="10">10</option>
+						    <option value="15">15</option>
+						    <option value="20">20</option>
+						    <option value="25">25</option>
+						    <option value="30">30</option>
+					    </select>
+				    </div>
+			    </div>
+			    
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">生效周期</label>
+			        <div class="col-lg-2">
+				        <select class="form-control input-sm" data-type="select" data-id="validityType">
+				        	<option value="1">天</option>
+				        	<option value="2">周</option>
+				        	<option value="3">月</option>
+						</select>
+			        </div>
+			        <div class="col-lg-2">
+						<select class="form-control input-sm" data-id="period" data-type="select" disabled>
+						</select>
+			        </div>
+			        <label class="col-lg-2 control-label">生效时间</label>
+		      		<div class="col-lg-1" style="padding-left: 0;width: 135px;margin-left: 15px">
+						<input type="text" class="form-control input-sm" style="padding-right: 0" data-flag="time" data-id="validityStart" validate="Hms">
+					</div>
+					<div class="col-lg-1 p0" style="width:auto;padding:4px 7px;margin-left: -16px;">
+			          -
+			        </div>
+					<div class="col-lg-1" style="padding-left: 0;width: 135px;">
+						<input type="text" class="form-control input-sm" style="padding-right: 0" data-flag="time" data-id="validityEnd" validate="Hms">
+					</div>
+			    </div>
+			    
+			    <div class="form-group">
+					<label class="col-lg-2 control-label">通知方式</label>
+					<div class="col-lg-4 float-div">
+						<div class="checkbox">
+						    <label class="i-checks">
+						  		<input type="checkbox" data-id="noticeType" name="noticeType" value="2"><i></i> <span>E-mail</span>
+						    </label>
+						</div>
+						<div class="checkbox ml15">
+						  <label class="i-checks">
+						  	<input type="checkbox" name="noticeType" value="1"><i></i> <span>手机短信</span>
+						  </label>
+						</div>
+					</div>
+				    <label class="col-lg-2 control-label">是否归并事件</label>
+			        <div class="col-lg-4">
+				        <select class="form-control input-sm" data-type="select" data-id="mergerStatus">
+							<option value="0">否</option>
+							<option value="1">是</option>
+						</select>
+				    </div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-lg-2 control-label">通知对象</label>
+					<div class="col-lg-4 float-div">
+						<div class="checkbox">
+						  <label class="i-checks">
+						  	<input type="checkbox" name="nobjType" value="1" checked><i></i> <span>处理人</span>
+						  </label>
+						</div>
+						<div class="checkbox ml15">
+						  <label class="i-checks">
+						  	<input type="checkbox" name="nobjType" value="2" checked><i></i> <span>监督人</span>
+						  </label>
+						</div>
+						<div class="checkbox ml15">
+						  <label class="i-checks">
+						  	<input type="checkbox" data-id="nobjType" name="nobjType" value="3"><i></i> <span>其他人员</span>
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-4  event_notice_policy" style="margin-left: -25px">
+						<div class="prel">
+							<div id="userId" class="form-control input-sm tl inputdrop disable"
+								style="padding:0">
+							</div>
+							<a href="javascript:void(0);" id="notice_obj_span"
+								style="float:right; position:absolute; bottom:5px; right:5px; font-size:15px;">
+								<i class="icon-user" style="color:black;opacity: 0.6;"></i>
+							</a> 
+						</div>
+					</div>
+				</div>		
+			</div>
+			
+			<!-- 安全事件Start -->
+			<!-- <div id="sec_div" data-id="event_type_div">
+				<div class="form-group">
+					<div class="border-text">
+					  <div>安全事件</div>
+					</div>
+			        <label class="col-lg-2 control-label required">工单名称</label>
+				    <div class="col-lg-4">
+					    <input type="text" class="form-control input-sm" data-id="workflowName" validate="required">
+				    </div>
+				    <label class="col-lg-2 control-label">工单等级</label>
+				    <div class="col-lg-4">
+					    <select class="form-control input-sm" data-type="select" data-id="workflowLevel" validate="required">
+					    </select>
+				    </div>
+			    </div>
+			   
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">安全事件名称</label>
+				    <div class="col-lg-4">
+				        <div class="inputdrop" id="policyAlarmId"></div>
+				    </div>
+				    <label class="col-lg-2 control-label">事件等级</label>
+				    <div class="col-lg-4">
+					    <select class="form-control input-sm" data-type="select" data-id="polLevel" multiple="multiple">
+							<option value="1" selected>很高</option>
+							<option value="2" selected>高</option>
+							<option value="3" selected>中</option>
+							<option value="4" selected>低</option>
+							<option value="5" selected>很低</option>
+						</select>
+				    </div>
+				</div>
+			    
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">发生源设备类型</label>
+				    <div class="col-lg-4">
+				        <div class="inputdrop" id="typeId"></div>
+				    </div>
+				    <label class="col-lg-2 control-label">应用事件名称</label>
+				    <div class="col-lg-4">
+					    <input class="form-control input-sm" data-id="appAname"/>
+				    </div>
+			    </div>
+			    
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">聚合数量阈值</label>
+				    <div class="col-lg-4">
+					    <input class="form-control input-sm" data-id="alarmThvalue"/>
+				    </div>
+			    </div>
+
+				<div class="form-group">
+					<div class="col-lg-6">
+						右移箭头
+						<div style="right:-5px;top:41px;font-size:20px;z-index:2000" 
+						id="chevron-right" class="pabs square">
+							<i class="icon-chevron-right"></i>
+						</div>
+						
+						左移箭头
+						<div style="right:-5px;top:85px;font-size:20px;z-index:2000" 
+						id="chevron-left" class="pabs square">
+							<i class="icon-chevron-left"></i>
+						</div>
+						<div id="left_div">
+							<div class="form-group">
+								<label class="col-lg-4 control-label">IP类型</label>
+								<div class="col-lg-8 float-div">
+									<div class="checkbox">
+									    <label class="i-checks">
+									  	    <input type="checkbox" name="ipType" value="0"><i></i> <span>源IP</span>
+									    </label>
+									</div>
+									<div class="checkbox ml15">
+									    <label class="i-checks">
+									  	    <input type="checkbox" name="ipType" value="1"><i></i> <span>目的IP</span>
+									    </label>
+									</div>
+									<div class="checkbox ml15">
+									    <label class="i-checks">
+									  	    <input type="checkbox" name="ipType" value="2"><i></i> <span>发生源</span>
+									    </label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-lg-4 tr">
+									<div class="radio">
+										<label class="i-checks">
+										    <input type="radio" value="ipV4" name="ip" data-id="ip" checked>
+										    <i></i>IPV4
+										</label>
+									</div>
+								</div>
+								<div class="col-lg-3" style="width:28%;padding-right:0">
+							        <input type="text" class="form-control input-sm" data-id="startIpv4" id="startIpv4" maxlength="15" validate="required,ipv4">
+						        </div>
+						        <div class="col-lg-1 p0" style="width:auto;padding:4px 6px">
+						          -
+						        </div>
+						        <div class="col-lg-3" style="width:28%;padding-left:0">
+						            <input type="text" class="form-control input-sm" data-id="endIpv4" id="endIpv4" maxlength="15" validate="required,ipv4">
+						        </div>
+					        </div>
+					        <div class="form-group">
+								<div class="col-lg-4 tr">
+									<div class="radio">
+										<label class="i-checks">
+										    <input type="radio" value="ipV6" name="ip">
+										    <i></i>IPV6
+										</label>
+									</div>
+								</div>
+								<div class="col-lg-7" style="width:60%">
+							        <input type="text" class="form-control input-sm" data-id="ipV6" id="ipV6" maxlength="39" validate="required,ipv6" disabled>
+						        </div>
+					        </div>	
+					    </div>
+					</div>
+					<div class="col-lg-6">
+						<div id="ipList_table" class="table-div" style="height:130px"></div>
+					</div>
+				</div>
+			</div>
+			安全事件End -->
+			    
+		    <!-- 故障事件Start -->
+		    <div id="fault_div" data-id="event_type_div">
+				<div class="form-group">
+					<div class="border-text">
+					    <div>故障事件</div>
+					</div>
+			        <label class="col-lg-2 control-label required">工单名称</label>
+				    <div class="col-lg-4">
+					    <input type="text" class="form-control input-sm" data-id="workflowName" validate="required">
+				    </div>
+				    <label class="col-lg-2 control-label">工单等级</label>
+				    <div class="col-lg-4">
+					    <select class="form-control input-sm" data-type="select" data-id="workflowLevel" validate="required">
+					    </select>
+				    </div>
+			    </div>
+		    
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">故障事件名称</label>
+				    <div class="col-lg-4">
+				        <div class="inputdrop" id="faultId"></div>
+				    </div>
+				    <label class="col-lg-2 control-label">故障事件类型</label>
+				    <div class="col-lg-4">
+					    <div class="inputdrop" id="faultTypeId"></div>
+				    </div>
+				</div>
+			    
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">资产名称</label>
+				    <div class="col-lg-4">
+					    <div type="text" class="form-control input-sm tl inputdrop" data-id="faultAssetName" id="faultAssetName" date-type="asset" style="padding:0"></div>
+				    </div>
+				    <label class="col-lg-2 control-label" style="padding-left: 0;">故障持续时间阈值(分)</label>
+				    <div class="col-lg-4">
+					    <input class="form-control input-sm" data-id="continueThvalue"/>
+				    </div>
+			    </div>
+			</div>
+			<!-- 故障事件End -->
+
+		    <!-- 性能事件Start -->
+		    <div id="perform_div" data-id="event_type_div" style="display:none">
+		    	<div class="form-group">
+					<div class="border-text">
+					  <div>性能事件</div>
+					</div>
+		            <label class="col-lg-2 control-label required">工单名称</label>
+				    <div class="col-lg-4">
+					    <input type="text" class="form-control input-sm" data-id="workflowName" validate="required">
+				    </div>
+				    <label class="col-lg-2 control-label">工单等级</label>
+				    <div class="col-lg-4">
+					    <select class="form-control input-sm" data-type="select" data-id="workflowLevel" validate="required">
+					    </select>
+				    </div>
+		        </div>
+		
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">性能事件名称</label>
+				    <div class="col-lg-4">
+				        <div class="inputdrop" id="perfId"></div>
+				    </div>
+				    <label class="col-lg-2 control-label">性能事件类型</label>
+				    <div class="col-lg-4">
+					   <div class="inputdrop" id="perfTypeId"></div>
+				    </div>
+			    </div>
+		    
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">资产名称</label>
+				    <div class="col-lg-4">
+					    <div type="text" class="form-control input-sm tl inputdrop" data-id="perfAssetName" id="perfAssetName" date-type="asset" style="padding:0"></div>
+				    </div>
+				    <label class="col-lg-2 control-label" style="padding-left: 0;">事件持续时间阈值(分)</label>
+				    <div class="col-lg-4">
+					    <input class="form-control input-sm" data-id="continueThvalue"/>
+				    </div>
+			    </div>
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">超过阈值百分比(%)</label>
+				    <div class="col-lg-4">
+						<input class="form-control input-sm" data-id="outThvalue"/>
+					</div>
+			    </div>
+		    </div>
+		    <!-- 性能事件End -->
+
+		    <!-- 配置事件Start -->
+		    <div id="config_div" data-id="event_type_div" style="display:none">  
+		    	<div class="form-group">
+					<div class="border-text">
+					    <div>配置事件</div>
+					</div>
+			     	<label class="col-lg-2 control-label required">工单名称</label>
+				    <div class="col-lg-4">
+					    <input type="text" class="form-control input-sm" data-id="workflowName" validate="required">
+				    </div>
+				    <label class="col-lg-2 control-label">工单等级</label>
+				    <div class="col-lg-4">
+					    <select class="form-control input-sm" data-type="select" data-id="workflowLevel" validate="required">
+					    </select>
+				    </div>
+			    </div>
+			
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">配置事件名称</label>
+				    <div class="col-lg-4">
+				        <div class="inputdrop" id="deviceId"></div>
+				    </div>
+				    <label class="col-lg-2 control-label">资产名称</label>
+				    <div class="col-lg-4">
+					    <div type="text" class="form-control input-sm tl inputdrop" data-id="deviceAssetName" id="deviceAssetName" date-type="asset" style="padding:0"></div>
+				    </div>
+				</div>
+			    
+			    <div class="form-group">
+				    <label class="col-lg-2 control-label">关键字内容</label>
+				    <div class="col-lg-4">
+					    <input class="form-control input-sm" data-id="keywords"/>
+				    </div>
+				    <label class="col-lg-2 control-label">监控器名称</label>
+				    <div class="col-lg-4">
+						<div class="inputdrop" id="monitorId"></div>
+				    </div>
+			    </div>
+		    </div>
+		    <!-- 配置事件End -->
+		    <!-- 脆弱性事件Start -->
+		   <!--  <div id="vulnerability_div" data-id="event_type_div" style="display:none">   
+		    	<div class="form-group">
+					<div class="border-text">
+					  <div>脆弱性事件</div>
+					</div>
+			        <label class="col-lg-2 control-label required">工单名称</label>
+				    <div class="col-lg-4">
+					    <input type="text" class="form-control input-sm" data-id="workflowName" validate="required">
+				    </div>
+				    <label class="col-lg-2 control-label">工单等级</label>
+				    <div class="col-lg-4">
+					    <select class="form-control input-sm" data-type="select" data-id="workflowLevel" validate="required">
+					    </select>
+				    </div>
+			    </div>
+			
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">资产名称</label>
+				     <div class="col-lg-4">
+					    <div type="text" class="form-control input-sm tl inputdrop" data-id="vulnerAssetName" id="vulnerAssetName" date-type="asset" style="padding:0"></div>
+				    </div>
+				    <label class="col-lg-2 control-label">操作系统</label>
+				    <div class="col-lg-4">
+					    <div class="inputdrop" id="OSTypeId"></div>
+				    </div>
+				</div>
+		    </div> -->
+		    <!-- 脆弱性事件End -->
+		    <div class="form-group">
+		        <label class="col-lg-2 control-label">备注</label>
+		        <div class="col-lg-10">
+		        	<textarea class="form-control input-sm" data-id="polMemo"></textarea>
+		        </div>
+		    </div>
+		</div>
+	</form>
+</div>
+		
+
+<!-- 详情 -->
+<div class="template detail-info" id="detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form xs-form-mb5">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">策略名称：</label>
+				<label class="col-lg-3 control-label tl" data-id="policyName"></label>
+				<label class="col-lg-3 control-label">策略状态：</label>
+				<label class="col-lg-3 control-label tl" data-id="polStatus"></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">事件类型：</label>
+				<label class="col-lg-3 control-label tl" data-id="eventType"></label>
+				<label class="col-lg-3 control-label">执行间隔(分)：</label>
+				<label class="col-lg-3 control-label tl" data-id="polInterval"></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">生效周期：</label>
+				<label class="col-lg-3 control-label tl" data-id="validityType"></label>
+				<label class="col-lg-3 control-label">生效时间：</label>
+				<label class="col-lg-3 control-label tl" data-id="validityStart"></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">通知方式：</label>
+				<label class="col-lg-3 control-label tl" data-id="noticeType"></label>
+				<label class="col-lg-3 control-label">是否归并事件：</label>
+				<label class="col-lg-3 control-label tl" data-id="mergerStatus"></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">通知对象：</label>
+				<label class="col-lg-3 control-label tl" data-id="noticeUser"></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">工单名称：</label>
+				<label class="col-lg-3 control-label tl" data-id="workflowName"></label>
+				<label class="col-lg-3 control-label">工单等级：</label>
+				<label class="col-lg-3 control-label tl" data-id="workflowLevel"></label>
+			</div>
+
+			<!-- <div data-flag="event_type_div" id="sec_div">
+				<div class="form-group">
+					<label class="col-lg-3 control-label">安全事件名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="policyAlarmId"></label>
+					<label class="col-lg-3 control-label">事件等级：</label>
+					<label class="col-lg-3 control-label tl" data-id="polLevel"></label>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">发生源设备类型：</label>
+					<label class="col-lg-3 control-label tl" data-id="typeId"></label>
+					<label class="col-lg-3 control-label">应用事件名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="appAname"></label>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">聚合数量阈值：</label>
+					<label class="col-lg-3 control-label tl" data-id="alarmThvalue"></label>
+				</div>
+				<div style="margin: 13px 0 5px 0;">
+					<div id="ipList_table" class="table-div" style="height:130px;"></div>
+				</div>
+			</div> -->
+			<div data-flag="event_type_div" id="fault_div">
+				<div class="form-group">
+					<label class="col-lg-3 control-label">故障事件名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="faultId"></label>
+					<label class="col-lg-3 control-label">故障事件类型：</label>
+					<label class="col-lg-3 control-label tl" data-id="faultType"></label>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">资产名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="edName"></label>
+					<label class="col-lg-3 control-label" style="padding-left: 0;">故障持续时间阈值(分)：</label>
+					<label class="col-lg-3 control-label tl" data-id="continueThvalue"></label>
+				</div>
+			</div>
+			<div data-flag="event_type_div" id="perform_div">
+				<div class="form-group">
+					<label class="col-lg-3 control-label">性能事件名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="perfId"></label>
+					<label class="col-lg-3 control-label">性能事件类型：</label>
+					<label class="col-lg-3 control-label tl" data-id="perfType"></label>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">资产名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="edName"></label>
+					<label class="col-lg-3 control-label" style="padding-left: 0;">事件持续时间阈值(分)：</label>
+					<label class="col-lg-3 control-label tl" data-id="continueThvalue"></label>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">超过阈值百分比(%)：</label>
+					<label class="col-lg-3 control-label tl" data-id="outThvalue"></label>
+				</div>
+			</div>
+			<div data-flag="event_type_div" id="config_div">
+				<div class="form-group">
+					<label class="col-lg-3 control-label">配置事件名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="deployId"></label>
+					<label class="col-lg-3 control-label">资产名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="edName"></label>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">关键字内容：</label>
+					<label class="col-lg-3 control-label tl" data-id="keywords"></label>
+					<label class="col-lg-3 control-label">监控器名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="monitorName"></label>
+				</div>
+			</div>
+			<!-- <div data-flag="event_type_div" id="vulnerability_div">
+				<div class="form-group">
+					<label class="col-lg-3 control-label">资产名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="appAname"></label>
+					<label class="col-lg-3 control-label">操作系统：</label>
+					<label class="col-lg-3 control-label tl" data-id="polLevel"></label>
+				</div>
+			</div> -->
+			<div class="form-group">
+				<label class="col-lg-3 control-label">备注：</label>
+				<label class="col-lg-9 control-label tl" data-id="polMemo"></label>
+			</div>
+		</form>
+	</div>
+</div>
+
+	<!-- 通知对象 -->
+	<div class="template" id="notice_obj_template">
+		<div class="tab-container" id="tab">
+			<ul class="nav nav-tabs nav-justified" data-id="tab-ul">
+				<li>
+					<a>系统用户</a>
+				</li>
+				<li>
+					<a>安全域用户</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<!-- tab1 -->
+				<div class="tab-pane">
+					<div style="padding:5px 0">
+			            <select class="form-control input-sm" data-type="select" 
+			          				data-id="user_group_sel">
+			          			<option value="-1">--------</option>
+					    </select>
+				    </div>
+					<div id="noticeList_table1" class="table-div" style="height:200px"></div>
+				</div>
+				<!-- tab2 -->
+				<div class="tab-pane">
+					<div id="noticeList_table2" class="table-div mt5" style="height:200px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 资产列表 -->
+	<div class="template" id="sec_obj_template">
+		<div class="tr" style="padding:0 0 10px 0">
+			<i class="icon-search icon-animate"></i>
+		</div>
+		<div id="asset_table" class="table-div" style="height:200px"></div>
+	</div>
+	<!-- 资产列表 -->
+	<div class="template" id="asset_obj_template">
+		<div class="tr" style="padding:0 0 10px 0">
+			<i class="icon-search icon-animate"></i>
+		</div>
+		<div id="asset_table" class="table-div" style="height:200px"></div>
+	</div>
+
+	<!-- 资产列表查询条件 -->
+	<div class="template" id="asset_obj_query_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form" id="query_form">
+				<div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>资产名称</label>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="enftpName">
+			      </div>
+			      <label class="col-lg-2 control-label" queryStr>操作系统类型</label>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="enftpName">
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>安全域</label>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="enftpName">
+			      </div>
+			      <label class="col-lg-2 control-label" queryStr>业务域</label>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="enftpName">
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>资产类型</label>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="enftpName">
+			      </div>
+			    </div>
+				<div class="form-group">
+					<div class="col-lg-4 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="1" name="ipVersion" checked>
+							  <i></i>
+							  IPV4
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-3" style="width:28%;padding-right:0">
+				        <input type="text" class="form-control input-sm" data-id="startIp" id="startIp" validate="ipv4" queryValue>
+			        </div>
+			        <div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+			          -
+			        </div>
+			        <div class="col-lg-3" style="width:28%;padding-left:0">
+			          <input type="text" class="form-control input-sm" data-id="endIp" id="endIp" validate="ipv4" queryValue>
+			        </div>
+		        </div>
+		        <div class="form-group">
+					<div class="col-lg-4 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="2" name="ipVersion">
+							  <i></i>
+							  IPV6
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-7" style="width:60%">
+				        <input type="text" class="form-control input-sm" data-id="ipV6" id="startIp" validate="ipv6" queryValue disabled>
+			        </div>
+		        </div>
+			</form>
+		</div>
+	</div>
+
+</tem>

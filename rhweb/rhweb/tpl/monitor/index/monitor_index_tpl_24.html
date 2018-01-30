@@ -1,0 +1,90 @@
+<tem>
+<!-- SQLSERVER 添加数据库实例-->
+<div data-id="monitor_index_edit" class="template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form form-plr5">
+			<div data-validate="checked">
+				<div class="form-group">
+		      <label class="col-lg-2 control-label required">用户名</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="monitorUserName" validate="required" value="sa"/>
+		      </div>
+		      <label class="col-lg-3 control-label required">密码</label>
+		      <div class="col-lg-3">
+		        <input type="password" class="form-control input-sm" data-id="monitorPassWord" validate="required" value="1"/>
+		      </div>
+				</div>
+				<div class="form-group">
+		      <label class="col-lg-2 control-label required">数据库名</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="monitorDatabaseName" value="master" validate="required" />
+		      </div>
+		      <label class="col-lg-3 control-label required">端口</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="monitorPort" maxlength="5" validate="required,between1~65535" value="1433"/>
+		      </div>
+				</div>
+				<div class="form-group">
+		      <label class="col-lg-2 control-label">会话数阈值(个)</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="sessionCount" maxlength="3" validate="number" />
+		      </div>
+		      <label class="col-lg-3 control-label">数据库锁阈值(个)</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="locksCount" maxlength="3" validate="number" />
+		      </div>
+				</div>
+				<div class="form-group">
+		      <label class="col-lg-2 control-label">连接数使用率阈值(%)</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="connectUseRate" maxlength="3" validate="number,between1~100" />
+		      </div>
+		      <label class="col-lg-3 control-label">核心进程数阈值</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="processCount" maxlength="4" validate="number,between1~1000" />
+		      </div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-6">
+					<div class="form-group">
+						<label class="col-lg-4 control-label">表空间使用率</label>
+						<div class="col-lg-6">
+							<div class="checkbox" >
+							  <label class="i-checks">
+							    <input type="checkbox" data-id="configStatus" checked><i></i> 统一配置
+							  </label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+			      <label class="col-lg-4 control-label">表空间</label>
+			      <div class="col-lg-6">
+			        <input type="text" class="form-control input-sm" data-id="unTsvalues" disabled="disabled"/>
+			      </div>
+					</div>
+					<div class="form-group">
+			      <label class="col-lg-4 control-label required">表空间使用率阈值(%)</label>
+			      <div class="col-lg-6">
+			        <input type="text" class="form-control input-sm" data-id="unifyThreshold" maxlength="3" validate="required,between1~100" value="80"/>
+			      </div>
+					</div>
+				  <div class="pabs square" style="z-index:2000;right:12.5px;top:5px;font-size:20px;" data-id="move_right" title="右移">
+				  	<i class="icon-chevron-right"></i>
+				  </div>
+			    <div class="pabs square" style="z-index:2000;right:12.5px;top:45px;font-size:20px;" data-id="move_left" title="左移">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+				</div>
+				<div class="col-lg-6">
+					<div class="table-div" data-id="tableSpaceName" style="height:150px;padding-left:15px;"></div>
+				</div>
+			</div>
+			<input type="text"data-id="monitorId" hidden/>
+		</form>
+		<div class="table-oper">
+			<a href="javascript:void(0);" data-id="test_btn" class="btn monitor_btn_styl">测试配置</a>
+		</div>
+	</div>
+</div>
+</tem>

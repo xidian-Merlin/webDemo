@@ -1,0 +1,54 @@
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>属性信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="property_info_list_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+
+
+var property_info_list_url = "monitorview/protocol/jmx/queryAttributeList";
+var property_info_list_header = [
+						      {text:"MBean名称" ,name:"mbeanName"},
+						      {text:"属性名称" ,name:"attributeName"},
+						      {text:"属性类型" ,name:"attributeType"},
+						      {text:"更新时间" ,name:"enterDate"}
+						   ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+	property_info_list();
+}
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+function property_info_list()
+{
+	g_grid.render($("#property_info_list_div") ,{
+		url : property_info_list_url,
+		header : property_info_list_header,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+        			regionId : urlParamObj.regionId,
+                    time:$("#query_time_label").text()},
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false
+	});
+}
+
+
+
+});
+</script>

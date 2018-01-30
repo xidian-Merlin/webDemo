@@ -1,0 +1,309 @@
+<tem>
+<!-- 忽略全部弹出框 -->
+<div class="template" id="lgnore_all_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label required">忽略原因：</label>
+			    <div class="col-lg-10">
+			        <textarea class="form-control input-sm" validate="required" data-id="ignoreDesc"></textarea>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 忽略弹出框 -->
+<div class="template" id="lgnore_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label required">忽略原因：</label>
+			    <div class="col-lg-9">
+			        <textarea class="form-control input-sm" validate="required" data-id="reason"></textarea>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 统计弹出框 -->
+<div class="template" id="count_template">
+	<div class="row" style="padding:0 20px">
+		<div class="col-md-6 pr5 pl5">
+			<div class="panel panel-default panel-style" style="height:360px">
+				<div class="panel-heading font-bold prel">
+					<span>事件名称</span>
+				</div>
+				<div class="panel-body p1">
+					<div id="eventname_analy_chars" style="height:310px"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 pr5 pl5">
+			<div class="panel panel-default panel-style" style="height:360px">
+				<div class="panel-heading font-bold prel">
+					<span>类型</span>
+				</div>
+				<div class="panel-body p1">
+					<div id="type_analy_chars" style="height:310px"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 pr5 pl5">
+			<div class="panel panel-default panel-style" style="height:360px">
+				<div class="panel-heading font-bold prel">
+					<span>等级</span>
+				</div>
+				<div class="panel-body p1">
+					<div id="level_analy_chars" style="height:310px"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 pr5 pl5">
+			<div class="panel panel-default panel-style" style="height:360px">
+				<div class="panel-heading font-bold prel">
+					<span>时间</span>
+				</div>
+				<div class="panel-body p1">
+					<div id="time_analy_chars" style="height:310px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 导出EXCEL弹出框 -->
+<div class="template" id="export_template">
+	<div class="panel-body no-tb-padder">
+
+	</div>
+</div>
+
+<!-- 自定义列出框 -->
+<div class="template" id="custom_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+		       <div class="col-lg-12">
+		        	<label>请选择在列表中显示的列，最多只能选择六项</label>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox"
+						    	data-id="ids" name="ids" value="faultNameCol" type="2"><i></i> 事件名称
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox"  name="ids" value="currentStatusCol" ><i></i> 当前状态
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="faultModuleCol"><i></i> 事件描述
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox"   name="ids" value="edNameCol"><i></i> 资产名称
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="classNameCol"><i></i> 事件类型
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="faultLevelCol"><i></i> 事件等级
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="bdomainNameCol"><i></i> 业务域
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="sdomainNameCol"><i></i> 安全域
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="firstEnterDateCol"><i></i> 首次发生时间
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="enterDateCol"><i></i> 最新发生时间
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="updateDateCol"><i></i> 恢复时间
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="faultStatusCol"><i></i> 状态
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="ipvAddressCol"><i></i> 资产IP
+						  </label>
+					</div>
+		       </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 详情模板 -->
+<div class="template detail-info" id="detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">事件名称：</label>
+		       <div class="col-lg-4">
+		        	<label type="text" class="control-label tl control-label-text" data-id="faultName"></label>
+		       </div>
+		       <label class="col-lg-2 control-label">当前状态：</label>
+		       <div class="col-lg-4">
+		       		<label type="text" class="control-label tl control-label-text" data-id="currentStatus"></label>
+		       </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">安全域：</label>
+		       <div class="col-lg-4">
+		       		<label type="text" class="control-label tl control-label-text" data-id="sdomainName"></label>
+		       </div>
+		       <label class="col-lg-2 control-label">业务域：</label>
+		       <div class="col-lg-4">
+		       		<label type="text" class="control-label tl control-label-text" data-id="bdomainName"></label>
+		       </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">资产名称：</label>
+		       <div class="col-lg-4">
+			          <label type="text" class="control-label tl control-label-text" data-id="edName"></label>
+		       </div>
+
+		       <label class="col-lg-2 control-label">状态：</label>
+		        <div class="col-lg-4">
+	               <label type="text" class="control-label tl control-label-text" data-id="faultStatus"></label>
+		        </div>
+		       <!-- <label class="col-lg-2 control-label">资产编号：</label>
+		       <div class="col-lg-4">
+		              <label type="text" class="control-label tl control-label-text" data-id="edCode"></label>
+			    </div> -->
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">资产IP：</label>
+		       <div class="col-lg-4">
+		              <label type="text" class="control-label tl control-label-text" data-id="ipvAddress"></label>
+			    </div>
+			    <label class="col-lg-2 control-label">监控器名称：</label>
+		       <div class="col-lg-4">
+		              <label type="text" class="control-label tl control-label-text" data-id="monitorName"></label>
+			   </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">事件类型：</label>
+		       <div class="col-lg-4">
+		              <label type="text" class="control-label tl control-label-text" data-id="className"></label>
+			   </div>
+		       <label class="col-lg-2 control-label">事件等级：</label>
+		       <div class="col-lg-4">
+		             <label type="text" class="control-label tl control-label-text" data-id="faultLevel"></label>
+			    </div>
+			</div>
+
+			<!-- <div class="form-group">
+		        <label class="col-lg-2 control-label">状态：</label>
+		        <div class="col-lg-4">
+	               <label type="text" class="control-label tl control-label-text" data-id="faultStatus"></label>
+		        </div>
+			</div> -->
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">最新发生时间：</label>
+		       <div class="col-lg-4">
+	              <label type="text" class="control-label tl control-label-text" data-id="enterDate"></label>
+					  <i class="pabs icon-search" id="detailmore_btn"
+					  		style="float:right;bottom:0px;right:90px;opacity:0.4"></i>
+		       </div>
+			</div>
+			
+			<div class="form-group">
+		        <label class="col-lg-2 control-label">恢复时间：</label>
+		       <div class="col-lg-4">
+	              <label type="text" class="control-label tl control-label-text" data-id="updateDate"></label>
+		        </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">事件描述：</label>
+		       <div class="col-lg-10" >
+	              <label style="height:50px;" class="control-label tl control-label-text" data-id="faultModule"></label>
+		        </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">解决方案：</label>
+		       <div class="col-lg-10">
+	              <label type="text" class="control-label tl control-label-text" data-id="faultSolutions"></label>
+		        </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!--详情内模板-->
+<div class="template" id="detailmore_template">
+	<div class="panel-body no-tb-padder">
+		<div id="table_in_query_detailmore" class="table-div" style="height: 278px"></div>
+	</div>
+</div>
+
+</tem>

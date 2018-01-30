@@ -1,0 +1,54 @@
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>通知信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="notice_info_list_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+
+
+var notice_info_list_url = "monitorview/protocol/jmx/queryNoticeList";
+var notice_info_list_header = [
+						      {text:"MBean名称" ,name:"mbeanName"},
+						      {text:"通知名称" ,name:"notificationName"},
+						      {text:"通知类型" ,name:"notificationType"},
+						      {text:"更新时间" ,name:"enterDate"}
+						   ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+	notice_info_list();
+}
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+function notice_info_list()
+{
+	g_grid.render($("#notice_info_list_div") ,{
+		url : notice_info_list_url,
+		header : notice_info_list_header,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+        			regionId : urlParamObj.regionId,
+                    time:$("#query_time_label").text()},
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false
+	});
+}
+
+
+
+});
+</script>

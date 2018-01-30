@@ -1,0 +1,171 @@
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>执行时间</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="sql_info_list_div"></div>
+    </div>
+</div>
+
+
+<div class="mt10" id="sql_sel_div">
+    <select class="form-control input-sm" data-type="select" id="sql_sel">
+    </select>
+</div>
+
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>查询结果</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="query_result_list_div"></div>
+    </div>
+</div>
+
+<tem>
+	<div class="template" id="table_data_detail_template">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group"></div>
+		</form>
+	</div>
+</tem>
+
+<script type="text/javascript">
+$(document).ready(function (){
+
+
+var sql_info_list_url = "monitorview/commonmonitor/commondb/querySqlInfo";
+var sql_info_list_header = [
+						      {text:"SQL语句" ,name:"sqlContent"},
+						      {text:"执行时间(ms)" ,name:"excuTime"},
+						      {text:"执行状态" ,name:"sqlStatus"}
+						   ];
+
+var query_result_list_url = "";
+
+var dbsql_content_url = "monitorview/commonmonitor/commondb/getDbmSqlContent";
+
+var table_data_url = "monitorview/commonmonitor/commondb/getTableDataXML";
+
+
+
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+	index_form_init($("#sql_sel_div"));
+    sql_info_list();
+    dbsql_content_sel_render();
+}
+
+function event_init()
+{
+	$("#sql_sel").change(function (){
+		table_data_list();
+	});
+}
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+function sql_info_list()
+{
+	g_grid.render($("#sql_info_list_div") ,{
+		url : sql_info_list_url,
+		header : sql_info_list_header,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+        			regionId : urlParamObj.regionId,
+        			edId : urlParamObj.assetId,
+                    time:$("#query_time_label").text()},
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false
+	});
+}
+
+function dbsql_content_sel_render()
+{
+	um_ajax_get({
+		url : dbsql_content_url,
+		paramObj : urlParamObj,
+		isLoad : false,
+		successCallBack : function (data){
+			g_formel.selectEl_render($("#sql_sel") ,{
+				data : data,
+				id : "codevalue",
+				text : "codename"
+			});
+		}
+	});
+}
+
+function table_data_list()
+{
+	urlParamObj.sqlId = $("#sql_sel").val();
+	um_ajax_get({
+		url : table_data_url,
+		paramObj : urlParamObj,
+		isLoad : false,
+		successCallBack :function (data){
+			var data = data[0];
+			var headerArray = [];
+			var colArray = data.colValue.split(",");
+			var colArrayLength = (colArray.length > 7 ? 7 : colArray.length);
+			for (var i = 0; i < colArrayLength; i++) {
+				headerArray.push({text:colArray[i] ,name:colArray[i]});
+			}
+			var dataArray = [];
+			var row;
+			for (var i = 0; i < data.result.length; i++) {
+				row = data.result[i].row;
+				var obj = new Object();
+				for (var j = 0; j < row.length; j++) {
+					obj[colArray[j]] = row[j];
+				}
+				dataArray.push(obj);
+			}
+			g_grid.render($("#query_result_list_div") ,{
+				header : headerArray,
+				data : dataArray,
+				dbClick : table_data_detail,
+				paginator : false,
+				allowCheckBox:false,
+				hideSearch : true
+			})
+		}
+	});
+}
+
+function table_data_detail(rowData)
+{
+	g_dialog.dialog($("[id=table_data_detail_template]").html(),{
+					width:"800px",
+					init:init,
+					isDetail:true
+				});
+
+	function init(el)
+	{
+		var formEl = el.find("[class=form-group]");
+		for(attr in rowData)
+		{
+			formEl.append('<label class="col-lg-3 control-label">'+attr+"："+'</label>');
+			formEl.append('<label class="col-lg-3 control-label tl">'+
+						(rowData[attr]==""?"&nbsp;":rowData[attr])+'</label>');
+		}
+	}
+	
+}
+
+
+});
+</script>

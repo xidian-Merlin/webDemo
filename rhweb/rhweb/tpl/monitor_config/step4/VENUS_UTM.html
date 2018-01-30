@@ -1,0 +1,117 @@
+<!-- 启明星辰统一威胁管理(UTM) -->
+  <div class="panel-body no-tb-padder" data-getter="cert">
+    <form class="bs-example form-horizontal xs-form" data-type="form">
+      <!-- 保存本条资产的连接方式 -->
+      <input type="hidden" data-store="connectType" />
+
+      <div class="form-group" data-getter="snmp" style="margin-top: -10px;">
+        <div class="form-group">
+          <label class="col-lg-2 control-label pt0">SNMP版本:</label>
+          <div class="col-lg-3">
+            <select class="form-control input-sm clrss" data-type="select" data-id="snmpVersion">
+                <option value="1">SNMP V1</option>
+                <option value="2">SNMP V2c</option>
+                <option value="3">SNMP V3</option>
+            </select> 
+          </div>
+        </div>
+
+        <div data-getter="v1">
+          <div class="form-group">
+            <label class="col-lg-2 control-label pt0 required">端口</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="snmpPort" validate="required,between1~65535" value="161" />
+            </div>
+            <label class="col-lg-2 control-label pt0 required">读团体字</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="snmpCommunity" value="public" validate="required" />
+            </div>
+          </div>
+        </div>
+
+        <div data-getter="v2" class="dn">
+          <div class="form-group">
+            <label class="col-lg-2 control-label pt0 required">端口</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="snmpPort" validate="required,between1~65535" value="161" />
+            </div>
+            <label class="col-lg-2 control-label pt0 required">读团体字</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="snmpCommunity" value="public" validate="required" />
+            </div>
+          </div>
+        </div>
+
+        <div data-getter="v3" class="dn">
+          <div class="form-group">
+            <label class="col-lg-2 control-label pt0 required">端口</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="snmpPort" validate="required,between1~65535" value="161" />
+            </div>
+            <label class="col-lg-2 control-label pt0 required">用户名</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="snmpUserName" validate="required,stringLimit1" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label pt0 required">安全级别</label>
+            <div class="col-lg-3">
+              <select class="form-control input-sm clrss" data-id="securityLevel" data-type="select" validate="required">
+                <option value="-1">---</option>
+                <option value="1">NOAUTH_NOPRIV</option>
+                <option value="2">AUTH_NOPRIV</option>
+                <option value="3">AUTH_PRIV</option>
+              </select>
+            </div>
+            <label class="col-lg-2 control-label pt0">认证方式</label>
+            <div class="col-lg-3">
+              <select class="form-control input-sm clrss" data-id="authWay" data-type="select">
+                <option value="-1">---</option>
+                <option value="1">SHA</option>
+                <option value="2">MD5</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label pt0">认证口令</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="authPwd" />
+            </div>
+            <label class="col-lg-2 control-label pt0">加密方式</label>
+            <div class="col-lg-3">
+              <select class="form-control input-sm clrss" data-id="encryptionWay" data-type="select">
+                <option value="-1">---</option>
+                <option value="1">3DES</option>
+                <option value="2">AES128</option>
+                <option value="3">AES192</option>
+                <option value="4">AES256</option>
+                <option value="5">DES</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label pt0">加密口令</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="encryptionPwd" />
+            </div>
+            <label class="col-lg-2 control-label pt0">Context ID</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="context"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label pt0">Context Name</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="contextName"/>
+            </div>
+          </div>
+        </div>
+        <div class="table-oper" style="padding-right:16.67%;">
+          <a href="javascript:void(0);" class="dib monitor_btn_styl" data-test="snmp">
+            <span>测试</span>
+          </a>
+        </div> 
+      </div>
+
+    </form>
+  </div>

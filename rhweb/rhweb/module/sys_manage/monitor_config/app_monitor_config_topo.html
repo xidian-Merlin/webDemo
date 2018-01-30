@@ -1,0 +1,54 @@
+<div id="flashContent" style="padding:0 0 0 0;width:100%;height:100%;"></div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+
+	index_menuHide();
+	
+	g_dialog.waitingAlert();
+	// $("#flashContent").height(875);
+	var this_params = index_query_param_get();
+	var appId = this_params.appId?this_params.appId:undefined;
+	var fromType = this_params.fromType?this_params.fromType:'thumb';
+	var opType = this_params.opType?this_params.opType:'eidt';
+	var theme = this_params.theme?this_params.theme:'green';
+
+	// var swf_html_str = "<object name=\"Main\" width=\"100%\" height=\"100%\" align=\"middle\" id=\"Main\" data=\"flash/appmonitor/Main.swf\" type=\"application/x-shockwave-flash\">"+
+	// "<param name=\"quality\" value=\"high\">"+
+	// "<param name=\"bgcolor\" value=\"#ffffff\">"+
+	// "<param name=\"allowscriptaccess\" value=\"sameDomain\">"+
+	// "<param name=\"wmode\" value=\"transparent\">"+
+	// "<param name=\"allowfullscreen\" value=\"true\">"+
+	// "<param name=\"flashvars\" value=\"baseJson={'id':'"+appId+"','fromType':'"+fromType+"','opType':'"+opType+"','theme':'"+theme+"','serviceUrl':'"+index_web_app+"'}\">"+
+	// "</object>";
+
+	// $("#flashContent").html(swf_html_str);
+
+	if (appId) {
+		var swf_html_str = "<object name=\"Main\" width=\"100%\" height=\"100%\" align=\"middle\" id=\"Main\" data=\"flash/appmonitor/Main.swf\" type=\"application/x-shockwave-flash\">"+
+		"<param name=\"quality\" value=\"high\">"+
+		"<param name=\"bgcolor\" value=\"#ffffff\">"+
+		"<param name=\"allowscriptaccess\" value=\"sameDomain\">"+
+		"<param name=\"wmode\" value=\"transparent\">"+
+		"<param name=\"allowfullscreen\" value=\"true\">"+
+		"<param name=\"flashvars\" value=\"baseJson={'id':'"+appId+"','fromType':'"+fromType+"','opType':'edit','theme':'green','serviceUrl':'"+index_web_app+"'}\">"+
+		"</object>";
+
+		$("#flashContent").html(swf_html_str);
+	}else {
+		var swf_html_str = "<object name=\"Main\" width=\"100%\" height=\"100%\" align=\"middle\" id=\"Main\" data=\"flash/appmonitor/Main.swf\" type=\"application/x-shockwave-flash\">"+
+		"<param name=\"quality\" value=\"high\">"+
+		"<param name=\"bgcolor\" value=\"#ffffff\">"+
+		"<param name=\"allowscriptaccess\" value=\"sameDomain\">"+
+		"<param name=\"wmode\" value=\"transparent\">"+
+		"<param name=\"allowfullscreen\" value=\"true\">"+
+		"<param name=\"flashvars\" value=\"baseJson={'id':'','fromType':'"+fromType+"','opType':'edit','theme':'green','serviceUrl':'"+index_web_app+"'}\">"+
+		"</object>";
+
+		$("#flashContent").html(swf_html_str);
+	}
+	
+});
+</script>

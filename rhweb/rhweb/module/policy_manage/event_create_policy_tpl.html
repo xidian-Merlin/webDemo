@@ -1,0 +1,180 @@
+<tem>
+	
+<!-- 详情模板 -->
+<div class="template detail-info" id="detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">安全策略名称：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userName"></label>
+			</div>
+			<div class="form-group"> 
+			    <label class="col-lg-4 control-label">匹配规则：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userName"></label> 
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">最大限定时间：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userName"></label>
+			</div>
+			<div class="form-group"> 
+			    <label class="col-lg-4 control-label">最大聚合次数：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userName"></label> 
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">事件频率：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userName"></label>   
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 编辑模板 -->
+<div class="template" id="edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">安全策略名称：</label>
+			    <label class="col-lg-9 control-label tl" data-id="userName"></label>
+			</div>
+			<div id="match_rule_div">
+				<div class="form-group">
+					<div class="border-text">
+					  	<div>匹配规则</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule" data-id="match_rule"><i></i> 事件等级
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 事件类型
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 设备种类
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 设备类型
+						  </label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 日志编号
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 协议
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 发生源IP
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 代理ID
+						  </label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 源IP
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 源端口
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 目的IP
+						  </label>
+						</div>
+					</div>
+					<div class="col-lg-3">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="match_rule"><i></i> 目的端口
+						  </label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">最大限定时间：</label>
+					<div class="col-lg-4 tl">
+						<input type="text" class="form-control input-sm" data-id="limitTime" validate="required,between60~86400">
+					</div>
+					<label class="col-lg-1 control-label tl" style="padding-left: 0">(秒)</label>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-3 control-label">最大聚合次数：</label>
+					<div class="col-lg-4 tl">
+						<input type="text" class="form-control input-sm" data-id="polymerizeFrequency" validate="required">
+					</div>
+				</div>
+			    <div class="form-group">
+					<label class="col-lg-3 control-label">事件频率：</label>
+					<div class="col-lg-4 tl">
+						<input type="text" class="form-control input-sm" data-id="eventNumber" validate="required,dataCompareWithpolymerizeFrequency">
+					</div>
+					<div class="col-lg-1" style="padding:4px 7px;width: auto;margin-left:-16px">/</div>
+					<div class="col-lg-3 tl" style="padding-left: 0;width:160px;">
+						<input type="text" class="form-control input-sm" data-id="perSecond" validate="required,dataCompareWithlimitTime">
+					</div>
+					<label class="col-lg-1 control-label tl" style="padding-left: 0;padding-right: 0">(条/秒)</label>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 导入模板 -->
+<div class="template" id="import_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form" enctype="multipart/form-data">
+			<div class="form-group">
+				<input type="hidden" name="formJson">
+			    <label class="col-lg-3 control-label" style="padding-left: 0">选择上传文件：</label>
+			    <div class="col-lg-8" style="padding-left: 0">
+			    	<div data-type="ptMap" id="ptMap" class="upload"></div>
+			    </div>
+			    <div class="col-lg-1">
+			    	<i class="icon-trash" title="取消" style="line-height:36px;font-size:14px"></i>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+</tem>

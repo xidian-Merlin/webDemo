@@ -1,0 +1,152 @@
+<tem>
+	<!-- 修改弹出框 -->
+	<div class="template" id="template_update">
+		<div class="panel-body no-tb-padder prel" data-id="template_update_div">
+			<form class="bs-example form-horizontal xs-form">
+			    <div class="form-group mb1">
+			      <label class="col-lg-2 control-label">资产名称：</label>
+			      <label class="col-lg-4 control-label tl" data-id="ed_name"></label>
+			      <label class="col-lg-2 control-label">主IP：</label>
+			      <label class="col-lg-4 control-label tl" data-id="ip"></label>
+			    </div>
+			    <div class="form-group mb1">
+			      <label class="col-lg-2 control-label">安全域：</label>
+			      <label class="col-lg-4 control-label tl" data-id="domain"></label>
+			      <label class="col-lg-2 control-label">资产型号：</label>
+			      <label class="col-lg-4 control-label tl" data-id="assetModelName"></label>
+			    </div>
+			    <div class="form-group mb1">
+			      <label class="col-lg-2 control-label">资产类型：</label>
+			      <label class="col-lg-4 control-label tl" data-id="equipType"></label>
+			      <label class="col-lg-2 control-label">生产厂商：</label>
+			      <label class="col-lg-4 control-label tl" data-id="sup_name"></label>
+			    </div>
+				<!-- 操作栏 -->
+				<div class="col text-right pt10 pb10">
+					<a class="a_btn" data-id="template_update_add_btn">新建</a>
+					<a class="a_btn" data-id="template_scan_btn" style="background-color:#ddd;color:#000">扫描</a>
+					<a class="a_btn" data-id="template_datch_delete_btn" style="background-color:#ddd;color:#000">批量删除</a>
+					<a href="javascript:void(0);" class="a_btn" data-id='template_batch_show'>显示</a>
+					<a href="javascript:void(0);" class="a_btn" data-id='template_batch_hide'>不显示</a>
+				</div>
+				<div data-id="tablegrid1" style="height:360px"></div>
+			</form>
+		</div>
+	</div>
+
+	<!-- 资产接口添加弹出框 -->
+	<div class="template" id="template_add">
+		<div class="panel-body no-tb-padder" data-id="template_add_div">
+			<form class="bs-example form-horizontal xs-form">
+			    <div class="form-group">
+			      <label class="col-lg-4 control-label required">接口索引</label>
+			      <div class="col-lg-6">
+			        <input type="text" class="form-control input-sm" validate="required" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" data-id="interface_ind">
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-4 control-label required">接口名称</label>
+			      <div class="col-lg-6">
+			        <input type="text" class="form-control input-sm" validate="required" data-id="interface_name">
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-4 control-label required">接口描述</label>
+			      <div class="col-lg-6">
+			        <input type="text" class="form-control input-sm" validate="required" data-id="interface_desc">
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-4 control-label required">接口类型</label>
+			      <div class="col-lg-6">
+			        <input type="text" class="form-control input-sm" validate="required" data-id="interface_type">
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-4 control-label required">接口带宽(M)</label>
+			      <div class="col-lg-6">
+			        <input type="text" class="form-control input-sm" validate="required" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" data-id="interface_speed">
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-4 control-label required">接口模块分栏号</label>
+			      <div class="col-lg-6">
+			        <input type="text" class="form-control input-sm" validate="required" data-id="interface_module">
+			      </div>
+			    </div>
+			    <div class="form-group">
+			    	<label class="col-lg-4 control-label">是否显示</label>
+			    	<div class="col-lg-6">
+			    		<div class="radio">
+			    			<label class="i-checks">
+			    				<input type="radio" data-id="is_visuable" name="is_visuable" value="0" checked>
+			    				<i></i>
+			    				显示
+			    			</label>
+			    			<label class="i-checks">
+			    				<input type="radio" name="is_visuable" value="1">
+			    				<i></i>
+			    				不显示
+			    			</label>
+			    		</div>
+			    	</div>
+			    </div>
+			</form>
+		</div>
+
+	</div>
+
+	<!-- 详情模板 -->
+	<div class="template" id="asset_interface_template_detail">
+		<div class="panel-body no-tb-padder prel" data-id="template_detail_div">
+			<div style="height:auto;">
+				<form class="bs-example form-horizontal xs-form">
+				    <div class="form-group">
+				      <label class="col-lg-3 control-label">资产名称：</label>
+				      <label class="col-lg-3 control-label tl" data-id="ed_name"></label>
+				      <label class="col-lg-3 control-label">主IP：</label>
+				      <label class="col-lg-3 control-label tl" data-id="ip"></label>
+				    </div>
+				    <div class="form-group">
+				      <label class="col-lg-3 control-label">安全域：</label>
+				      <label class="col-lg-3 control-label tl" data-id="domain"></label>
+				      <label class="col-lg-3 control-label">资产型号：</label>
+				      <label class="col-lg-3 control-label tl" data-id="assetModelName"></label>
+				    </div>
+				    <div class="form-group">
+				      <label class="col-lg-3 control-label">资产类型：</label>
+				      <label class="col-lg-3 control-label tl" data-id="equipType"></label>
+				      <label class="col-lg-3 control-label">生产厂商：</label>
+				      <label class="col-lg-3 control-label tl" data-id="sup_name"></label>
+				    </div>
+
+					<div id="dialog_table" class="table-div w-all" style="height:230px"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- 资产接口扫描弹出框 -->
+	<div class="template" id="asset_interface_scan_template_detail">
+		<div class="panel-body no-tb-padder prel" style="height:auto;" data-id="scan_template_detail_div">
+			<form class="bs-example form-horizontal xs-form">
+				<div class="form-group">
+			    	<label class="col-lg-3 control-label">资产名称 :</label>
+					<label class="col-lg-3 control-label tl" data-id="ed_name"></label>
+					<label class="col-lg-3 control-label">主IP :</label>
+					<label class="col-lg-3 control-label tl" data-id="ip"></label>
+				</div>
+			    <div class="form-group">
+					<label class="col-lg-3 control-label">资产类型 :</label>
+					<label class="col-lg-3 control-label tl" data-id="equipType"></label>
+					<label class="col-lg-3 control-label">安全域 :</label>
+					<label class="col-lg-3 control-label tl" data-id="domain"></label>
+			    </div>
+			    <div class="form-group">
+					<label class="col-lg-3 control-label">接口发现信息 :</label>
+					<label class="col-lg-8 control-label tl" data-id="result"></label>
+			    </div>
+			</form>
+		</div>
+	</div>
+</tem>

@@ -1,0 +1,267 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>CPU、内存使用率</span>
+        <div class="pabs cpu-memo-use mt10">
+            <span>系统负载：</span>
+            <span class="ol-title">最近1分钟</span>
+            <span class="ol-value prel" id = "one_secend">0</span>
+            <span class="ol-title ml10">最近5分钟</span>
+            <span class="ol-value prel" id = "five_secend">0</span>
+            <span class="ol-title ml10">最近15分钟</span>
+            <span class="ol-value prel" id = "fifteen_secend">0</span>
+        </div>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-1 h-all"></div>
+        <div class="col-lg-10 h-all" id="cpu_use_chart"></div>
+        <div class="col-lg-1 h-all"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>CPU、内存使用率</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="cpu_use_line_chart"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>分页空间使用率</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="page_space_chart_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>内存动态信息</span>
+    </div>
+    <div class="monitor-panel" style="height:240px;">
+        <div class="l h-all" style="width:50%" id="phy_memory_info_div"></div>
+        <div class="l h-all" style="width:50%" id="ver_memory_info_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>磁盘动态信息</span>
+    </div>
+    <div class="monitor-panel" style="height:100px;" id="disk_list">
+        <div class="form-group" id="disk_use_chart">
+            
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>系统进程动态信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div class="form-group">
+                <label class="col-lg-2 control-label" style="width:130px;">映像名称：</label>
+                <div class="col-lg-3 mt5 mb5" id="name_div">
+                    <select class="form-control input-sm" data-type="select"
+                        data-flag="process_sel" id="name_el">
+                    </select>
+                </div>
+            </div>
+            <div class="table_div" id="Process_list_div" style="margin-top:20px"></div>
+        </form>
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js',
+         '/js/plugin/monitor/monitorInfo.js'] ,function (plot ,monitorInfo){
+
+var monitor_CPU_radio_url = "monitorview/os/windows/queryAllUsageInfoCurrent";
+var monitor_CPU_url = "monitorview/os/windows/queryAllUsageInfo";
+
+var page_space_url = "monitorview/os/windows/querySwapUsageInfo";
+var name_select_url = "monitorview/os/windows/queryImagenameStore";
+var query_select_url = "monitorview/os/windows/queryProcessDynamicList";
+
+var Process_list_header = [
+                              {text:"进程ID" ,name:"processId"},
+                              {text:"映像名称" ,name:"imageName"},
+                              {text:"占用CPU时间" ,name:"cpuTime"},
+                              {text:"进程运行状态" ,name:"procStatus"},
+                              {text:"更新时间" ,name:"enterDate"}
+                           ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+event_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    CPU_use_radio();
+    CPU_use();
+    memory_info_render();
+    first_disk_render();
+    page_space_chart();
+
+    index_form_init($("#name_div"));
+    index_ed_monitor_get();
+}
+
+function event_init()
+{
+    $("[data-flag=process_sel]").change(function (){
+        Process_list()
+    });
+}
+
+window.index_monitor_init = function ()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    CPU_use_radio();
+    CPU_use();
+
+    memory_info_render();
+    first_disk_render();
+    Process_list();
+    page_space_chart();
+    index_ed_monitor_get();
+}
+
+function index_ed_monitor_get(){
+    um_ajax_get({
+        url : name_select_url,
+        isLoad : false,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var selBuff = [];
+            for (var i = 0; i < data.length; i++) {
+                selBuff.push({id:data[i].codevalue ,text:data[i].codename});
+            }
+            $("#name_el").select2({
+                  data: selBuff,
+                  width:"100%"
+            });
+            Process_list();
+        }
+    });
+};
+
+//cpu使用率（圆盘）
+function CPU_use_radio(){
+    monitorInfo.cpu_memo_use_rate_radio({
+        url : monitor_CPU_radio_url,
+        paramObj : urlParamObj,
+        use_chart : $("#cpu_use_chart"),
+        one_secend : $("#one_secend"),
+        five_secend : $("#five_secend"),
+        fifteen_secend : $("#fifteen_secend")
+    });
+}
+
+//cpu 使用率
+function CPU_use(){
+    monitorInfo.cpu_memo_use_rate({
+        url : monitor_CPU_url,
+        paramObj : urlParamObj,
+        line_chart : $("#cpu_use_line_chart"),
+    });
+}
+
+//分页空间使用率
+function page_space_chart()
+{
+    um_ajax_get({
+        url : page_space_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var items = data;
+            var legendArray = ['分页空间使用率(%)'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var responseTimeObj = new Object();
+            responseTimeObj.name = '分页空间使用率(%)';
+            responseTimeObj.type = "line";
+            responseTimeObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].lable);
+                responseTimeObj.data.push(items[i].value);
+            }
+            seriesArray.push(responseTimeObj);
+
+            plot.lineRender($("#page_space_chart_div") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+// 内存动态信息
+function memory_info_render()
+{
+    um_ajax_get({
+        url : "monitorview/os/windows/queryMemoryDynamicInfo",
+        paramObj : urlParamObj,
+        successCallBack : function(data){
+            monitorInfo.memory_info_render($("#phy_memory_info_div"),{
+                title : "物理内存",
+                not_used_val : data[0] ? data[0].freePhisicalMemory : 0,
+                used_val : data[0] ? data[0].usedPhisicalMemory : 0,
+            });
+
+            monitorInfo.memory_info_render($("#ver_memory_info_div"),{
+                title : "虚拟内存",
+                not_used_val : data[0] ? data[0].freeVirtualMemory : 0,
+                used_val : data[0] ? data[0].usedVirtualMemory : 0,
+            });
+        }
+    });
+    
+}
+
+//磁盘动态信息
+function first_disk_render(){
+    monitorInfo.disk_used_chart($("#disk_use_chart") ,{
+        paramObj : urlParamObj
+    });
+}
+
+//系统进程动态信息
+function Process_list(){
+
+    var img_val = $("[data-flag=process_sel]").eq(0).val();
+
+    var obj = new Object();
+    obj.monitorId = urlParamObj.monitorId;
+    obj.time = urlParamObj.time;
+    obj.regionId = urlParamObj.regionId;
+
+    obj.imageName = img_val;
+
+    g_grid.render($("#Process_list_div") ,{
+        url : query_select_url,
+        header : Process_list_header,
+        paramObj : obj,
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+        allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

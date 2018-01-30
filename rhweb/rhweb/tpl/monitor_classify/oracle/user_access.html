@@ -1,0 +1,123 @@
+<div class="mt5 mb5" style="height:30px" id="instance_sel_div">
+    <select class="form-control input-sm" data-type="select" id="instance_sel">
+    </select>
+</div>
+
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel" style="margin-top:20px">
+		<span>用户访问信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="user_access_list_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt20">
+	<div class="panel-heading font-bold prel" style="margin-top:20px">
+		<span>用户作业信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="user_work_list_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+
+
+
+var user_access_list_url = "monitorview/db/oracle/queryOracleAccess";
+var user_access_list_header = [
+						      {text:"登录用户名" ,name:"username"},
+						      {text:"用户主机名" ,name:"machine"},
+						      {text:"用户当前执行sql" ,name:"sqlText", render:function(text){
+						      	if(text==null){
+						      		return "----";
+						      	}
+						      	return text;
+						      }},
+						      {text:"登录时间" ,name:"logonTime"},
+						      {text:"主机系统用户" ,name:"osuser"},
+						      {text:"客户端连接程序" ,name:"program"},
+						      {text:"会话当前状态" ,name:"status"},
+						      {text:"更新时间" ,name:"updateDate"}
+						   ];
+
+
+var user_work_list_url = "monitorview/db/oracle/queryOracleDBAJobs";
+var user_work_list_header = [
+						      {text:"作业名称" ,name:"what", width : 30},
+						      {text:"作业编号" ,name:"jobId", width : 10},
+						      {text:"最后执行时间" ,name:"lastDate", width : 20},
+						      {text:"中断状态" ,name:"broken", width : 10},
+						      {text:"连续失败次数" ,name:"failures", width : 10},
+						      {text:"更新时间" ,name:"updateDate", width : 20}
+						   ];
+
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    index_form_init($("#instance_div"));
+    index_ed_monitor_get(urlParamObj ,[$("#instance_sel")]);
+}
+
+function event_init()
+{
+    $("#instance_sel").change(function (){
+        user_access_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+        user_work_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+
+    });
+}
+
+window.index_monitor_init = function ()
+{
+	index_ed_monitor_get(urlParamObj ,[$("#instance_sel")]);
+}
+
+function user_access_list(opt)
+{
+	g_grid.render($("#user_access_list_div") ,{
+		url : user_access_list_url,
+		header : user_access_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false
+	});
+}
+
+function user_work_list(opt)
+{
+	g_grid.render($("#user_work_list_div") ,{
+		url : user_work_list_url,
+		header : user_work_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false
+	});
+}
+
+});
+
+
+</script>

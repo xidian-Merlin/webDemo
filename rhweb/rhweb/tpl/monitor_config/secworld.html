@@ -1,0 +1,59 @@
+<div data-id="monitor_index" class="h-all">
+	<div class="panel-body no-tb-padder" style="height: 100%;overflow: auto;">
+		<form class="bs-example form-horizontal xs-form" id="detail_store_form">
+			<div class="form-group">
+				<label class="control-label col-lg-2">CPU使用率阈值(%)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="cpu_use" validate="between1~100" value="80">
+				</div>
+				<label class="control-label col-lg-3">连续达到阈值次数</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="cpu_times" validate="between1~9" value="3">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">内存使用率阈值(%)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="memory_use" validate="between1~100" value="80">
+				</div>
+				<label class="control-label col-lg-3">连续达到阈值次数</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="memory_times" validate="between1~9" value="3">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">硬盘使用率阈值(%)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="disk_use" validate="between1~100" value="80">
+				</div>
+				<label class="control-label col-lg-3">Mib类型</label>
+				<div class="col-lg-3">
+					<select class="form-control input-sm" data-id="MibType" data-type="select">
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">获取ARP表</label>
+				<div class="col-lg-3 checkbox">
+					<label class="i-checks">
+						<input type="checkbox" data-id="arpFlag"><i></i> 
+					</label>
+				</div>
+				<label class="control-label col-lg-3">获取MAC表</label>
+				<div class="col-lg-3 checkbox">
+					<label class="i-checks">
+						<input type="checkbox" data-id="rcCmd"><i></i> 
+					</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">获取路由表</label>
+				<div class="col-lg-3 checkbox">
+					<label class="i-checks">
+						<input type="checkbox" data-id="scCmd"><i></i> 
+					</label>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

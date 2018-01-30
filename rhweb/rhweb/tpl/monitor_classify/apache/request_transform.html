@@ -1,0 +1,229 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>请求数信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="request_count_info_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">平均请求数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="avg"></label>
+                    <label class="col-lg-2 control-label">总请求次数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="sum"></label>
+                </div>
+                <div class="form-group">
+	                <label class="col-lg-2 control-label">最大请求数：</label>
+	                <label class="col-lg-3 control-label tl" data-id="max"></label>
+	                <label class="col-lg-2 control-label">开始时间：</label>
+	                <label class="col-lg-3 control-label tl" data-id="inputTime"></label>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-lg-2 control-label">最小请求数：</label>
+	                <label class="col-lg-3 control-label tl" data-id="min"></label>
+	                <label class="col-lg-2 control-label">终止时间：</label>
+	                <label class="col-lg-3 control-label tl" data-id="endTime"></label>
+	            </div>
+            </div>
+        </form>
+    </div>
+	<div class="panel panel-default">
+	    <div class="monitor-panel" style="height:300px">
+	        <div class="col-lg-12 h-all" id="request_count_chart_div"></div>
+	    </div>
+	</div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>传输量信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="transform_count_info_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">平均传输量(KB/S)：</label>
+                    <label class="col-lg-3 control-label tl" data-id="avg"></label>
+                    <label class="col-lg-2 control-label">总传输量(KB/S)：</label>
+                    <label class="col-lg-3 control-label tl" data-id="sum"></label>
+                </div>
+                <div class="form-group">
+	                <label class="col-lg-2 control-label">最大传输量(KB/S)：</label>
+	                <label class="col-lg-3 control-label tl" data-id="max"></label>
+	                <label class="col-lg-2 control-label">开始时间：</label>
+	                <label class="col-lg-3 control-label tl" data-id="inputTime"></label>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-lg-2 control-label">最小传输量(KB/S)：</label>
+	                <label class="col-lg-3 control-label tl" data-id="min"></label>
+	                <label class="col-lg-2 control-label">终止时间：</label>
+	                <label class="col-lg-3 control-label tl" data-id="endTime"></label>
+	            </div>
+            </div>
+        </form>
+    </div>
+	<div class="panel panel-default">
+	    <div class="monitor-panel" style="height:300px">
+	        <div class="col-lg-12 h-all" id="transform_count_chart_div"></div>
+	    </div>
+	</div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>请求传输量信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="request_transform_count_info_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">平均传输量(KB/S)：</label>
+                    <label class="col-lg-3 control-label tl" data-id="avg"></label>
+                    <label class="col-lg-2 control-label">总传输量(KB/S)：</label>
+                    <label class="col-lg-3 control-label tl" data-id="sum"></label>
+                </div>
+                <div class="form-group">
+	                <label class="col-lg-2 control-label">最大传输量(KB/S)：</label>
+	                <label class="col-lg-3 control-label tl" data-id="max"></label>
+	                <label class="col-lg-2 control-label">开始时间：</label>
+	                <label class="col-lg-3 control-label tl" data-id="inputTime"></label>
+	            </div>
+	            <div class="form-group">
+	                <label class="col-lg-2 control-label">最小传输量(KB/S)：</label>
+	                <label class="col-lg-3 control-label tl" data-id="min"></label>
+	                <label class="col-lg-2 control-label">终止时间：</label>
+	                <label class="col-lg-3 control-label tl" data-id="endTime"></label>
+	            </div>
+            </div>
+        </form>
+    </div>
+	<div class="panel panel-default">
+	    <div class="monitor-panel" style="height:300px">
+	        <div class="col-lg-12 h-all" id="request_transform__count_chart_div"></div>
+	    </div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js',
+         '/js/plugin/monitor/monitorInfo.js'] ,function (plot ,monitorInfo){
+
+var request_count_info_url = "monitorview/middleware/apache/queryRequestsInfo";
+var transform_count_info_url = "monitorview/middleware/apache/queryTransmissionQuantityInfo";
+var request_transform_count_info_url = "monitorview/middleware/apache/queryRequestTransmissionQuantityInfo";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+	urlParamObj.inputTime = $("#query_time_label").text();
+    request_count_info();
+    transform_count_info();
+    request_transform_count_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+//请求数信息
+function request_count_info()
+{
+	um_ajax_get({
+        url : request_count_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+        	$("#request_count_info_div").umDataBind("render" ,data.resultObj);
+        	var items = data.resultObj.jsonString.datas[0].items;
+            var legendArray = ['数量'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var responseTimeObj = new Object();
+            responseTimeObj.name = '数量';
+            responseTimeObj.type = "line";
+            responseTimeObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].lable);
+            	responseTimeObj.data.push(items[i].value);
+            }
+            seriesArray.push(responseTimeObj);
+
+            plot.lineRender($("#request_count_chart_div") ,{
+                legend : legendArray,
+                category :categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+//传输量信息
+function transform_count_info()
+{
+	um_ajax_get({
+        url : transform_count_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+        	$("#transform_count_info_div").umDataBind("render" ,data.resultObj);
+        	var items = data.resultObj.jsonString.datas[0].items;
+            var legendArray = ['KB/S'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var responseTimeObj = new Object();
+            responseTimeObj.name = 'KB/S';
+            responseTimeObj.type = "line";
+            responseTimeObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].lable);
+            	responseTimeObj.data.push(items[i].value);
+            }
+            seriesArray.push(responseTimeObj);
+
+            plot.lineRender($("#transform_count_chart_div") ,{
+                legend : legendArray,
+                category :categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+//请求传输量信息
+function request_transform_count_info()
+{
+	um_ajax_get({
+        url : request_transform_count_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+        	$("#request_transform_count_info_div").umDataBind("render" ,data.resultObj);
+        	var items = data.resultObj.jsonString.datas[0].items;
+            var legendArray = ['KB/S'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var responseTimeObj = new Object();
+            responseTimeObj.name = 'KB/S';
+            responseTimeObj.type = "line";
+            responseTimeObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].lable);
+            	responseTimeObj.data.push(items[i].value);
+            }
+            seriesArray.push(responseTimeObj);
+
+            plot.lineRender($("#request_transform__count_chart_div") ,{
+                legend : legendArray,
+                category :categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+});
+});
+</script>

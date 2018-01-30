@@ -1,0 +1,115 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>ARP表信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="arp_info"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>MAC表信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="mac_info"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>路由信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="route_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var arp_info_url = "monitorview/network/huawei/queryARP";
+var arp_info_header = [
+                            {text:'IP地址',name:"ipvAddr"},
+                            {text:'MAC地址',name:"ipMac"},
+                            {text:'更新时间',name:"updateDate"}
+                         ];
+
+var mac_info_url = "monitorview/network/huawei/queryMac";
+var mac_info_header = [
+                            {text:'MAC地址',name:"macAddress"},
+                            {text:'接口名称',name:"interfaceDesc"},
+                            {text:'更新时间',name:"updateDate"}
+                         ];
+
+var route_info_url = "monitorview/network/huawei/queryRoute";
+var route_info_header = [
+                            {text:'路由目的地址',name:"routeDest"},
+                            {text:'跳转次数',name:"routeMetric"},
+                            {text:'下次跳转地址',name:"routeNexthop"},
+                            {text:'子网掩码',name:"routeMask"},
+                            {text:'更新时间',name:"updateDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    arp_info();
+    mac_info();
+    route_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function arp_info()
+{
+    g_grid.render($("#arp_info"),{
+         header:arp_info_header,
+         url:arp_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false
+    });
+}
+
+function mac_info()
+{
+    g_grid.render($("#mac_info"),{
+         header:mac_info_header,
+         url:mac_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false
+    });
+}
+
+function route_info()
+{
+    g_grid.render($("#route_info"),{
+         header:route_info_header,
+         url:route_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

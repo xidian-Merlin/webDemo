@@ -1,0 +1,315 @@
+<div class="panel panel-default mt20">
+  <div class="panel-heading font-bold prel">
+    <span>应用信息</span>
+  </div>
+  <form class="bs-example form-horizontal xs-form">
+    <div class="form-group mt10">
+      <label class="col-lg-2 control-label">应用名称：</label>
+      <div class="col-lg-3" style="height:30px" id="application_sel_div">
+        <select class="form-control input-sm" data-type="select" id="application_sel"></select>
+      </div>
+
+      <label class="col-lg-2 control-label">组件名称：</label>
+      <div class="col-lg-3" style="height:30px" id="component_sel_div">
+        <select class="form-control input-sm" data-type="select" id="component_sel"></select>
+      </div>
+    </div>
+
+    <div id="application_div">
+      <div class="form-group">
+        <label class="col-lg-2 control-label">应用名称：</label>
+        <label class="col-lg-4 control-label tl" data-id="applicationName"></label>
+        <label class="col-lg-2 control-label">应用版本：</label>
+        <label class="col-lg-4 control-label tl" data-id="applicationVersion"></label>
+      </div>
+    </div>
+
+    <div id="component_div">
+      <div class="form-group">
+        <label class="col-lg-2 control-label">web应用组件名称：</label>
+        <label class="col-lg-4 control-label tl" data-id="webApplicationName"></label>
+        <label class="col-lg-2 control-label">上下文根：</label>
+        <label class="col-lg-4 control-label tl" data-id="contextRoot"></label>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2 control-label">模块URI：</label>
+        <label class="col-lg-4 control-label tl" data-id="moduleUri"></label>
+        <label class="col-lg-2 control-label">当前开发连接数：</label>
+        <label class="col-lg-4 control-label tl" data-id="openSessionsCurtcnt"></label>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2 control-label">最大开发连接数：</label>
+        <label class="col-lg-4 control-label tl" data-id="openSessionsHighcnt"></label>
+        <label class="col-lg-2 control-label">历史开发连接数：</label>
+        <label class="col-lg-4 control-label tl" data-id="sessionsOpenedTotcnt"></label>
+      </div>
+
+      <div class="form-group">
+        <label class="col-lg-2 control-label">连接超时时限：</label>
+        <label class="col-lg-4 control-label tl" data-id="sessionTimeoutSecs"></label>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<div class="panel panel-default m0">
+  <div class="panel-heading font-bold prel">
+    <span>组件信息</span>
+  </div>
+  <div class="monitor-panel">
+    <div class="table_div" id="component_info_div"></div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'] ,function (plot){
+
+var application_url = "monitorview/middleware/weblogic/queryWeblApplication";
+
+var component_url = "monitorview/middleware/weblogic/queryWeblSubApplication";
+
+var subType0_url = "monitorview/middleware/weblogic/queryWeblAppWebServlet";
+var subType0_header = [
+                      {text:"Servlet名称" ,name:"servletName"},
+                      {text:"Servlet路径" ,name:"servletPath"},
+                      {text:"上下文路径" ,name:"contextPath"},
+                      {text:"平均执行时间" ,name:"executionTimeAvg"},
+                      {text:"最大执行时间" ,name:"executionTimeHigh"},
+                      {text:"最小执行时间" ,name:"executionTimeLow"},
+                      {text:"总执行时间" ,name:"executionTimeTot"},
+                      {text:"总调用次数" ,name:"invocationTotcnt"},
+                      {text:"总重载次数" ,name:"reloadTotcnt"},
+                      {text:"更新时间" ,name:"enterDate"}
+                    ];
+
+var subType1_url = "monitorview/middleware/weblogic/queryWeblAppEjb";
+var subType1_header = [
+                      {text:"EJB名称" ,name:"ejbName"},
+                      {text:"EJB类型" ,name:"ejbType"},
+                      {text:"事务提交总数" ,name:"tranCommitTotcnt"},
+                      {text:"事务回滚总数" ,name:"tranRlbkTotcnt"},
+                      {text:"事务超时总数" ,name:"tranTimedoutTotcnt"},
+                      {text:"活化数量" ,name:"activationCnt"},
+                      {text:"钝化数量" ,name:"passivationCnt"},
+                      {text:"在用Bean数量" ,name:"beansInuseCnt"},
+                      {text:"空闲Bean数量" ,name:"idleBeansCnt"},
+                      {text:"当前池化Bean数量" ,name:"pooledBeansCurtcnt"},
+                      {text:"当前等待着数量" ,name:"waiterCurtcnt"},
+                      {text:"等待着总数" ,name:"waiterTotalcnt"},
+                      {text:"更新时间" ,name:"enterDate"}
+                   ];
+
+var subType2_url = "monitorview/middleware/weblogic/queryWeblAppConncomppool";
+var subType2_header = [
+                      {text:"连接池组件名称" ,name:"connComponentName"},
+                      {text:"连接池名称" ,name:"poolName"},
+                      {text:"池大小高水位" ,name:"poolSizeHighWaterMark"},
+                      {text:"池大小低水位" ,name:"poolSizeLowWaterMark"},
+                      {text:"当前活动连接数" ,name:"activeConnCurtcnt"},
+                      {text:"当前空闲连接数" ,name:"freeConnCurtcnt"},
+                      {text:"最大活动连接数" ,name:"activeConnHighcnt"},
+                      {text:"最大空闲连接数" ,name:"freeConnHighcnt"},
+                      {text:"创建连接总数" ,name:"connCreateTotcnt"},
+                      {text:"销毁连接总数" ,name:"connDestroyTotcnt"},
+                      {text:"因错误销毁" ,name:"connDestroyErrorTotcnt"},
+                      {text:"因空闲销毁" ,name:"connDestroyShrinkTotcnt"},
+                      {text:"更新时间" ,name:"enterDate"}
+                   ];
+
+var subType3_url = "monitorview/middleware/weblogic/queryWeblAppJdbcconnectpool";
+var subType3_header = [
+                      {text:"连接池名称" ,name:"connpoolName"},
+                      {text:"平均活动连接数" ,name:"activeConnAvgCnt"},
+                      {text:"当前活动连接数" ,name:"activeConnCurtCnt"},
+                      {text:"最大活动连接数" ,name:"activeConnHighCnt"},
+                      {text:"当前等待连接数" ,name:"waitConnCurtCnt"},
+                      {text:"最大等待连接数" ,name:"waitConnHighCnt"},
+                      {text:"最大可用连接数" ,name:"highestAvailable"},
+                      {text:"最大不可用连接数" ,name:"highestUnavailable"},
+                      {text:"可用连接数" ,name:"numAvailable"},
+                      {text:"不可用连接数" ,name:"numUnavailable"},
+                      {text:"更新时间" ,name:"enterDate"}
+                   ];
+
+var subType4_url = "monitorview/middleware/weblogic/queryWeblAppJdbcdatasource";
+var subType4_header = [
+                      {text:"数据源名称" ,name:"datasourceName"},
+                      {text:"平均活动连接数" ,name:"activeConnAveragecnt"},
+                      {text:"当前活动连接数" ,name:"activeConnCurtCnt"},
+                      {text:"最大活动连接数" ,name:"activeConnHighCnt"},
+                      {text:"最大可用连接数" ,name:"highestAvailable"},
+                      {text:"最大不可用连接数" ,name:"highestUnavailable"},
+                      {text:"可用连接数" ,name:"numAvailable"},
+                      {text:"不可用连接数" ,name:"numUnavailable"},
+                      {text:"预编译语句缓存访问次数" ,name:"prepstmtAccessCnt"},
+                      {text:"预编译语句添加次数" ,name:"prepstmtAddCnt"},
+                      {text:"预编译语句删除次数" ,name:"prepstmtDelCnt"},
+                      {text:"预编译语句命中次数" ,name:"prepstmtHitCnt"},
+                      {text:"预编译语句丢失次数" ,name:"prepstmtMissCnt"},
+                      {text:"预编译语句当前大小" ,name:"prepstmtCurtSize"},
+                      {text:"当前等待连接数" ,name:"waitConnCurtcnt"},
+                      {text:"最大等待连接数" ,name:"waitConnHighCnt"},
+                      {text:"等待连接失败总数" ,name:"waitConnFailureTot"},
+                      {text:"等待连接成功总数" ,name:"waitConnSuccessTot"},
+                      {text:"等待连接总数" ,name:"waitConnTot"},
+                      {text:"最大等待时长" ,name:"waitSecondsHighCnt"},
+                      {text:"更新时间" ,name:"enterDate"}
+                   ];
+
+var urlParamObj = index_query_param_get();
+var application_data;
+var component_data;
+
+var component_div = $("#component_div");
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    index_form_init($("#application_sel_div"));
+    index_form_init($("#component_sel_div"));
+    application_get();
+
+    component_div.hide();
+}
+
+function event_init()
+{
+  $("#application_sel").change(function (){
+        var curr_index2 = $(this).prop('selectedIndex');
+
+        $("#application_div").umDataBind("render", application_data[curr_index2]);
+        var version = application_data[curr_index2].applicationVersion;
+        if(version == null || version == "null"){
+            $("[data-id=applicationVersion]").text('----');
+        }
+
+        component_get($(this).val(),application_data[0].serverName);
+    });
+
+    $("#component_sel").change(function (){
+        var curr_index = $(this).prop('selectedIndex');
+        var subType = component_data[curr_index].subType;
+        if(subType == "0"){
+            component_div.show();
+            $("#component_div").umDataBind("render", component_data[curr_index]);
+        }else{
+            component_div.hide();
+        }
+        component_info($(this).val(), subType);
+    });
+}
+
+window.index_monitor_init = function ()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    application_get();
+}
+//应用名称下拉框
+function application_get()
+{
+    um_ajax_get({
+        url : application_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var selBuff = [];
+            for (var i = 0; i < data.length; i++) {
+                selBuff.push({id:data[i].applicationName ,text:data[i].applicationName});
+            }
+            $("#application_sel").select2({
+                  data: selBuff,
+                  width:"100%"
+            });
+            //缓存serverName
+            application_data = data;
+            $("#application_sel").trigger("change");
+        }
+    });
+}
+//组件名称下拉框
+function component_get(applicationName,serverName)
+{
+    urlParamObj.applicationName = applicationName;
+    urlParamObj.serverName = serverName;
+    um_ajax_get({
+        url : component_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var selBuff2 = [];
+            for (var i = 0; i < data.length; i++) {
+                selBuff2.push({id:data[i].webApplicationName ,text:data[i].webApplicationName});
+            }
+
+            $("#component_sel").find("option").remove();
+            $("#component_sel").select2({
+                  data: selBuff2,
+                  width:"100%"
+            });
+
+            if(selBuff2.length==0){
+              return;
+            }
+            //缓存data
+            component_data = data;
+            $("#component_sel").trigger("change");
+            
+        }
+    });
+}
+
+//组件信息列表
+function component_info(subAppName,subType)
+{
+    urlParamObj.subAppName = subAppName;
+    var temp_url = "";
+    var temp_header = "";
+    switch(subType){
+        case "0":
+          temp_url = subType0_url;
+          temp_header = subType0_header;
+          break;
+        case "1":
+          temp_url = subType1_url;
+          temp_header = subType1_header;
+          break;
+        case "2":
+          temp_url = subType2_url;
+          temp_header = subType2_header;
+          break;
+        case "3":
+          temp_url = subType3_url;
+          temp_header = subType3_header;
+          break;
+        case "4":
+          temp_url = subType4_url;
+          temp_header = subType4_header;
+          break;
+    }
+    g_grid.render($("#component_info_div") ,{
+      url : temp_url,
+      header : temp_header,
+      paramObj : urlParamObj,
+      gridCss : "um-grid-style",
+      hasBorder : false,
+      hideSearch : true,
+      allowCheckBox : false,
+          dbThLine : true,
+          tableWidth : "2000px",
+      autoHeight : true
+    });
+}
+
+
+
+});
+});
+</script>

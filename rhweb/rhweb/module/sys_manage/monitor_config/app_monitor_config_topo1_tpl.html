@@ -1,0 +1,221 @@
+<tem>
+	<!-- 上传背景图dialog -->
+	<div id="addApp" class="template">
+		<div class="panel-body">
+			<div class="form-group" id="task_name_div">
+			    <label class="col-lg-3 control-label required">名称</label>
+			    <div class="col-lg-9">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="name"
+			         validate="required">
+			    </div>
+			</div>
+			<div class="form-group" id="task_name_div">
+			    <label class="col-lg-3 control-label">联系人</label>
+			    <div class="col-lg-9">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="contact"
+			         >
+			    </div>
+			</div>
+			<div class="form-group" id="task_name_div">
+			    <label class="col-lg-3 control-label">联系电话</label>
+			    <div class="col-lg-9">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="tel"
+			         >
+			    </div>
+			</div>
+			<div class="form-group" id="task_name_div">
+			    <label class="col-lg-3 control-label">邮箱</label>
+			    <div class="col-lg-9">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="email"
+			         >
+			    </div>
+			</div>
+			<div class="form-group" id="task_name_div">
+			    <label class="col-lg-3 control-label">关联拓扑图</label>
+			    <div class="col-lg-9">
+			        <select class="form-control input-sm"  id="reselect" data-id="topoId">
+			        <option value="-1">----</option>
+			        </select>
+			    </div>
+			</div><div class="form-group" id="task_name_div">
+			    <label class="col-lg-3 control-label">描述</label>
+			    <div class="col-lg-9">
+			        <input type="text" class="form-control input-sm" data-id="desc">
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div id="modify" class="template">
+		<div class="panel-body">
+			<div class="form-group" id="task_name_div">
+			    <label class="col-lg-3 control-label required">名称</label>
+			    <div class="col-lg-9">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="name"
+			         validate="required">
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div id="addTextNode" class="template">
+		<div class="panel-body">
+			<div class="form-group" id="task_name_div">
+			    <label class="col-lg-2 control-label">文本内容</label>
+			    <div class="col-lg-10">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="name"
+			         validate="required">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">字号</label>
+			    <div class="col-lg-10">
+			        <select class="form-control input-sm" data-id="textsize">
+			        	<option value="12">12</option>
+			        	<option value="24">24</option>
+			        	<option value="36">36</option>
+			        	<option value="48">48</option>
+			        	<option value="60">60</option>
+			        	<option value="72">72</option>
+			        	<option value="84">84</option>
+			        </select>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">字体颜色</label>
+			    <div class="col-lg-10">
+   					 <input data-id="textcolor" type="hidden" trgfunction="setTextColor" myatr="test"/>
+			         <iframe style="border: none;" scrolling="no" name="textcoloriframe" id="textcoloriframe" src="" width="420px" height="220px" ></iframe>
+			    </div>
+			    <script type="text/javascript">
+			    	function setTextColor()
+			    	{
+			    		var color = $("input[data-id='textcolor']").val();
+				    	if(color == undefined || color == "")
+				    		return;
+						var hex = ("RGB("+color+")").colorHex();
+						$(window.frames["textcoloriframe"].document).find("#baseColorModel").val("textcolor");
+						//设置模式
+						$(window.frames["textcoloriframe"].document).find("#baseModel").val("addTextNode");
+						$(window.frames["textcoloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input").val(hex);
+					}
+
+			    </script>
+			</div>
+		</div>
+	</div>
+	<div id="addcustomNode" class="template">
+		<div class="panel-body">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">节点类型</label>
+			    <div class="col-lg-4">
+			        <select class="form-control input-sm" data-id="nodetype">
+			        	<!-- <option value="12">12</option>
+			        	<option value="24">24</option>
+			        	<option value="36">36</option>
+			        	<option value="48">48</option>
+			        	<option value="60">60</option>
+			        	<option value="72">72</option>
+			        	<option value="84">84</option> -->
+			        </select>
+			    </div>
+   			    <label class="col-lg-2 control-label">文本内容</label>
+			    <div class="col-lg-4">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="name"
+			         validate="required">
+			    </div>
+			</div>
+			<!-- <div class="form-group" id="task_name_div">
+			    <label class="col-lg-2 control-label">文本内容</label>
+			    <div class="col-lg-4">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="name"
+			         validate="required">
+			    </div>
+			</div> -->
+			<div class="form-group" style="display: none;">
+			    <label class="col-lg-2 control-label">字号</label>
+			    <div class="col-lg-10">
+			        <select class="form-control input-sm" data-id="textsize">
+			        	<option value="12">12</option>
+			        	<option value="24">24</option>
+			        	<option value="36">36</option>
+			        	<option value="48">48</option>
+			        	<option value="60">60</option>
+			        	<option value="72">72</option>
+			        	<option value="84">84</option>
+			        </select>
+			    </div>
+			</div>
+	    	<div class="form-group">
+				<label class="col-lg-2 control-label" style="text-align: right;"></label>
+			    <div class="col-lg-10">
+			    	<input data-id="customslider" type="hidden" trgfunction="setSlider"/>
+			         <iframe style="border: none;" scrolling="no" name="slideriframe3" id="slideriframe3" src="/slider/slider.html" width="420px" height="60px" onload="setSlider(this.parentNode);"></iframe>
+			    </div>
+			    <script type="text/javascript">
+			    function setSlider(el,s)
+				{
+					if(s==undefined)
+						s = $(el).find("input[data-id='customslider']").val();
+					if(s==undefined || s =="")
+						s = 0.5;
+						
+					var pW = Number($(window.frames["slideriframe3"].document).find(".defaultbar").width());
+					var w = pW*Number(s);
+					$(window.frames["slideriframe3"].document).find(".jquery-completed").width(w);
+					$(window.frames["slideriframe3"].document).find(".jquery-jslider").css("left",w+"PX");
+					$(window.frames["slideriframe3"].document).find("#showslider").text(s);
+					
+				}
+				function resetSlider(el){
+					el.find("input[name='customslider']").val($(window.frames["slideriframe3"].document).find("#showslider").text());
+				}
+				
+			    </script>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-2 control-label" style="text-align: right;">背景颜色</label>
+			    <div class="col-lg-10">
+			         <input data-id="backcolor" type="hidden" trgfunction="setColor"/>
+			         <iframe style="border: none;" scrolling="no" name="backcoloriframe" id="backcoloriframe" src="" width="420px" height="220px" ></iframe>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">字体颜色</label>
+			    <div class="col-lg-10">
+   					 <input data-id="textcolor" type="hidden" trgfunction="setTextColor" myatr="test"/>
+			         <iframe style="border: none;" scrolling="no" name="textcoloriframe" id="textcoloriframe" src="" width="420px" height="220px" ></iframe>
+			    </div>
+			    <script type="text/javascript">
+			    	function setColorById(el,id)
+			    	{
+			    		var _color = "backcolor";
+			    		if(id == undefined )
+			    			id = "backcoloriframe";
+			    		if(id != "backcoloriframe")
+			    			_color = "textcolor";
+			    		var color = $(el).find("input[data-id='"+_color+"']").val();
+			    		//alert(color);
+				    	if(color == undefined || color == "")
+				    		return;
+						//var hex = ("RGB("+color+")").colorHex();
+						$(window.frames[id].document).find("#baseColorModel").val(_color);
+						//设置模式
+						//$(window.frames[id].document).find("#baseModel").val("addTextNode");
+						$(window.frames[id].document).find(".sp-input-container,.sp-cf").find(".sp-input").val(color);
+					}
+					function resetColor(el,id){
+						var _color = "backcolor";
+			    		if(id == undefined )
+			    			id = "backcoloriframe";
+			    		if(id != "backcoloriframe")
+			    			_color = "textcolor";
+						$(window.frames[id].document).find("#baseColorModel").val(_color);
+						var input_color = $(window.frames[id].document).find(".sp-input-container,.sp-cf").find(".sp-input");
+						$("input[data-id='"+_color+"']").val(input_color.val().colorRgb());
+						//$(window.frames[id].document).find("#baseModel").val("modifyGroupStlye");
+					}
+
+			    </script>
+			</div>
+		</div>
+	</div>
+</tem>

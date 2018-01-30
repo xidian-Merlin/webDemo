@@ -1,0 +1,41 @@
+<tem>
+	<!-- 生成案例模板 -->
+<div class="template" id="general_case_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" enctype="multipart/form-data" id="query_form">
+			<div class="form-group">
+		        <label class="col-lg-2 control-label">案例名称 :</label>
+	            <div class="col-lg-9 tl">
+	                <input type="text" class="form-control input-sm" name="caseTitle" validate="required">
+	                <input type="hidden" name="eventStr"/>
+	                <input type="hidden" name="eventType"/>
+	                <input type="hidden" name="procInstID"/>
+	                <input type="hidden" name="maxdsjson" />
+	                <input type="hidden" name="uploadStr" />
+	            </div>
+	        </div>
+	        <div class="form-group">
+		        <label class="col-lg-2 control-label">关键字 :</label>
+	            <div class="col-lg-9 tl">
+	                <input type="text" class="form-control input-sm" name="caseKeyProperty">
+	            </div>
+	        </div>
+	        <div class="form-group">
+		        <label class="col-lg-2 control-label">附件说明 :</label>
+				<label class="col-lg-9 control-label tl">上传附件数量限制：<label data-id="maxUpLoadFileNum"></label>   个，每次上传附件总和小于等于：<label data-id="maxUpLoadFileSize"></label>兆，如需更改请联系管理员</label>
+			</div>	
+	        <div class="form-group">
+				<label class="col-lg-2 control-label">文档附件 :</label>
+				<div class="col-lg-9" id="appendixgroup"></div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">案例描述 :</label>
+				<div class="col-lg-9 tl">
+					<textarea class="form-control input-sm" name="caseDetail"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+</tem>

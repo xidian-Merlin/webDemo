@@ -1,0 +1,55 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>路由信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="route_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var route_info_url = "monitorview/network/brocade/queryBrocadeRouteInfo";
+
+var route_info_header = [
+                            {text:'路由目的地址',name:"routeDest"},
+                            {text:'路由MAC',name:"routeMask"},
+                            {text:'下次跳转地址',name:"routeNexthop"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    route_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+
+function route_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#route_info"),{
+         header:route_info_header,
+         url:route_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

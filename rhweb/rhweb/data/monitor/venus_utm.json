@@ -1,0 +1,19 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "VENUS_UTM",
+					"fileName"  : "venus_utm",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "VENUS_UTM/base.html","icon" : "monitor-base-info"},
+
+								{"text" : "CPU内存信息" ,"href" : "VENUS_UTM/used_rate.html","icon" : "monitor-sga"},
+
+								{"text" : "路由信息" ,"href" : "VENUS_UTM/route.html","icon" : "monitor-route-info"},
+
+								{"text" : "接口面板" ,"href" : "VENUS_UTM/interface.html","icon" : "monitor-interface"},
+
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

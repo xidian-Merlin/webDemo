@@ -1,0 +1,15 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "NE HUAWEI",
+					"fileName" : "ne_huawei",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "ne_huawei/base.html","icon" : "monitor-base-info"},
+								{"text" : "CPU内存信息" ,"href" : "ne_huawei/used_rate.html","icon" : "monitor-sga"},
+								{"text" : "接口面板" ,"href" : "ne_huawei/interface.html","icon" : "monitor-interface"},
+								{"text" : "网络信息" ,"href" : "ne_huawei/network.html","icon" : "monitor-property-info"},
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

@@ -1,0 +1,74 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>数据库信息</span>
+    </div>
+	<div class="monitor-panel">
+		<div class="table_div" id="database_info_div"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+var instance_type_url = "monitorView/queryInstanceType";
+
+var current_database_url = "monitorview/db/sqlserver/queryMsSqlStatic";
+
+var current_database_header = [
+								{text:"数据库名" ,name:"dbName"},
+								{text:"数据库路径" ,name:"dbPath"},
+								{text:"日志文件路径" ,name:"logPath"},
+								{text:"排序规则" ,name:"collactionname"},
+								{text:"更新时间" ,name:"updateDateS"}
+							 ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+	ed_monitor_get();
+}
+
+window.index_monitor_init = function ()
+{
+	ed_monitor_get();
+}
+
+function ed_monitor_get()
+{
+    urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+           current_database_list(data.edmonitorstore[1].monitorId);       
+        }
+    });
+}
+
+function current_database_list(monitorId)
+{
+	g_grid.render($("#database_info_div") ,{
+		url : current_database_url,
+		header : current_database_header,
+		paramObj : {monitorId : monitorId,
+					time : $("#query_time_label").text()
+					},
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		autoHeight : true
+	});
+}
+
+
+});
+</script>

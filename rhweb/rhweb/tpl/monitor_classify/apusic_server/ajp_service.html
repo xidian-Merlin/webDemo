@@ -1,0 +1,56 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>AJP服务信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="list_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var list_info_url = "apusicServerView/queryAjpConfig";
+
+var list_info_header = [
+                            {text:'AJP地址',name:"address"},
+                            {text:'AJP端口',name:"port"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    list_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+
+function list_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#list_info"),{
+         header:list_info_header,
+         url:list_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine:true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

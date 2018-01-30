@@ -1,0 +1,44 @@
+<script src="module/log_audit/log_backup.js"></script>
+
+
+<div class="table-div-outer" style="padding:0 10px" id="log_backup_div">
+
+
+		<form id="time_form" class="bs-example form-horizontal xs-form"
+				style="height:50px;overflow:hidden;padding-top:10px;min-width:860px;">
+			<div class="form-group" id="log_time_div">
+				<label class="col-lg-1 control-label tr" style="margin-left:0px;width:100px">运行周期：</label>
+			    <div class="col-lg-2">
+			        <select class="form-control input-sm" value="typeWeek" data-type="select" data-id="taskmgrPeriodType">
+						<option value="0">每月</option>
+						<option value="5">每季度</option>
+						<option value="4">每半年</option>
+						<option value="3">每年</option>
+					</select>
+			    </div>
+			    <div class="col-lg-1" id="month_change">
+			        <select class="form-control input-sm" data-type="select" data-id="taskmgrMonth"></select>
+			    </div>
+			    <div class="col-lg-1">
+			        <select class="form-control input-sm" data-type="select" data-id="taskmgrPeriod"></select>
+			    </div>
+				<label class="col-lg-1 control-label tr" style="margin-left:10px;width:100px">开始时间：</label>
+			    <div class="col-lg-2">
+			        <input type="text" class="form-control input-sm" data-value="typeWeek" data-id="taskmgrTime"
+			         validate="required,Hms">
+			    </div>
+			    <label class="col-lg-1 control-label tr" style="margin-left:-30px;">(hh:mm:ss)</label>
+
+				<div class="table-oper pabs" id="table_oper" style="right:10px;top:2px">
+					<a href="javascript:void(0);" id="save_submit" class="bgblue">
+						<i class="btn-commen save-white-btn"></i>
+						<span>保存</span>
+					</a>
+				</div>
+			</div>
+		</form>
+
+		<div style="height:30px;line-height:30px;padding-left:5px">已备份的日志文件</div>
+		<div id="table_div1" class="table-div table-list"></div>
+
+</div>

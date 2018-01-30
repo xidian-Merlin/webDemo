@@ -1,0 +1,82 @@
+
+<div class="row prel ovh" id="flashContent" 
+	style="background-color: rgb(32,42,52);padding: 0px;margin: 0px;border: none;width: 100%;height: 100%;">
+	<canvas id="canvas" width="800px" height="500px"></canvas>
+	<div class="pabs" style="top: 10px;left: 10px;z-index: 2;">
+		<div style="background-color: white;display: inline-block;padding-left: 2px;padding-right: 2px;border-radius: 1px;">
+			<i class="icon icon-search" style="font-size: 15px;" title="还原" data-id='zoom_reset'></i>
+		</div>
+		<div style="background-color: white;display: inline-block;padding-left: 2px;padding-right: 2px;border-radius: 1px;">
+			<i class="icon icon-zoom-in" style="font-size: 15px;" title="放大" data-id='zoom_in'></i>
+		</div>
+		<div style="background-color: white;display: inline-block;padding-left: 2px;padding-right: 2px;border-radius: 1px;">
+			<i class="icon icon-zoom-out" style="font-size: 15px;" title="缩小" data-id='zoom_out'></i>
+		</div>
+		<div style="background-color: white;display: inline-block;padding-left: 2px;padding-right: 2px;border-radius: 1px;">
+			<i class="icon icon-save" style="font-size: 15px;" title="保存" data-id='save'></i>
+		</div>
+		<!-- <div style="background-color: white;display: inline-block;padding-left: 2px;padding-right: 2px;border-radius: 1px;">
+			<i class="icon icon-print" style="font-size: 15px;" title="导出" data-id='exportImg'></i>
+		</div> -->
+	</div>
+	<div class="pabs" style="top: 10px;right: 0px;z-index: 2;bottom: 10px;overflow: auto;" align="right">
+	<div class="h-all" data-id="right_div" style="padding-right: 20px;">
+		<div data-block="win" class="panel panel-default panel-style float-panel active" style="height: 197px;width: 300px;">
+		    <div class="" style="background-color: rgba(57,106,136,0.6);padding: 10px;">
+			   <span style="color: white;font-size: 12px;">组件状态分布</span>
+			   <i data-action="win_plus" class="icon-pushpin tran5" style="float: right;margin-top: 1px;"></i>
+			</div>
+			
+		    <div id="" class="" style="height:160px;" data-id="panel-body">
+		    	<div id="picanvas_parent" style="height:100%;width: 100%;">
+		    	</div>
+		    </div>
+		</div>
+		<div data-block="win" class="panel panel-default panel-style float-panel active" style="height: 230px;width: 300px;">
+			<div class="" style="background-color: rgba(57,106,136,0.6);padding: 10px;">
+				<span style="color: white;font-size: 12px;">组件展示</span>
+				<i data-action="win_plus" class="icon-pushpin tran5" style="float: right;margin-top: 1px;"></i>
+			</div>
+			<div data-id="panel-body" class="panel-body" style="height: 193px;overflow: hidden;padding:0px;">
+				<div class="w-all h-all" id="compTable" style="padding: 10px;">
+					<table style="width: 100%;">
+						<thead>
+							<tr style="text-align: center;">
+								<th style="padding: 6px 0px 6px 33px;text-align: left;width: 70%;">组件名称</th>
+								<th style="padding: 6px 0px;text-align: center;width: 30%;">组件类型</th>
+							</tr>
+						</thead>
+						<tbody id="com-show-tips"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div data-block="win" class="panel panel-default panel-style float-panel active" style="height: 200px;width: 300px;display: none;">
+		    <div class="" style="background-color: rgba(57,106,136,0.6);padding: 10px;">
+			   <span style="color: white;font-size: 12px;">组件状态</span>
+			   <i data-action="win_plus" class="icon-pushpin tran5" style="float: right;margin-top: 1px;"></i>
+			</div>
+			<div class="w-all" style="height: 158px;" data-id="panel-body">
+			    <div id="com-state-tips" class="table_div" style="padding-left: 20px;padding-top: 10px;">
+			    </div>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+
+<ul id="monitor_baseinfo" class="contextmenu" style="display:none;border: none;padding-bottom: 1px;background-color: rgba(57,106,136,0);" tabindex="999">
+	<li>
+		<div data-block="win" class="panel panel-default panel-style float-panel active" style="height: 160px;width: 300px;">
+		    <div class="" style="background-color: rgba(57,106,136,0.6);padding: 10px;">
+			   <span style="color: white;font-size: 12px;">基本信息</span>
+			</div>
+			<div class="w-all" >
+			    <div id="showmonitorData" class="table_div">
+			    </div>
+			</div>
+		</div>
+	</li>
+</ul>
+
+<script type="text/javascript" src="/module/monitor_info/app_monitor_topo1.js"></script>

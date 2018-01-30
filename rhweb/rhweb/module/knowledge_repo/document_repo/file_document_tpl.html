@@ -1,0 +1,108 @@
+<tem>
+<!-- 编辑模板 -->
+<div class="template" id="edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" enctype="multipart/form-data" id="query_form">
+			<div class="form-group">
+				<input type="hidden" name="docinfostorejson" />
+				<input type="hidden" name="jsonString" />
+				<input type="hidden" name="delAppendixIdStr" />
+				<input type="hidden" name="uploadStr"/>
+				<input type="hidden" name="maxdsjson"/>
+				<input type="hidden" name="maxUploadSize"/>
+				<input type="hidden" name="docType"/>
+				<input type="hidden" data-id="docId"/>
+				<label class="col-lg-2 control-label">资料标题 :</label>
+				<div class="col-lg-9">
+					<input type="text" class="form-control input-sm" data-id="title" validate="required">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">资料来源 :</label>
+				<div class="col-lg-9">
+					<input type="text" class="form-control input-sm" data-id="source">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label">内容简介 :</label>
+				<div class="col-lg-9">
+					<input type="text" class="form-control input-sm" data-id="desc">
+				</div>
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">附件说明 :</label>
+			    <label class="col-lg-9 control-label tl">上传附件数量限制：<label data-id="maxUpLoadFileNum"></label> 个，且每次上传附件总和小于等于：<label data-id="maxUpLoadFileSize"></label> 兆，如需更改请联系管理员</label>	    
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label">文档附件 :</label>
+				<div class="col-lg-9" id="appendixgroup"></div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 上级资料文档信息查询模板 -->
+<div class="template" id="search_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" enctype="multipart/form-data" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">资料标题 :</label>
+				<div class="col-lg-9">
+					<input type="text" class="form-control input-sm" data-id="">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">开始时间 :</label>
+				<div class="col-lg-9">
+					<div class="input-group w-all">
+					    <input type="text" class="form-control input-sm tl" data-type="date" container="body" data-id="startDate">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">结束时间 :</label>
+				<div class="col-lg-9">
+					<div class="input-group w-all">
+					    <input type="text" class="form-control input-sm tl" data-type="date" container="body" data-id="endDate" validate="dateCompareWithstartDate">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 资料文档详细信息模板 -->
+<div class="template detail-info" id="detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" enctype="multipart/form-data" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">资料标题 :</label>
+				<label class="col-lg-9 control-label tl" data-id="title"></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">创建时间 :</label>
+				<label class="col-lg-9 control-label tl" data-id="createDate"></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">文档附件 :</label>
+				<div class="col-lg-9" id="appendixgroup"></div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">文档分类 :</label>
+				<label class="col-lg-9 control-label tl" data-id="docType"></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">资料来源 :</label>
+				<label class="col-lg-9 control-label tl" data-id="source"></label>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">内容简介 :</label>
+				<label class="col-lg-9 control-label tl" data-id="desc"></label>
+			</div>			
+		</form>
+	</div>
+</div>
+</tem>

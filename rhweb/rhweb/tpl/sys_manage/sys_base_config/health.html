@@ -1,0 +1,62 @@
+<script src="/tpl/sys_manage/sys_base_config/health.js"></script>
+<div class="row p10" style="height:50%;padding: 10px;">
+<div class="panel-body no-tb-padder">
+	    <!-- 时间选择 -->
+	    <div class="monitor_time_pick prel" id="time_pick_div" style="display: none;">
+	    	<label style="margin-right:20px">当前为：<span id="query_time_label"></span></label>
+	    	<div style="display:inline-block" class="input-append date form_datetime">
+	    		<i class="icon-cog icon-animate"></i>
+	    		<input type="hidden" id="test" />
+	    	</div>
+	    </div>
+		<div class="form-group">
+			<div class="col-lg-12">
+				<div id="healthDivTxt" style="padding:5px 0px 0px 5px">健康度：1台应用服务器，2台数据采集服务器，系统运行良好。</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-lg-12">
+				<div style="height: 40px;"></div>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-lg-12" style="padding:2px;overflow-x:auto">
+				<div id="scale_list">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-lg-12 tc mt5 mb5">
+				<span class="dib" style="background-color: #b3df8f;width:10px;height:10px"></span>
+				<span class="dib">可用</span>
+				<span class="dib" style="background-color: #e08f96;width:10px;height:10px"></span>
+				<span class="dib">不可用</span>
+				<span class="dib" style="background-color: #f1c40f;width:10px;height:10px"></span>
+				<span class="dib">代理异常</span>
+				<span class="dib" style="background-color: #cfcece;width:10px;height:10px"></span>
+				<span class="dib">状态未知</span>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="col-lg-12">
+				<div style="padding:5px 0px 0px 5px">
+					<table width="100%" id="hyh_eventinfo">
+						<tbody><tr>
+							<td align="left">
+								总体数据状态分析：当前系统累计分析处理原始日志数：<span id="logTCnt">0</span>
+							</td>
+						</tr>
+						<!-- <tr>
+							<td align="left">
+								近24小时数据状态分析：原始日志数：<span id="logCnt">0</span>，采集归并数：<span id="alarmEventCnt">0</span>，事件数：<span id="securityEventCnt">0</span>
+							</td>
+						</tr> -->
+					</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+</div>
+</div>

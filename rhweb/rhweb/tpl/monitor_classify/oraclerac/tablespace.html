@@ -1,0 +1,99 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>oracle表空间</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="oracle_tablespace"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>表空间信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="grid_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js','/js/plugin/plot/plot.js'] ,function (monitor,plot){
+
+var grid_info_url = "monitorview/security/OracleRACMonitor/queryOracleRACTableSpaceHighChart";
+
+var grid_info_header = [
+                            {text:'表空间名称',name:"tablespaceName"},
+                            {text:'表空间分配大小(M)',name:"total"},
+                            {text:'表空间分配块数',name:"totalBlock"},
+                            {text:'表空间可用大小(M)',name:"free"},
+                            {text:'表空间可用块数',name:"freeBlock"},
+                            {text:'表空间可用大小比列(%)',name:"freePercent"},
+                            {text:'内容类型',name:"contents"},
+                            {text:'当前表空间状态',name:"status"},
+                            {text:'更新时间',name:"updateDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    oracle_tablespace();
+    grid_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+//表空间
+function oracle_tablespace(){
+    um_ajax_get({
+        url : grid_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var item = data;
+            var seriesArray = [];
+            var seriesObj = new Object();
+            seriesObj.name="ORACLE表空间";
+            seriesObj.type="bar";
+            seriesObj.data=[];
+            var categoryArray = [];
+            for (var i = 0; i < item.length; i++) {
+                seriesObj.data.push(item[i].num);
+                categoryArray.push(item[i].rtnCode);
+            }
+            seriesArray.push(seriesObj);
+            plot.barRender($("#oracle_tablespace") ,{
+                category : categoryArray,
+                series : seriesArray,
+                isVercital : true
+            });
+        }
+    }); 
+}
+
+
+function grid_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#grid_info"),{
+         header:grid_info_header,
+         url:grid_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false,
+         dbThLine : true
+    });
+}
+
+
+});
+});
+</script>

@@ -1,0 +1,164 @@
+<tem>
+
+<!-- 用户编辑模板 -->
+<div class="template" id="user_edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">帐号</label>
+			    <div class="col-lg-8">
+			        <input type="text" class="form-control input-sm" data-id="userAccount" validate="required">
+			    </div>
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label required">用户名称</label>
+			    <div class="col-lg-8">
+			    	<input type="hidden" data-id="userId">
+			        <input type="text" class="form-control input-sm" maxlength="32" data-id="userName" validate="required,stringLimit">
+			    </div>		    
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">安全域</label>
+			    <div class="col-lg-8">
+			        <div class="inputdrop" id="securityDomainId"></div>
+			    </div>
+			</div>
+
+			<div class="form-group" data-type="is_modify_pwd" style="display:none">
+				<label class="col-lg-3 control-label">是否修改密码</label>
+				<div class="col-lg-4">
+					<div class="checkbox">
+					  <label class="i-checks">
+					    <input type="checkbox"><i></i>
+					  </label>
+					</div>
+				</div>
+			</div>
+
+			<div data-type="pwd">
+				<div class="form-group">
+					<label class="col-lg-3 control-label required">密码</label>
+				    <div class="col-lg-8">
+				        <input type="password" class="form-control input-sm" data-id="userPwd" validate="required,password">
+				    </div>
+				    <label class="col-lg-3 control-label"></label>
+				    <label class="col-lg-8 control-label tl" style="color:red;font-size:11px">
+				    	密码长度至少6位且只允许输入数字，字母，"_"，"."或"@"。
+				    </label>
+				</div>
+				<div class="form-group" data-type="pwd">
+					<label class="col-lg-3 control-label required">确认密码</label>
+				    <div class="col-lg-8">
+				        <input type="password" class="form-control input-sm" data-id="userPwdCon" validate="required">
+				    </div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">邮件地址</label>
+			    <div class="col-lg-8">
+			        <input type="text" class="form-control input-sm" data-id="userEmail" validate="required,email">
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-3 control-label">固定电话</label>
+			    <div class="col-lg-8">
+			        <input type="text" class="form-control input-sm" data-id="userPhone">
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">移动电话</label>
+			    <div class="col-lg-8">
+			        <input type="text" class="form-control input-sm" data-id="userMobilePhone">
+			    </div>
+			</div>
+			
+		</form>
+	</div>
+</div>
+
+<!-- 用户详情模板 -->
+<div class="template" id="user_detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">用户名称：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userName"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">账号：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userAccount"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">固定电话：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userPhone"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">移动电话：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userMobilePhone"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">邮件地址：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userEmail"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">用户状态：</label>
+			    <label class="col-lg-8 control-label tl" data-id="userState"></label>   
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 访问策略模板 -->
+<div class="template" id="user_access_policy_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<div class="form-group">
+					<label class="col-lg-2 control-label" style="margin-left:10px;">是否开启</label>
+					<div class="col-lg-4">
+						<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" id="isOpen"><i></i>
+						  </label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label" style="margin-left:10px;">运行周期</label>
+				    <div class="col-lg-4">
+				        <select class="form-control input-sm" value="typeWeek" data-type="select" data-id="cycleType" disabled>
+							<option value="1">每天</option>
+							<option value="2">每周</option>
+							<option value="3">每月</option>
+						</select>
+				    </div>
+				    <div class="col-lg-4">
+				        <select class="form-control input-sm" data-type="select" data-id="cyclePeriod" disabled></select>
+				    </div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label" style="margin-left:10px;">运行时间</label>
+				    <div class="col-lg-4">
+				        <input type="text" class="form-control input-sm" data-value="runTime" data-id="cycleStart"
+				         validate="required,Hms" disabled>
+				    </div>
+				    <div class="col-lg-4">
+				        <input type="text" class="form-control input-sm" data-value="runTime" data-id="cycleEnd"
+				         validate="required,Hms" disabled>
+				    </div>
+				</div>
+		</form>
+	</div>
+</div>
+
+
+
+</tem>

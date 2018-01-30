@@ -1,0 +1,78 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>锁信息</span>
+    </div>
+	<div class="monitor-panel">
+		<div class="table_div" id="database_info_div"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+var instance_type_url = "monitorView/queryInstanceType";
+
+var current_database_url = "monitorview/db/sqlserver/queryMsSqlLock";
+
+var current_database_header = [
+								{text:"数据库对象名" ,name:"instanceName"},
+								{text:"线程等待锁的平均等待时间（ms）" ,name:"averageWaitTime"},
+								{text:"每秒某种锁的请求数量" ,name:"lockRequest"},
+								{text:"每秒不能通过自旋锁获得锁次数" ,name:"lockTimeout"},
+								{text:"前一秒钟，锁的总等待时间（ms）" ,name:"lockWaitTimes"},
+								{text:"前一秒钟，锁请求导致线程等待次数" ,name:"lockaWait"},
+								{text:"导致死锁的锁请求数量" ,name:"numberofDeadlocks"},
+								{text:"更新时间" ,name:"updateDateLk"}
+							 ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+	ed_monitor_get();
+}
+
+window.index_monitor_init = function ()
+{
+	ed_monitor_get();
+}
+
+function ed_monitor_get()
+{
+    urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+           current_database_list(data.edmonitorstore[1].monitorId);
+        }
+    });
+}
+
+function current_database_list(monitorId)
+{
+	g_grid.render($("#database_info_div") ,{
+		url : current_database_url,
+		header : current_database_header,
+		paramObj : {monitorId : monitorId,
+					time : $("#query_time_label").text(),
+					},
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		autoHeight : true,
+		dbThLine : true
+	});
+}
+
+
+});
+</script>

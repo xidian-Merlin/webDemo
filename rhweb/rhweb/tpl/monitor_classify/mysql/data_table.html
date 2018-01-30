@@ -1,0 +1,135 @@
+<div class="mt5 mb5" style="height:30px;" id="database_sel_div">
+    <select class="form-control input-sm" data-type="select" id="database_sel">
+    </select>
+</div>
+
+
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>数据库</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="data_base_div"  style="height:500px;"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+
+
+var data_base_sel_url = "monitorview/db/mysql/queryDBNameList";
+
+var data_base_list_url = "monitorview/db/mysql/queryMySqlTables";
+var data_base_list_header = [
+								{text:"数据库名" ,name:"dbName" ,searchRender:function (el){
+									el.append('<input type="hidden" search-data="monitorTypeId" value="'+urlParamObj.monitorTypeId+'" searchCache/>');
+									el.append('<input type="hidden" search-data="monitorId" value="'+urlParamObj.monitorId+'" searchCache/>');
+									el.append('<input type="hidden" search-data="regionId" value="'+urlParamObj.regionId+'" searchCache/>');
+									el.append('<input type="hidden" search-data="assetId" value="'+urlParamObj.assetId+'" searchCache/>');
+									el.append('<input type="hidden" search-data="time" value="'+$("#query_time_label").text()+'" searchCache/>');
+									urlParamObj.time = $("#query_time_label").text();
+									um_ajax_get({
+										url : data_base_sel_url,
+										paramObj : urlParamObj,
+										successCallBack : function (data){
+											var searchEl = $('<select class="form-control input-sm" search-data="dbName"></select>');
+									  		el.append(searchEl);
+											var selBuff = [];
+								            for (var i = 0; i < data.length; i++) {
+								                selBuff.push({id:data[i].dbName ,text:data[i].dbName});
+								            }
+								            selBuff.insert(0 ,{id:"-1" ,text:"---"});
+								            searchEl.select2({
+								                  data: selBuff,
+								                  width:"100%"
+								            });
+										}
+									});
+								}},
+								{text:"表的名称" ,name:"tabName"},
+								{text:"行的格式" ,name:"rowFormat"},
+								{text:"行数" ,name:"rowCount"},
+								{text:"索引长度" ,name:"indexLength"},
+								{text:"表的类型" ,name:"tabType"},
+								{text:"当前大小(B)" ,name:"dataLength"},
+								{text:"主键自增大小" ,name:"autoIncrement"},
+								{text:"表创建时间" ,name:"createTime",render:function(text){
+	                                if(text=="null" || text==null){
+	                                    return "----";
+	                                }
+	                                return text;
+	                            }},
+								{text:"表更新时间" ,name:"updateTime",render:function(text){
+	                                if(text=="null" || text==null){
+	                                    return "----";
+	                                }
+	                                return text;
+	                            }},
+								{text:"更新时间" ,name:"updateDateT"}
+							];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+window.index_monitor_init = function ()
+{
+	data_base_list();
+}
+
+function view_init()
+{
+	data_base_sel();
+}
+
+function event_init()
+{
+	$("#database_sel").change(function (){
+		data_base_list();
+	});
+}
+
+function data_base_sel()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	um_ajax_get({
+		url : data_base_sel_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			var selBuff = [];
+            for (var i = 0; i < data.length; i++) {
+                selBuff.push({id:data[i].dbName ,text:data[i].dbName});
+            }
+            $("#database_sel").select2({
+                  data: selBuff,
+                  width:"100%"
+            });
+            data_base_list();
+		}
+	});
+}
+
+function data_base_list()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	urlParamObj.dbName = $("#database_sel").val();
+	g_grid.render($("#data_base_div") ,{
+		url : data_base_list_url,
+		header : data_base_list_header,
+		paramObj : urlParamObj,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		pageSize : 50,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+
+
+});
+</script>

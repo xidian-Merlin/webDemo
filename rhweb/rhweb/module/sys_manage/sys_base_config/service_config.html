@@ -1,0 +1,521 @@
+<script src="/module/sys_manage/sys_base_config/service_config.js"></script>
+
+<div id="service_config_div" style="padding:5px 0px 0px 0px">
+<!-- DNS服务 -->
+	<div class="panel panel-default animated fadeInRight m0" id="dns_service_panel">
+		<div class="panel-heading font-bold prel">
+			<span>DNS服务</span>
+		</div>
+		<div class="panel-body pb0">
+			<form class="bs-example form-horizontal xs-form">
+				<div class="form-group" style="margin-bottom: 10px">
+					<label class="col-lg-2 control-label tr">首选DNS服务器</label>
+					<div class="col-lg-2">
+						<input type="text" class="form-control input-sm" 
+							data-id="firstDnsIp" maxlength="15" validate="required,ipv4"/>
+					</div>
+
+					<label class="col-lg-2 control-label tr">备用DNS服务器</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm" 
+							data-id="secondDnsIp" maxlength="15" validate="required,ipv4"/>
+					</div>
+					
+					<div class="col-lg-4 table-oper pt10" style="margin-bottom: 0">
+						<!-- <div class="oper-col" id="dns_service_save_btn" >
+							<span class="oper-icons">
+								<span class="oper-icon">
+									<i class="icon-png oper-save"></i>
+									<i class="icon-png oper-save-active"></i>
+								</span>
+							</span>
+							<span class="oper-title">保存</span>
+						</div>
+						<div class="oper-col" id="dns_service_reset_btn" >
+							<span class="oper-icons">
+								<span class="oper-icon">
+									<i class="icon-png oper-refresh"></i>
+									<i class="icon-png oper-refresh-active"></i>
+								</span>
+							</span>
+							<span class="oper-title">重置</span>
+						</div> -->
+						<a href="javascript:void(0);" id="dns_service_save_btn" class="bgblue">
+							<i class="btn-commen save-white-btn"></i>
+							<span>保存</span>
+						</a>
+						<a href="javascript:void(0);" id="dns_service_reset_btn">
+							<i class="btn-commen reset-btn"></i>
+							<span>重置</span>
+						</a>
+					</div> 
+				</div>
+			</form>
+		</div>
+	</div>
+
+<!-- 邮件服务 -->
+	<div class="panel panel-default animated fadeInRight m0 mt5" id="email_service_panel">
+		<div class="panel-heading font-bold prel">
+			<span>邮件服务</span>
+		</div>
+		<div class="panel-body pb0">
+			<form class="bs-example form-horizontal xs-form">
+				<div class="form-group pb10" style="margin-bottom:0px;">
+						<label class="col-lg-2 control-label tr">发送邮件服务器</label>
+						<div class="col-lg-2">
+							<input type="text" class="form-control input-sm" data-id="sendHost" 
+							validate="required,emSever"/> 
+						</div>
+
+						<label class="col-lg-2 control-label tr">端口</label>
+						<div class="col-lg-2">
+							<input type="text" class="form-control input-sm" data-id="sendPort" maxlength="5" 
+							validate="required,between1~65535"/> 
+						</div>
+				</div>
+
+				<div class="form-group pb10" style="margin-bottom:0px;">
+						<label class="col-lg-2 control-label tr">接收邮件服务器</label>
+						<div class="col-lg-2">
+							<input type="text" class="form-control input-sm" data-id="fetchHost"
+							 validate="required,emSever"/> 
+						</div>
+
+						<label class="col-lg-2 control-label tr">端口</label>
+						<div class="col-lg-2">
+							<input type="text" class="form-control input-sm" data-id="fetchPort" maxlength="5" 
+							 validate="required,between1~65535"/> 
+						</div>
+				</div>
+
+				<div class="form-group pb10" style="margin-bottom:0px;">
+					<label class="col-lg-2 control-label tr">发件人地址</label>
+					<div class="col-lg-2">
+						<input type="text" class="form-control input-sm" data-id="from" validate="required,email"/> 
+					</div>
+
+					<div class="col-lg-8">
+						<div class="form-group">
+							<label class="col-lg-3 control-label tr">服务器身份认证</label>
+							<div class="col-lg-1">
+								<div class="checkbox">
+									<label class="i-checks">
+										<input type="checkbox" data-id="needAuth"><i></i>
+									</label>
+								</div>
+							</div>
+
+							<label class="col-lg-1 control-label tr">ssl</label>
+							<div class="col-lg-7">
+								<div class="checkbox">
+									<label class="i-checks">
+										<input type="checkbox" data-id="ssl"><i></i>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group pb10" style="margin-bottom:0px;">
+					<label class="col-lg-2 control-label tr">用户名</label>
+					<div class="col-lg-2">
+						<input type="text" class="form-control input-sm" data-id="username"
+						 disabled validate="required,stringLimit2"/> 
+					</div>
+
+					<label class="col-lg-2 control-label tr">密码</label>
+					<div class="col-lg-2">
+						<input type="password" class="form-control input-sm" data-id="password" 
+						disabled validate="required"/> 
+					</div>
+				
+					<div class="col-lg-4 table-oper pt10" style="margin-bottom: 0">
+						<!-- <div class="oper-col" id="email_service_test_btn">
+							<span class="oper-icons">
+								<span class="oper-icon">
+									<i class="icon-png oper-test"></i>
+									<i class="icon-png oper-test-active"></i>
+								</span>
+							</span>
+							<span class="oper-title">测试</span>
+						</div>
+						<div class="oper-col" id="email_service_save_btn">
+							<span class="oper-icons">
+								<span class="oper-icon">
+									<i class="icon-png oper-save"></i>
+									<i class="icon-png oper-save-active"></i>
+								</span>
+							</span>
+							<span class="oper-title">保存</span>
+						</div>
+						<div class="oper-col" id="email_service_reset_btn">
+							<span class="oper-icons">
+								<span class="oper-icon">
+									<i class="icon-png oper-refresh"></i>
+									<i class="icon-png oper-refresh-active"></i>
+								</span>
+							</span>
+							<span class="oper-title">重置</span>
+						</div> -->
+				    	<a href="javascript:void(0);" id="email_service_test_btn" class="bgblue">
+				    		<i class="btn-commen test-btn"></i>
+							<span>测试</span>
+						</a>
+						<a href="javascript:void(0);" id="email_service_save_btn">
+							<i class="btn-commen save-btn"></i>
+							<span>保存</span>
+						</a>
+						<a href="javascript:void(0);" id="email_service_reset_btn">
+							<i class="btn-commen reset-btn"></i>
+							<span>重置</span>
+						</a>
+					</div> 
+				</div>
+			</form>
+		</div>
+	</div>
+
+<!-- 短信发送配置 -->
+	<div class="panel panel-default animated fadeInRight m0 mt5" id="message_sent_panel">
+		<div class="panel-heading font-bold prel">
+			<span>短信发送配置</span>
+		</div>
+		<div class="panel-body pb0">
+			<form class="bs-example form-horizontal xs-form">
+				<div id="message_sent_deploy" class="tc mt5 mb10">
+					短信发送方式
+					<label class="i-checks ml3">
+						<input type="radio" value="Local" data-id="configType" name="configType" checked>
+						<i></i>
+					本地数据库(默认)
+					</label>
+					<label class="i-checks ml3">
+						<input type="radio" value="Basic" name="configType">
+						<i></i>
+					短信猫
+					</label>
+					<label class="i-checks ml3">
+						<input type="radio" value="GateWay" name="configType">
+						<i></i>
+					短信网关
+					</label>
+				</div>
+
+				<div id="message_cat" class="dn">
+					<div class="form-group  pb10" style="margin-bottom:0px;">
+							<label class="col-lg-2 control-label tr">生产厂家</label>
+							<div class="col-lg-2">
+								<select class="form-control input-sm" data-id="modemManu" data-type="select">
+									<option value="Huawei">Huawei</option>
+									<option value="Huawei_E160">Huawei_E160</option>
+									<option value="MultiTech">MultiTech</option>
+									<option value="Siemens_HC25">Siemens_HC25</option>
+									<option value="Siemens_MC35i_FD">Siemens_MC35i_FD</option>
+									<option value="Siemens_MC35i">Siemens_MC35i</option>
+									<option value="SonyEricsson_GC89">SonyEricsson_GC89</option>
+									<option value="SonyEricsson">SonyEricsson</option>
+									<option value="Teltonika_ModemUSB">Teltonika_ModemUSB</option>
+									<option value="Ubinetics_GDC201">Ubinetics_GDC201</option>
+									<option value="Wavecom">Wavecom</option>
+									<option value="Wavecom_SunTraveller">Wavecom_SunTraveller</option>
+									<option value="ecom_WISMOQCDMA">ecom_WISMOQCDMA</option>
+									<option value="ZTE_MF622">ZTE_MF622</option>
+								</select>
+							</div>
+
+							<label class="col-lg-2 control-label tr">PIN码</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="modemRate" validate="required,number"/> 
+							</div>
+					</div>
+
+					<div class="form-group  pb10" style="margin-bottom:-3px;">
+							<label class="col-lg-2 control-label tr">波特率</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="modemPin"
+								 value="9600" validate="required,number,number_9600"/> 
+							</div>
+							<label class="col-lg-2 control-label tl" style="color:#f00;">
+								波特率须为9600的倍数
+							</label>
+					</div>
+				</div>
+
+				<div id="message_web" class="dn">
+					<div class="form-group  pb10" style="margin-bottom:0px;">
+							<label class="col-lg-2 control-label tr">数据库类型</label>
+							<div class="col-lg-2">
+								<select class="form-control input-sm" data-id="dbType" data-type="select">
+									<option value="db2">db2</option>
+									<option value="mysql">mysql</option>
+									<option value="oracle">oracle</option>
+									<option value="sqlserver">sqlserver</option>
+									<option value="sybase">sybase</option>
+								</select>
+							</div> 
+
+							<label class="col-lg-2 control-label tr">数据库名</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="database" 
+								validate="required,stringLimit"/> 
+							</div>
+					</div>
+
+					<div class="form-group  pb10" style="margin-bottom:0px;">
+							<label class="col-lg-2 control-label tr">数据库IP</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="ip" maxlength="15" validate="required,ipv4"/> 
+							</div>
+
+							<label class="col-lg-2 control-label tr">用户名</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="user" validate="required,stringLimit2"/> 
+							</div>
+					</div>
+
+
+					<div class="form-group  pb10" style="margin-bottom:0px;">
+							<label class="col-lg-2 control-label tr">密码</label>
+							<div class="col-lg-2">
+								<input type="password" class="form-control input-sm" data-id="pass" validate="required"/> 
+							</div>
+
+							<label class="col-lg-2 control-label tr">端口</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" value="50000" maxlength="5" 
+								data-id="port" validate="required,between1~65535"/> 
+							</div>
+					</div>
+
+
+					<div class="form-group  pb10" style="margin-bottom:0px;">
+							<label class="col-lg-2 control-label tr">编码方式</label>
+							<div class="col-lg-2">
+								<select class="form-control input-sm" data-id="encoding" data-type="select">
+									<option value="GBK">GBK</option>
+									<option value="ISO-8859-1">ISO-8859-1</option>
+									<option value="UTF-8">UTF-8</option>
+								</select>
+							</div>
+
+							<label class="col-lg-2 control-label tr">对应表名</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="tablename" validate="required"/> 
+							</div>
+					</div>
+
+
+					<div class="form-group  pb10" style="margin-bottom:0px;">
+							<label class="col-lg-2 control-label tr">手机号对应字段名</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="phonename" validate="required"/> 
+							</div>
+
+							<label class="col-lg-2 control-label tr">短信内容对应字段名</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="contentname" validate="required"/> 
+							</div>
+					</div>
+
+
+					<div class="form-group  pb10" style="margin-bottom:0px;">
+							<label class="col-lg-2 control-label tr">拓展字段名</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="extendname" validate="required"/> 
+							</div>
+
+							<label class="col-lg-2 control-label tr">拓展字段值</label>
+							<div class="col-lg-2">
+								<input type="text" class="form-control input-sm" data-id="extendvalue" validate="required"/> 
+							</div>
+					</div>
+
+
+					<div class="form-group  pb10" style="margin-bottom:-3px;">
+						<label class="col-lg-2 control-label tr">提示</label>
+						<label class="col-lg-6 control-label tl">
+							保持字段名和值的个数一致多个字段名和值使用“，”分隔
+						</label>
+					</div>
+				</div>
+
+				<div class="form-group" style="margin-bottom:0px;">
+					<div class="col-lg-12 table-oper pr10" style="margin-bottom: 0">
+						<a href="javascript:void(0);" id="message_sent_save_btn" class="bgblue">
+							<i class="btn-commen save-white-btn"></i>
+							<span>保存</span>
+						</a>
+					</div>
+				</div> 
+			</form>
+		</div>
+	</div>
+<!-- 手动校时 -->
+	<div class="panel panel-default animated fadeInRight m0 mt5" id="hand_time_panel" onload="disptime()" style="z-index: 1">
+		<div class="panel-heading font-bold prel">
+			<span>手动校时</span>
+		</div>
+		<div class="panel-body pb0">
+			<form class="bs-example form-horizontal xs-form">
+				<div class="form-group pb10" style="margin-bottom:0px;">
+					<label class="col-lg-2 control-label tr">上次校时时间</label>
+					<label class="col-lg-2 control-label tl" data-id="lastTimingTime"></label>
+
+					<label class="col-lg-2 control-label tr">上次校时方式</label>
+					<label class="col-lg-2 control-label tl" data-id="lastTimingMethod"></label>
+				</div>
+
+				<div class="form-group pb10" style="margin-bottom:0px;">
+					<label class="col-lg-2 control-label tr">中心服务器时间</label>
+					<label class="col-lg-2 control-label  tl" id="myClock" data-id="serverTime"></label>
+
+					<label class="col-lg-2 control-label tr">设置中心服务器时间</label>
+					<div class="col-lg-2" style="width:230px">
+						<div class=" input-group w-all">
+							<input type="text" class="form-control input-sm no-event" 
+								data-id="manualSettingTime" data-type="date" validate="required">
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" style="margin-bottom:0px;">
+					<div class="col-lg-12 table-oper pr10" style="margin-bottom: 0">
+						<a href="javascript:void(0);" id="hand_time_apply_btn" class="bgblue">
+							<i class="btn-commen apply-btn"></i>
+							<span>应用</span>
+						</a>
+					</div>
+				</div> 
+			</form>
+		</div>
+	</div>
+<!-- NTP自动校时 -->
+	<div class="panel panel-default animated fadeInRight m0 mt5" id="npt_auto_panel">
+		<div class="panel-heading font-bold prel">
+			<span>NTP自动校时</span>
+		</div>
+		<div class="panel-body pb0">
+			<form class="bs-example form-horizontal xs-form" >
+				<div class="form-group  pb10" style="margin-bottom:0px;">
+					<label class="col-lg-2 control-label tr">NTP服务器设置</label>
+					<div class="col-lg-2">
+						<input type="text" class="form-control input-sm" data-id="ntpServiceConfig"
+							validate="required"/> 
+					</div>
+				</div>
+				<div class="form-group  pb10" style="margin-bottom:0px;">
+					<label class="col-lg-2 control-label tr">启动自动校验功能</label>
+					<div class="col-lg-2">
+						<div class="checkbox">
+							<label class="i-checks">
+								<input type="checkbox" data-id="ntpMachineChecking"><i></i>
+							</label>
+						</div>
+					</div>
+
+					<label class="col-lg-2 control-label tr">设定周期</label>
+					<div class="col-lg-1">
+						<select class="form-control input-sm" data-flag="t" data-id="perigonType" data-type="select" disabled>
+							<option value="1">每月</option>
+							<option value="2" >每周</option>
+							<option value="3">每天</option>
+						</select>
+					</div>
+					<div class="col-lg-1" style="width:150px">
+						<select class="form-control input-sm" data-flag="t" data-id="perigonContent" data-type="select" disabled>
+						</select>
+					</div>
+				
+				</div>
+				<div class="form-group  pb10" style="margin-bottom:0px;">
+					<label class="col-lg-2 control-label tr">设定时间</label>
+					<div class="col-lg-2">
+						<input type="text" class="form-control input-sm" data-flag="t" 
+							data-id="timingTime" disabled validate="required time"/>
+					</div>
+
+					<label class="col-lg-2 control-label tr">下次校对时间</label>
+					<label class="col-lg-2 control-label tl" data-id="nextTimingTime"></label>
+
+				</div>
+				<div class="form-group  pb10" style="margin-bottom:0px;">
+					<label class="col-lg-2 control-label tr">需要系统KEY认证</label>
+			    	<div class="col-lg-2">
+						<div class="checkbox">
+							<label class="i-checks">
+								<input type="checkbox" data-id="needKeyAttestation"><i></i>
+							</label>
+						</div>
+					</div>
+
+					<label class="col-lg-2 control-label tr">KEY</label>
+					<div class="col-lg-2">
+						<input type="text" class="form-control input-sm" data-id="key" disabled /> 
+					</div>
+				</div>
+				<div class="form-group  pb10" style="margin-bottom:0px;">
+					<label class="col-lg-2 control-label tr">KEY-ID</label>
+					<div class="col-lg-2">
+						<input type="text" class="form-control input-sm" data-id="keyId" 
+						disabled validate="required,number" /> 
+					</div>
+
+					<label class="col-lg-2 control-label tr">加密方式</label>
+					<div class="col-lg-2">
+						<select class="form-control input-sm" data-id="cipherMode" data-type="select" disabled>
+							<option value="MD5">MD5</option>
+						</select>
+					</div>
+	
+					<div class="col-lg-4 table-oper pt10" style="margin-bottom:0px;">
+						<!-- <div class="oper-col" id="npt_auto_test_btn">
+							<span class="oper-icons">
+								<span class="oper-icon">
+									<i class="icon-png oper-test"></i>
+									<i class="icon-png oper-test-active"></i>
+								</span>
+							</span>
+							<span class="oper-title">测试</span>
+						</div>
+						<div class="oper-col" id="npt_auto_synchronization_btn">
+							<span class="oper-icons">
+								<span class="oper-icon">
+									<i class="icon-png oper-refresh"></i>
+									<i class="icon-png oper-refresh-active"></i>
+								</span>
+							</span>
+							<span class="oper-title">同步</span>
+						</div>
+						<div class="oper-col" id="npt_auto_save_btn">
+							<span class="oper-icons">
+								<span class="oper-icon">
+									<i class="icon-png oper-save"></i>
+									<i class="icon-png oper-save-active"></i>
+								</span>
+							</span>
+							<span class="oper-title">保存</span>
+						</div> -->
+						
+						<a href="javascript:void(0);" id="npt_auto_test_btn" class="bgblue">
+							<i class="btn-commen test-btn"></i>
+							<span>测试</span>
+						</a>
+						<a href="javascript:void(0);" id="npt_auto_synchronization_btn">
+							<i class="btn-commen synchronization-btn"></i>
+							<span>同步</span>
+						</a>
+						<a href="javascript:void(0);" id="npt_auto_save_btn">
+							<i class="btn-commen save-btn"></i>
+							<span>保存</span>
+						</a>
+					</div> 
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+					

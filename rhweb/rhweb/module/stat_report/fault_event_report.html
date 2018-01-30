@@ -1,0 +1,171 @@
+<script src="/module/stat_report/report_show.js"></script>
+
+<div id="report_div">
+	<div class="panel panel-default" style="margin-top:5px;display: none;">
+	    <div class="panel-heading font-bold prel">
+	      	<span>配置事件</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">			
+				<a id="newDeploy" data-type="event">
+					<div class="rp-icon rp-zxpzsj"></div>
+					<span>最新配置<br/>事件TOP-10</span>
+				</a>
+				<a id="deployName" data-type="event">
+					<div class="rp-icon rp-pzsjmc"></div>
+					<span>配置事件<br/>名称-数量TOP-10</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="margin-top:5px;">
+		<div class="panel-heading font-bold prel">
+	      	<span>故障事件</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">	
+				<a id="faultReport" data-type="event">
+					<div class="rp-icon rp-gzsjtjbb"></div>
+					<span>故障事件统计报表</span>
+				</a>
+				<a id="NewFault" data-type="event">
+					<div class="rp-icon rp-zxgzsj"></div>
+					<span>最新故障<br/>事件TOP-10</span>
+				</a>
+				<a id="FaultName" data-type="event">
+					<div class="rp-icon rp-gzsjmcsl"></div>
+					<span>故障事件<br/>名称-数量TOP-10</span>
+				</a>	
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold prel">
+	      	<span>性能事件</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">
+				<a id="perfReport" data-type="event">
+					<div class="rp-icon rp-xnsjtjbb"></div>
+					<span>性能事件统计报表</span>
+				</a>
+				<a id="performanceTop10" data-type="event">
+					<div class="rp-icon rp-zxxnsj"></div>
+					<span>最新性能<br/>事件TOP-10</span>
+				</a>
+				<a id="performanceEventTop10" data-type="event">
+					<div class="rp-icon rp-xnsjmcsl"></div>
+					<span>性能事件<br/>名称-数量TOP-10</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="display: none">
+		<div class="panel-heading font-bold prel" >
+	      	<span>安全事件</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">
+				<a id="eventTypeNum" data-type="securityEvent">
+					<div class="rp-icon rp-aqsjlxsl"></div>
+					<span>安全事件<br/>类型-数量TOP-10</span>
+				</a>
+				<a id="eventLevelNameNumber" data-type="securityEvent">
+					<div class="rp-icon rp-aqsjdjmcsl"></div>
+					<span>安全事件等级-名称-数量TOP-10</span>
+				</a>
+				<a id="secEventDegreeNum" data-type="securityEvent">
+					<div class="rp-icon rp-aqsjdjsl"></div>
+					<span>安全事件等级-数量</span>
+				</a>	
+			</div>
+		</div>
+	</div>
+	<!-- <div class="col-lg-12">
+		<div>
+			<a id="faultReport" data-type="event">
+				<div class="rp-icon rp-gzsjtjbb"></div>
+				<span>故障事件统计报表</span>
+			</a>
+			<a id="NewFault" data-type="event">
+				<div class="rp-icon rp-zxgzsj"></div>
+				<span>最新故障<br/>事件TOP-10</span>
+			</a>
+			<a id="FaultName" data-type="event">
+				<div class="rp-icon rp-gzsjmcsl"></div>
+				<span>故障事件<br/>名称-数量TOP-10</span>
+			</a>
+		</div>		
+	</div>
+
+	<div class="col-lg-12 mt5">
+		<div>
+			<a id="perfReport" data-type="event">
+				<div class="rp-icon rp-xnsjtjbb"></div>
+				<span>性能事件统计报表</span>
+			</a>
+			<a id="performanceTop10" data-type="event">
+				<div class="rp-icon rp-zxxnsj"></div>
+				<span>最新性能<br/>事件TOP-10</span>
+			</a>
+			<a id="performanceEventTop10" data-type="event">
+				<div class="rp-icon rp-xnsjmcsl"></div>
+				<span>性能事件<br/>名称-数量TOP-10</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-lg-12 mt5">
+		<div>
+			<a id="newDeploy" data-type="event">
+				<div class="rp-icon rp-zxpzsj"></div>
+				<span>最新配置<br/>事件TOP-10</span>
+			</a>
+			<a id="deployName" data-type="event">
+				<div class="rp-icon rp-pzsjmc"></div>
+				<span>配置事件<br/>名称-数量TOP-10</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="col-lg-12 mt5" style="display: none;">
+		<div>
+			<a id="ldjbslbhqs" data-type="repo">
+				<div class="rp-icon rp-ldjbslbhqs"></div>
+				<span>漏洞级别数量变化趋势报表</span>
+			</a>
+			<a id="ldsltj" data-type="repo">
+				<div class="rp-icon rp-ldsltj"></div>
+				<span>漏洞数量TOP-10统计报表</span>
+			</a>
+			<a id="ldslfb" data-type="repo">
+				<div class="rp-icon rp-ldslfb"></div>
+				<span>漏洞数量TOP-10分布报表</span>
+			</a>
+			<a id="ldjbpg" data-type="repo">
+				<div class="rp-icon rp-ldjbpg"></div>
+				<span>漏洞级别评估报表</span>
+			</a>
+		</div>
+	</div> -->
+</div>
+
+
+<div class="prel bgwh animated fadeInRight" id="report_detail_div" style="display:none">
+	<div class="table-oper" id="table_oper">
+		<a class="oper-array" href="javascript:void(0);">
+			<span>导出操作</span><i class="icon-caret-down"></i>
+			<ul class="oper-list animated fadeInRight" id="export_ul">
+				<li data-id="pdf">导出PDF</li>
+				<li data-id="word">导出WORD</li>
+				<li data-id="html">导出HTML</li>
+				<li data-id="excel">导出EXCEL</li>
+			</ul>
+		</a>
+		<a href="javascript:void(0);" id="close_btn">
+			<span>关闭</span>
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+	<div id="report_detail_show_div"></div>
+</div>

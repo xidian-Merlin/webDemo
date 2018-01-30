@@ -1,0 +1,205 @@
+<tem>
+<!-- 人员信息添加 -->
+<div id="user_form_template" class="template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label required">姓名</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="name" maxlength="32" validate="required,stringLimit0">
+				</div>
+		        <label class="col-lg-2 control-label">性别</label>
+		        <div class="col-lg-4">
+		      	  <div class="radio l">
+		      		  <label class="i-checks">
+		      			  <input type="radio" data-id="sex" value="1" name="sex" checked>
+		      				  <i></i>男
+		      			  </input>
+		      		  </label>
+		      	  </div>
+		      	  <div class="radio l ml10">
+		      		  <label class="i-checks">
+		      			  <input type="radio" value="2" name="sex">
+		      				  <i></i>女
+		      			  </input>
+		      		  </label>
+		      	  </div>
+		        </div>
+		    </div>
+
+		    <div class="form-group">
+		      <label class="col-lg-2 control-label required">职务</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="staffPost" maxlength="32" validate="required,stringLimit0">
+		      </div>
+		      <label class="col-lg-2 control-label">办公电话</label>
+		      <div class="col-lg-4">
+		        <input type="text" class="form-control input-sm" data-id="mobile" validate="tel">
+		      </div>
+		    </div>
+
+			<div class="form-group">
+		      <label class="col-lg-2 control-label">手机</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="telphone" validate="phone">
+		      </div>
+		      <label class="col-lg-2 control-label">Email</label>
+		      <div class="col-lg-4">
+		        <input type="text" class="form-control input-sm" data-id="email" validate="email">
+		      </div>
+		    </div>
+
+			<div class="form-group">
+		      <label class="col-lg-2 control-label">备注</label>
+		      <div class="col-lg-9">
+		      <textarea cols="30" rows="3" maxlength="512" class="form-control" data-id="remark" style="word-wrap:break-word"></textarea>
+		      </div>
+		    </div>
+    </form>
+    </div>
+</div>
+
+<div id="user_form_detail_template" class="template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label">姓名 :</label>
+				<label class="col-lg-3 control-label tl" data-id="name"></label>
+
+		        <label class="col-lg-2 control-label">性别 :</label>
+		        <label class="col-lg-4 control-label tl" data-id="sexName"></label>
+		    </div>
+
+		    <div class="form-group">
+		      <label class="col-lg-2 control-label">职务 :</label>
+		      <label class="col-lg-3 control-label tl" data-id="staffPost"></label>
+
+		      <label class="col-lg-2 control-label">办公电话 :</label>
+		      <label class="col-lg-4 control-label tl" data-id="mobile"></label>
+		    </div>
+
+			<div class="form-group">
+		      <label class="col-lg-2 control-label">手机 :</label>
+		      <label class="col-lg-3 control-label tl" data-id="telphone"></label>
+
+		      <label class="col-lg-2 control-label">Email :</label>
+		      <label class="col-lg-4 control-label tl" data-id="email"></label>
+		    </div>
+
+			<div class="form-group">
+		      <label class="col-lg-2 control-label">备注 :</label>
+		      <label class="col-lg-9 control-label tl" maxlength="100" data-id="remark"></label>
+		    </div>
+    </form>
+    </div>
+</div>
+
+<div id="web_form_template" class="template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label required">网段名称</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="ipName" maxlength="32" validate="required,stringLimit0">
+				</div>
+		      <label class="col-lg-3 control-label">IP地址类型</label>
+		      <div class="col-lg-3">
+		      	<div class="radio l">
+		      		<label class="i-checks">
+		      			<input type="radio" data-id="ipStatus" value="IPV4" name="ipStatus" checked>
+		      				<i></i>IPV4
+		      			</input>
+		      		</label>
+		      	</div>
+		      	<div class="radio l ml10">
+		      		<label class="i-checks">
+		      			<input type="radio" value="IPV6" name="ipStatus">
+		      				<i></i>IPV6
+		      			</input>
+		      		</label>
+		      	</div>
+		      </div>
+		    </div>
+
+		    <div class="form-group">
+		      <label class="col-lg-2 control-label">起始IP(IPV4)</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="ipvStart" data-ip="ipv4" maxlength="15" validate="required,ipv4">
+		      </div>
+		      <label class="col-lg-3 control-label">终止IP(IPV4)</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="ipvEnd" maxlength="15" validate="ipv4">
+		      </div>
+		    </div>
+
+			<div class="form-group" id="mask_div">
+				<div class="col-lg-1" style="padding-right:0;">
+					<div class="checkbox tr">
+						<label class="i-checks">
+							<input type="checkbox" id="control_mask"><i></i>
+						</label>
+					</div>
+				</div>
+		    	<label class="col-lg-1 control-label tr">掩码</label>
+			    	<div class="col-lg-3" style="padding-right:0;">
+			    		<input type="text" class="form-control input-sm" data-id="maskIp" style="width: 160px;" maxlength="15" validate="ipv4" disabled>
+			    	</div>
+			    	<div class="col-lg-1" style="padding:0;margin:0;">
+			        	<input type="text" class="form-control input-sm" data-id="maskCode" style="width: 60px;" maxlength="2" validate="number,between16~30" style="padding: 0;" disabled>
+			    	</div>
+			    	<div class="col-lg-2">
+			    		<a class="a_btn prel" value="生成" data-id="maskCreate" style="margin-left:0;top:6px">生成</a>
+			    	</div>
+		    </div>
+
+			<div class="form-group">
+		      <label class="col-lg-2 control-label">IP地址(IPV6)</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="ipvStart" data-ip="ipv6" maxlength="39" validate="ipv6">
+		      </div>
+		    </div>
+    </form>
+    </div>
+</div>
+
+<!-- 网段信息修改详情 -->
+<div class="template" id="user_form_edit_detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label tr">网段名称 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="ipName"></label>
+
+			    <label class="col-lg-3 control-label tr">包含IP个数 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="ipTotal"></label> 
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label tr">被占用IP个数 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="ipUsed"></label>
+
+			    <label class="col-lg-3 control-label tr">空闲IP个数 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="ipFree"></label> 
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label tr">起始IP :</label>
+			    <label class="col-lg-3 control-label tl" data-id="ipvStart"></label>
+
+			    <label class="col-lg-3 control-label tr">终止IP :</label>
+			    <label class="col-lg-3 control-label tl" data-id="ipvEnd"></label> 
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label tr">安全域 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="secutiryDomName"></label>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+</tem>

@@ -1,0 +1,94 @@
+<script src="/module/sys_manage/sys_base_config/menu_config.js"></script>
+<style type="text/css">
+	#left-panel .ztree li{
+		padding: 2px 0;
+	}
+</style>
+<div id="menu_div" class="w-all h-all appbg" style="display:table">
+	<!-- 左侧 -->
+	<div style="width:300px;display:table-cell;padding:50px 10px 10px 10px">
+		<div class="panel panel-default m0" id="left_div">
+			<div class="panel-heading font-bold prel">
+				<span>菜单树</span>
+			</div>
+			<div class="panel-body p1">
+				<ul class="ztree" id="menu_tree"></ul>
+			</div>
+		</div>
+	</div>
+
+	<!-- 右侧 -->
+	<div style="display:table-cell;padding:50px 10px 10px 10px">
+		<div class="panel panel-default animated fadeInRight m0" id="panel">
+			<div class="panel-heading font-bold prel">
+				<span>菜单配置</span>
+			</div>
+			<div class="panel-body p1 prel">
+				<!-- 遮罩 -->
+				<div class="mask" id="mask"></div>
+				<div class="panel-body no-tb-padder">
+					<form class="bs-example form-horizontal xs-form" id="form">
+						<div class="form-group">
+						    <label class="col-lg-2 control-label">菜单名称</label>
+						    <div class="col-lg-6">
+						    	<input type="hidden" data-id="id">
+						    	<input type="hidden" data-id="pId">
+						        <input type="text" class="form-control input-sm" data-id="title" maxlength="32" validate="required">
+						    </div>		    
+						</div>
+
+						<div class="form-group">
+						    <label class="col-lg-2 control-label">链接URL</label>
+						    <div class="col-lg-6">
+						        <input type="text" class="form-control input-sm" data-id="location">
+						    </div>		    
+						</div>
+
+						<div class="form-group">
+						    <label class="col-lg-2 control-label">显示状态</label>
+						    <div class="col-lg-6">
+								<div class="radio l">
+									<label class="i-checks">
+									  <input type="radio" value="1" data-id="showFlag" name="showFlag" checked><i></i>显示
+									</label>
+								</div>
+								<div class="radio l ml10">
+									<label class="i-checks">
+									  <input type="radio" value="0" name="showFlag"><i></i>隐藏
+									</label>
+								</div>
+						    </div>	    
+						</div>
+
+						<div class="form-group">
+							<label class="col-lg-2 control-label">选择角色</label>
+							<div class="col-lg-6">
+								<select multiple="multiple" class="form-control input-sm" data-type="select" data-id="roleType">
+									<option value="3">运维管理</option>
+									<option value="2">系统审计</option>
+									<option value="1">用户管理</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+						    <label class="col-lg-2 control-label">描述</label>
+						    <div class="col-lg-6">
+						        <textarea class="form-control input-sm" maxlength="256" data-id="description"></textarea>
+						    </div>		    
+						</div>
+
+						<div class="form-group">
+		  		            <div class="col-lg-8 tr">
+		  			            <button id="submit_btn" class="btn btn-info" type="button">提交</button>
+		  		            </div>
+			            </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		
+
+</div>

@@ -1,0 +1,557 @@
+<script type="text/javascript" src="/js/draw/fmatColVal.js"></script>
+	<script type="text/javascript">
+	
+	function resetColor(isGroup){
+		if(isGroup == "isFont"){
+			//$(window.frames["fontcoloriframe"].document).find("#baseColorModel").val("fontcolor");
+			//var input_color = $(window.frames["fontcoloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input");
+			//$("#modifyGroupStlye").find("input[name='fontcolor']").val(input_color.val().colorRgb());
+			//document.getElementById("fontcoloriframe").contentWindow.resetFontColor();
+			//$(window.frames["fontcoloriframe"].document).find("#baseModel").val("modifyGroupStlye");
+			
+		}
+		else if(isGroup!=undefined){
+			$(window.frames["groupcoloriframe"].document).find("#baseColorModel").val("color");
+			var input_color = $(window.frames["groupcoloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input");
+			$("#modifyGroupStlye").find("input[name='color']").val(input_color.val().colorRgb());
+			$(window.frames["groupcoloriframe"].document).find("#baseModel").val("modifyGroupStlye");
+			
+		}else{
+			$(window.frames["coloriframe"].document).find("#baseColorModel").val("color");
+			var input_color = $(window.frames["coloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input");
+			$("#canvasDrawShowAttrLine").find("input[name='color']").val(input_color.val().colorRgb());
+			$(window.frames["coloriframe"].document).find("#baseModel").val("canvasDrawShowAttrLine");
+			
+		}
+
+	}
+	$(function(){
+		// $(".spana_spanb").hover(function(){
+		// 		$(this).css("background-color","rgb(239,239,239)");
+		// 		// style="background-color: rgb(200,200,200)"
+		// 	},function(){
+		// 		$(this).css("background-color","");
+		// 	});
+
+		index_menuHide();
+		
+		$("#stageSelectMode,#correlation_delete").click(function(){
+			if($(this).attr("clickTime") != true && $(this).attr("clickTime")!= "true"){
+				$(this).css("background-color","#275e93");
+				$(this).attr("clickTime",true);
+			}
+			else{
+				$(this).css("background-color","");
+				$(this).removeAttr("clickTime");
+			}
+		});
+	});
+	function getIsSelectById(id){
+		if($("#"+id).attr("clickTime") == true || $("#"+id).attr("clickTime") == 'true'){
+			return true;
+		}
+		return false;
+	} 
+	function establishRelationshipModel_isDelete(){
+		return getIsSelectById("correlation_delete");
+	}
+	function setLineSize(w){
+		$("#lineSize"+w).trigger("click");
+	}
+	function setFontSize(size){
+		$("#modifyGroupStlye").find("select[name='fontsize']").val(size);
+	}
+	function setColor(color,isGroup){
+		var hex = ("RGB("+color+")").colorHex();
+		if(isGroup == "isFont"){
+			//$(window.frames["groupcoloriframe"].document).find("#baseColor").val(hex);
+			//$(window.frames["groupcoloriframe"].document).find("#baseColor").trigger("change");
+			//$(window.frames["fontcoloriframe"].document).find("#baseColorModel").val("fontcolor");
+			//document.getElementById("fontcoloriframe").contentWindow.setFontColor(color); 
+			//设置模式
+			//$(window.frames["fontcoloriframe"].document).find("#baseModel").val("modifyGroupStlye");
+			//$(window.frames["fontcoloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input").val(hex);
+			
+			//$(window.frames["fontcoloriframe"].document).find("#baseColor").trigger("change");
+			//$(window.frames["fontcoloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input").trigger("blur");
+		}
+		else if(isGroup != undefined){
+			$("#modifyGroupStlye").find("input[name='color']").val(color);
+			$(window.frames["groupcoloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input").trigger("focus");
+			//$(window.frames["fontcoloriframe"].document).find("#baseColorModel").val("color");
+			$(window.frames["groupcoloriframe"].document).find("#baseColor").val(hex);
+			
+			//设置模式
+			$(window.frames["groupcoloriframe"].document).find("#baseModel").val("modifyGroupStlye");
+			$(window.frames["groupcoloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input").val(hex);
+			$(window.frames["groupcoloriframe"].document).find("#baseColor").trigger("change");
+			$(window.frames["groupcoloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input").trigger("blur");
+		}
+		else{
+			$("#canvasDrawShowAttrLine").find("input[name='color']").val(color);
+			$(window.frames["coloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input").trigger("focus");
+			$(window.frames["coloriframe"].document).find("#baseColorModel").val("color");
+			$(window.frames["coloriframe"].document).find("#baseColor").val(hex);
+
+			$(window.frames["coloriframe"].document).find("#baseModel").val("canvasDrawShowAttrLine");
+			$(window.frames["coloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input").val(hex);
+			
+			$(window.frames["coloriframe"].document).find("#baseColor").trigger("change");
+			
+			$(window.frames["coloriframe"].document).find(".sp-input-container,.sp-cf").find(".sp-input").trigger("blur");
+		}
+
+
+	}
+	function setSlider(s,isGroup)
+	{
+		var iframeId = "slideriframe";
+		if(isGroup != undefined){
+			iframeId = "slideriframe2";
+			$("#modifyGroupStlye").find("input[name='slider']").val(s);
+			$(window.frames["slideriframe2"].document).find("#parentId").val("modifyGroupStlye");
+		}
+		else{
+			$("#canvasDrawShowAttrLine").find("input[name='slider']").val(s);
+			$(window.frames["slideriframe"].document).find("#parentId").val("canvasDrawShowAttrLine");
+		}
+			
+		//jquery-completed
+		var pW = Number($(window.frames[iframeId].document).find(".defaultbar").width());
+		var w = pW*Number(s);
+		$(window.frames[iframeId].document).find(".jquery-completed").width(w);
+		var w2 = Number($(window.frames[iframeId].document).find(".jquery-jslider").width());
+		$(window.frames[iframeId].document).find(".jquery-jslider").css("left",w+"PX");
+		$(window.frames[iframeId].document).find("#showslider").text(s);
+		
+	}
+	</script>
+<div class="row" id="flashContent" data-id="" style="background-color: rgb(29,29,29);border: none;overflow: hidden;width: 100%;height: 100%;padding: 0;margin: 0;">
+	<canvas id="canvasDraw" width="100%" height="100%" style="cursor: pointer;"></canvas>
+</div>
+<div id="tool_div" class="pabs tran5" style="top: 20px;right: 20px;width:300px;z-index: 2;overflow: auto;">
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		<div class="panel panel-default" style="border-color: #396A88;">
+			<div class="panel-heading prel" role="tab" id="tool_heading" style="background-color: #15508a;cursor:default;height: 37px;">
+				<h4 class="panel-title">
+					<a style="color: white;cursor:default;">
+						组件栏
+					</a>
+
+				</h4>
+				<span class="pabs" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="right: 10px;top: 10px;background-image: url(/img/app_monitor_topo/toggle.png);background-size: 17px 17px;width: 17px;height: 17px;cursor: pointer;"></span>
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+				<div class="panel-body" style="height: 300px;overflow: auto;background-color: #0d131b; -webkit-column-count:4;-moz-column-count:4;column-count:4;" id="canvasTool">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+	<div id="" class="col-md-3 pr5 pl5" style="position: absolute;
+    
+    top: 20px;z-index: 1;width: 820px;height: 38px;">
+	    
+	    	     <div style="padding:0;height: 100%;width: 100%;" class="topo-opra-bar">
+			        <a id="exportJSONData" href="javascript:void(0);" title="保存">
+			            <i class="topo-save-btn"></i><span>保存</span>
+			        </a>
+
+			        <a id="emptyScene" href="javascript:void(0);" title="清空">
+			            <i class="topo-clear-btn"></i><span>清空</span>
+			        </a>
+			        <a href="javascript:void(0);">
+			        	<i class="topo-align-left" name="modifyFunction" value="left"></i>
+			            <i class="topo-align-right" name="modifyFunction" value="right" style="margin-left: 5px;"></i>
+			            <i class="topo-align-top" name="modifyFunction" value="up" style="margin-left: 5px;"></i>
+			            <i class="topo-align-bottom" name="modifyFunction" value="down" style="margin-left: 5px;"></i>
+			        </a>
+
+			       <!--  <a name="modifyFunction" value="left" href="javascript:void(0);" class="" title="左对齐">
+			           <i class="topo-align-left"></i>
+			       </a>
+			       <a name="modifyFunction" value="right" href="javascript:void(0);" class="" title="右对齐">
+			           <i class="topo-align-right"></i>
+			       </a>
+			       <a name="modifyFunction" value="up" href="javascript:void(0);" class="" title="上对齐">
+			           <i class="topo-align-top"></i>
+			       </a>
+			       <a name="modifyFunction" value="down" href="javascript:void(0);" class="" title="下对齐">
+			           <i class="topo-align-bottom"></i>
+			       </a> -->
+
+			        <a id="stageSelectMode" href="javascript:void(0);" title="拖选/分组，此模式右键为设置分组，如需其他操作请取消选中">
+			            <i class="topo-group-btn"></i>拖选/分组
+			        </a>
+			        <a title="删除模式，选中的情况下双击可批量删除关联对象，注：在‘拖选/分组’模式下生效" id="correlation_delete" href="javascript:void(0);">
+			            <i class="topo-removeMode-btn"></i>删除模式
+			        </a>
+			        <a id="backToFirstIn" href="javascript:void(0);" title="重置，将恢复到初始化状态">
+			            <i class="topo-reset-btn"></i>重置
+			        </a>
+			        <a id="reSetMessage" style="color: white;" href="javascript:void(0);" title="修改应用基本信息">
+			        	<i class="topo-editInfo-btn"></i>基本信息
+					</a>
+			    </div>
+</div>
+
+<ul id="node_menu" class="contextmenu" style="display:none;" tabindex="999">
+	<li><a>更改属性</a></li>
+	<li id="monitor"><a>绑定/解除监控器</a></li>
+	<!-- <li><a>撤销上一次操作</a></li> -->
+	<li><a>删除该节点</a></li>
+</ul>
+<ul id="link_menu" class="contextmenu" style="display:none;" tabindex="999">
+	<li><a>更改属性</a></li>
+	<!-- <li><a>撤销上一次操作</a></li> -->
+	<li><a>删除连线</a></li>
+</ul>
+<ul id="container_menu" class="contextmenu" style="display:none;" tabindex="999">
+	<li><a>更改属性</a></li>
+	<li><a>增删节点</a></li>
+	<!-- <li><a>撤销上一次操作</a></li> -->
+	<li><a>删除容器</a></li>
+</ul>
+
+<!-- <div id="canvasDrawShowAttrLine" class="col-md-3 pr5 pl5" style="position: absolute;top: 20px;right:20px; z-index: 20000;width: 600px;display: none;padding: 0;margin: 0;">
+	<div class="panel panel-default panel-style" style="height:100%;border: none;background-color:#404A53;margin: 0;">
+        <div class="table_div p10" style="overflow: auto;">
+        	<input id="mousedown_x" type="hidden"/>
+        	<input id="mousedown_y" type="hidden"/>
+        	<input id="pidLine" type="hidden"/>
+        	<input id="pTypeLine" type="hidden"/>
+        	<div class="table-oper" >
+		        <a href="javascript:void(0);" id="deleteLine">
+		            <i class="btn-commen delete-btn"></i>
+		            <span>删除连线</span>
+		        </a>
+		        <a id="canvasDrawShowAttrLine_close" href="javascript:void(0);">
+		            <i class="btn-commen"></i>
+		            <span>关闭</span>
+		        </a>
+  			    <a id="canvasDrawShowAttrLine_reset" name="canhide" href="javascript:void(0);">
+		            <i class="btn-commen"></i>
+		            <span>修改</span>
+		        </a>
+		    </div>
+		    <div class="panel-body" id="pLine_dependence" style="display: none;">
+		    	<div class="form-group">
+		    		<label class="col-lg-2 control-label" style="color: white;text-align: right;">依赖类型</label>
+				    <div class="col-lg-10">
+				        <span class="form-control input-sm" >
+				        <input id="canvasDrawShowAttrLine_line_KEY" value="KEY" name="reType" type="radio"/>关键依赖
+				        <input id="canvasDrawShowAttrLine_line_REF" value="REF" name="reType" type="radio"/>参考依赖</span>
+				    </div>
+				    </div>
+				<div class="form-group">
+				    <label class="col-lg-2 control-label" style="color: white;text-align: right;">连线类型</label>
+				    <div class="col-lg-10">
+				        <span class="form-control input-sm" >
+				        <input id="canvasDrawShowAttrLine_LineType1" value="Link" name="reLineType" type="radio"/>直连
+				        <input id="canvasDrawShowAttrLine_LineType2" value="FoldLink" name="reLineType" type="radio"/>折线
+				        <input id="canvasDrawShowAttrLine_LineType3" value="FlexionalLink" name="reLineType" type="radio"/>2次折线
+				        <input id="canvasDrawShowAttrLine_LineType4" value="NoLink" name="reLineType" type="radio"/>直线
+				        <input id="canvasDrawShowAttrLine_LineType5" value="SquarelyFlexionalLink" name="reLineType" type="radio"/>直角2次折线</span>
+				        
+				    </div>
+				</div>
+				
+				<div class="form-group">
+				    <label class="col-lg-2 control-label" style="color: white;text-align: right;padding: 4px;">拐点距离</label>
+				    <div class="col-lg-5">
+				        <span class="form-control input-sm" >
+				        <input id="canvasDrawShowAttrLine_doMod" type="checkbox"/>是否启用同级批量操作
+				        </span>
+				        
+				    </div>
+				    <label class="col-lg-1 control-label" style="color: white;text-align: right;padding: 4px;">距离</label>
+				    <div class="col-lg-4">
+				        <input class="form-control input-sm" id="canvasDrawShowAttrLine_distance" value="44" name="reLineType" type="text"/>
+				    </div>
+				</div>
+		    </div>
+		    <div class="panel-body" id="pLine_line_arrow_layer" style="display: none;">
+		    	<div class="form-group">
+					<label class="col-lg-2 control-label" style="color: white;text-align: right;">连线名称</label>
+				    <div class="col-lg-10">
+				        <input name="lineText" type="text" class="form-control input-sm" data-id="" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label class="col-lg-2 control-label" style="color: white;text-align: right;">线条宽度</label>
+				    <div class="col-lg-10">
+				        <input name="size" type="hidden" trgfunction="setLineSize"/>
+				         <div class="form-control" style="height: 106px;">
+				         	<div value="1" id="lineSize1" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 5px;">
+				         		<div style="width: 100%;height: 1px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="2" id="lineSize2" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 5px;">
+				         		<div style="width: 100%;height: 2px;background-color: black;">
+				         		</div>
+				         	</div>
+						    <div value="3" id="lineSize3" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 4px;">
+				         		<div style="width: 100%;height: 3px;background-color: black;">
+				         		</div>
+				         	</div>
+ 						    <div value="4" id="lineSize4" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 4px;">
+				         		<div style="width: 100%;height: 4px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="5" id="lineSize5" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 3px;">
+				         		<div style="width: 100%;height: 5px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="6" id="lineSize6" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 3px;">
+				         		<div style="width: 100%;height: 6px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="7" id="lineSize7" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 2px;">
+				         		<div style="width: 100%;height: 7px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="8" id="lineSize8" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 2px;">
+				         		<div style="width: 100%;height: 8px;background-color: black;">
+				         		</div>
+				         	</div>
+				         </div>
+				    </div>
+				</div>
+		    	<div class="form-group">
+					<label class="col-lg-2 control-label" style="color: white;text-align: right;"></label>
+				    <div class="col-lg-10">
+				    	<input name="slider" type="hidden" trgfunction="setSlider"/>
+				         <iframe style="border: none;" scrolling="no" name="slideriframe" id="slideriframe" src="/slider/slider.html" width="420px" height="60px"></iframe>
+				    </div>
+				</div>
+		    	<div class="form-group">
+				    <label class="col-lg-2 control-label" style="color: white;text-align: right;">线条颜色</label>
+				    <div class="col-lg-10">
+				         <input name="color" type="hidden" trgfunction="setColor"/>
+				         <iframe style="border: none;" scrolling="no" name="coloriframe" id="coloriframe" src="/color/colorStage.html" width="420px" height="242px" onload="resetColor();"></iframe>
+				    </div>
+				</div>
+		    </div>
+        </div>
+    </div>
+</div> -->
+<!-- <div id="modifyGroupStlye" class="col-md-3 pr5 pl5" style="position: absolute;
+top: 20px;right:20px; z-index: 20000;width: 600px;display: none;padding: 0;margin: 0;">
+	<div class="panel panel-default panel-style" style="height:100%;border: none;background-color:#404A53;margin: 0;">
+        <div class="table_div p10" style="overflow: auto;padding-top: 10px;">
+        	<input id="groupId" type="hidden"/>
+        	<div class="table-oper" >
+				<a id="modifyGroupStlye_remove" href="javascript:void(0);">
+		            <i class="btn-commen"></i>
+		            <span class="" >删除分组</span><span name="canhide"></span>
+		        </a>
+		        <a id="modifyGroupStlye_close" href="javascript:void(0);">
+		            <i class="btn-commen"></i>
+		            <span class="" >关闭</span><span name="canhide"></span>
+		        </a>
+		        <a id="modifyGroupStlye_reset" href="javascript:void(0);">
+		            <i class="btn-commen"></i>
+		            <span name="" class="">修改</span>
+		        </a>
+		    </div>
+		    <div class="panel-body" id="" style="">
+		    	<div class="form-group">
+					<label class="col-lg-2 control-label" style="color: white;text-align: right;"></label>
+				    <div class="col-lg-10">
+				    	<input name="slider" type="hidden" trgfunction="setSlider"/>
+				         <iframe style="border: none;" scrolling="no" name="slideriframe2" id="slideriframe2" src="/slider/slider.html" width="420px" height="60px"></iframe>
+				    </div>
+				</div>
+		    	<div class="form-group">
+				    <label class="col-lg-2 control-label" style="color: white;text-align: right;">背景颜色</label>
+				    <div class="col-lg-10">
+				         <input name="color" type="hidden" trgfunction="setColor" myatr="test"/>
+				         <iframe style="border: none;" scrolling="no" name="groupcoloriframe" id="groupcoloriframe" src="/color/colorStage.html" width="420px" height="242px" onload="resetColor('isGroup');"></iframe>
+				    </div>
+				</div>
+
+					
+				<div class="form-group" style="display: none;">
+				    <label class="col-lg-2 control-label" style="color: white;text-align: right;">字体颜色</label>
+				    <div class="col-lg-10">
+    					     <input name="color" type="hidden" trgfunction="setColor" myatr="test"/>
+				         <iframe style="border: none;" scrolling="no" name="fontcoloriframe" id="fontcoloriframe" src="/color/colorStage.html" width="420px" height="242px" onload="resetColor('isFont');"></iframe>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label class="col-lg-2 control-label" style="color: white;text-align: right;">分组名称</label>
+				    <div class="col-lg-10">
+				        <input name="groupname" class="form-control input-sm" type="text" trgfunction="setLineSize"/>
+				    </div>
+				</div>
+
+				<div class="form-group" style="display: none;">
+				    <label class="col-lg-2 control-label" style="color: white;text-align: right;">文本模式</label>
+				    <div class="col-lg-10">
+				        <p style="color: white;">
+				        <input name="textPosition" value="Middle_Center" type="radio"/>居中
+				        <input name="textPosition" value="Top_Center" type="radio"/>居上
+				        <input name="textPosition" value="Bottom_Center" type="radio"/>居下
+				        <input name="textPosition" value="Middle_Left" type="radio"/>居左
+				        <input name="textPosition" value="Middle_Right" type="radio"/>居右
+				        <input name="textPosition" value="Bottom_Right" type="radio"/>右下
+				        <input name="textPosition" value="Bottom_Left" type="radio"/>左下
+				        <input name="textPosition" value="Top_Right" type="radio"/>右上
+				        <input name="textPosition" value="Top_Left" type="radio"/>左上
+				    	</p>
+				    </div>
+				</div>
+				<div class="form-group" style="display: none;">
+					    <label class="col-lg-2 control-label" style="color: white;text-align: right;">分组名称</label>
+					    <div class="col-lg-4">
+					        <input name="groupname" class="form-control input-sm" type="text" trgfunction="setLineSize"/>
+					    </div>
+					    <label class="col-lg-2 control-label" style="color: white;text-align: right;">字号</label>
+					    <div class="col-lg-4">
+					        <select class="form-control input-sm" name="fontsize">
+					        	<option value="12">12</option>
+					        	<option value="24">24</option>
+					        	<option value="36">36</option>
+					        	<option value="48">48</option>
+					        	<option value="60">60</option>
+					        	<option value="72">72</option>
+					        	<option value="84">84</option>
+					        </select>
+					    </div>
+				</div>
+		    </div>
+        </div>
+    </div>
+</div> -->
+<!-- <div id="canvasDrawShowAttr" class="col-md-3 pr5 pl5" style="position: absolute;z-index: 20000;right: 20px;width: 400px;top: 20px;overflow: auto;padding: 0;margin: 0;">
+	<div class="panel panel-default panel-style" style="height:100%;border: none;background-color:#404A53;margin: 0;">
+	    <div class="table_div p10" style="">
+	    	<div class="table-oper" >
+		        <a href="javascript:void(0);" id="deleteNode">
+		            <i class="btn-commen delete-btn"></i>
+		            <span>删除节点</span>
+		        </a>
+		        <a id="closeCanvasDrawShowAttrLineDiv" href="javascript:void(0);"> id="closeeditorBox"
+		            <i class="btn-commen"></i>
+		            <span class="">关闭</span>
+		        </a>
+		    </div>
+	    	<div class="panel-body no-tb-padder">
+		    	<div class="form-group">
+				    <label class="col-lg-4" style="color: white;">节点名称</label>
+				    <div class="col-lg-8">
+				        <input  id="pname" type="text" class="form-control input-sm"
+				         validate="required">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label class="col-lg-4" style="color: white;">节点ID</label>
+				    <label class="col-lg-8" style="color: white;" id="pid"></label>
+				    <div class="col-lg-8">
+				        <span class="form-control input-sm"  id="pid"></span>
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label class="col-lg-4" style="color: white;">类型</label>
+				    <label class="col-lg-8" style="color: white;" id="ptype"></label>
+				    <div class="col-lg-8">
+				        <span class="form-control input-sm"  id="ptype"></span>
+				    </div>
+				</div>
+				
+				<div class="form-group"  id="systemApp_displayType_Id" title="显示或隐藏节点">
+				    <label class="col-lg-4" style="color: white;">节点模式</label>
+				    <div class="col-lg-8">
+				        <select class="form-control input-sm" data-id="systemApp_displayType" id="systemApp_displayType">
+				        	<option value="1">显示</option>
+				        	<option value="0">隐藏</option>
+				        </select>
+				    </div>
+				</div>
+			</div>
+		    <div class="panel-body no-tb-padder">
+	 	        <div class="form-group">
+	        		<div style="color: white;">
+						<p>依赖节点&nbsp;&nbsp;&nbsp;&nbsp;<span style="padding: 2px;" title="选中后在画板中不体现连接线条"><span style="padding: 2px;">隐性依赖</span><input id="hiddenvalue" type="checkbox"/></span></p>
+					    <div class="centent">
+					    	<select multiple id="select1" style="width:149px;height:100px;color: black;">
+					    	</select>
+					    	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    	<select multiple id="select2" style="width:149px;height:100px;color: black;">
+					    	</select>
+					    </div>
+	        		</div>
+	    			<br>
+	        		<div style="">
+							<div id="monitorList" class="prel w-all h-all " data-type="tabel-fix-width"  style="height: 165px;">
+								<p style="color: white;">双击下列选项添加监控器</p>
+								<div class="prel w-all h-all" data-type="tabel-fix-width" style="padding-bottom: 20px;">
+									<div class="um-grid-head-outer"style="font-size: 12px;">
+										<div class="um-grid-head">
+											<table>
+												<tbody>
+												<tr class="um-grid-head-tr" style="border-top-style: none;">
+												<td style="">
+												<div style="font-size: 12px;">
+												<span class="custom-down" data-id="sort"></span>监控器名称
+												<span class="resize" data-id=""></span></div></td>
+												<td style="">
+												<div style="font-size: 12px;">
+												<span class="custom-down" data-id="sort"></span>监控器类型
+												<span class="resize" data-id=""></span></div></td>
+												<td style="">
+												<div style="font-size: 12px;">
+												<span class="custom-down" data-id="sort"></span>资源名称
+												<span class="resize" data-id=""></span></div></td>
+												</tr>
+											</tbody>
+											</table>
+										</div>
+										<div class="um-grid-head" style="overflow: auto;height: 130px;">
+											<table>
+											<tbody id="select_monitor1" >
+											</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="monitorObj" class="um-grid-head" style="overflow: auto;height: 220px;display: none;color: white;">
+									<p>配置的监控器如下：</p>
+									<div class="panel-body no-tb-padder">
+								    	<div class="form-group">
+										    <label class="col-lg-4" style="color: white;">监控器类型</label>
+										    <label class="col-lg-8 input-sm" style="color: white;" id="mtype"></label>
+										    <div class="col-lg-8">
+										        <span class="form-control input-sm"  id="mtype"></span>
+										    </div>
+										</div>
+										<div class="form-group">
+										    <label class="col-lg-4" style="color: white;">监控器名称</label>
+										    <label class="col-lg-8 input-sm" style="color: white;" id="mname"></label>
+										    <div class="col-lg-8">
+										        <span class="form-control input-sm"  id="mname"></span>
+										    </div>
+										</div>
+										<div class="form-group">
+										    <label class="col-lg-4" style="color: white;">资源名称</label>
+										    <label class="col-lg-8 input-sm" style="color: white;" id="assetname"></label>
+										    <div class="col-lg-8">
+										        <span class="form-control input-sm"  id="assetname"></span>
+										    </div>
+										</div>
+									</div>
+									<div class="table-oper" >
+								        <a id="unmountMoniter" href="javascript:void(0);">
+								            <i class="btn-commen delete-btn"></i>
+								            <span>删除监控器</span>
+								        </a>
+								    </div>
+							</div>
+		        </div>
+	        </div>
+	    </div>
+	</div>
+	</div>
+</div> -->
+<script src="/module/sys_manage/monitor_config/app_monitor_config_topo1.js"></script>

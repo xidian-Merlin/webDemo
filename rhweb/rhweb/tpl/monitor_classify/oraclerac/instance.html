@@ -1,0 +1,65 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>集群实例信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="grid_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var grid_info_url = "monitorview/security/OracleRACMonitor/queryOracleRACInstance";
+
+var grid_info_header = [
+                            {text:'实例编号',name:"instanceNumber"},
+                            {text:'实例名称',name:"instanceName"},
+                            {text:'主机名称',name:"hostName"},
+                            {text:'实例版本信息',name:"version"},
+                            {text:'实例启动时间',name:"startTime"},
+                            {text:'实例状态',name:"status"},
+                            {text:'是否并行服务器模式',name:"parallevl"},
+                            {text:'实例打开重做线程数',name:"thread"},
+                            {text:'是否归档',name:"archiver"},
+                            {text:'登录方式',name:"logins"},
+                            {text:'数据库状态',name:"databaseStatus"},
+                            {text:'更新时间',name:"updateDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    grid_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    grid_info();
+}
+
+
+function grid_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#grid_info"),{
+         header:grid_info_header,
+         url:grid_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false,
+         dbThLine : true
+    });
+}
+
+
+});
+});
+</script>

@@ -1,0 +1,109 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>CPU动态信息</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="cpu_dynamic_chart_div"></div>
+    </div>
+</div>
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>并发状态</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="concurrent_state_chart_div"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js',
+         '/js/plugin/monitor/monitorInfo.js'] ,function (plot ,monitorInfo){
+
+var cpu_dynamic_chart_url = "monitorview/middleware/apache/queryCPUDynamicInfo";
+var concurrent_state_chart_url = "monitorview/middleware/apache/queryConcurrentState";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+	urlParamObj.inputTime = $("#query_time_label").text();
+    cpu_dynamic_chart();
+    concurrent_state_chart();
+}
+
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+//CPU动态信息
+function cpu_dynamic_chart()
+{
+	um_ajax_get({
+        url : cpu_dynamic_chart_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+        	var items = data.datas[0].items;
+            var legendArray = ['CPU利用率(%)'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var responseTimeObj = new Object();
+            responseTimeObj.name = 'CPU利用率(%)';
+            responseTimeObj.type = "line";
+            responseTimeObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].lable);
+            	responseTimeObj.data.push(items[i].value);
+            }
+            seriesArray.push(responseTimeObj);
+
+            plot.lineRender($("#cpu_dynamic_chart_div") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+//并发状态
+function concurrent_state_chart()
+{
+	um_ajax_get({
+        url : concurrent_state_chart_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+        	var items = data.datas[0].items;
+            var legendArray = ['并发状态'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var urlPageSizeObj = new Object();
+            urlPageSizeObj.name = '并发状态';
+            urlPageSizeObj.type = "line";
+            urlPageSizeObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].lable);
+            	responseTimeObj.data.push(items[i].value);
+            }
+            seriesArray.push(urlPageSizeObj);
+
+            plot.lineRender($("#concurrent_state_chart_div") ,{
+                legend : legendArray,
+                category :categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+});
+});
+</script>

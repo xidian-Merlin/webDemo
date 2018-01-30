@@ -1,0 +1,14 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Mysql",
+					"fileName"  : "mysql",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "mysql/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "数据表信息" ,"href" : "mysql/data_table.html" ,"icon" : "monitor-data-table"},
+								{"text" : "动态信息" ,"href" : "mysql/dynamic_info.html" ,"icon" : "monitor-dynamic-info"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

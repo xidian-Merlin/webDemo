@@ -1,0 +1,1234 @@
+<script src="/module/monitor_info/big_screen.js"></script>
+
+<style type="text/css">
+	.big-screen{
+		width: 100%;
+		height: 100%;
+		background-image: url("/img/monitor/bg_screen.jpg");
+		background-size: 100% 100%;
+		font-size: 12px;
+		background-color: #000;
+	}
+	.big-screen1{
+		width: 100%;
+		height: 100%;
+		background-image: url("/img/monitor/bg_screen1.gif");
+		background-size: 100% 100%;
+		font-size: 12px;
+		background-color: #000;
+	}
+	.carousel{
+
+	}
+	.carousel-inner ,.carousel-inner .item{
+		height: 100%;
+		color: #fff;	}
+	.carousel-inner .item{
+		position: relative;
+	}
+	.carousel-indicators{
+		bottom: 0;
+	}
+
+	.carousel-indicators li{
+		margin-left: 1em !important;
+	}
+
+	#carousel_ol:hover{
+		opacity: 1 !important;
+	}
+
+	.title-date{
+		float: right;
+		text-align: center;
+		font-size:0.7em;
+		padding-left:0.7em;
+		line-height: 1.2em;
+		height: 2.4em;
+		/*background-image: url('/img/calendar.png');
+		background-size:1.5em 1.5em;
+		background-repeat: no-repeat;
+		background-position: 0% 100%;*/
+	}
+	.title-date::before{
+		/*content: url('/img/calendar.png');*/
+	}
+	.title-calendar{
+		float: right;
+		height: 100%;
+		width: 2em;
+		background-image: url('/img/calendar.png');
+		background-size:1.5em 1.5em;
+		background-repeat: no-repeat;
+		background-position: 0% 50%;
+	}
+
+	#full_screen_div{
+		right:10px;
+		top:10px;
+		z-index: 9999;
+	}
+	.big-screen .opabg{
+		background-color: rgba(255, 255, 255, 0.05);
+	    border: 1px solid #070707;
+	    border-radius: 1em;
+	    padding:0 1em;
+	}
+	.table-ul{
+		border-bottom: 1px #353535 solid;
+	}
+	.table-ul.title-ul{
+		border-bottom: 1px #312924 solid;
+	}
+	.table-ul.title-ul li{
+		color: #686868;
+	}
+	.table-ul.title-ul li.tl{
+		text-align: left;
+		padding-left: 5.5em;
+	}
+	.table-ul li{
+		float: left;
+		text-align: center;
+		height: 100%;
+		color: #b5b5b5;
+		font-size:1.1em;
+		overflow: hidden;
+	}
+	.opabg .table-ul:last-child{
+		border-bottom: none;
+	}
+	.bg-test{
+		width: 100%;
+		height: 100%;
+		background-size: 2em 2em;
+		background-position: left center;
+		background-repeat: no-repeat;
+		margin: 0 auto;
+	}
+	.bg-screen-table{
+		overflow: hidden;
+	}
+	.bg-screen-table .bgdiv{
+		display: inline;
+		position: relative;
+		background-color: #CD9115;
+		padding: 0.3em 1em 0.3em 10em;
+		border-radius: 5px;
+	}
+	.bg-screen-table .bgdiv i{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 2.1em;
+		height: 2em;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+	.bg-screen-table .bgdiv span{
+		position: absolute;
+		top: 0;
+		left: 2.3em;
+		line-height: 2em;
+	}
+	.bg-screen-table .bgdiv i.test{
+		background-image: url("/img/assetmonitor/ORACLE.png");
+	}
+	.bg-screen-table p{
+		margin: 0;
+	}
+	.bg-panel .title{
+		height:10%;
+		padding-left:1.5rem;
+		color:#eee;
+		font-size: 1.2em;
+	}
+	.bg-panel .bg-screen-table{
+		height: 90%;
+	}
+	.asset-and-icon{
+		height:2em;
+		line-height:2em;
+		padding-left:2.5em;
+	}
+	.asset-and-icon i{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 2em;
+		height: 2em;
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+	.asset-and-icon .percent-div{
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: rgba(255,255,255,0.08);
+		border-radius: 5px;
+		z-index: -1;
+	}
+	.big-screen .topo-title{
+		color: #b5b5b5;
+		height:10%;
+		font-size:1.5em;
+		font-weight:bold
+	}
+	.big-screen .topo-title span{
+		font-size:0.7em;
+		padding-left:0.7em;
+	}
+
+	.big-screen .beehive{
+		position: relative;
+		background-image: url("/img/monitor/beehive.png");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	.big-screen .beehive .title{
+		/*font-size: 0.8em;
+		-webkit-transform: scale(0.8);*/
+		left:0;
+		top:0;
+		height:20%;
+		width:100%;
+		color: #b5b5b5;
+	}
+
+	.big-screen .beehive .runtime{
+		/*font-size: 0.6em;
+		-webkit-transform: scale(0.6);*/
+		left:0;
+		top:56%;
+		height:9%;
+		width: 100%;
+		color: #59b42f;
+	}
+
+	.big-screen .beehive .event{
+		/*font-size: 0.7em;
+		-webkit-transform: scale(0.7);*/
+		left:25%;
+		top:69%;
+		height:20%;
+		width:50%;
+		border: 1px solid  rgba(255, 255, 255, 0.1);
+		border-radius: 0.5em;
+		color: #59b42f;
+	}
+
+	.big-screen .beehive .event span{
+		background-image: url("/img/monitor/cl.png");
+	    background-position: 0 0.5em;
+	    background-repeat: no-repeat;
+	    background-size: 1em 0.9em;
+	    display: inline-block;
+	    height: 2em;
+	    line-height: 2em;
+	    padding-left: 2em;
+	}
+	.big-screen .beehive .event span.sjx{
+		background-image: url("/img/monitor/sjx.png");
+	}
+
+	.big-screen .beehive .event span.faultIcon{
+		background-image: url("/img/monitor/fault.png");
+	}
+
+	.handle-head{
+		background-color: rgba(255, 255, 255, 0.3);
+		border-radius: 10px 10px 0 0;
+		text-align: center;
+		font-size: 1.2em;
+	}
+
+	.handle-content{
+		text-align: center;
+		color: #62cb31;
+		background-color: rgba(255, 255, 255, 0.1);
+		border-left: 1px solid rgba(255, 255, 255, 0.3);
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
+		text-shadow: 2px 2px 2px #000;
+		font-size: 2.5em;
+	}
+
+	.handle-foot{
+		background-color: rgba(255, 255, 255, 0.3);
+		border-radius: 0 0 10px 10px;
+		font-size: 1.2em;
+	}
+
+	.power0
+	{
+		position: relative;
+		background-image: url("/img/monitor/Power-0.png");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	.power1
+	{
+		position: relative;
+		background-image: url("/img/monitor/Power-1.gif");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	.power_1
+	{
+		position: relative;
+		background-image: url("/img/monitor/Power-1.gif");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	.fan0{
+		position: relative;
+		background-image: url("/img/monitor/Fan-0.png");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	.fan1{
+		position: relative;
+		background-image: url("/img/monitor/Fan-1.gif");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	.fan_1{
+		position: relative;
+		background-image: url("/img/monitor/Fan_1.gif");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	.temperature0{
+		position: relative;
+		background-image: url("/img/monitor/Temperature-0.png");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	.temperature1{
+		position: relative;
+		background-image: url("/img/monitor/Temperature-1.gif");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	.temperature_1{
+		position: relative;
+		background-image: url("/img/monitor/Temperature_1.gif");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+		display: inline-block;
+	}
+
+	#user_busy_div li{
+		padding-left:0;
+	}
+
+	.appmonitor{
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
+
+	.appmonitor.tt{
+		background-image: url("/img/monitor/appmonitor-test.png");
+	}
+
+	.page-overall .bg-panel .title {
+	    color: #fff;
+	    height: 20%;
+	}
+
+	.circle-count{
+		margin-bottom: 1em;
+	}
+
+	.circle-count span{
+		color: #fff;
+		font-size: 1.3em;
+	}
+
+	.circle-count li{
+		float: left;
+		width: 1.5em;
+		height: 1.5em;
+		/*background-size:1.2em 1.2em;*/
+		background-position: center center;
+		background-repeat: no-repeat;
+		border-radius: 15px;
+		margin-right: 3px;
+		margin-bottom: 3px;
+	}
+
+	.circle-count li i{
+		font-size: 1.3em;
+	}
+
+	@keyframes red{
+	  from{
+	    background-color: #e74c3c;
+	  }
+	  to{
+	    background-color: #ffb458;
+	  }
+	}
+	
+	@keyframes yellow{
+	  from{background-color: #ffb606}
+	  to{background-color: #ffe096}
+	}
+
+	.circle-green{
+		background-image: url("/img/monitor/circle-green.png");
+	}
+
+	.circle-yellow{
+		/*background-image: url("/img/monitor/circle-yellow1.gif");*/
+		animation: yellow 1s ease infinite;
+	}
+
+	.circle-red{
+		/*background-image: url("/img/monitor/circle-red1.gif");*/
+		animation: red 1s ease infinite;
+	}
+	.circle-gray{
+		background-color: gray;
+		border-radius: 10px;
+		height: 10px;
+		width: 10px;
+		display: inline-block;
+	}
+	.circle-autherror{
+		background-color: #1c789f;
+		border-radius: 15px;
+	}
+
+	.asset-duty{
+		width:50%;
+		height:2.6em;
+		padding:0 1em 0 3em;
+		background-position: 0.5em 0.5em;
+		background-size: 2em 2em;
+		background-repeat: no-repeat;
+	}
+
+	.asset-duty .detail{
+		height: 1.3em;
+		font-size:1.3em;
+		line-height:1.3em;
+		color:#1c789f;
+		overflow: hidden;
+	}
+
+	.asset-duty .info{
+		font-size:0.9em;
+		line-height:1em;
+		color: #686868;
+	}
+
+	.situ{
+		height:3.5em;
+		padding: 0.5em 0 0.5em 5em;
+		background-image: url("/img/monitor/user.png");
+		background-position: 1em 0.5em;
+		background-size: 2.5em 2.5em;
+		background-repeat: no-repeat;
+		/*background-color: #141414;*/
+	}
+
+	.bg-panel .situ:nth-child(odd){
+		background-color: rgba(255, 255, 255, 0.05);
+	}
+
+	.situ li{
+		float: left;
+	    height: 1.5em;
+	    width: 1.5em;
+	    /*background-size: 1.2em 1.2em;*/
+		background-position: center center;
+	    background-repeat: no-repeat;
+	    border-radius: 15px;
+	    margin-right: 5px;
+	}
+
+	.situ li i{
+		font-size: 1.3em;
+	}
+
+	.request-basic{
+		text-align: center;
+	}
+
+	.request-basic p ,.request-basic span{
+		margin:0;
+		display: block;
+	}
+
+	.request-basic p{
+		padding: 0.5em 0.5em;
+		border-radius: 1em;
+	}
+
+	.request-basic span{
+		font-size: 2em;
+		line-height: 2.5em;
+		color:  #e74c3c;
+	}
+
+	.progressbar-text{
+		font-size: 2em;
+	}
+
+	#error_div .progressbar-text{
+		color: #e74c3c !important;
+	}
+
+	#warn_div .progressbar-text{
+		color: #ffb606 !important;
+	}
+
+	#normal_div .progressbar-text{
+		color: #62cb31 !important;
+	}
+
+	#unusual_div .progressbar-text{
+		color: #1c789f !important;
+	}
+	.carousel-indicators li{
+		border:1px solid #b5b5b5;
+	}
+	ul.table-ul li {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.long-text{
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	@keyframes waitting
+	{
+		0%   {
+			background-color : rgba(231,76,60,1);
+			box-shadow: 0 0 5px rgba(255,255,255,1);
+		}
+		100% {
+			background.color : rgba(231,76,60,0);
+			box-shadow: 0 0 5px rgba(255,255,255,0);
+		}
+	}
+	.waittingRequest{
+		animation-name:waitting;
+		animation-duration:0.8s;
+		animation-direction:alternate;
+		animation-play-state:running;
+		animation-timing-function:linear;
+		animation-delay:0s;
+		animation-iteration-count:infinite;
+	}
+	@keyframes processing{
+		0%   {
+			background-color : rgba(255,182,6,1);
+			box-shadow: 0 0 5px rgba(255,255,255,1);
+		}
+		100% {
+			background.color : rgba(255,182,6,0);
+			box-shadow: 0 0 5px rgba(255,255,255,1);
+		}
+	}
+	.processingRequest{
+		animation-name:processing;
+		animation-duration:0.8s;
+		animation-direction:alternate;
+		animation-play-state:running;
+		animation-timing-function:linear;
+		animation-delay:0s;
+		animation-iteration-count:infinite;
+	}
+	@keyframes done{
+		0%   {
+			background-color : #62cb31;
+			box-shadow: 0 0 5px rgba(255,255,255,1);
+		}
+		100% {
+			background.color : #62cb31;
+			box-shadow: 0 0 5px rgba(255,255,255,1);
+		}
+	}
+	.doneRequest{
+		animation-name:done;
+		animation-duration:0.8s;
+		animation-direction:alternate;
+		animation-play-state:running;
+		animation-timing-function:linear;
+		animation-delay:0s;
+		animation-iteration-count:infinite;
+	}
+	.textShine{
+		text-shadow: 0 0 15px rgba(255,255,255,1);
+	}
+	@media screen and (max-width: 1024px){
+		.monitor-count{
+			font-size: 1em;
+		}
+	}
+	@media screen and (min-width: 1024px) and (max-width: 1366) {
+		.monitor-count{
+			font-size: 1.3em;
+		}
+	}
+	@media screen and (min-width: 1366px) {
+		.monitor-count{
+			font-size: 1.5em;
+		}
+	}
+	@media screen and (min-width: 1366px) {
+		.big-screen ,.big-screen1{
+			font-size: 14px;
+		}
+		#user_busy_div{
+			font-size: 1em;
+		}
+	}
+	@media screen and (min-width: 1900px) {
+		.big-screen ,.big-screen1{
+			font-size: 18px;
+		}
+		#user_busy_div{
+			font-size: 1em;
+		}
+	}
+	#user_busy_div{
+		font-size: 1.2em;
+	}
+</style>
+
+<div class="big-screen prel">
+	<button id="btn" style="display:none"></button>
+	<div id="full_screen_div" class="pabs"><i class="icon-png oper-full-screen"></i></div>
+	<div id="myCarousel" class="carousel slide h-all">
+	    
+	    <ol class="carousel-indicators tran5" id="carousel_ol" style="opacity: 0">
+	    </ol>   
+	    
+	    <div class="carousel-inner" id="carousel_inner">
+	    </div>
+	</div>
+</div>
+
+<tem>
+	<!-- 轮播一 -->
+    <div class="item tc" data-page="page-data">
+    	<div class="w-all h-all" data-id="data_analy_monitor_div" style="padding:0 2.5em">
+            <div class="w-all my-title topo-title tl">
+            	数据分析监控中心 
+            	<span data-id='date' class="title-date"></span>
+            	<span data-id='calendar' class='title-calendar'></span>
+            </div>
+            <div class="w-all clearfix" style="height:43.5%;padding-bottom:0.45em">
+            	<div class="h-all l opabg bg-panel" style="width:72%">
+            		<div class="w-all tl title" verticalMiddle>
+            			故障的设备
+            		</div>
+            		<div class="w-all bg-screen-table" id="data_fault_asset_div">
+            			<ul class="table-ul title-ul" style="height:10%" verticalMiddle>
+            				<li style="width:10%">&nbsp;</li>
+            				<li class="tl" style="width:20%;padding-left:0">设备名称</li>
+            				<li style="width:20%">事件名称</li>
+            				<li style="width:7%">&nbsp;</li>
+            				<li style="width:27%">责任人及电话</li>
+            				<li style="width:16%">事件数量</li>
+            			</ul>
+            			<div class="w-all h-all ovh" style="height: 100%">
+            				<div class="w-all h-all" style="margin-top: 0px;" data-id="inner_div">
+            				</div>
+            			</div>
+            		</div>
+            	</div>
+            	<div class="h-all l" style="width:0.4%"></div>
+            	<div class="h-all l opabg bg-panel" style="width:27.6%">
+            		<div class="w-all tl title" verticalMiddle style="">
+            			<!-- 业务系统连接数 -->
+            			业务系统事件数
+            		</div>
+            		<div class="w-all bg-screen-table" id="biz_sys_div">
+            			<ul class="table-ul title-ul" style="height:10%">
+            				<li style="width:65%;text-align: left;padding-left: 1em">业务系统名称</li>
+            				<li style="width:35%">事件数量</li>
+            			</ul>
+            		</div>
+            	</div>
+            </div>
+            <div class="w-all" style="height:42.5%;padding-bottom:0.45em">
+            	<div class="h-all l opabg bg-panel" style="width:33%">
+            		<!-- 资产 NO.1 -->
+            		<div class="w-all tl title" verticalMiddle style="">
+            			主机设备CPU使用率
+            		</div>
+            		<div class="w-all bg-screen-table" id="data_asset_first_div">
+            			<ul class="table-ul title-ul" style="height:10%" verticalmiddle>
+            				<li class="tl" style="width:70%">名称</li>
+            				<li style="width:10%">CPU</li>
+            				<li style="width:20%">内存</li>
+            			</ul>
+            		</div>
+            	</div>
+            	<div class="h-all l" style="width:0.4%"></div>
+            	<!-- 资产 NO.2 -->
+            	<div class="h-all l opabg bg-panel" style="width:33.2%">
+            		<div class="w-all tl title" verticalMiddle style="">
+            			主机设备内存使用率
+            		</div>
+            		<div class="w-all bg-screen-table" id="data_asset_two_div">
+            			<ul class="table-ul title-ul" style="height:10%" verticalmiddle>
+            				<li class="tl" style="width:70%">名称</li>
+            				<li style="width:10%">内存</li>
+            				<li style="width:20%">CPU</li>
+            			</ul>
+            		</div>
+            	</div>
+            	<div class="h-all l" style="width:0.4%"></div>
+            	<!-- 资产 NO.3 -->
+            	<div class="h-all l opabg bg-panel" style="width:33%">
+            		<div class="w-all tl title" verticalMiddle style="">
+            			主机设备磁盘使用率
+            		</div>
+            		<div class="w-all bg-screen-table" id="data_asset_three_div">
+            			<ul class="table-ul title-ul" style="height:10%" verticalmiddle>
+            				<li class="tl" style="width:65%">名称</li>
+            				<li style="width:15%">使用率</li>
+            				<li style="width:20%">磁盘名</li>
+            			</ul>
+            		</div>
+            	</div>
+            </div>
+            <div class="w-all" style="height:5%"></div>  
+        </div>
+    </div>
+    <!-- 轮播二 -->
+    <div class="item" data-page="page-net">
+        <div class="w-all h-all" data-id="data_analy_monitor_div" style="padding:0 2.5em">
+            <div class="w-all tc my-title topo-title tl">
+            	网络监控中心 
+            	<span data-id='date' class="title-date"></span>
+            	<span data-id='calendar' class='title-calendar'></span>
+            </div>
+
+            <div class="w-all clearfix" style="height:43.5%;padding-bottom:0.45em">
+            	<div class="h-all l opabg bg-panel" style="width:72.6%">
+            		<div class="w-all tl title" verticalMiddle>
+            			故障的设备
+            		</div>
+            		<div class="w-all bg-screen-table" id="net_fault_asset_div">
+            			<ul class="table-ul title-ul" style="height:10%" verticalMiddle>
+            				<li style="width:10%">&nbsp;</li>
+            				<li class="tl" style="width:20%;padding-left:0">设备名称</li>
+            				<li style="width:20%">事件名称</li>
+            				<li style="width:7%">&nbsp;</li>
+            				<li style="width:27%">责任人及电话</li>
+            				<li style="width:16%">事件数量</li>
+            			</ul>
+            			<div class="w-all h-all ovh" style="height: 100%">
+            				<div class="w-all h-all" style="margin-top: 0px;" data-id="inner_div">
+            				</div>
+            			</div>
+            		</div>
+            	</div>
+            	<div class="h-all l" style="width:0.4%"></div>
+            	<div class="h-all l opabg bg-panel" style="width:27%" id="environment_div">
+            		<div class="w-all tl title" verticalMiddle style="">
+            			环境
+            		</div>
+            		<div class="w-all" style="height:15%"></div>
+            		<div class="w-all" style="height:60%;padding:0 0.5em">
+            			<div class="l h-all" style="width:31%">
+            				<div class="w-all handle-head" style="height:17%" verticalMiddle>电源</div>
+            				<div class="w-all handle-content" style="height:66%" verticalMiddle verticalInner>
+            					<div icon class="w-all power1"></div>
+            				</div>
+            				<div class="w-all handle-foot tc" style="height:17%" verticalMiddle>正常</div>
+            			</div>
+            			<div class="l h-all" style="width:3.3%"></div>
+            			<div class="l h-all" style="width:31%">
+            				<div class="w-all handle-head" style="height:17%" verticalMiddle>风扇</div>
+            				<div class="w-all handle-content" style="height:66%" verticalMiddle verticalInner>
+            					<div icon class="w-all fan1"></div>
+            				</div>
+            				<div class="w-all handle-foot tc" style="height:17%" verticalMiddle>正常</div>
+            			</div>
+            			<div class="l h-all" style="width:3.3%"></div>
+            			<div class="l h-all" style="width:31%">
+            				<div class="w-all handle-head" style="height:17%" verticalMiddle>温度</div>
+            				<div class="w-all handle-content" style="height:66%" verticalMiddle verticalInner>
+            					<div icon class="w-all temperature1"></div>
+            				</div>
+            				<div class="w-all handle-foot tc" style="height:17%" verticalMiddle>正常</div>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+            <div class="w-all" style="height:42.5%;padding-bottom:0.45em">
+            	<div class="h-all l opabg bg-panel" style="width:33%">
+            		<div class="w-all tl title" verticalMiddle style="">
+            			网络设备CPU使用率
+            		</div>
+            		<div class="w-all bg-screen-table" id="net_asset_first_div">
+            			<ul class="table-ul title-ul" style="height:10%" verticalmiddle>
+            				<li class="tl" style="width:70%">名称</li>
+            				<li style="width:10%">CPU</li>
+            				<li style="width:20%">内存</li>
+            			</ul>
+            		</div>
+            	</div>
+            	<div class="h-all l" style="width:0.4%"></div>
+            	<div class="h-all l opabg bg-panel" style="width:33.2%">
+            		<div class="w-all tl title" verticalMiddle style="">
+            			网络设备内存使用率
+            		</div>
+            		<div class="w-all bg-screen-table" id="net_asset_two_div">
+            			<ul class="table-ul title-ul" style="height:10%" verticalmiddle>
+            				<li class="tl" style="width:70%">名称</li>
+            				<li style="width:10%">内存</li>
+            				<li style="width:20%">CPU</li>
+            			</ul>
+            		</div>
+            	</div>
+            	<div class="h-all l" style="width:0.4%"></div>
+            	<div class="h-all l opabg bg-panel" style="width:33%">
+            		<div class="w-all tl title" verticalMiddle style="">
+            			接口流量
+            		</div>
+            		<div class="w-all bg-screen-table" id="net_asset_three_div">
+            			<!-- 表头 -->
+            			<ul class="table-ul title-ul" style="height:10%">
+            				<li class="tl" style="width:70%">名称</li>
+            				<li style="width:10%">&nbsp;</li>
+            				<li style="width:20%">流量</li>
+            			</ul>
+            		</div>
+            	</div>
+            </div>
+            <div class="w-all" style="height:5%"></div>  
+        </div>
+    </div>
+    <!-- 轮播三 -->
+    <div class="item" data-page="page-event">
+        <div class="w-all h-all" data-id="data_analy_monitor_div" style="padding:0 2.5em">
+        	<!-- 数据分析监控中心 -->
+            <div class="w-all tc my-title topo-title tl">
+            	事件监控中心 
+            	<span data-id='date' class="title-date"></span>
+            	<span data-id='calendar' class='title-calendar'></span>
+            </div>
+            <!-- 第一排 -->
+            <div class="w-all clearfix" style="height:42.5%;padding-bottom:0.45em">
+            	<div class="h-all l opabg bg-panel" style="width:27.1%" id="today_trend_info_div">
+            		<div class="w-all tl title" verticalMiddle>
+            			SLA完成率
+            		</div>
+            		<div class="w-all" style="height:90%" id="today_trend_info_chart"></div>
+            	</div>
+            	<div class="h-all l" style="width:0.4%"></div>
+            	<div class="h-all l opabg bg-panel" style="width:27.1%" id="sla_response_div">
+            		<div class="w-all tl title" verticalMiddle>
+            			SLA响应率
+            		</div>
+            		<div class="w-all" style="height:90%" id="sla_response_chart"></div>
+            	</div>
+            	<div class="h-all l" style="width:0.4%"></div>
+            	<div class="h-all l opabg bg-panel" style="width:45%" id="avg_handle_time_div">
+            		<div class="w-all tl title" verticalMiddle>
+            			技术组平均解决时间(分钟)
+            		</div>
+            		<div class="w-all" style="height:90%" id="avg_handle_time_chart"></div>
+            	</div>
+            </div>
+            <!-- 第二排 -->
+            <div class="w-all clearfix" style="height:42.5%;padding-bottom:0.45em">
+            	<div class="h-all l opabg bg-panel" style="width:37.6%" id="first_handle_rate_div">
+            		<div class="w-all tl title" verticalMiddle>
+            			一线解决率
+            		</div>
+            		<div class="w-all" style="height:15%"></div>
+            		<div class="w-all" style="height:60%;padding:0 2em">
+            			<div class="l h-all" style="width:30%">
+            				<div class="w-all handle-head" style="height:17%" verticalMiddle>总请求个数</div>
+            				<div class="w-all handle-content" style="height:66%" verticalMiddle><span id="requestAllCount"></span>个</div>
+            				<div class="w-all handle-foot" style="height:17%"></div>
+            			</div>
+            			<div class="l h-all" style="width:3.3%"></div>
+            			<div class="l h-all" style="width:30%">
+            				<div class="w-all handle-head" style="height:17%" verticalMiddle>一线解决个数</div>
+            				<div class="w-all handle-content" style="height:66%" verticalMiddle><span id="requestSolveCount"></span>个</div>
+            				<div class="w-all handle-foot" style="height:17%"></div>
+            			</div>
+            			<div class="l h-all" style="width:3.3%"></div>
+            			<div class="l h-all" style="width:30%">
+            				<div class="w-all handle-head" style="height:17%" verticalMiddle>一线解决率</div>
+            				<div class="w-all handle-content" style="height:66%" verticalMiddle><span id="requestSolveRatio"></span>%</div>
+            				<div class="w-all handle-foot" style="height:17%"></div>
+            			</div>
+            		</div>
+            	</div>
+            	<div class="h-all l" style="width:0.4%"></div>
+            	<div class="h-all l opabg bg-panel" style="width:62%" id="event_stock_div">
+            		<div class="w-all tl title" verticalMiddle>
+            			当前工作情况
+            		</div>
+            		<div class="w-all bg-screen-table" id="user_busy_div">
+            			<ul class="table-ul title-ul" style="height:10%" verticalMiddle>
+            				<!-- <li style="width:5%">&nbsp;</li> -->
+            				<li style="width:20%;text-align: center;">工号</li>
+            				<li style="width:20%;text-align: center;">姓名</li>
+            				<li style="width:20%;text-align: center;">指派</li>
+            				<li style="width:20%;text-align: center;">待处理</li>
+            				<li style="width:20%;text-align: center;">处理中</li>
+            			</ul>
+            		</div>
+            	</div>
+            </div>
+            <!-- 第三排 -->
+            <div class="w-all" style="height:5%"></div>
+        </div>
+    </div>
+    <!-- 轮播四 -->
+    <div class="item" data-page="page-topo">
+    	<div id="topoDiv" class="w-all h-all" data-id="data_analy_monitor_div" style="padding:0 2.5em;position: relative;background-color: #0b2838;background-image: url('/img/topo/bgi.png');background-size: 100% 100%;">
+    		<div id="topoTitle" class="w-all my-title topo-title tl">
+    		拓扑展示中心 
+    		<span data-id='date' class="title-date"></span>
+    		<span data-id='calendar' class='title-calendar'></span>
+    		</div>
+    		<div id="loading" width="100px" height="100px" style="position: absolute;z-index: 10;display: none;"></div>
+    		<canvas id="canvas" height="500" width="800" style="position: absolute;top: 0px;left: 0px;"></canvas>
+    	</div>
+    </div>
+    <!-- 轮播五 -->
+    <div class="item big-screen1" data-page="page-biz">
+        <div class="w-all h-all" data-id="data_analy_monitor_div" style="padding:0">
+    		<div class="w-all tc  my-title topo-title tl" style="padding:0 1.5em">
+    			应用监控中心 
+    			<span data-id='date' class="title-date"></span>
+    			<span data-id='calendar' class='title-calendar'></span>
+    		</div>
+    		<div class="w-all" style="height:90%;padding-bottom: 1em;padding-top: 0.05em">
+        		<div class="w-all h-all tc prel" id="biz_monitor_div" style="margin:0 auto">
+        			<div class="pabs" style="top:0;left:0;right:0;bottom:0" id="biz_monitor_div_inner1">
+        			</div>
+        			<div class="pabs" style="top:0;left:0;right:0;bottom:0" id="biz_monitor_div_inner2">
+        			</div>
+        			<div class="pabs" style="top:0;left:0;right:0;bottom:0" id="biz_monitor_div_inner3">
+        			</div>
+        		</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="item big-screen1" data-page="page-biz2">
+        <div class="w-all h-all" data-id="data_analy_monitor_div" style="padding:0 2.5em">
+    		<div class="w-all tc  my-title topo-title tl">
+    			应用监控中心 
+    			<span data-id='date' class="title-date"></span>
+    			<span data-id='calendar' class='title-calendar'></span>
+    		</div>
+    		<div class="w-all" style="height:90%;padding-bottom: 1em;padding-top: 0.05em">
+        		<div class="w-all h-all tc" id="biz_monitor_div2" style="margin:0 auto">
+        			<div class="prel">
+	        			<div class="beehive"></div>
+        			</div>
+        			<div class="prel list">
+        				<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+        			</div>
+        			<div class="prel list">
+        				<div class="beehive"></div>
+        				<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+	        			<div class="beehive"></div>
+        			</div>
+        			<div class="prel list">
+        				<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+        			</div>
+        			<div class="prel list">
+        				<div class="beehive"></div>
+        			</div>
+        		</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="item big-screen1" data-page="page-biz3">
+        <div class="w-all h-all" data-id="data_analy_monitor_div" style="padding:0 2.5em">
+    		<div class="w-all tc  my-title topo-title tl">
+    			应用监控中心 
+    			<span data-id='date' class="title-date"></span>
+    			<span data-id='calendar' class='title-calendar'></span>
+    		</div>
+    		<div class="w-all" style="height:90%;padding-bottom: 1em;padding-top: 0.05em">
+        		<div class="w-all h-all tc" id="biz_monitor_div3" style="margin:0 auto">
+        			<div class="prel">
+	        			<div class="beehive"></div>
+        			</div>
+        			<div class="prel list">
+        				<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+        			</div>
+        			<div class="prel list">
+        				<div class="beehive"></div>
+        				<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+	        			<div class="beehive"></div>
+        			</div>
+        			<div class="prel list">
+        				<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+	        			<div class="beehive"></div>
+	        			<div class="distance"></div>
+        			</div>
+        			<div class="prel list">
+        				<div class="beehive"></div>
+        			</div>
+        		</div>
+    		</div>
+    	</div>
+    </div>
+    <!-- 轮播六 -->
+    <div class="item page-overall" data-page="page-overall">
+    	<div class="w-all h-all" data-id="data_analy_monitor_div" style="padding:0 2.5em">
+    		<div class="w-all tc  my-title topo-title tl">
+    			综合监控中心 
+    			<span data-id='date' class="title-date"></span>
+    			<span data-id='calendar' class='title-calendar'></span>
+    		</div>
+
+    		<!-- 左 -->
+    		<div class="l" style="height:85%;width:27%">
+    			<div style="height:69%">
+    				<div class="w-all h-all opabg bg-panel">
+	            		<div class="w-all h-all" id="monitorClassDstatus" style="padding-top:1em;overflow: hidden;">
+							<div class="w-all h-all ovh" style="height: 100%">
+            					<div class="w-all h-all" style="margin-top: 0px;" data-id="inner_div">
+            						
+            					</div>
+            				</div>
+	            		</div>
+	            	</div>
+    			</div>
+    			<div style="height:1%"></div>
+    			<div style="height:30%">
+    				<div class="w-all h-all opabg bg-panel">
+	            		<div class="w-all tl title" verticalMiddle>
+	            			环境
+	            		</div>
+	            		<div class="w-all" style="height:75%" id="overall_environment_div">
+	            			<div class="l h-all" style="width:32%" verticalInner>
+	            				<div class="w-all h-all power_1" data-flag="overall_icon"></div>
+	            			</div>
+	            			<div class="l h-all" style="width:2%"></div>
+	            			<div class="l h-all" style="width:32%" verticalInner>
+	            				<div class="w-all h-all fan_1" data-flag="overall_icon"></div>
+	            			</div>
+	            			<div class="l h-all" style="width:2%"></div>
+	            			<div class="l h-all" style="width:32%" verticalInner>
+	            				<div class="w-all h-all temperature_1" data-flag="overall_icon"></div>
+	            			</div>
+	            		</div>
+	            	</div>
+    			</div>
+    		</div>
+    		<!-- 间隔 -->
+    		<div class="l" style="height:85%;width:0.4%"></div>
+    		<!-- 中 -->
+    		<div class="l" style="height:85%;width:45%">
+    			<div style="height:33%">
+    				<div class="w-all h-all opabg bg-panel" style="padding:0.5em 1em">
+    					<div class="h-all l" style="width:23%;color:#e74c3c">
+    						<div class="tc" style="height:20%;font-size:1.3em">错误</div>
+    						<div class="tc" style="height:60%;margin:0 auto;" id="error_div"></div>
+    						<div class="tc" style="height:2%"></div>
+    						<div  id="error_num" class="tc prel monitor-count" style="height:15%" verticalMiddle>0台</div>
+    					</div>
+    					<div class="h-all l" style="width:2.66%"></div>
+    					<div class="h-all l" style="width:23%;color:#ffb606">
+    						<div class="tc" style="height:20%;font-size:1.3em">警告</div>
+    						<div class="tc" style="height:60%;margin:0 auto;" id="warn_div"></div>
+    						<div class="tc" style="height:2%"></div>
+    						<div id="warn_num" class="tc monitor-count" style="height:15%" verticalMiddle >0台</div>
+    					</div>
+    					<div class="h-all l" style="width:2.66%"></div>
+    					<div class="h-all l" style="width:23%;color:#62cb31">
+    						<div class="tc" style="height:20%;font-size:1.3em">正常</div>
+    						<div class="tc" style="height:60%;margin:0 auto;" id="normal_div"></div>
+    						<div class="tc" style="height:2%"></div>
+    						<div id="normal_num" class="tc monitor-count" style="height:15%" verticalMiddle>0台</div>
+    					</div>
+    					<div class="h-all l " style="width:2.66%"></div>
+    					<div class="h-all l" style="width:23%;color:#1c789f">
+    						<div class="tc" style="height:20%;font-size:1.3em">凭证</div>
+    						<div class="tc" style="height:60%;margin:0 auto;" id="unusual_div"></div>
+    						<div class="tc" style="height:2%"></div>
+    						<div id="unusual_num" class="tc monitor-count" style="height:15%" verticalMiddle>0台</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div style="height:1%"></div>
+    			<div style="height:30%">
+    				<div class="w-all h-all opabg bg-panel" style="padding:1em;overflow: hidden;">
+    					<div class="w-all" style="height:100%;overflow: hidden;" >
+    						<div class="clearfix" data-id="center_div" style="height: 100%;width:100%;">
+	    						<!-- <div class="l asset-duty ORACLE">
+	    							<span class="db detail">运维监控系统</span>
+	    							<span class="db info">2016-10-10 16:05 无人负责</span>
+	    						</div>
+	    						<div class="l asset-duty LINUX">
+	    							<span class="db detail">运维监控系统</span>
+	    							<span class="db info">2016-10-10 16:05 无人负责</span>
+	    						</div> -->
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div style="height:1%"></div>
+    			<div style="height:35%">
+    				<div class="w-all h-all opabg bg-panel">
+    					<div class="w-all tl title" verticalMiddle>
+	            			请求趋势
+	            		</div>
+	            		<div class="w-all" style="height:78%" id="request_trend_div">
+	            		</div>
+    				</div>
+    			</div>
+    		</div>
+    		<!-- 间隔 -->
+    		<div class="l" style="height:85%;width:0.4%">
+    		</div>
+    		<!-- 右 -->
+    		<div class="l" style="height:85%;width:27%">
+    			<div style="height:69%">
+    				<div class="w-all h-all opabg bg-panel" style="padding-left:0;padding-right:0">
+	            		<div class="w-all tl title" verticalMiddle style="height:10%">
+	            			异常迹象积压情况
+	            		</div>
+	            		<div class="w-all" style="height:90%;overflow: hidden;" id="userRequestStatusDiv">
+	            			<div class="w-all situ" data-type='col'>
+	            				<ul>
+	            					<li class="circle-green"></li>
+	            					<li class="circle-green"></li>
+	            					<li class="circle-green"></li>
+	            					<li class="circle-green"></li>
+	            				</ul>
+	            			</div>
+	            			<div class="w-all situ" data-type='col'>
+	            				<ul>
+	            					<li class="circle-green"></li>
+	            					<li class="circle-green"></li>
+	            					<li class="circle-green"></li>
+	            					<li class="circle-green"></li>
+	            				</ul>
+	            			</div>
+	            			<div class="w-all situ" data-type='col'>
+	            				<ul>
+	            					<li class="circle-green"></li>
+	            					<li class="circle-green"></li>
+	            					<li class="circle-green"></li>
+	            					<li class="circle-green"></li>
+	            				</ul>
+	            			</div>
+	            		</div>
+	            	</div>
+    			</div>
+    			<div style="height:1%"></div>
+    			<div style="height:30%">
+    				<div class="w-all h-all opabg bg-panel">
+	            		<div class="w-all tl title" verticalMiddle>
+	            			请求概况
+	            		</div>
+	            		<div class="w-all" style="height:75%" id="">
+	            			<div class="l h-all" style="width:32%" verticalInner>
+	            				<div class="request-basic">
+	            					<p class="waittingRequest">待处理</p>
+	            					<!-- <div style="background-image: url(/img/monitor/jrwc1.gif);background-size: 100% 100%;"></div> -->
+	            					<span style="color:#e74c3c" class="textShine" id="waitting">0</span>
+	            				</div>
+	            			</div>
+	            			<div class="l h-all" style="width:2%"></div>
+	            			<div class="l h-all" style="width:32%" verticalInner>
+	            				<div class="request-basic">
+	            					<p class="processingRequest" style="background-color: #ffb606">处理中</p>
+	            					<!-- <div style="background-color: #ffb606"></div> -->
+	            					<span style="color:#ffb606" class="textShine" id="processing">0</span>
+	            				</div>
+	            			</div>
+	            			<div class="l h-all" style="width:2%"></div>
+	            			<div class="l h-all" style="width:32%" verticalInner>
+	            				<div class="request-basic">
+	            					<p class="doneRequest" style="background-color: #62cb31">今日完成</p>
+	            					<span style="color:#62cb31" class="textShine" id="done">0</span>
+	            				</div>
+	            			</div>
+	            		</div>
+	            	</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+
+
+    <div id="beehive_tmp">
+		<div class="prel tran5">
+			<div class="beehive"></div>
+		</div>
+		<div class="prel list tran5">
+			<div class="distance"></div>
+			<div class="beehive"></div>
+			<div class="distance"></div>
+			<div class="beehive"></div>
+			<div class="distance"></div>
+		</div>
+		<div class="prel list tran5">
+			<div class="beehive" id="startBeehive"></div>
+			<div class="distance"></div>
+			<div class="beehive"></div>
+			<div class="distance"></div>
+			<div class="beehive" id="endBeehive"></div>
+		</div>
+		<div class="prel list tran5">
+			<div class="distance"></div>
+			<div class="beehive"></div>
+			<div class="distance"></div>
+			<div class="beehive"></div>
+			<div class="distance"></div>
+		</div>
+		<div class="prel list tran5">
+			<div class="beehive"></div>
+		</div>
+	</div>
+</tem>

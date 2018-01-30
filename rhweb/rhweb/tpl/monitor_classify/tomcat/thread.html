@@ -1,0 +1,157 @@
+<div class="row">
+	<div class="col-md-6 pr5 pl5">
+		<div class="panel panel-default panel-style">
+			<div class="panel-heading font-bold prel">
+				<span>当前线程数</span>
+			</div>
+			<div class="panel-body p1" style="padding: 10px">
+				<div style="height:290px" id="current_thread_chart"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6 pr5 pl5">
+		<div class="panel panel-default panel-style">
+			<div class="panel-heading font-bold prel">
+				<span>当前忙线程数</span>
+			</div>
+			<div class="panel-body p1" style="padding: 10px">
+				<div style="height:290px" id="current_thread_busy_chart"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12 pr5 pl5">
+		<div class="panel panel-default panel-style">
+			<div class="panel-heading font-bold prel">
+				<span>线程池信息</span>
+			</div>
+			<div class="panel-body p1" style="height: 292px;padding: 10px">
+				<div class="table-div h-all" id="ports_info_div"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+
+$(document).ready(function (){
+require(["/js/plugin/plot/plot.js"] ,function (plot){
+
+var current_thread_url = "monitorview/middleware/tomcat/queryTomcatCurrentThreadInfo";
+
+var current_thread_busy_url = "monitorview/middleware/tomcat/queryTomcatCurrentThreadBusyInfo";
+
+var ports_info_list_url = "monitorview/middleware/tomcat/queryThreadPoolList";
+
+var ports_info_list_header = [
+							{text:'协议名',name:"port_name"},
+							{text:'最大线程数',name:"max_thread_cnt"},
+							{text:'当前线程数',name:"cur_thread_cnt"},
+							{text:'当前忙线程数',name:"cur_thread_busy"},
+							{text:'更新时间',name:"enter_date"}
+						 ];
+var urlParamObj = index_query_param_get();
+
+
+view_init();
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+function view_init()
+{
+	ports_info_list();
+	current_thread_chart();
+	current_thread_busy_chart();
+}
+
+function ports_info_list()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	g_grid.render($("#ports_info_div"),{
+		url:ports_info_list_url,
+		paramObj:urlParamObj,
+		header:ports_info_list_header,
+		allowCheckBox:false,
+		hasBorder : false,
+		gridCss : "um-grid-style",
+		hideSearch : true
+	});
+}
+
+function current_thread_chart()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	um_ajax_get({
+		url : current_thread_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			var legendArray = [];
+			var categoryArray = [];
+			var seriesArray = [];
+			for (var i = 0; i < data.length; i++) {
+				legendArray.push(data[i].lineName);
+				var seriesObj = new Object();
+				seriesObj.name = data[i].lineName;
+				seriesObj.type = "line";
+				seriesObj.data = [];
+				for (var j = 0; j < data[i].items.length; j++) {
+					seriesObj.data.push(data[i].items[j].value);
+					if (i == 0)
+					{
+						categoryArray.push(data[i].items[j].lable);
+					}
+				}
+				seriesArray.push(seriesObj);
+			}
+			plot.lineRender($("#current_thread_chart") ,{
+				legend : legendArray,
+				category :categoryArray,
+				series : seriesArray
+			});
+		}
+	});
+}
+
+function current_thread_busy_chart()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	um_ajax_get({
+		url : current_thread_busy_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			var legendArray = [];
+			var categoryArray = [];
+			var seriesArray = [];
+			for (var i = 0; i < data.length; i++) {
+				legendArray.push(data[i].lineName);
+				var seriesObj = new Object();
+				seriesObj.name = data[i].lineName;
+				seriesObj.type = "line";
+				seriesObj.data = [];
+				for (var j = 0; j < data[i].items.length; j++) {
+					seriesObj.data.push(data[i].items[j].value);
+					if (i == 0)
+					{
+						categoryArray.push(data[i].items[j].lable);
+					}
+				}
+				seriesArray.push(seriesObj);
+			}
+			plot.lineRender($("#current_thread_busy_chart") ,{
+				legend : legendArray,
+				category :categoryArray,
+				series : seriesArray
+			});
+		}
+	});
+}
+
+});
+});
+</script>

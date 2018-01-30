@@ -1,0 +1,52 @@
+<tem>
+	<!-- sybase 添加数据库实例-->
+	<div data-id="monitor_index_edit" class="template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form form-plr5">
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">用户名</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="monitorUserName" validate="required" />
+					</div>
+					<label class="col-lg-3 control-label required">密码</label>
+					<div class="col-lg-3">
+						<input type="password" class="form-control input-sm" data-id="monitorPassWord" validate="required,password" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">数据库名</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="monitorDatabaseName" validate="required" />
+					</div>
+					<label class="col-lg-3 control-label required">端口</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="monitorPort" validate="required,number" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">会话数阈值(个)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="sessionCount" validate="number" />
+					</div>
+					<label class="col-lg-3 control-label">数据库锁阈值(个)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="locksCount" validate="number" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">连接数使用率阈值(%)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="connectUseRate" validate="number" />
+					</div>
+					<label class="col-lg-3 control-label">核心进程数阈值</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="processCount" validate="number" />
+					</div>
+				</div>
+			</form>
+			<div class="table-oper">
+				<a href="javascript:void(0);" data-id="test_btn" class="btn">测试配置</a>
+			</div>
+		</div>
+	</div>
+</tem>

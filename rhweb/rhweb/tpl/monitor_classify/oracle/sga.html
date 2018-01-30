@@ -1,0 +1,218 @@
+<div class="mt5 mb5" style="height:30px" id="instance_sel_div">
+    <select class="form-control input-sm" data-type="select" id="instance_sel">
+    </select>
+</div>
+
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>SGA信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="sga_list_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>SGA Variable信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="variable_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>重做日志缓冲区命中率</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="redo_log_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>PGA配置</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="pga_list_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+
+
+var sga_list_url = "monitorview/db/oracle/queryOracleSGA";
+var sga_list_header = [
+						      {text:"sga缓冲区名称" ,name:"name"},
+						      {text:"缓冲区大小(bytes)" ,name:"buffSize"},
+						      {text:"更新时间" ,name:"updateDate"}
+						   ];
+
+var variable_url = "monitorview/db/oracle/queryOracleSGAVariable";
+var variable_header = [
+						      {text:"池名称" ,name:"name"},
+						      {text:"总量(bytes)" ,name:"total"},
+						      {text:"已使用量(bytes)" ,name:"used"},
+						      {text:"剩余量(bytes)" ,name:"free"},
+						      {text:"使用率" ,name:"pctused", render : function(text){
+						      	if(text !=null)
+						      		return text+"%";
+						      }},
+						      {text:"更新时间" ,name:"updateDate"}
+						   ];
+						   
+var redo_log_url = "monitorview/db/oracle/queryOracleRedoRadio";
+var redo_log_header = [
+						      {text:"名称" ,name:"subName"},
+						      {text:"willing-to-wait类型请求次数" ,name:"gets"},
+						      {text:"willing-to-wait类型请求失败次数" ,name:"misses"},
+						      {text:"immediate类型请求次数" ,name:"immediateGets"},
+						      {text:"immediate类型请求失败次数" ,name:"immediateMisses"},
+						      {text:"willing-to-wait请求类型的命中率" ,name:"willingToWaitRatio", render : function(text){
+						      	if(text !=null)
+						      		return text+"%";
+						      }},
+						      {text:"immediate请求类型的命中率" ,name:"immediateRatio", render : function(text){
+						      	if(text !=null)
+						      		return text+"%";
+						      }},
+						      {text:"更新时间" ,name:"enterDate"}
+						   ];
+
+var pga_list_url = "monitorview/db/oracle/queryOraclePga";
+var pga_list_header = [
+						      {text:"pga参数" ,name:"aggPgaTargetParam"},
+						      {text:"pga可自动分配大小" ,name:"aggPgaAutoTarget"},
+						      {text:"自动模式下最大内存" ,name:"globalMemBound"},
+						      {text:"当前使用的pga大小" ,name:"tolPgaInuse"},
+						      {text:"当前分配的pga大小" ,name:"tolPgaAllocated"},
+						      {text:"当前剩余的pga大小" ,name:"allocatedRemain"},
+						      {text:"可释放的pga大小" ,name:"tolPgaFree"},
+						      {text:"使用率" ,name:"usageRatio", render : function(text){
+						      	if(text !=null)
+						      		return text+"%";
+						      }},
+						      {text:"总体使用率" ,name:"totalUsageRaito", render : function(text){
+						      	if(text !=null)
+						      		return text+"%";
+						      }},
+						      {text:"命中率" ,name:"hitPercent", render : function(text){
+						      	if(text !=null)
+						      		return text+"%";
+						      }},
+						      {text:"进程数" ,name:"proCount"},
+						      {text:"更新时间" ,name:"enterDate"}
+						   ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    index_form_init($("#instance_div"));
+    index_ed_monitor_get(urlParamObj ,[$("#instance_sel")]);
+}
+
+function event_init()
+{
+    $("#instance_sel").change(function (){
+        sga_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+        variable_info({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+        });
+        redo_log_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+        });
+        pga_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+    });
+}
+
+window.index_monitor_init = function ()
+{
+	index_ed_monitor_get(urlParamObj ,[$("#instance_sel")]);
+}
+//SGA信息
+function sga_list(opt)
+{
+	g_grid.render($("#sga_list_div") ,{
+		url : sga_list_url,
+		header : sga_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		autoHeight : true
+	});
+}
+
+//SGA Variable信息
+function variable_info(opt)
+{
+	g_grid.render($("#variable_div") ,{
+		url : variable_url,
+		header : variable_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+
+//重做日志缓冲区命中率
+function redo_log_list(opt)
+{
+	g_grid.render($("#redo_log_div") ,{
+		url : redo_log_url,
+		header : redo_log_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+//PGA配置
+function pga_list(opt)
+{
+	g_grid.render($("#pga_list_div") ,{
+		url : pga_list_url,
+		header : pga_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+
+});
+
+
+</script>

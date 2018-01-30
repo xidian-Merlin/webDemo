@@ -1,0 +1,108 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>内存信息</span>
+    </div>
+    <div class="monitor-panel">
+		<form class="bs-example form-horizontal xs-form">
+			<div  id="instance_sel_div">
+				<div id="memory_info_div">
+					<div class="form-group">
+						<label class="col-lg-3 control-label">维护连接内存量（KB）：</label>
+						<label class="col-lg-3 control-label tl" data-id="connectionMem"></label>
+						<label class="col-lg-3 control-label">授予排序、索引操作内存量（KB）：</label>
+						<label class="col-lg-3 control-label tl" data-id="grantWorMem"></label>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-3 control-label">分配锁块总数量：</label>
+						<label class="col-lg-3 control-label tl" data-id="lockBlockAlloc"></label>
+						<label class="col-lg-3 control-label">分配锁内存量（KB）：</label>
+						<label class="col-lg-3 control-label tl" data-id="locksMemory"></label>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-3 control-label">分配可执行进程内存总量：</label>
+						<label class="col-lg-3 control-label tl" data-id="maximumWorkMem"></label>
+						<label class="col-lg-3 control-label">获得工作空间内存授权进程数量：</label>
+						<label class="col-lg-3 control-label tl" data-id="memGrantOut"></label>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-3 control-label">等待工作空间内存授权进程数量：</label>
+						<label class="col-lg-3 control-label tl" data-id="memGrantPend"></label>
+						<label class="col-lg-3 control-label">查询优化内存量（KB）：</label>
+						<label class="col-lg-3 control-label tl" data-id="optimizerMem"></label>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-3 control-label">动态sql高速缓存总量（KB）：</label>
+						<label class="col-lg-3 control-label tl" data-id="sqlCacheMem"></label>
+						<label class="col-lg-3 control-label">服务器潜在消耗内存量：</label>
+						<label class="col-lg-3 control-label tl" data-id="targetServerMem"></label>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-3 control-label">服务器当前消耗内存总量：</label>
+						<label class="col-lg-3 control-label tl" data-id="totaServerMem"></label>
+						<label class="col-lg-3 control-label">更新时间：</label>
+						<label class="col-lg-3 control-label tl" data-id="updateDateM"></label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+var current_database_url = "monitorview/db/sqlserver/queryMsSqlMemory";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+	ed_monitor_get();
+}
+
+window.index_monitor_init = function ()
+{
+	ed_monitor_get();
+}
+
+function ed_monitor_get()
+{
+    urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+           current_database_list(data.edmonitorstore[1].monitorId);
+        }
+    });
+}
+
+function current_database_list(monitorId)
+{
+	um_ajax_get({
+        url : current_database_url,
+        paramObj : {monitorId : monitorId,
+					time : $("#query_time_label").text(),
+					},
+        isLoad : false,
+        successCallBack : function (data){
+            $("#memory_info_div").umDataBind("render" ,data[0]);
+        }
+    });
+}
+
+
+});
+</script>

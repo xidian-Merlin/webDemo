@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>监控运维管控平台</title>
+	<script type="text/javascript" src="/js/lib/jquery/jquery.1.10.2.js"></script>
+	<script type="text/javascript" src="/js/ip.js"></script>
+	<script type="text/javascript" src="/js/md5.js"></script>
+	<script type="text/javascript" src="/js/jquery.base64.js"></script>
+	<script type="text/javascript" src="/js/lib/JsonTools.js"></script>
+	<style type="text/css">
+		* {
+		  }
+		* {
+			  margin: 0;
+			  padding: 0;
+		}
+
+
+		html, body {
+		    background: #f9f9f9 none repeat scroll 0 0;
+		    font-family: Helvetica,sans-serif;
+		    height: 100%;
+		    width: 100%;
+		}
+
+		body {
+		    font: 12px/1.5 "Microsoft YaHei",tahoma,arial,Hiragino Sans GB,宋体;
+		    height: 100%;
+		    overflow: hidden;
+		    position: relative;
+		    width: 100%;
+		}
+
+		input:-webkit-autofill,
+		textarea:-webkit-autofill,
+		select:-webkit-autofill{
+			background-color:transparent !important;
+		    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+		}
+
+		.container {
+		    background-color: #fff;
+		    height: 100%;
+		    width: 100%;
+		}
+
+		.content {
+		    height: 100%;
+		    margin: 0 auto;
+		    width: 1200px;
+		}
+
+		.wrap {
+		    left: 0;
+		    position: absolute;
+		    text-align: center;
+		    top: 23%;
+		    width: 100%;
+		    z-index: 2;
+		}
+
+		.slogan {
+		    display: inline-block;
+		    height: 200px;
+		    width: 600px;
+		}
+
+		.back {
+		    bottom: 0;
+		    left: 0;
+		    overflow: hidden;
+		    position: absolute;
+		    top: 0;
+		    width: 100%;
+		}
+
+		.items {
+			overflow: visible;
+		}
+		.front, .items, .item {
+		    height: 100%;
+		    left: 0;
+		    overflow: hidden;
+		    position: absolute;
+		    top: 0;
+		    width: 100%;
+		}
+
+		.item {
+		    background: #fff none no-repeat scroll center center / cover ;
+		    display: none;
+		}
+
+		h1{
+			color: #fff;
+		}
+
+		.hg{
+			margin-top: 10px;
+			margin-bottom: 31px;
+			background: url("/img/login_hg.png") center center;
+			height: 2px;
+		}
+
+		.login-form > div{
+			position: relative;
+			margin: 0 auto;
+			height: 36px;
+			width: 260px;
+			border: 1px #9dc1d4 solid;
+			border-radius: 26px;
+			margin-bottom: 25px;
+			background-color: rgba(52,186,255,0.17);
+		}
+
+		.login-form > div > input{
+			border: none;
+			background-color: rgba(52,186,255,0) !important;
+			width: 160px;
+			height: 100%;
+			color: #fff;
+			padding-left:10px;
+			outline:0px;
+		}
+
+		input::-ms-clear{display:none;}
+
+		.login-form > div > span{
+			display: block;
+			position: absolute;
+			left:10px;
+			top:10px;
+			color: #fff;
+		}
+		.line{
+
+		}
+		.login-btn{
+			margin-top:32px !important;
+			text-align:center;
+			line-height:36px;
+			color: #fff;
+			letter-spacing: 6px;
+		}
+		.login-btn:hover{
+			cursor: pointer;
+			background: rgba(52,186,255,0.34);
+		}
+		img{
+			position: absolute;
+			right: 20px;
+			top: 3px;
+		}
+		.err-msg{
+			position: relative;
+			color: #ff6600;
+			line-height: 26px;
+		}
+	</style>
+</head>
+<body>
+
+<div class="main">
+	<div class="container">
+		<div class="content">
+			<div class="wrap">
+				<div class="slogan">
+					<h1>IT综合监控运维管理平台</h1>
+					<div class="hg"></div>
+					<div class="login-form">
+						<div>
+							<span style="letter-spacing: 10px">帐号</span>
+							<input type="text" id="user" autocomplete="off"/>
+							<p class="err-msg"></p>
+						</div>
+						<div>
+							<span style="letter-spacing: 10px">密码</span>
+							<input type="text" id="pwd" onpaste="return false;" oncopy="return false"/>
+							<p class="err-msg"></p>
+						</div>
+						<div>
+							<span>验证码</span>
+							<span class="line"></span>
+							<img id="iden_img" src="data:image/png;base64,这里放字符"/> 
+							<input type="text" id="iden_code" maxlength="4">
+							<p class="err-msg"></p>
+						</div>
+						<div class="login-btn" id="login_btn">
+							登录
+						</div>
+						<p class="err-msg"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="back">
+			<div class="items">
+				<div style="background-image: url('/img/login_bg.jpg'); display: block;" class="item item3"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+$(document).ready(function (){
+	$("#user").val("");
+	$("#pwd").val("");
+
+	$("#user").focus();
+
+	$("#pwd").click(function (){
+		$("#pwd").attr("type" ,"password");
+		$("#pwd").focus();
+	});
+
+	$("#pwd").focus(function (){
+		$("#pwd").attr("type" ,"password");
+	});
+
+	$("#login_btn").click(function (){
+		login();
+	});
+
+	$(document).keypress(function(event){  
+	    var keycode = (event.keyCode ? event.keyCode : event.which);  
+	    if(keycode == '13'){  
+	        login();
+	    }  
+	});
+
+	get_iden_code();
+
+	function get_iden_code(){		
+		$.ajax({
+			type : "GET",
+			dataType: "json",
+			url : index_web_app + "captchajson",
+			timeout : 120000,
+			xhrFields: {
+				withCredentials: true
+			},
+			success :function(data){
+				$("#iden_img").attr("src" ,"data:image/png;base64,"+data.json);
+			},
+			error :function(e){
+				console.log(e);
+			}
+		});
+	}
+
+	function login(){
+		if ($("#login_btn").html() == "登录中...")
+		{
+			return false;
+		}
+
+		var username = $("#user").val();
+		var pwd = $("#pwd").val();
+		var iden_code = $("#iden_code").val();
+
+		$("#user").next().text("");
+		$("#pwd").next().text("");
+		$("#iden_code").next().text("");
+		$("#login_btn").next().text("");
+
+		if (!username.trim())
+		{
+			$("#user").next().text("请填写用户名");
+			return false;
+		}
+
+		if (!pwd)
+		{
+			$("#pwd").next().text("请填写密码");
+			return false;
+		}
+
+		if (!iden_code.trim())
+		{
+			$("#iden_code").next().text("请填写验证码");
+			return false;
+		}
+
+		$("#login_btn").html("登录中...");
+
+		var obj = new Object();
+		obj.username = username;
+		obj.password = $.base64.encode($.md5(pwd));
+		obj.code = iden_code;
+		$.ajax({
+			type : "POST",
+			dataType: "json",
+			url : index_web_app + "login",
+			timeout : 120000,
+			data:{param:JsonTools.encode(obj)},
+			xhrFields: {
+				withCredentials: true
+			},
+			success :function(data){
+				if (data.resultCode == 0)
+				{
+					$("#login_btn").html("登录成功！");
+					window.location.href = "/index.html";
+				}
+				else
+				{
+					get_iden_code();
+					$("#login_btn").next().text(data.resultMsg);
+					$("#login_btn").html("登录");
+				}
+			},
+			error :function(e){
+				console.log(e);
+				get_iden_code
+				$("#login_btn").html("登录");
+			}
+		});
+	}
+});
+
+</script>
+</html>

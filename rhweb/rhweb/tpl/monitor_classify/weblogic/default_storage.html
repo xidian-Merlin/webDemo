@@ -1,0 +1,113 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>连接信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="conn_info"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>统计信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="count_info"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var conn_info_url = "monitorview/middleware/weblogic/queryWeblPersistentConn";
+
+var conn_info_header = [
+                            {text:'名称',name:"name",width:20},
+                            {text:'描述',name:"desc",width:10,render:function(text){
+                                if(text=="null" || text==null){
+                                    return "----";
+                                }
+                                return text;
+                            }},
+                            {text:'创建计数',name:"createCount",width:10},
+                            {text:'删除计数',name:"deleteCount",width:10},
+                            {text:'读取计数',name:"readCount",width:10},
+                            {text:'更新计数',name:"updateCount",width:10},
+                            {text:'对象计数',name:"objectCount",width:10},
+                            {text:'更新时间',name:"enterDate",width:10}
+                         ];
+
+var count_info_url = "monitorview/middleware/weblogic/queryWeblPersistent";
+
+var count_info_header = [
+                            {text:'名称',name:"name"},
+                            {text:'描述',name:"desc",render:function(text){
+                                if(text=="null" || text==null){
+                                    return "----";
+                                }
+                                return text;
+                            }},
+                            {text:'创建计数',name:"createCount"},
+                            {text:'删除计数',name:"deleteCount"},
+                            {text:'读取计数',name:"readCount"},
+                            {text:'更新计数',name:"updateCount"},
+                            {text:'对象计数',name:"objectCount"},
+                            {text:'物理写次数',name:"physicalWriteCount"},
+                            {text:'分配的IO缓冲区字节数(B)',name:"allocatedIoBufferBytes"},
+                            {text:'分配的窗口缓冲区字节数(B)',name:"allocatedWindowBufferBytes"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    conn_info();
+    count_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+
+function conn_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#conn_info"),{
+         header:conn_info_header,
+         url:conn_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+function count_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#count_info"),{
+         header:count_info_header,
+         url:count_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

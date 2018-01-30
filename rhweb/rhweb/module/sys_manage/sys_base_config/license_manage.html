@@ -1,0 +1,67 @@
+<script src="/module/sys_manage/sys_base_config/license_manage.js"></script>
+
+<!-- 操作栏 -->
+<!-- <div class="oper-row" id="table_oper">
+	<div class="oper-col" id="upload_btn">
+		<span class="oper-icons">
+			<span class="oper-icon">
+				<i class="icon-png oper-upload"></i>
+				<i class="icon-png oper-upload-active"></i>
+			</span>
+		</span>
+		<span class="oper-title">上传License文件</span>
+	</div>
+</div> -->
+<div class="table-oper" id="table_oper">
+	<a href="javascript:void(0);" id="upload_btn" class="bgblue">
+		<i class="btn-commen upload-btn"></i>
+		<span>上传License文件</span>
+		<!-- <i class="icon-cloud-upload"></i> -->
+	</a>
+</div>
+
+<div class="animated fadeInRight panel-default prel" id="license_manage" style="padding:0 10px">
+	<div class="panel panel-default panel-style">
+		<div class="panel-heading font-bold prel">
+			<span>当前系统License信息</span>
+		</div>
+		<div class="panel-body p1">
+			<form class="bs-example form-horizontal xs-form p15" id="base_form" style="background:#fff">
+				<div class="form-group">
+			      <label class="col-lg-6 control-label">有效时间：</label>
+			      <div class="col-lg-5">
+			      	<label class="control-label" data-id="licExpiryDate"></label>
+			      </div>
+			    </div>
+
+				<div class="form-group">
+			      <label class="col-lg-6 control-label">程序版本号：</label>
+			      <div class="col-lg-5">
+			        <label class="control-label" data-id="menuVersion"></label>
+			      </div>
+			    </div>
+
+				<div class="form-group">
+			      <label class="col-lg-6 control-label">最大可配置监控器个数：</label>
+			      <div class="col-lg-5">
+			        <label class="control-label" data-id="monitorAllowedNum"></label>
+			      </div>
+			    </div>
+
+				<div class="form-group">
+			      <label class="col-lg-6 control-label">最大可配置资产个数：</label>
+			      <div class="col-lg-5">
+			        <label class="control-label" data-id="assetAllowedNum"></label>
+			      </div>
+			    </div>
+
+				<div class="form-group">
+			      <label class="col-lg-6 control-label">最大可配置日志发生源个数：</label>
+			      <div class="col-lg-5">
+			        <label class="control-label" data-id="logSourceAllowedNum"></label>
+			      </div>
+			    </div>
+			</form>
+		</div>
+	</div>
+</div>

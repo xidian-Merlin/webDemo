@@ -1,0 +1,239 @@
+<tem>
+	<!-- 编辑 -->
+	<div class="template" id="edit_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form">
+				<div class="form-group">
+			      <label class="col-lg-2 control-label required" queryStr>策略名称</label>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="rpName"
+			        	validate="required">
+			      </div>
+			      <label class="col-lg-2 control-label" queryStr>策略状态</label>
+			      <div class="col-lg-4">
+			        <select class="form-control input-sm" data-type="select" data-id="rpStatus">
+						<option value="1">启用</option>
+						<option value="0">停用</option>
+					</select>
+			      </div>
+			    </div>
+
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>执行周期</label>
+			      <div class="col-lg-4">
+			        <select class="form-control input-sm" data-type="select" data-id="rpCycle">
+			        	<option value="1">每天</option>
+			        	<option value="2">每周</option>
+			        	<option value="3">每月</option>
+			        	<option value="4">每年</option>
+					</select>
+			      </div>
+			    </div>
+   			    <div class="form-group">
+			     	<label class="col-lg-2 control-label" queryStr>执行时间</label>
+		     		<div class="col-lg-2" style="display: none" id="month" data-flag="cycleType">
+					<select class="form-control input-sm" data-type="select" data-id="month">
+						<option value="1">1月</option>
+						<option value="2">2月</option>
+						<option value="3">3月</option>
+						<option value="4">4月</option>
+						<option value="5">5月</option>
+						<option value="6">6月</option>
+						<option value="7">7月</option>
+						<option value="8">8月</option>
+						<option value="9">9月</option>
+						<option value="10">10月</option>
+						<option value="11">11月</option>
+						<option value="12">12月</option>
+					</select>
+					</div>
+					<div class="col-lg-2" style="display: none" id="day" data-flag="cycleType">
+					<select class="form-control input-sm" data-type="select" data-id="day">
+						<option value="1">1日</option>
+						<option value="2">2日</option>
+						<option value="3">3日</option>
+						<option value="4">4日</option>
+						<option value="5">5日</option>
+						<option value="6">6日</option>
+						<option value="7">7日</option>
+						<option value="8">8日</option>
+						<option value="9">9日</option>
+						<option value="10">10日</option>
+						<option value="11">11日</option>
+						<option value="12">12日</option>
+						<option value="13">13日</option>
+						<option value="14">14日</option>
+						<option value="15">15日</option>
+						<option value="16">16日</option>
+						<option value="17">17日</option>
+						<option value="18">18日</option>
+						<option value="19">19日</option>
+						<option value="20">20日</option>
+						<option value="21">21日</option>
+						<option value="22">22日</option>
+						<option value="23">23日</option>
+						<option value="24">24日</option>
+						<option value="25">25日</option>
+						<option value="26">26日</option>
+						<option value="27">27日</option>
+						<option value="28">28日</option>
+					</select>
+					</div>
+					<div class="col-lg-2" style="display: none" id="week" data-flag="cycleType">
+					<select class="form-control input-sm" data-type="select" data-id="week">
+						<option value="0">周日</option>
+						<option value="1">周一</option>
+						<option value="2">周二</option>
+						<option value="3">周三</option>
+						<option value="4">周四</option>
+						<option value="5">周五</option>
+						<option value="6">周六</option>
+
+					</select>
+			     	</div>
+					
+			      	<div class="col-lg-2">
+						<input class="form-control input-sm" validate="required,Hms" type="text" data-id="time"/>
+			      	</div>
+			      	<label class="col-lg-2 control-label tl" style="padding-left: 0">(HH:mm:ss)</label>
+			    </div>
+			    
+			    
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>报表模板</label>
+			      <div class="col-lg-4">
+					<select class="form-control input-sm" data-id="rpCode" data-type="select">
+					</select>
+			      </div>
+			    </div>
+			    
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>报表文件格式</label>
+			      <div class="col-lg-4">
+			        <select class="form-control input-sm" data-type="select" data-id="rpFormat">
+						<option value="1">xls</option>
+						<option value="2">rtf</option>
+						<option value="8">pdf</option>
+						<option value="16">csv</option>
+					</select>
+
+			      </div>
+			    </div>
+			    
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>收件人</label>
+			      <div class="col-lg-8">
+			      	<div class="prel">
+						<div id="noticeUserList" class="form-control input-sm tl inputdrop" style="padding:0" required>
+						</div>
+						<a href="javascript:void(0);" id="report_send_obj_span"
+							style="float:right; position:absolute; bottom:5px; right:5px; font-size:15px;">
+							<i class="icon-user" style="color:black;opacity:0.6"></i>
+						</a> 
+					</div>
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>邮件主题</label>
+			      <div class="col-lg-8">
+			        <input class="form-control input-sm" validate="required" type="text" data-id="emailTitle"/>
+
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>邮件内容</label>
+			      <div class="col-lg-8">
+			        <textarea class="form-control input-sm" data-id="emailContent" validate="required"></textarea>
+
+			      </div>
+			    </div>
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>备注</label>
+			      <div class="col-lg-8">
+			        <textarea class="form-control input-sm" data-id="remark"></textarea>
+			      </div>
+			    </div>
+
+			</form>
+		</div>
+	</div>
+
+	<!-- 详情 -->
+	<div class="template detail-info" id="detail_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form xs-form-mb5">
+				<div class="form-group">
+					<label class="col-lg-4 control-label">策略名称：</label>
+					<label class="col-lg-8 control-label tl" data-id="rpName"></label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">执行周期：</label>
+					<label class="col-lg-8 control-label tl" data-id="rpCycle"></label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">报表模板：</label>
+					<label class="col-lg-8 control-label tl" data-id="rpCode"></label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">报表文件格式：</label>
+					<label class="col-lg-8 control-label tl" data-id="rpFormat"></label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">收件人：</label>
+					<label class="col-lg-8 control-label tl" data-id="emailPerson"></label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">邮件主题：</label>
+					<label class="col-lg-8 control-label tl" data-id="emailTitle"></label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">邮件内容：</label>
+					<label class="col-lg-8 control-label tl" data-id="emailContent"></label>
+				</div>
+
+				<div class="form-group">
+					<label class="col-lg-4 control-label">备注：</label>
+					<label class="col-lg-8 control-label tl" data-id="remark"></label>
+				</div>
+				
+			</form>
+		</div>
+	</div>
+
+	<!-- 通知对象 -->
+	<div class="template" id="notice_obj_template">
+		<div class="tab-container" id="tab">
+			<ul class="nav nav-tabs nav-justified" data-id="tab-ul">
+				<li>
+					<a>系统用户</a>
+				</li>
+				<li>
+					<a>安全域用户</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<!-- tab1 -->
+				<div class="tab-pane">
+					<div style="padding:5px 0">
+			            <select class="form-control input-sm" data-type="select" 
+			          				data-id="user_group_sel">
+			          			<option value="-1">--------</option>
+					    </select>
+				    </div>
+					<div id="noticeList_table1" class="table-div" style="height:200px"></div>
+				</div>
+				<!-- tab2 -->
+				<div class="tab-pane">
+					<div id="noticeList_table2" class="table-div mt5" style="height:200px"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</tem>

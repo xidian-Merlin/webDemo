@@ -1,0 +1,336 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :
+ 	[
+ 		{
+ 		 "label":"监控信息",
+ 		 "children":[
+ 		 			{
+ 		 				"label":"运维首页" ,"href":"/monitor_info/oper_index",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"资产信息",
+ 		 				"children":
+ 		 							[
+ 		 								{"label":"运维资产" ,"href":"/monitor_info/asset_info/oper_asset" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"资产接口" ,"href":"/monitor_info/asset_info/asset_interface" ,"icon":"icon-ellipsis-vertical"}
+ 		 							]
+ 		 			},
+ 		 			{
+ 		 				"label":"监控对象",
+ 		 				"children":
+									[
+ 		 								{"label":"监控器" ,"href":"/monitor_info/monitor_obj/monitor" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"资产监控" ,"href":"/monitor_info/monitor_obj/asset_monitor" ,"icon":"icon-ellipsis-vertical"}
+			 		 				]
+ 		 			},
+ 		 			{
+ 		 				"label":"KPI指标展示" ,"href":"/monitor_info/kpi_show",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"拓扑管理" ,"href":"/monitor_info/topo_manage",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"应用监控" ,"href":"/monitor_info/app_monitor",
+ 		 				"children":[]
+ 		 			}
+ 				 ]
+ 		},
+ 		{
+		  "label":"安全管理",
+		  "children":
+					[
+						{
+ 		 				  "label":"事件分析",
+ 		 				  "children":
+ 		 							[
+ 		 								{"label":"故障事件分析" ,"href":"/sec_manage/event_analy/fault_event_analy" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"性能事件分析" ,"href":"/sec_manage/event_analy/perform_event_analy" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"配置事件分析" ,"href":"/sec_manage/event_analy/deploy_event_analy" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"脆弱性事件分析" ,"href":"/sec_manage/event_analy/vulner_event_analy" ,"icon":"icon-ellipsis-vertical"}
+ 		 							]
+ 		 				}
+					]
+ 		},
+ 		{
+ 		 "label":"统计报表",
+ 		 "children":[
+ 		 			{
+ 		 				"label":"报表展示" ,"href":"/stat_report/report_show",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"风险报表" ,
+ 		 				"children":
+ 		 						  [
+		 		 					{"label":"风险对比报表" ,"href":"/stat_report/risk_report/risk_compare_report" ,"icon":"icon-ellipsis-vertical"},
+				 		 			{"label":"风险监控综合分析报表" ,"href":"/stat_report/risk_report/risk_monitor_report" ,"icon":"icon-ellipsis-vertical"}
+ 		 						  ]
+ 		 			},
+ 		 			{
+ 		 				"label":"监控器报表" ,"href":"/stat_report/monitor_report",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"安全事件报表" ,"href":"/stat_report/security_event_report",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"故障事件报表" ,
+ 		 				"children":
+			 		 			  [
+			 		 			  	{"label":"资产报表" ,"href":"/stat_report/fault_event_report/asset_report" ,"icon":"icon-ellipsis-vertical"}
+			 		 			  ]
+ 		 			},
+ 		 			{
+ 		 				"label":"性能事件报表" ,"href":"/stat_report/perform_event_report",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"配置事件报表" ,"href":"/stat_report/config_event_report",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"脆弱性事件报表" ,"href":"/stat_report/vulner_event_report",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"工单报表" ,"href":"/stat_report/workorder_report",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"综合报表" ,"href":"/stat_report/comprehensive_report",
+ 		 				"children":[]
+ 		 			}
+ 				 ]
+ 		},
+ 		{
+ 			"label":"风险统计",
+ 			"children":
+ 						[
+ 							{
+ 								"label":"业务域风险","href":"/risk_statistics/biz_risk",
+ 								"children":[]
+ 							},
+ 							{
+ 								"label":"安全域风险","href":"/risk_statistics/sec_risk",
+ 								"children":[]
+ 							},
+ 							{
+ 								"label":"资产风险","href":"/risk_statistics/asset_risk",
+ 								"children":[]
+ 							},
+ 							{
+ 								"label":"整体风险","href":"/risk_statistics/overall_risk",
+ 								"children":[]
+ 							}
+ 						]
+ 		},
+ 		{
+ 		 "label":"运维工单",
+ 		 "children":[
+ 		 			{
+ 		 				"label":"工单处理",
+ 		 				"children":
+ 		 							[
+ 		 								{"label":"工单申请" ,"href":"/oper_workorder/workorder_handle/workorder_apply" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"待办工作" ,"href":"/oper_workorder/workorder_handle/todo_work" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"已办工作" ,"href":"/oper_workorder/workorder_handle/done_work" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"工单测试" ,"href":"/oper_workorder/workorder_handle/workorder_test" ,"icon":"icon-ellipsis-vertical"}
+ 		 							]
+ 		 			},
+ 		 			{
+ 		 				"label":"工作流管理",
+ 		 				"children":
+ 		 							[
+ 		 								{"label":"工单监控" ,"href":"/oper_workorder/workflow_manage/workorder" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"流程信息维护" ,"href":"/oper_workorder/workflow_manage/process_information" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"邮件模板" ,"href":"/oper_workorder/workflow_manage/email_template" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"短信模板" ,"href":"/oper_workorder/workflow_manage/sms_template" ,"icon":"icon-ellipsis-vertical"}
+ 		 							]
+ 		 			},
+ 		 			{
+ 		 				"label":"值班管理",
+ 		 				"children":
+ 		 							[
+ 		 								{"label":"值班表" ,"href":"/oper_workorder/duty_manage/duty_form" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"公告信息" ,"href":"/oper_workorder/duty_manage/notice" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"任务提醒" ,"href":"/oper_workorder/duty_manage/task" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"邮件组" ,"href":"/oper_workorder/duty_manage/email_group" ,"icon":"icon-ellipsis-vertical"}
+ 		 							]
+ 		 			}
+ 				 ]
+ 		},
+ 		{
+ 		 "label":"知识库",
+ 		 "children":[
+	 		 			{
+	 		 				"label":"知识共享",
+	 		 				"children":
+	 		 							[
+	 		 								{"label":"案例分析" ,"href":"/knowledge_repo/creative_commons/case_analysis" ,"icon":"icon-ellipsis-vertical"}
+	 		 							]
+	 		 			},
+	 		 			{
+	 		 				"label":"漏洞库",
+	 		 				"children":
+	 		 							[
+	 		 								{"label":"CVE漏洞库" ,"href":"/knowledge_repo/bug_repo/cve_repo" ,"icon":"icon-ellipsis-vertical"},
+	 		 								{"label":"BUGTRAQ漏洞库" ,"href":"/knowledge_repo/bug_repo/bugTraq_repo" ,"icon":"icon-ellipsis-vertical"}
+	 		 							]
+	 		 			}
+ 				 	]
+ 		},
+ 		{"label":"系统管理",
+ 		 "children":[
+						{
+ 		 				"label":"系统基础配置",
+ 		 				"children":[
+ 		 								{
+				 		 				"label":"用户管理" ,"href":"/sys_manage/sys_base_config/user_manage","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"用户组管理" ,"href":"/sys_manage/sys_base_config/user_group_manage","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"角色管理" ,"href":"/sys_manage/sys_base_config/role_manage","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"菜单配置" ,"href":"/sys_manage/sys_base_config/menu_config","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"服务配置" ,"href":"/sys_manage/sys_base_config/service_config","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"服务器配置" ,"href":"/sys_manage/sys_base_config/server_config","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"数据库维护" ,"href":"/sys_manage/sys_base_config/dataBase_maintain","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"系统健康度" ,"href":"/sys_manage/sys_base_config/system_health","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"license管理" ,"href":"/sys_manage/sys_base_config/license_manage","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"系统选项" ,"href":"/sys_manage/sys_base_config/sys_option","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"版本信息" ,"href":"/sys_manage/sys_base_config/version_info","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				}
+ 		 							]
+ 		 				},
+ 		 				{
+ 		 				"label":"监控配置",
+ 		 				"children":[
+ 		 								{
+				 		 				"label":"监控器配置" ,"href":"/sys_manage/monitor_config/monitor_config","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"脆弱性扫描" ,"href":"/sys_manage/monitor_config/vulner_scan","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"重点接口" ,"href":"/sys_manage/monitor_config/imp_interface","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"拓扑发现" ,"href":"/sys_manage/monitor_config/topology_discover","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				},
+				 		 				{
+				 		 				"label":"应用监控配置" ,"href":"/sys_manage/monitor_config/app_monitor_config","icon":"icon-ellipsis-vertical",
+				 		 				"children":[]
+				 		 				}
+ 		 							]
+ 		 				}
+ 		 			]
+ 		},
+ 		{"label":"基础数据",
+ 		 "children":[
+ 		 			{
+ 		 				"label":"资产属性",
+ 		 				"children":
+ 		 							[
+ 		 								{"label":"操作系统类型" ,"href":"/base_sysdate/asset_prop/os_type_index" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"资产类型" ,"href":"/base_sysdate/asset_prop/asset_type" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"资产型号" ,"href":"/base_sysdate/asset_prop/asset_model" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"资产自定义属性" ,"href":"/base_sysdate/asset_prop/asset_custom_prop" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"厂商管理" ,"href":"/base_sysdate/asset_prop/comp_manage" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"物理位置管理" ,"href":"/base_sysdate/asset_prop/phy_position_manage" ,"icon":"icon-ellipsis-vertical"}
+ 		 							]
+ 		 			},
+ 		 			{
+ 		 				"label":"故障等级定义","href":"/base_sysdate/fault_level_define","icon":"icon-ellipsis-vertical",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"性能等级定义","href":"/base_sysdate/perform_level_define","icon":"icon-ellipsis-vertical",
+ 		 				"children":[]
+ 		 			},
+ 		 			{
+ 		 				"label":"资产管理",
+ 		 				"children":
+ 		 							[
+ 		 								{"label":"资产发现" ,"href":"/base_sysdate/asset_manage/asset_discover" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"SNMP管理" ,"href":"/base_sysdate/asset_manage/snmp_manage" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"备用资产" ,"href":"/base_sysdate/asset_manage/backup_asset" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"安全域管理" ,"href":"/base_sysdate/asset_manage/sec_area_manage" ,"icon":"icon-ellipsis-vertical"},
+ 		 								{"label":"业务域管理" ,"href":"/base_sysdate/asset_manage/biz_area_manage" ,"icon":"icon-ellipsis-vertical"}
+ 		 							]
+ 		 			}
+ 				 ]
+ 		},
+ 		{
+ 		 "label":"策略管理",
+ 		 "children":[
+	 		 			{
+	 		 				"label":"事件通知策略" ,"href":"/policy_manage/event_notice_policy","icon":"icon-ellipsis-vertical",
+	 		 				"children":[]
+	 		 			},
+	 		 			{
+	 		 				"label":"报表发送策略" ,"href":"/policy_manage/report_send_policy","icon":"icon-ellipsis-vertical",
+	 		 				"children":[]
+	 		 			},
+	 		 			{
+	 		 				"label":"自动工单策略" ,"href":"/policy_manage/auto_work_policy","icon":"icon-ellipsis-vertical",
+	 		 				"children":[]
+	 		 			},
+	 		 			{
+	 		 				"label":"监控事件忽略策略" ,"href":"/policy_manage/monitor_event_ignore_policy","icon":"icon-ellipsis-vertical",
+	 		 				"children":[]
+	 		 			}
+ 				 	]
+ 		},
+ 		{
+ 		 "label":"日志审计",
+ 		 "children":[
+	 		 			{
+	 		 				"label":"日志查询" ,"href":"/log_audit/log_query","icon":"icon-ellipsis-vertical",
+	 		 				"children":[]
+	 		 			},
+	 		 			{
+	 		 				"label":"日志备份" ,"href":"/log_audit/log_backup","icon":"icon-ellipsis-vertical",
+	 		 				"children":[]
+	 		 			}
+ 				 	]
+ 		}
+ 	]
+ }

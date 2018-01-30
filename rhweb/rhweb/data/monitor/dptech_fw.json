@@ -1,0 +1,15 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "DPTECH FW",
+					"fileName" : "dptech_fw",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "dptech_fw/base.html","icon" : "monitor-base-info"},
+								{"text" : "CPU内存信息" ,"href" : "dptech_fw/used_rate.html","icon" : "monitor-sga"},
+								{"text" : "主板温度" ,"href" : "dptech_fw/mainboard.html","icon" : "monitor-mainboard"},
+								{"text" : "接口面板" ,"href" : "nsfocus/interface.html","icon" : "monitor-interface"},
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

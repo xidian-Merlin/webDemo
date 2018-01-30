@@ -1,0 +1,89 @@
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>ping信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="ping_info_list_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>traceroute信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="traceroute_info_list_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+
+
+var ping_info_list_url = "monitorview/protocol/ping/queryPingInfo";
+var ping_info_list_header = [
+						      {text:"目标机IP" ,name:"pingIp"},
+						      {text:"跳出时间(毫秒)" ,name:"timeOut"},
+						      {text:"连接跳数" ,name:"pingTtl"},
+						      {text:"是否连通" ,name:"pingResult"},
+						      {text:"连接时间(毫秒)" ,name:"pingCost"},
+						      {text:"结束时间" ,name:"enterDate"}
+						   ];
+
+var traceroute_info_list_url = "monitorview/protocol/ping/queryTracerouteInfo";
+var traceroute_info_list_header = [
+						      {text:"连接次数" ,name:"tracerouteNum"},
+						      {text:"目标机IP" ,name:"tracerouteIp"},
+						      {text:"通过的IP" ,name:"tracerouteIp1"},
+						      {text:"连接平均时间(毫秒)" ,name:"tracerouteEqtime"},
+						      {text:"结束时间" ,name:"enterDate"}
+						   ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    ping_info_list();
+    traceroute_info_list();
+}
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+function ping_info_list()
+{
+	g_grid.render($("#ping_info_list_div") ,{
+		url : ping_info_list_url,
+		header : ping_info_list_header,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+        			regionId : urlParamObj.regionId,
+                    time:$("#query_time_label").text()},
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false
+	});
+}
+
+function traceroute_info_list()
+{
+	g_grid.render($("#traceroute_info_list_div") ,{
+		url : traceroute_info_list_url,
+		header : traceroute_info_list_header,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+        			regionId : urlParamObj.regionId,
+                    time:$("#query_time_label").text()},
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : true
+	});
+}
+
+
+});
+</script>

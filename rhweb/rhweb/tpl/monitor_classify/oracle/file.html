@@ -1,0 +1,178 @@
+<div class="mt5 mb5" style="height:30px" id="instance_sel_div">
+    <select class="form-control input-sm" data-type="select" id="instance_sel">
+    </select>
+</div>
+
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>数据库文件</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="file_list_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt20">
+	<div class="panel-heading font-bold prel">
+		<span>重做日志</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="log_list_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt0">
+	<div class="panel-heading font-bold prel">
+		<span>无效对象</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="invalid_list_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+	
+
+$(document).ready(function (){
+
+
+var file_list_url = "monitorview/db/oracle/queryOracleDataFile";
+var file_list_header = [
+						      {text:"数据库文件" ,name:"fileName"},
+						      {text:"文件状态" ,name:"status"},
+						      //{text:"sql访问文件权限" ,name:"enabled"},
+						      {text:"当前尺寸(MB)" ,name:"bytes"},
+						      {text:"所属文件空间" ,name:"tablespaceName"},
+						      {text:"i/o所用时间(ms)" ,name:"avgiotime"},
+						      //{text:"文件读取次数" ,name:"phyblkpd"},
+						      //{text:"文件写入次数" ,name:"phyblkwrt"},
+						      {text:"读次数" ,name:"phyrds"},
+						      {text:"读块数" ,name:"phyblkpd"},
+						      {text:"每秒读次数" ,name:"phyrdsPerSec"},
+						      {text:"每秒读块数" ,name:"phyblkrdPerSec"},
+						      {text:"读时间(ms)" ,name:"readtime", render : function(text){
+						      	return text * 10;
+						      }},
+						      {text:"写次数" ,name:"phywrts"},
+						      {text:"写块数" ,name:"phyblkwrt"},
+						      {text:"每秒写次数" ,name:"phywrtsPerSec"},
+						      {text:"每秒写块数" ,name:"phyblkwrtPerSec"},
+						      {text:"写时间(ms)" ,name:"writetime", render : function(text){
+						      	return text * 10;
+						      }},
+						      {text:"更新时间" ,name:"updateDate"}
+						   ];
+var log_list_url = "monitorview/db/oracle/queryOracleLogFile";
+var log_list_header = [
+						      {text:"重做日志组标识" ,name:"groupId"},
+						      {text:"重做日志成员名" ,name:"member"},
+						      {text:"日志成员状态" ,name:"logstatus"},
+						      {text:"日志大小(MB)" ,name:"bytes"},
+						      {text:"重做日志组成员数" ,name:"members"},
+						      {text:"归档状态" ,name:"archived"},
+						      {text:"Thread" ,name:"thread"},
+						      {text:"Sequence" ,name:"sequence"},
+						      {text:"启用时间" ,name:"firstTime"},
+						      {text:"日志切换频率(分钟)" ,name:"frequency", render : function(text){
+						      	if(text==-1){
+						      		return "暂无";
+						      	}
+						      	return text;
+						      }},
+						      {text:"更新时间" ,name:"updateDate"}
+						   ];
+var invalid_list_url = "monitorview/db/oracle/queryOracleInvalid";
+var invalid_list_header = [
+						      {text:"宿主" ,name:"owner"},
+						      {text:"对象名称" ,name:"objectName"},
+						      {text:"对象类型" ,name:"objectType"},
+						      {text:"创建时间" ,name:"createTime"},
+						      {text:"更新时间" ,name:"enterDate"}
+						   ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    index_form_init($("#instance_div"));
+    index_ed_monitor_get(urlParamObj ,[$("#instance_sel")]);
+}
+
+function event_init()
+{
+    $("#instance_sel").change(function (){
+        file_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+        log_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+        invalid_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+    });
+}
+
+window.index_monitor_init = function ()
+{
+	index_ed_monitor_get(urlParamObj ,[$("#instance_sel")]);
+}
+
+function file_list(opt)
+{
+	g_grid.render($("#file_list_div") ,{
+		url : file_list_url,
+		header : file_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		tableWidth : "2000px"
+	});
+}
+
+function log_list(opt)
+{
+	g_grid.render($("#log_list_div") ,{
+		url : log_list_url,
+		header : log_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+
+function invalid_list(opt)
+{
+	g_grid.render($("#invalid_list_div") ,{
+		url : invalid_list_url,
+		header : invalid_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+
+
+});
+
+</script>

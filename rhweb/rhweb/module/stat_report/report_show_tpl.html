@@ -1,0 +1,852 @@
+<tem>
+
+<!-- 风险趋势模板 -->
+<div class="template" id="riskCurrent_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group" id="security" >
+			    <label class="col-lg-3 control-label tr">安全域 :</label>
+			    <div class="col-lg-8 ">
+			    	<div class="inputdrop" id="securityDomain" required></div>
+			    </div>		    
+			</div>
+
+			<div class="form-group" id="bussiness">
+			    <label class="col-lg-3 control-label tr">业务域 :</label>
+			    <div class="col-lg-8">
+			    	<div class="inputdrop" id="bussinessDomain" required></div>
+			    </div>		    
+			</div>
+
+			<div class="form-group" id="asset">
+			    <label class="col-lg-3 control-label tr">资产 :</label>
+			    <div class="col-lg-8">
+			    	<select class="form-control input-sm" data-id="asset" data-type="select" validate="required">
+					</select>
+			    </div>
+			    <div class="col-lg-1 tl p5">
+					<i class="icon-search" id="query_btn"></i>	
+				</div>
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label tr">开始时间 :</label>
+			    <div class="col-lg-8">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm" data-type="date"
+      						container="body" validate="required" data-id="startDate">
+    				</div>
+			    </div>		    
+			</div>
+
+			<div class="form-group" style="margin-bottom:30px">
+			    <label class="col-lg-3 control-label tr">结束时间 :</label>
+			    <div class="col-lg-8">
+			    	<div class="input-group w-all">
+      					<input type="text" class="form-control input-sm" data-type="date" 
+      						container="body" validate="required" data-id="endDate">
+    				</div>
+			    </div>		    
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 不同时间风险对比模板 -->
+<div class="template" id="difTime_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group" id="security">
+			    <label class="col-lg-3 control-label tr">安全域 :</label>
+			    <div class="col-lg-8 ">
+			    	<div class="inputdrop" id="securityDomain" required></div>
+			    </div>		    
+			</div>
+
+			<div class="form-group" id="bussiness">
+			    <label class="col-lg-3 control-label tr">业务域 :</label>
+			    <div class="col-lg-8">
+			    	<div class="inputdrop" id="bussinessDomain" required></div>
+			    </div>
+			</div>
+
+			<div class="form-group" id="asset">
+			    <label class="col-lg-3 control-label tr">资产 :</label>
+			    <div class="col-lg-8">
+			    	<select class="form-control input-sm" data-id="asset" data-type="select" validate="required">
+					</select>
+			    </div>
+			    <div class="col-lg-1 tl p5">
+					<i class="icon-search" id="query_btn"></i>	
+				</div>	    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label tr">对比时间一 :</label>
+			    <div class="col-lg-8">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm" data-type="date"
+      						container="body" validate="required" data-id="timeOne">
+    				</div>
+			    </div>		    
+			</div>
+
+			<div class="form-group" style="margin-bottom:30px">
+			    <label class="col-lg-3 control-label tr">对比时间二 :</label>
+			    <div class="col-lg-8">
+			    	<div class="input-group w-all">
+      					<input type="text" class="form-control input-sm" data-type="date" 
+      						container="body" validate="required" data-id="timeTwo">
+    				</div>
+			    </div>		    
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 事件模板 -->
+<div class="template" id="event_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label tr">事件名称 :</label>
+			    <div class="col-lg-4">
+			    	<input type="text" class="form-control input-sm" data-id="eventName">
+			    </div>	
+
+			    <label class="col-lg-2 control-label tr">事件类型 :</label>
+			    <div class="col-lg-4">
+			    	<select class="form-control input-sm" data-id="eventType" data-type="select" multiple>
+					</select>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label tr">开始时间 :</label>
+			    <div class="col-lg-4 ">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm" style="padding-right:0px" data-type="date"
+      						 validate="required" data-id="startDate">
+    				</div>
+			    </div>
+
+			     <label class="col-lg-2 control-label tr">结束时间 :</label>
+			    <div class="col-lg-4">
+			    	<div class="input-group w-all">
+      					<input type="text" class="form-control input-sm" style="padding-right:0px" data-type="date" 
+      						 validate="required" data-id="endDate">
+    				</div>
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label tr">事件状态 :</label>
+			    <div class="col-lg-4">
+  					<select class="form-control input-sm" data-id="eventStatus" data-type="select" multiple>
+  						<option value="1">未处理</option>
+  						<option value="2">处理中</option>
+  						<option value="3">已处理</option>
+  						<option value="4">忽略</option>
+					</select>
+			    </div>
+				
+				<div id="eventLevel">
+				    <label class="col-lg-2 control-label tr">事件等级 :</label>
+				    <div class="col-lg-4">
+	  					<select class="form-control input-sm" data-id="eventLevel" data-type="select" multiple>
+	  						<option value="1">很高</option>
+	  						<option value="2">高</option>
+	  						<option value="3">中</option>
+	  						<option value="4">低</option>
+						</select>
+				    </div>
+				</div>
+			</div>
+			
+			<div id="asset">
+				<div class="form-group">
+				    <label class="col-lg-2 control-label tr">资产名称 :</label>
+				    <div class="col-lg-4">
+				    	<input type="text" class="form-control input-sm" data-id="assetName">
+				    </div>	
+
+				    <label class="col-lg-2 control-label tr required">资产类型 :</label>
+				    <div class="col-lg-4">
+				    	<div class="inputdrop" id="assetType" required></div>
+				    </div>		    
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="1" name="domainType" checked>
+							  <i></i>
+							  	安全域 :
+							</label>
+						</div>
+					</div>
+					 <div class="col-lg-8 " style="width:59%">
+				    	<div class="inputdrop" id="securityDomain"></div>
+				    </div>
+
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="2" name="domainType">
+							  <i></i>
+							  	业务域 :
+							</label>
+						</div>
+					</div>
+					 <div class="col-lg-8" style="width:59%">
+				    	<div class="inputdrop" id="bussinessDomain"></div>
+				    </div>
+				</div>
+			</div>
+
+			 <div id="log_relay_config_div" data-id="assetIp_div">
+				<div class="form-group">
+					<div class="border-text">
+					  <div id="log_relay">资产IP</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="1" name="ipType" checked>
+							  <i></i>
+							  IPV4 :
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-3" style="width:28%;padding-right:0">
+				        <input type="text" class="form-control input-sm" data-id="startIp" id="startIp" maxlength="15" validate="ipv4">
+			        </div>
+			        <div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+			          -
+			        </div>
+			        <div class="col-lg-3" style="width:28%;padding-left:0">
+			            <input type="text" class="form-control input-sm" data-id="endIp" id="endIp" maxlength="15" validate="ipv4">
+			        </div>
+		        </div>
+		        <div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="2" name="ipType">
+							  <i></i>
+							  IPV6 :
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-7" style="width:59%">
+				        <input type="text" class="form-control input-sm" data-id="ipv" id="ipv6" maxlength="39" validate="ipv6" disabled>
+			        </div>
+		        </div>
+		    </div>
+		</form>
+	</div>
+</div>
+
+<!-- 同时间风险对比模板 -->
+<div class="template" id="sameTime_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div id="security">
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">安全域一 :</label>
+				    <div class="col-lg-8 ">
+				    	<div class="inputdrop" id="securityDomainOne" data-type="securityDomain" data-id="securityDomainOne" required></div>
+				    </div>		    
+				</div>
+
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">安全域二 :</label>
+				    <div class="col-lg-8 ">
+				    	<div class="inputdrop" id="securityDomainTwo" data-type="securityDomain" data-id="securityDomainTwo" required></div>
+				    </div>		    
+				</div>
+			</div>
+
+			<div id="bussiness">
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">业务域一 :</label>
+				    <div class="col-lg-8">
+				    	<div class="inputdrop" id="bussinessDomainOne" data-type="bussinessDomain" data-id="bussinessDomainOne" required></div>
+				    </div>		    
+				</div>
+
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">业务域二 :</label>
+				    <div class="col-lg-8">
+				    	<div class="inputdrop" id="bussinessDomainTwo" data-type="bussinessDomain" data-id="bussinessDomainTwo" required></div>
+				    </div>		    
+				</div>
+			</div>
+			
+			<div id="asset">
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">资产一 :</label>
+				    <div class="col-lg-8">
+				    	<select class="form-control input-sm" data-id="assetOne" data-type="select" validate="required">
+						</select>
+				    </div>	
+				    <div class="col-lg-1 tl p5">
+						<i class="icon-search" id="query_btnO"></i>	
+					</div>	    
+				</div>
+
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">资产二 :</label>
+				    <div class="col-lg-8">
+				    	<select class="form-control input-sm" data-id="assetTwo" data-type="select" validate="required">
+						</select>
+				    </div>	
+				    <div class="col-lg-1 tl p5">
+						<i class="icon-search" id="query_btnT"></i>	
+					</div>	    
+				</div>
+			</div>
+
+			<div class="form-group" style="margin-bottom:80px">
+			    <label class="col-lg-3 control-label tr">对比时间 :</label>
+			    <div class="col-lg-8">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm" data-type="date"
+      						container="body" validate="required" data-id="time">
+    				</div>
+			    </div>		    
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 资产统计模板 -->
+<div class="template" id="assetCount_template">
+	<div class="panel-body no-tb-padder" style="padding:5px">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group" style="text-align: center;">
+				<i class="icon-search" id="searchIcon">高级查询</i>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-1" style="width:20px">
+			    </div>
+			    <div class="col-lg-5">
+		    		<!-- 右移箭头 -->
+					<div style="right:-40px;top:41px;font-size:20px;z-index:2000" 
+						id="chevron-right" class="pabs square">
+						<i class="icon-chevron-right"></i>
+					</div>
+					
+					<!-- 左移箭头 -->
+					<div style="right:-40px;top:85px;font-size:20px;z-index:2000" 
+					id="chevron-left" class="pabs square">
+						<i class="icon-chevron-left"></i>
+					</div>
+			    	<div class="table-div" id="left_table" style="height:300px"></div>
+			    </div>
+			    <div class="col-lg-1">
+			    </div>
+			    <div class="col-lg-5">
+			        <div class="table-div" id="right_table" style="height:300px"></div>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 工单模板 -->
+<div class="template" id="workOrder_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group" id="security">
+			    <label class="col-lg-4 control-label tr">工单名称 :</label>
+			    <div class="col-lg-7 ">
+			    	<input type="text" class="form-control input-sm" data-id="workOrderName">
+			    </div>		    
+			</div>
+
+			<div class="form-group" id="bussiness">
+			    <label class="col-lg-4 control-label tr">工单状态 :</label>
+			    <div class="col-lg-7">
+			    	<select class="form-control input-sm" data-id="workOrderStatus" data-type="select" multiple>
+  						<option value="1">未完成</option>
+  						<option value="2">已完成</option>
+					</select>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-4 control-label tr">工单创建开始时间 :</label>
+			    <div class="col-lg-7">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm" data-type="date"
+      						container="body" validate="required" data-id="craetStartTime">
+    				</div>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-4 control-label tr">工单创建结束时间 :</label>
+			    <div class="col-lg-7">
+			    	<div class="input-group w-all">
+      					<input type="text" class="form-control input-sm" data-type="date" 
+      						container="body" validate="required" data-id="creatEndTime">
+    				</div>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-4 control-label tr">工单完成开始时间 :</label>
+			    <div class="col-lg-7">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm" data-type="date"
+      						container="body" validate="required" data-id="compStartTime">
+    				</div>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-4 control-label tr">工单完成结束时间 :</label>
+			    <div class="col-lg-7">
+			    	<div class="input-group w-all">
+      					<input type="text" class="form-control input-sm" data-type="date" 
+      						container="body" validate="required" data-id="compEndTime">
+    				</div>
+			    </div>		    
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 安全事件模板 -->
+<div class="template" id="securtyEvent_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label tr">事件名称 :</label>
+			    <div class="col-lg-4">
+			    	<select class="form-control input-sm" data-id="eventName" data-type="select">
+					</select>
+			    </div>	
+
+			    <label class="col-lg-2 control-label tr">事件类型 :</label>
+			    <div class="col-lg-4">
+			    	<select class="form-control input-sm" data-id="eventType" data-type="select">
+					</select>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label tr">事件状态 :</label>
+			    <div class="col-lg-4">
+  					<select class="form-control input-sm" data-id="eventStatus" data-type="select" multiple>
+  						<option value="1">未处理</option>
+  						<option value="2">处理中</option>
+  						<option value="3">已处理</option>
+  						<option value="4">忽略</option>
+					</select>
+			    </div>
+				
+				<div id="eventLevel">
+				    <label class="col-lg-2 control-label tr">事件等级 :</label>
+				    <div class="col-lg-4">
+	  					<select class="form-control input-sm" data-id="eventLevel" data-type="select" multiple>
+	  						<option value="1">很高</option>
+	  						<option value="2">高</option>
+	  						<option value="3">中</option>
+	  						<option value="4">低</option>
+						</select>
+				    </div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label tr">开始时间 :</label>
+			    <div class="col-lg-4 ">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm " style="padding-right:0px" data-type="date"
+      						 validate="required" data-id="startDate">
+    				</div>
+			    </div>
+
+			     <label class="col-lg-2 control-label tr">结束时间 :</label>
+			    <div class="col-lg-4">
+			    	<div class="input-group w-all">
+      					<input type="text" class="form-control input-sm" style="padding-right:0px" data-type="date" 
+      						 validate="required" data-id="endDate">
+    				</div>
+			    </div>
+			</div>
+
+			<div id="log_relay_config_div" data-id="sourceIp_div">
+				<div class="form-group">
+					<div class="border-text">
+					  <div id="log_relay">源IP</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="1" name="sourceIpType" checked>
+							  <i></i>
+							  IPV4 : 
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-3" style="width:28%;padding-right:0">
+				        <input type="text" class="form-control input-sm" data-id="sourceStartIp" id="sourceStartIp" maxlength="15" validate="ipv4">
+			        </div>
+			        <div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+			          -
+			        </div>
+			        <div class="col-lg-3" style="width:28%;padding-left:0">
+			            <input type="text" class="form-control input-sm" data-id="sourceEndIp" id="sourceEndIp" maxlength="15" validate="ipv4">
+			        </div>
+		        </div>
+		        <div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="2" name="sourceIpType">
+							  <i></i>
+							  IPV6 : 
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-7" style="width:59%">
+				        <input type="text" class="form-control input-sm" data-id="sourceIpv6" id="sourceIpv6" validate="ipv6" maxlength="39" disabled>
+			        </div>
+		        </div>
+		    </div>
+
+		    <div id="log_relay_config_div" data-id="aimIp_div">
+				<div class="form-group">
+					<div class="border-text">
+					  <div id="log_relay" style="margin-left:-5px" >目的IP</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="1" name="aimIpType" checked>
+							  <i></i>
+							  IPV4 :
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-3" style="width:28%;padding-right:0">
+				        <input type="text" class="form-control input-sm" data-id="aimStartIp" id="aimStartIp" validate="ipv4" maxlength="15">
+			        </div>
+			        <div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+			          -
+			        </div>
+			        <div class="col-lg-3" style="width:28%;padding-left:0">
+			            <input type="text" class="form-control input-sm" data-id="aimEndIp" id="aimEndIp" maxlength="15" validate="ipv4">
+			        </div>
+		        </div>
+		        <div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="2" name="aimIpType">
+							  <i></i>
+							  IPV6 :
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-7" style="width:59%">
+				        <input type="text" class="form-control input-sm" data-id="aimIpv6" id="aimIpv6" validate="ipv6" maxlength="39" disabled>
+			        </div>
+		        </div>
+		    </div>
+
+		     <div id="log_relay_config_div" data-id="aimIp_div">
+				<div class="form-group">
+					<div class="border-text">
+					  <div id="log_relay" style="margin-left:-10px">发生源IP</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="1" name="genSourceIpType" checked>
+							  <i></i>
+							  IPV4 :
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-3" style="width:28%;padding-right:0">
+				        <input type="text" class="form-control input-sm" data-id="genSourceStartIp" id="genSourceStartIp" validate="ipv4" maxlength="15">
+			        </div>
+			        <div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+			          -
+			        </div>
+			        <div class="col-lg-3" style="width:28%;padding-left:0">
+			            <input type="text" class="form-control input-sm" data-id="genSourceEndIp" id="genSourceEndIp"
+			          	validate="ipv4" maxlength="15">
+			        </div>
+		        </div>
+		        <div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="2" name="genSourceIpType">
+							  <i></i>
+							  IPV6 :
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-7" style="width:59%">
+				        <input type="text" class="form-control input-sm" data-id="genSourceIpv6" id="genSourceIpv6" validate="ipv6" maxlength="39" disabled>
+			        </div>
+		        </div>
+		    </div>
+		</form>
+	</div>
+</div>
+
+<!-- 日报表查询模板 -->
+<div class="template" id="day_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label tr">时间范围 :</label>
+			    <div class="col-lg-8 ">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm" data-type="date" container="body" format-type="ymd" validate="required,oldDate" data-id="timeRange"/>
+    				</div>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 周报表查询模板 -->
+<div class="template" id="week_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label tr">时间范围 :</label>
+			    <div class="col-lg-8 ">
+			    	<div class="inputdrop">
+      					<input type="text" class="form-control input-sm" validate="required" data-id="timeRange"/>
+    				</div>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 月报表查询模板 -->
+<div class="template" id="month_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label tr">月份 :</label>
+			    <div class="col-lg-8 ">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm" data-type="date" format-type="year" validate="required" container="body"  data-id="startTime"/>
+    				</div>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 季度报表查询模板 -->
+<div class="template" id="quarter_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label tr">年份 :</label>
+				<div class="col-lg-8 ">
+					<select class="form-control input-sm" data-type="select" data-id="year">
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label tr">季度 :</label>
+				<div class="col-lg-8 ">
+					<select class="form-control input-sm" data-type="select" data-id="quarter">
+						<option value="1">第一季度</option>
+						<option value="2">第二季度</option>
+						<option value="3">第三季度</option>
+						<option value="4">第四季度</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 年报表查询模板 -->
+<div class="template" id="year_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label tr">年份 :</label>
+			    <div class="col-lg-8 ">
+			    	<select class="form-control input-sm" data-type="select" data-id="year">
+					</select>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 漏洞模板 -->
+<div class="template" id="repo_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label tr">资产名称 :</label>
+			    <div class="col-lg-4">
+			    	<input type="text" class="form-control input-sm" data-id="assetName">
+			    </div>	
+
+			    <label class="col-lg-2 control-label tr">资产类型 :</label>
+			    <div class="col-lg-4">
+			    	<div class="inputdrop" id="assetType" validate="required"></div>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label tr">资产价值 :</label>
+			    <div class="col-lg-4">
+  					<select class="form-control input-sm" data-id="assetLevel" data-type="select">
+  						<option value="0">----</option>
+  						<option value="1">很高</option>
+  						<option value="2">高</option>
+  						<option value="3">中</option>
+  						<option value="4">低</option>
+  						<option value="4">很低</option>
+					</select>
+			    </div>
+				
+
+				<label class="col-lg-2 control-label tr">资产状态 :</label>
+			    <div class="col-lg-4">
+  					<select class="form-control input-sm" data-id="assetStatus" data-type="select">
+  						<option value="" >----</option>
+  						<option value="1">闲置</option>
+  						<option value="2">使用中</option>
+  						<option value="3">待维修</option>
+  						<option value="4">维修</option>
+  						<option value="5">送修</option>
+  						<option value="6">外借</option>
+  						<option value="7">分配</option>
+  						<option value="8">待报废</option>
+  						<option value="9">报废</option>
+					</select>
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label tr">开始时间 :</label>
+			    <div class="col-lg-4 ">
+			    	<div class="input-group w-all" >
+      					<input type="text" class="form-control input-sm" data-type="date"
+      						 validate="required" data-id="startTime" style="padding-right:0px">
+    				</div>
+			    </div>
+
+			     <label class="col-lg-2 control-label tr">结束时间 :</label>
+			    <div class="col-lg-4">
+			    	<div class="input-group w-all">
+      					<input type="text" class="form-control input-sm" data-type="date" 
+      						 validate="required" data-id="endTime" style="padding-right:0px">
+    				</div>
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-lg-2 tr">
+					<div class="radio">
+						<label class="i-checks">
+						  <input type="radio" value="1" name="domainType" checked>
+						  <i></i>
+						  	安全域 :
+						</label>
+					</div>
+				</div>
+				 <div class="col-lg-8 " style="width:59%">
+			    	<div class="inputdrop" id="securityDomain" data-id="securityDomain"></div>
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-lg-2 tr">
+					<div class="radio">
+						<label class="i-checks">
+						  <input type="radio" value="2" name="domainType">
+						  <i></i>
+						  	业务域 :
+						</label>
+					</div>
+				</div>
+				 <div class="col-lg-8" style="width:59%">
+			    	<div class="inputdrop" id="bussinessDomain" data-id="bussinessDomain"></div>
+			    </div>
+			</div>
+
+			 <div id="log_relay_config_div" data-id="assetIp_div">
+				<div class="form-group">
+					<div class="border-text">
+					  <div id="log_relay">资产IP</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="1" name="ipType" checked>
+							  <i></i>
+							  IPV4 :
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-3" style="width:28%;padding-right:0">
+				        <input type="text" class="form-control input-sm" data-id="startIp" id="startIp" validate="ipv4" maxlength="15">
+			        </div>
+			        <div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+			          -
+			        </div>
+			        <div class="col-lg-3" style="width:28%;padding-left:0">
+			            <input type="text" class="form-control input-sm" data-id="endIp" id="endIp"
+			          	validate="ipv4" maxlength="15">
+			        </div>
+		        </div>
+		        <div class="form-group">
+					<div class="col-lg-2 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="2" name="ipType">
+							  <i></i>
+							  IPV6 :
+							</label>
+						</div>
+					</div>
+					<div class="col-lg-7" style="width:59%">
+				        <input type="text" class="form-control input-sm" data-id="ipv6" id="ipv6" validate="ipv6" maxlength="39" disabled>
+			        </div>
+		        </div>
+		    </div>
+		</form>
+	</div>
+</div>
+
+</tem>

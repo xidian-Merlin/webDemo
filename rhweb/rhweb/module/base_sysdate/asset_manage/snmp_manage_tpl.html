@@ -1,0 +1,167 @@
+<tem>
+
+<!-- 编辑模板 -->
+<div class="template" id="snmp_manage_edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+
+			<div class="form-group">
+				<div id="add_snmp_name_div">
+				    <label class="col-lg-3 control-label required">名称 :</label>
+				    <div class="col-lg-3">
+				      <input type="text" class="form-control input-sm" data-id="snmpName" validate="required">
+				    </div>		    
+				</div>
+
+				<div id="update_snmp_name_div">
+			    <label class="col-lg-3 control-label required">名称 :</label>
+			    <div class="col-lg-3">
+			      <input type="text" class="form-control input-sm" data-id="codename" validate="required">
+			    </div>		    
+				</div>
+				<label class="col-lg-2 control-label required">版本 :</label>
+
+			    <div class="col-lg-3">
+			    	<select class="form-control input-sm" data-type="select" data-id="snmpVersion" validate="required">
+						<option value="1">SNMP V1</option>
+						<option value="2">SNMP V2c</option>
+						<option value="3">SNMP V3</option>
+					</select>
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">端口 :</label>
+		    <div class="col-lg-3">
+		      <input type="text" class="form-control input-sm" data-id="snmpPort" validate="required,port">
+		    </div>
+				<label class="col-lg-2 control-label required">读团体字 :</label>
+		    <div class="col-lg-3">
+		      <input type="text" class="form-control input-sm" data-id="snmpCommunity" validate="required">
+		    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">写团体字 :</label>
+		    <div class="col-lg-3">
+		      <input type="text" class="form-control input-sm" data-id="snmpWCommunity">
+		    </div>
+				<label class="col-lg-2 control-label required">用户名 :</label>
+			    <div class="col-lg-3">
+			        <input type="text" class="form-control input-sm" data-id="snmpUserName" validate="required,stringLimit1" disabled>
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">认证方式 :</label>
+		    <div class="col-lg-3">
+		    	<select class="form-control input-sm" data-type="select" data-id="authWay" disabled validate="required">
+					<option value="">---</option>
+					<option value="1">SHA</option>
+					<option value="2">MD5</option>
+				</select>
+		    </div>
+				<label class="col-lg-2 control-label required">认证口令 :</label>
+		    <div class="col-lg-3">
+		      <input type="password" class="form-control input-sm" data-id="authPwd" disabled validate="required">
+		    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">加密方式 :</label>
+		    <div class="col-lg-3">
+		    	<select class="form-control input-sm" data-type="select" data-id="encryptionWay" disabled validate="required">
+					<option value="">---</option>
+					<option value="1">3DES</option>
+					<option value="2">AES128</option>
+					<option value="3">AES192</option>
+					<option value="4">AES256</option>
+					<option value="5">DES</option>
+				</select>
+		    </div>
+				<label class="col-lg-2 control-label required">加密口令 :</label>
+			    <div class="col-lg-3">
+			      <input type="password" class="form-control input-sm" data-id="encryptionPwd" disabled validate="required" >
+			    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Context ID :</label>
+		    <div class="col-lg-3">
+		      <input type="text" class="form-control input-sm" data-id="context" disabled>
+		    </div>
+				<label class="col-lg-2 control-label">Context Name :</label>
+		    <div class="col-lg-3">
+		      <input type="text" class="form-control input-sm" data-id="contextName" disabled>
+		    </div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-3 control-label">超时时间(秒)：</label>
+		    <div class="col-lg-3">
+		      <input type="text" class="form-control input-sm" data-id="timeOut" validate="number" >
+		    </div>
+				<label class="col-lg-2 control-label">尝试次数 :</label>
+		    <div class="col-lg-3">
+		      <input type="text" class="form-control input-sm" data-id="tryTimes" validate="number" >
+		    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<!-- 详情模板 -->
+<div class="template" id="snmp_manage_detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">名称 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="codename"></label>   
+			    <label class="col-lg-2 control-label">版本 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="snmpVersion"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">端口 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="snmpPort"></label>   
+			    <label class="col-lg-2 control-label">读团体字 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="snmpCommunity"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">写团体字 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="snmpWCommunity"></label> 
+			    <label class="col-lg-2 control-label">超时时间(秒):</label>
+			    <label class="col-lg-3 control-label tl" data-id="timeOut"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">尝试次数 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="tryTimes"></label>  
+			    <label class="col-lg-2 control-label">用户名 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="snmpUserName"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">认证方式 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="authWay"></label> 
+			    <label class="col-lg-2 control-label">认证口令 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="authPwd"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">加密方式 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="encryptionWay"></label> 
+			    <label class="col-lg-2 control-label">加密口令 :</label>
+			    <label class="col-lg-3 control-label tl" data-id="encryptionPwd"></label>   
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">Context ID :</label>
+			    <label class="col-lg-3 control-label tl" data-id="context"></label> 
+			    <label class="col-lg-2 control-label">Context Name :</label>
+			    <label class="col-lg-3 control-label tl" data-id="contextName"></label>   
+			</div>			
+		</form>
+	</div>
+</div>
+
+
+
+</tem>

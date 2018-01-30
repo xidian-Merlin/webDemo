@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<edit>
+		<selectBox>
+			<group name="组件库">
+				<item path="assets/selectBar/dependence.png" label="依赖" value="dependence"/>
+				<item path="assets/selectBar/layer.png" label="虚线框" value="layer"/>
+				<item path="assets/selectBar/appSystem.png" label="应用系统" value="appSystem"/>
+				<item path="assets/selectBar/os.png" label="操作系统" value="os"/>
+				<item path="assets/selectBar/middleware.png" label="中间件" value="middleware"/>
+				<item path="assets/selectBar/database.png" label="数据库" value="database"/>
+				<item path="assets/selectBar/netDevice.png" label="网络设备" value="netDevice"/>
+				<item path="assets/selectBar/securityDevice.png" label="安全设备" value="securityDevice"/>
+				<item path="assets/selectBar/storeDevice.png" label="存储设备" value="storeDevice"/>
+				<item path="assets/selectBar/appsoftware.png" label="应用软件" value="appsoftware"/>
+				<item path="assets/selectBar/generalAgreement.png" label="通用协议" value="generalAgreement"/>
+				<item path="assets/selectBar/securityEvent.png" label="安全事件" value="securityEvent"></item>
+				<item path="assets/selectBar/linkEvent.png" label="链路事件" value="linkEvent"></item>
+				<item path="assets/selectBar/topoM.png" label="拓扑模块" value="topoM"></item>
+				<item path="assets/selectBar/or.png" label="或" value="or"></item>
+				<!-- <item path="assets/selectBar/dependence.png" label="线段" value="solid"></item> -->
+			</group>
+		</selectBox>
+		<topBar>
+			<item img="assets/toolbar/save.png" label="保存" value="save"/>
+			<item img="assets/toolbar/editRuleInfo.png" label="基本信息" value="info"/>
+			<item img="assets/toolbar/topBar_background.png" label="背景图" value="bgImg"/>
+			<!-- <item img="assets/toolbar/edit.png" label="编辑" value="edit"/> -->
+			<item img="assets/toolbar/delete.png" label="删除" value="delete"/>
+			<!-- <item img="assets/toolbar/toUp.png" label="上移" value="toUp"/>
+			<item img="assets/toolbar/toBottom.png" label="下移" value="toBottom"/> -->
+			<item img="assets/toolbar/zoomIn.png" label="放大" value="zoomIn"/>
+			<item img="assets/toolbar/zoomNormal.png" label="还原" value="zoomNormal"/>
+			<item img="assets/toolbar/zoomOut.png" label="缩小" value="zoomOut"/>
+			<item img="assets/toolbar/flushbottom.png" label="下对齐" value="flushbottom"/>
+			<item img="assets/toolbar/flushtop.png" label="上对齐" value="flushtop"/>
+			<item img="assets/toolbar/flushleft.png" label="左对齐" value="flushleft"/>
+			<item img="assets/toolbar/flushright.png" label="右对齐" value="flushright"/>
+			<item img="assets/toolbar/helpIcon.png" label="帮助" value="help" />
+			<item img="assets/toolbar/goManager.png" label="返回" value="goBack" />
+		</topBar>
+		<importUrl>appMonitor/queryAppSystemXml?1=1</importUrl>
+		<saveUrl>appMonitor/saveAppSystem?1=1</saveUrl>
+		<imagePathUrl>deviceRoom/getImagePath?1=1</imagePathUrl>
+		<deleteImageUrl>deviceRoom/delImage?1=1</deleteImageUrl>
+		<uploadFileUrl>deviceRoom/uploadImage?1=1</uploadFileUrl>
+		<!-- 存放背景图文件的目录 -->
+		<pathUrl>/flash/appmonitor/assets/background/</pathUrl>
+		<configMonitorUrl>appMonitor/queryConfigXml?1=1</configMonitorUrl>
+		<codeListUrl>appMonitor/getCodelListXml?1=1</codeListUrl>
+		<searchAssetUrl>appMonitor/searchAssetXml?1=1</searchAssetUrl>
+	</edit>
+	<view>
+		<topBar>
+			<item img="assets/toolbar/exportImg.png" label="导出" value="export" />
+			<item img="assets/toolbar/exportImg.png" label="跳转到拓扑图" value="goTopo" />
+			<item img="assets/toolbar/zoomIn.png" label="放大" value="zoomIn"/>
+			<item img="assets/toolbar/zoomNormal.png" label="还原" value="zoomNormal"/>
+			<item img="assets/toolbar/zoomOut.png" label="缩小" value="zoomOut"/>
+			<!-- <item img="assets/toolbar/helpIcon.png" label="帮助" value="help" /> -->
+			<item img="assets/toolbar/refreshIcon.png" label="刷新" value="refresh" />
+			<item img="assets/toolbar/goManager.png" label="返回" value="goBack" />
+		</topBar>
+		<importUrl>appMonitor/queryAppMonitorXml?1=1</importUrl>
+		<statusUrl>appMonitor/queryAppCompStatus?1=1</statusUrl>
+		<refreshStatusUrl>appMonitor/updateAppStatus?1=1</refreshStatusUrl>
+		<exportUrl>appMonitor/exportImg?1=1</exportUrl>
+	</view>
+</config>

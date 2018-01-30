@@ -1,0 +1,93 @@
+<tem>
+<!-- SQL Monitor -->
+<div data-id="add_sql_div" class="template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form form-plr5">
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">查询SQL名称</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="sqlName" validate="required" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label required" queryStr>查询SQL</label>
+					<div class="col-lg-9">
+						<textarea class="form-control input-sm" data-id="t_monitor_master" validate="required"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">SQL超时时间(毫秒)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="timeOut" validate="number" />
+					</div>
+					<label class="col-lg-3 control-label required">最大结果数</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="maxRownum" validate="required" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">列名</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="colunmName" readonly />
+					</div>
+					<div class="table-oper col-lg-6" style="text-align: left;line-height: 30px;padding-left: 30px;">
+						<a href="javascript:void(0);" class="dib monitor_btn_styl" data-id="queryColunmNameBtn">
+		          <span>查询SQL列名称</span>
+		        </a>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">操作符</label>
+					<div class="col-lg-3">
+						<select data-id="operator" data-type="select" validate="required">
+							<option value="-1">----</option>
+							<option value="0"> < </option>
+							<option value="1"> == </option>
+							<option value="2"> > </option>
+							<option value="3"> != </option>
+						</select>
+					</div>
+					<label class="col-lg-3 control-label">阈值</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="value"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">事件类型</label>
+					<div class="col-lg-3">
+						<select data-id="eventType" data-type="select" validate="required">
+							<option value="-1">----</option>
+							<option value="0"> 性能事件 </option>
+							<option value="1"> 故障事件 </option>
+						</select>
+					</div>
+					<label class="col-lg-3 control-label required">工作时间</label>
+					<div class="col-lg-3">
+						<select data-id="workTime" data-type="select" validate="required">
+							<option value="-1">----</option>
+							<option value="1"> 工作日 </option>
+							<option value="2"> 非工作日 </option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label" queryStr>事件描述</label>
+					<div class="col-lg-9">
+						<textarea class="form-control input-sm" data-id="eventDesc"></textarea>
+					</div>
+				</div>
+	      <div class="col-lg-11">
+	        <div class="table-oper">
+	          <a id="test_btn" data-type="test_btn" href="javascript:void(0);">测试配置</a>
+	        </div>
+	      </div>
+			</form>
+		</div>
+</div>
+
+<!-- SQL列查询 -->
+<div data-id="line_name" class="template" style="height:400px;">
+	<div class="table-div h-all" id="line_name_div" data-type="tpl" style="height:400px;"></div>
+</div>
+
+</tem>

@@ -1,0 +1,172 @@
+<tem>
+	<div id="modifynode" class="template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form" id="attr_form">
+				<div id="canvasDrawShowAttr">
+					<span id="pid"  style="display: none;"></span>
+					<span id="ptype"  style="display: none;"></span>
+					<div class="table-oper"  style="display: none;">
+						<a href="javascript:void(0);" id="deleteNode">
+							<i class="btn-commen delete-btn"></i>
+							<span>删除节点</span>
+						</a>
+					</div>
+					<div id="diplay_attrs">
+						<div class="form-group">
+							<label class="col-lg-2 control-label">节点名称</label>
+							<div class="col-lg-10">
+								<input  id="pname" type="text" class="form-control input-sm">
+							</div>
+						</div>
+						<div class="form-group"  id="systemApp_displayType_Id" title="显示或隐藏节点">
+							<label class="col-lg-2 control-label">节点模式</label>
+							<div class="col-lg-10">
+								<select class="form-control input-sm" data-id="systemApp_displayType" style="width: 100px;" id="systemApp_displayType">
+									<option value="1">显示</option>
+									<option value="0">隐藏</option>
+								</select>
+							</div>
+						</div>
+						<div id="systemApp_displayType_Id">
+							<div class="form-group" style="margin-bottom:0px;">
+								<div class="col-lg-12">
+									<span>依赖节点</span>
+									<span style="float: right;">
+										隐性依赖
+									</span>
+									<span style="float: right;" title="选中后在画板中不体现连接线条">
+										<!-- <label class="i-checks">
+											<input id="hiddenvalue" type="checkbox" data-id="hiddenvalue"/>
+											<i></i>
+										</label> -->
+										<input id="hiddenvalue" type="checkbox" data-id="hiddenvalue"/>
+									</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-lg-12">
+									<select multiple id="select1" style="height:200px;color: black;padding: 0px;width: 48%;float: left;">
+									</select>
+									<select multiple id="select2" style="height:200px;color: black;padding: 0px;width: 48%;float: right;">
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="diplay_monitorList">
+						<div class="form-group">
+							<div style="">
+								<div id="monitorList" class="prel w-all h-all " data-type="tabel-fix-width"  style="height: 200px;">
+									<p style="">双击下列选项添加监控器</p>
+									<div class="prel w-all h-all" data-type="tabel-fix-width" style="padding-bottom: 10px;">
+										<div class="um-grid-head-outer" style="font-size: 12px;">
+											<div class="um-grid-head">
+												<table>
+													<tbody>
+														<tr class="um-grid-head-tr" style="border-top-style: none;">
+															<td style="">
+																<div style="font-size: 12px;">
+																	<span class="custom-down" data-id="sort"></span>监控器名称
+																	<span class="resize" data-id=""></span>
+																</div>
+															</td>
+															<td style="">
+																<div style="font-size: 12px;">
+																	<span class="custom-down" data-id="sort"></span>监控器类型
+																	<span class="resize" data-id=""></span>
+																</div>
+															</td>
+															<td style="">
+																<div style="font-size: 12px;">
+																	<span class="custom-down" data-id="sort"></span>资源名称
+																	<span class="resize" data-id=""></span>
+																</div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="um-grid-head" style="overflow: auto;height: 130px;">
+												<table>
+													<tbody id="select_monitor1" >
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="monitorObj" class="um-grid-head" style="overflow: auto;height: 220px;display: none;">
+									<p>配置的监控器如下：</p>
+									<div class="panel-body no-tb-padder">
+										<div class="form-group">
+											<label class="col-lg-4" >监控器类型</label>
+											<label class="col-lg-8 input-sm"  id="mtype"></label>
+										</div>
+										<div class="form-group">
+											<label class="col-lg-4" >监控器名称</label>
+											<label class="col-lg-8 input-sm"  id="mname"></label>
+										</div>
+										<div class="form-group">
+											<label class="col-lg-4" >资源名称</label>
+											<label class="col-lg-8 input-sm"  id="assetname"></label>
+										</div>
+									</div>
+									<div class="table-oper" >
+										<a id="unmountMoniter" href="javascript:void(0);">
+											<i class="btn-commen delete-btn"></i>
+											<span>删除监控器</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="diplay_monitorList">
+						<div class="form-group">
+							<div style="">
+								<div id="monitorList" class="prel w-all h-all " data-type="tabel-fix-width"  style="height: 200px;">
+									<p style="">双击下列选项添加应用</p>
+									<div class="prel w-all h-all" data-type="tabel-fix-width" style="padding-bottom: 10px;">
+										<div class="um-grid-head-outer"style="font-size: 12px;">
+											<div class="um-grid-head">
+												<table>
+													<tbody>
+														<tr class="um-grid-head-tr" style="border-top-style: none;">
+															<td style="">
+																<div style="font-size: 12px;">
+																	<span class="custom-down" data-id="sort"></span>应用监控名称
+																	<span class="resize" data-id=""></span>
+																</div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="um-grid-head" style="overflow: auto;height: 130px;">
+												<table>
+													<tbody id="select_monitor1" >
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div id="monitorObj" class="um-grid-head" style="overflow: auto;display: none;">
+									<p>应用监控名称：<span  id="mname"></span></p>
+
+									<div class="table-oper" >
+										<a id="unmountMoniter" href="javascript:void(0);">
+											<i class="btn-commen delete-btn"></i>
+											<span>删除配置</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</tem>

@@ -1,0 +1,262 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>接口使用动态信息</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="interface_info"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>卷使用动态信息</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="page_info"></div>
+    </div>
+
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="page_info_time"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>MDisk使用动态信息</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="mdisk_info"></div>
+    </div>
+
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="mdisk_info_time"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'],function (plot){
+
+var interface_info_url = "monitorview/storage/ibmStorage/queryInterfaceDynamicInfo";
+var page_info_url = "monitorview/storage/ibmStorage/queryVolumeDynamicInfo";
+var mdisk_info_url = "monitorview/storage/ibmStorage/queryMDiskDynamicInfo";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    interface_info();
+    page_info();
+    mdisk_info();
+}
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+//接口使用动态信息
+function interface_info()
+{
+    um_ajax_get({
+        url : interface_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var fc = data.datas[0].items;
+            var sas = data.datas[1].items;
+            var iscsi = data.datas[2].items;
+            var legendArray = ['光纤接口流速（FC）','串行接口流速（SAS）','设备接口流速（ISCSI）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesObj = new Object();
+            seriesObj.name = '光纤接口流速（FC）';
+            seriesObj.type = "line";
+            seriesObj.data = [];
+            for (var i = 0; i < fc.length; i++) {
+                categoryArray.push(fc[i].tip);
+                seriesObj.data.push(fc[i].value);
+            }
+            seriesArray.push(seriesObj);
+
+            var seriesObj2 = new Object();
+            seriesObj2.name = '串行接口流速（SAS）';
+            seriesObj2.type = "line";
+            seriesObj2.data = [];
+            for (var i = 0; i < sas.length; i++) {
+                seriesObj2.data.push(sas[i].value);
+            }
+            seriesArray.push(seriesObj2);
+
+            var seriesObj3 = new Object();
+            seriesObj3.name = '设备接口流速（ISCSI）';
+            seriesObj3.type = "line";
+            seriesObj3.data = [];
+            for (var i = 0; i < iscsi.length; i++) {
+                seriesObj3.data.push(iscsi[i].value);
+            }
+            seriesArray.push(seriesObj3);
+            
+            plot.lineRender($("#interface_info") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+//卷使用动态信息
+function page_info()
+{
+    um_ajax_get({
+        url : page_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            //读写速度
+            var readRate = data.rateFlexList[0].items;
+            var writeRates = data.rateFlexList[1].items;
+            var legendArray = ['读速度（Mbps）','写速度（Mbps）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesObj = new Object();
+            seriesObj.name = '读速度（Mbps）';
+            seriesObj.type = "line";
+            seriesObj.data = [];
+            for (var i = 0; i < readRate.length; i++) {
+                categoryArray.push(readRate[i].tip);
+                seriesObj.data.push(readRate[i].value);
+            }
+            seriesArray.push(seriesObj);
+
+            var seriesObj2 = new Object();
+            seriesObj2.name = '写速度（Mbps）';
+            seriesObj2.type = "line";
+            seriesObj2.data = [];
+            for (var i = 0; i < writeRates.length; i++) {
+                seriesObj2.data.push(writeRates[i].value);
+            }
+            seriesArray.push(seriesObj2);
+            
+            plot.lineRender($("#page_info") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+
+            //读写时间
+            var readTime = data.timeFlexList[0].items;
+            var writeTime = data.timeFlexList[1].items;
+            var legendArray = ['读响应时间（MS）','写响应时间（MS）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesObj = new Object();
+            seriesObj.name = '读响应时间（MS）';
+            seriesObj.type = "line";
+            seriesObj.data = [];
+            for (var i = 0; i < readTime.length; i++) {
+                categoryArray.push(readTime[i].tip);
+                seriesObj.data.push(readTime[i].value);
+            }
+            seriesArray.push(seriesObj);
+
+            var seriesObj2 = new Object();
+            seriesObj2.name = '写响应时间（MS）';
+            seriesObj2.type = "line";
+            seriesObj2.data = [];
+            for (var i = 0; i < writeTime.length; i++) {
+                seriesObj2.data.push(writeTime[i].value);
+            }
+            seriesArray.push(seriesObj2);
+            
+            plot.lineRender($("#page_info_time") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+//MDisk使用动态信息
+function mdisk_info()
+{
+    um_ajax_get({
+        url : mdisk_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            //读写速度
+            var readRate = data.rateFlexList[0].items;
+            var writeRates = data.rateFlexList[1].items;
+            var legendArray = ['读速度（Mbps）','写速度（Mbps）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesObj = new Object();
+            seriesObj.name = '读速度（Mbps）';
+            seriesObj.type = "line";
+            seriesObj.data = [];
+            for (var i = 0; i < readRate.length; i++) {
+                categoryArray.push(readRate[i].tip);
+                seriesObj.data.push(readRate[i].value);
+            }
+            seriesArray.push(seriesObj);
+
+            var seriesObj2 = new Object();
+            seriesObj2.name = '写速度（Mbps）';
+            seriesObj2.type = "line";
+            seriesObj2.data = [];
+            for (var i = 0; i < writeRates.length; i++) {
+                seriesObj2.data.push(writeRates[i].value);
+            }
+            seriesArray.push(seriesObj2);
+            
+            plot.lineRender($("#mdisk_info") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+
+            //读写时间
+            var readTime = data.timeFlexList[0].items;
+            var writeTime = data.timeFlexList[1].items;
+            var legendArray = ['读响应时间（MS）','写响应时间（MS）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesObj = new Object();
+            seriesObj.name = '读响应时间（MS）';
+            seriesObj.type = "line";
+            seriesObj.data = [];
+            for (var i = 0; i < readTime.length; i++) {
+                categoryArray.push(readTime[i].tip);
+                seriesObj.data.push(readTime[i].value);
+            }
+            seriesArray.push(seriesObj);
+
+            var seriesObj2 = new Object();
+            seriesObj2.name = '写响应时间（MS）';
+            seriesObj2.type = "line";
+            seriesObj2.data = [];
+            for (var i = 0; i < writeTime.length; i++) {
+                seriesObj2.data.push(writeTime[i].value);
+            }
+            seriesArray.push(seriesObj2);
+            
+            plot.lineRender($("#mdisk_info_time") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+});
+});
+</script>

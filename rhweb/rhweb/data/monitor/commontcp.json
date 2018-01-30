@@ -1,0 +1,13 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "CommonTcp",
+					"fileName"  : "commontcp",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "commontcp/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "响应时间" ,"href" : "commontcp/response.html" ,"icon" : "monitor-response"},
+								{"text" : "事件信息" ,"href" : "common/event_and_config.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

@@ -1,0 +1,96 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>电池状态信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="buffer_status_info"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>磁盘状态信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="disk_status_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var battery_status_info_url = "monitorview/storage/ibmStorage/queryBatteryInfo";
+var battery_status_info_header = [
+                            {text:'机柜标识',name:"enclosure"},
+                            {text:'电池ID',name:"batteryId"},
+                            {text:'状态',name:"status"},
+                            {text:'电池充电状态',name:"chargeStatus"},
+                            {text:'电池是否调整',name:"recondition"},
+                            {text:'电池电量状态',name:"percentCharge"},
+                            {text:'电池寿命状态',name:"lifeWaring"},
+                            {text:'数据入库时间',name:"enterDate"}
+                         ];
+
+var disk_status_info_url = "monitorview/storage/ibmStorage/queryDiskInfo";
+var disk_status_info_header = [
+                            {text:'磁盘状态',name:"status"},
+                            {text:'插槽编号',name:"slotId"},
+                            {text:'磁盘容量(G)',name:"capacity"},
+                            {text:'驱动类型',name:"techType"},
+                            {text:'阵列标识',name:"mdiskId"},
+                            {text:'阵列名称',name:"mdiskName"},
+                            {text:'数据入库时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    battery_status_info();
+    disk_status_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+
+function battery_status_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#buffer_status_info"),{
+         header:battery_status_info_header,
+         url:battery_status_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+function disk_status_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#disk_status_info"),{
+         header:disk_status_info_header,
+         url:disk_status_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

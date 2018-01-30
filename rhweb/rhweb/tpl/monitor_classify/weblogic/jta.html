@@ -1,0 +1,244 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>基本信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="base_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">事务总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranTotalCnt"></label>
+                    <label class="col-lg-3 control-label">因应用程序回退事务总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranRlbkAppTotcnt"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">已提交事务总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranCommitTotcnt"></label>
+                    <label class="col-lg-3 control-label">因系统回退事务总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranRlbkSysTotcnt"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">已回退事务总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranRlbkTotCnt"></label>
+                    <label class="col-lg-3 control-label">试探完成总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranHeuristTotcnt"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">因超时回退事务总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranRlbkTimeoutTotcnt"></label>
+                    <label class="col-lg-3 control-label">已放弃事务总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranAbandTotcnt"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">因资源回退事务总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranRlbkResourceTotcnt"></label>
+                    <label class="col-lg-3 control-label">活动事务总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="activeTranTotcnt"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">已提交的无资源事务处理总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranNoResourcesCommittedTotalCnt"></label>
+                    <label class="col-lg-3 control-label">一阶段提交的只读事务处理总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranReadOnlyOnePhaseCommittedTotalCnt"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">二阶段提交的事务处理总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranTwoPhaseCommittedTotalCnt"></label>
+                    <label class="col-lg-3 control-label">一阶段提交的单资源事务处理总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranOneResourceOnePhaseCommittedTotalCnt"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">已提交LLR事务处理总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="tranLLRCommittedTotalCnt"></label>
+                    <label class="col-lg-3 control-label"></label>
+                    <label class="col-lg-3 control-label tl" data-id=""></label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading font-bold prel">
+        <span>JTA命名事物信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="jta_tran_name_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading font-bold prel">
+        <span>XA资源信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="jta_xa_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading font-bold prel">
+        <span>非XA资源信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="jta_no_xa_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading font-bold prel">
+        <span>恢复服务信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="jta_recovery_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var base_info_url = "monitorview/middleware/weblogic/queryWeblJta";
+var jta_tran_name_url = "monitorview/middleware/weblogic/queryWeblJtaTranName";
+var jta_xa_url = "monitorview/middleware/weblogic/queryWeblJtaXa";
+var jta_no_xa_url = "monitorview/middleware/weblogic/queryWeblJtaNoXa";
+var jta_recovery_url = "monitorview/middleware/weblogic/queryWeblJtaRecovery";
+
+var jta_tran_name_header = [
+                            {text:'事务名称',name:"tranName"},
+                            {text:'事务总数',name:"tranTotalcnt"},
+                            {text:'提交事务',name:"tranCommitTotcnt"},
+                            {text:'回滚事务',name:"tranRlbkTotcnt"},
+                            {text:'超时回滚',name:"tranRlbkTimeoutTotcnt"},
+                            {text:'资源回滚',name:"tranRlbkResourceTotcnt"},
+                            {text:'应用程序回滚',name:"tranRlbkAppTotcnt"},
+                            {text:'系统回滚',name:"tranRlbkSysTotcnt"},
+                            {text:'试探事务',name:"tranHeuristTotcnt"},
+                            {text:'已放弃事务',name:"tranAbandonTotcnt"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var jta_xa_header = [
+                            {text:'XA资源名称',name:"resourceName"},
+                            {text:'事务总数',name:"tranTotCount"},
+                            {text:'提交事务',name:"tranCommitTotcnt"},
+                            {text:'回滚事务',name:"tranRolbackTotcnt"},
+                            {text:'试探事务',name:"tranHeuristTotcnt"},
+                            {text:'试探提交',name:"tranHeuristComtTotcnt"},
+                            {text:'试探危害',name:"tranHeuristHazdTotcnt"},
+                            {text:'试探混合',name:"tranHeurisMixTotcnt"},
+                            {text:'试探回滚',name:"tranHeuristRlbkTotcnt"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var jta_no_xa_header = [
+                            {text:'非XA资源名称',name:"nonxaResourceName"},
+                            {text:'事务总数',name:"tranTotCount"},
+                            {text:'提交事务',name:"tranCommitTotcnt"},
+                            {text:'回滚事务',name:"tranRolbackTotcnt"},
+                            {text:'试探事务',name:"tranHeuristTotcnt"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var jta_recovery_header = [
+                            {text:'名称',name:"name"},
+                            {text:'活动',name:"active"},
+                            {text:'已恢复事务处理的初始总数',name:"recoveredTranTotcnt"},
+                            {text:'已恢复事务处理的完成百分比（%）',name:"recoveredTranPercent"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    base_info_render();
+    jta_tran_name_list();
+    jta_xa_list();
+    jta_no_xa_lsit();
+    jta_recovery_list();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function base_info_render()
+{
+    um_ajax_get({
+        url : base_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            $("#base_info_monitor_div").umDataBind("render" ,data[0]);
+        }
+    });
+}
+
+function jta_tran_name_list()
+{
+    g_grid.render($("#jta_tran_name_div"),{
+         header:jta_tran_name_header,
+         url:jta_tran_name_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+function jta_xa_list()
+{
+    g_grid.render($("#jta_xa_div"),{
+         header:jta_xa_header,
+         url:jta_xa_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+function jta_no_xa_lsit()
+{
+    g_grid.render($("#jta_no_xa_div"),{
+         header:jta_no_xa_header,
+         url:jta_no_xa_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+function jta_recovery_list()
+{
+    g_grid.render($("#jta_recovery_div"),{
+         header:jta_recovery_header,
+         url:jta_recovery_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

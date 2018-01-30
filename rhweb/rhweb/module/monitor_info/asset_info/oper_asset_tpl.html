@@ -1,0 +1,1361 @@
+<tem>
+<!-- 资产查询 -->
+<div class="template" id="asset_query">
+<div class="panel-body no-tb-padder">
+  <form class="bs-example form-horizontal xs-form form-plr5">
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">资产名称</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control input-sm" validate="stringLimit0">
+      </div>
+      <label class="col-lg-1 control-label">资产类型</label>
+      <div class="col-lg-3">
+        <div class="inputdrop" id="assetTypeId"></div>
+      </div>
+      <label class="col-lg-1 control-label">使用状态</label>
+      <div class="col-lg-3">
+        <select multiple="multiple" class="form-control input-sm" data-type="select">
+          <option value="option 1">启用</option>
+          <option value="option 2">停用</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">资产状态</label>
+      <div class="col-lg-3">
+        <select multiple="multiple" class="form-control input-sm" data-type="select">
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+      <label class="col-lg-1 control-label">安全域</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" name="account" data-type="select">
+          <option value="option 1">---</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+      <label class="col-lg-1 control-label">业务域</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" name="account" data-type="select">
+          <option value="option 1">---</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">风险计算</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" name="account" data-type="select">
+          <option value="option 1">---</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+      <label class="col-lg-1 control-label">资产价值</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" name="account" data-type="select">
+          <option value="option 1">---</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+      <label class="col-lg-1 control-label">运维资产</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" name="account" data-type="select">
+          <option value="option 1">---</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">操作系统</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" name="account" data-type="select">
+          <option value="option 1">---</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+      <label class="col-lg-1 control-label">资产型号</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" name="account" data-type="select">
+          <option value="option 1">---</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+      <label class="col-lg-1 control-label">厂商</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" name="account" data-type="select">
+          <option value="option 1">---</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">购置开始日期</label>
+      <div class="col-lg-3">
+        <div class="input-group w-all">
+          <input type="text" class="form-control input-sm" 
+                  id="startDate" validate="required">
+        </div>
+      </div>
+      <label class="col-lg-1 control-label">购置结束日期</label>
+      <div class="col-lg-3">
+        <div class="input-group w-all">
+          <input type="text" class="form-control input-sm" 
+                  id="endDate" validate="required">
+        </div>
+      </div>
+      <label class="col-lg-1 control-label">资产编号</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control input-sm">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">维保开始日期</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control input-sm" date-type="date">
+      </div>
+      <label class="col-lg-1 control-label">维保结束日期</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control input-sm" date-type="date">
+      </div>
+      <label class="col-lg-1 control-label">使用人</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control input-sm">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">MAC地址</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control input-sm">
+      </div>
+      <label class="col-lg-1 control-label">WEB控制台</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control input-sm" validate="url">
+      </div>
+      <label class="col-lg-1 control-label">备注</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control input-sm">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-1 control-label">自定义属性</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" name="account" data-type="select">
+          <option value="option 1">---</option>
+          <option value="option 2">AIX</option>
+          <option value="option 3">BSD</option>
+          <option value="option 4">comware</option>
+        </select>
+      </div>
+      <label class="col-lg-1 control-label">自定义属性值</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control input-sm">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-1" style="padding-left: 35px;padding-right:0">
+          <label class="i-switch bg-primary m-t-xs m-r" style="margin-right: 0">
+            <input type="radio" checked="" name="switch">
+            <i></i>
+          </label>
+      </div>
+      <label class="col-lg-1 control-label" style="padding-left: 30px;text-align: left">IPV4</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control input-sm">
+      </div>
+      <div class="col-lg-1" style="width:auto">
+        -
+      </div>
+      <div class="col-lg-4">
+        <input type="text" class="form-control input-sm">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-1" style="padding-left: 35px;padding-right:0">
+        <label class="i-switch bg-warning m-t-xs m-r" style="margin-right: 0">
+          <input type="radio" name="switch">
+          <i></i>
+        </label>
+      </div>
+      <label class="col-lg-1 control-label" style="padding-left: 30px;text-align: left">IPV6</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control input-sm" disabled>
+      </div>
+    </div>
+
+  </form>
+</div>
+</div>
+<!-- // 资产查询 -->
+
+<!-- 自定义列 -->
+<div class="template" id="custom_col">
+<div class="panel-body no-tb-padder">
+  <form class="bs-example form-horizontal xs-form form-plr5">
+    <div class="form-group">
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 资产名称
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 资产编号
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 业务域
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 安全域
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 资产状态
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 是否运维资产
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 资产价值
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 资产类型
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 厂商
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 操作系统类型
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 使用状态
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> CPU信息
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 内存信息
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> Web控制台
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 硬盘信息
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 资产型号
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 物理位置
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 是否计算风险
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 监控节点
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 主IP
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 主MAC
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 注册时间
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 启动时间
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 责任人
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="checkbox">
+            <label class="i-checks">
+              <input type="checkbox"><i></i> 使用人
+            </label>
+          </div>
+        </div>
+    </div>
+  </form>
+</div>
+</div>
+<!-- // 自定义列 -->
+
+<!-- 自定义导出 -->
+<div class="template" id="custom_export">
+<div class="panel-body no-tb-padder">
+    <form class="bs-example form-horizontal xs-form form-plr5">
+        <div class="form-group" style="height:300px">
+            <div class="col-lg-3 h-all">
+                <div class="table_div h-all" id="left_col_table"></div>
+            </div>
+            <div class="col-lg-1">
+                <div class="pabs square" id="chevron-right" style="right:20px;top:110px;font-size:20px;z-index:2000">
+                  <i class="icon-chevron-right"></i>
+                </div>
+                <div class="pabs square" id="chevron-left" style="right:20px;top:150px;font-size:20px;z-index:2000">
+                  <i class="icon-chevron-left"></i>
+                </div>
+            </div>
+            <div class="col-lg-3 h-all">
+                <div class="table_div h-all" id="right_col_table"></div>
+            </div>
+            <div class="col-lg-5 h-all">
+                <div class="table_div h-all" id="export_table"></div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
+<!-- 资产添加 -->
+<div class="template" id="asset_add">
+<div id="sfxxdj_div" class="swMain">  
+    <ul id="sfxxdj_wizard_ul">
+        <li class="first-child"><a href="#um_step_0" id="step_0"> <label class="stepNumber">1</label>  
+                <span class="stepDesc">IP范围</span></a>  
+        </li>
+        <li class="first-child"><a href="#um_step_1" id="step_1"> <label class="stepNumber">1</label>  
+                <span class="stepDesc">基本信息</span></a>  
+        </li>
+        <li><a href="#um_step_2" id="step_2"> <label class="stepNumber">2</label>  
+                <span class="stepDesc">扩展信息</span></a>  
+        </li>  
+        <li><a href="#um_step_3" id="step_3"> <label class="stepNumber">3</label>  
+                <span class="stepDesc">凭证信息</span></a>  
+        </li>  
+        <!-- <li><a href="#um_step_4" id="step_4"> <label class="stepNumber">4</label>  
+                <span class="stepDesc">外借信息</span></a>  
+        </li>
+        <li><a href="#um_step_5" id="step_5"> <label class="stepNumber">5</label>  
+                <span class="stepDesc">自定义属性</span></a>
+        </li> -->
+    </ul>
+    <div id="um_step_0" style="overflow: hidden;height:auto;padding-top:35px">
+         <form class="bs-example form-horizontal xs-form" id="um_step_form_0">
+            <div class="form-group" data-type="area_div">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3">业务域</div>
+                <div class="col-lg-1"></div>
+                <label class="col-lg-3 control-label required tl" style="opacity:1">安全域</label>
+             </div>
+             <div class="form-group" data-type="area_div">
+                <div class="col-lg-1 tc"></div>
+                <div class="col-lg-3">
+                  <div class="inputdrop" id="bussinessDomainId"></div>
+                </div>
+                <div class="col-lg-1 tc"></div>
+                <div class="col-lg-3" id="securityDomainId_div">
+                  <div class="inputdrop" id="securityDomainId" required></div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3">请输入IP范围</div>
+              </div>
+              <div class="form-group" id="ip_range_div">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3">
+                    <input type="hidden" data-id="batchIpRange">
+                    <input type="text" class="form-control input-sm" id="step0_startIp" validate="required,ipv4" data-id="startIp">
+                </div>
+                <div class="col-lg-1 tc" style="line-height: 30px">
+                    至
+                </div>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" id="step0_endIp" validate="required,ipv4" data-id="endIp">
+                </div>
+                <div class="col-lg-1" style="height: 30px;padding-top: 7px;width:auto">
+                  <div class="table-oper prel" style="top:-16px">
+                      <a href="javascript:void(0);" id="ip_get_btn"><span>获取</span></a>
+                  </div>
+                </div>
+             </div>
+             <div class="form-group">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-3">当前选中IP段为：<span id="step0_ipInfo_span"></span></div>
+              </div>
+         </form>
+         <ul id="step0_ipList" class="oper_asseet_ip_ul" style="width:1000px;margin:0 auto;padding-bottom:20px">
+            
+         </ul>
+    </div>
+    <div id="um_step_1"  style="overflow: hidden;height:auto;padding-top:35px">
+        <form class="bs-example form-horizontal xs-form">
+          <div class="form-group">
+            <label class="col-lg-2 control-label required">资产名称</label>
+            <div class="col-lg-3">
+              <input type="hidden" data-id="edId">
+              <input type="text" class="form-control input-sm" data-id="assetName" maxlength="32"
+                validate="required">
+            </div>
+            <label class="col-lg-2 control-label">资产状态</label>
+            <div class="col-lg-3">
+              <select class="form-control input-sm" data-id="edTempStatus" data-type="select">
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" data-type="area_div">
+            <label class="col-lg-2 control-label">业务域</label>
+            <div class="col-lg-3">
+              <div class="inputdrop" id="bussinessDomainId"></div>
+            </div>
+            <label class="col-lg-2 control-label required">安全域</label>
+            <div class="col-lg-3">
+              <div class="inputdrop" id="securityDomainId" required></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label required">资产类型</label>
+            <div class="col-lg-3">
+              <div class="inputdrop" id="assetTypeId" required no-select="first-child"></div>
+            </div>
+  
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label">是否风险计算</label>
+            <div class="col-lg-3">
+              <div class="radio l">
+                <label class="i-checks">
+                  <input type="radio" value="1" data-id="isComputeRisk" name="isComputeRisk" checked><i></i>是
+                </label>
+              </div>
+              <div class="radio l ml10">
+                <label class="i-checks">
+                  <input type="radio" value="0" name="isComputeRisk"><i></i>否
+                </label>
+              </div>
+            </div>
+            <label class="col-lg-2 control-label">是否运维资产</label>
+            <div class="col-lg-3">
+              <div class="radio l">
+                <label class="i-checks">
+                  <input type="radio" value="1" data-id="isOperationAsset" name="isOperationAsset" checked><i></i>是
+                </label>
+              </div>
+              <div class="radio l ml10">
+                <label class="i-checks">
+                  <input type="radio" value="0" name="isOperationAsset"><i></i>否
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label required">资产价值</label>
+            <div class="col-lg-3">
+              <select class="form-control input-sm" data-id="assetValue" data-type="select" validate="required">
+                <option value="">---</option>
+                <option value="5">很高</option>
+                <option value="4">高</option>
+                <option value="3">中</option>
+                <option value="2">低</option>
+                <option value="1">很低</option>
+              </select>
+            </div>
+            <label class="col-lg-2 control-label">资产型号</label>
+            <div class="col-lg-3">
+              <select class="form-control input-sm" data-id="assetModel" data-type="select">
+                
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label">厂商选择</label>
+            <div class="col-lg-3">
+              <select class="form-control input-sm" data-id="supplierId" data-type="select">
+              </select>
+            </div>
+            <label class="col-lg-2 control-label">操作系统类型</label>
+            <div class="col-lg-3">
+              <select class="form-control input-sm" data-id="osType" data-type="select">
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label">使用状态</label>
+            <div class="col-lg-3">
+              <div class="radio l">
+                <label class="i-checks">
+                  <input type="radio" value="0" name="assetStatus" data-id="assetStatus" checked><i></i>启用
+                </label>
+              </div>
+              <div class="radio l ml10">
+                <label class="i-checks">
+                  <input type="radio" value="2" name="assetStatus"><i></i>停用
+                </label>
+              </div>
+            </div>
+            <label class="col-lg-2 control-label">CPU信息</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" maxlength="1000" data-id="cpu">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label">内存信息</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" maxlength="1000" data-id="memory">
+            </div>
+            <label class="col-lg-2 control-label">硬盘信息</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" maxlength="1000" data-id="disk">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label">系统版本号</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" maxlength="1000" data-id="osVersion">
+            </div>
+            <label class="col-lg-2 control-label">主机名</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" maxlength="64" data-id="hostName">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Web控制台</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="webConsole">
+            </div>
+            <label class="col-lg-2 control-label">使用人</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" maxlength="64" data-id="user">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-2 control-label">物理位置</label>
+            <div class="col-lg-3">
+              <div class="inputdrop" id="locationCb"></div>
+            </div>
+            <label class="col-lg-2 control-label">责任人</label>
+            <div class="col-lg-3">
+              <select class="form-control input-sm" data-id="liablePersonId" data-type="select" multiple="multiple">
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group" style="padding-left:50px" data-type="ip_mac_add">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-9">
+            <div class="panel panel-default" style="margin-bottom:0">
+                  <div class="panel-heading">
+                    <i class="icon-plus pull-right icon-animate ml10" id="ip_mac_add_i" title="添加"></i>
+                    <i class="icon-desktop pull-right icon-animate ml10" id="asset_find" title="资产扫描"></i>
+                    IP/MAC
+                  </div>
+                  <table class="table table-striped m-b-none ip-table" id="ip_mac_table">
+                    <thead>
+                      <tr>
+                        <th style="width:45%;text-align:center;border-bottom:none">IP</th>
+                        <th style="width:45%;text-align:center;border-bottom:none">MAC</th>
+                        <th style="width:10%;border-bottom:none"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="form-group mb10">
+            <label class="col-lg-2 control-label">备注</label>
+            <div class="col-lg-8">
+              <textarea class="form-control input-sm" maxlength="256" style="width:100%;height:100px"></textarea>
+            </div>
+          </div>
+
+        </form>
+    </div>  
+    <div id="um_step_2"  style="overflow: hidden;height:auto;padding-top:35px">  
+        <form class="bs-example form-horizontal xs-form">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">购置时间</label>
+                <div class="col-lg-3">
+                    <div class="input-group w-all">
+                        <input type="text" class="form-control input-sm" 
+                              data-id="buyDate" data-type="date">
+                    </div>
+                </div>
+                <label class="col-lg-2 control-label">购置价格(元)</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" data-id="price" validate="FloatBit14.2">
+                </div>
+             </div>
+
+             <div class="form-group">
+                <!-- <label class="col-lg-2 control-label">显示器编号</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" maxlength="256" data-id="displayCode">
+                </div> -->
+                <label class="col-lg-2 control-label">硬盘编号</label>
+                <div class="col-lg-3">
+                  <input type="text" class="form-control input-sm" maxlength="1000" data-id="diskCode">
+                </div>
+                <label class="col-lg-2 control-label">主要服务</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" maxlength="64" data-id="serve" validate="stringLimit0">
+                </div>
+             </div>
+             <div class="form-group">
+                <label class="col-lg-2 control-label">合同信息</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" data-id="contractNo">
+                </div>
+                <label class="col-lg-2 control-label">保修截止日期</label>
+                <div class="col-lg-3">
+                    <div class="input-group w-all">
+                        <input type="text" class="form-control input-sm" 
+                              data-id="warrantyDate" data-type="date">
+                    </div>
+                </div>
+             </div>
+             <div class="form-group">
+                <label class="col-lg-2 control-label">设备硬件序列号</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" data-id="deviceSerialNo" maxlength="64" validate="stringLimit0">
+                </div>
+                <label class="col-lg-2 control-label">设备品牌型号</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" data-id="deviceBrandNo" maxlength="64" validate="stringLimit0">
+                </div>
+             </div>
+             <div class="form-group">
+                <label class="col-lg-2 control-label">固定资产编号</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" maxlength="64" data-id="fixedAssetNo" validate="stringLimit0">
+                </div>
+                <label class="col-lg-2 control-label">售后单位电话</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" data-id="saleTel" validate="TelePhone">
+                </div>
+             </div>
+             <div class="form-group">
+                <label class="col-lg-2 control-label">报废时间</label>
+                <div class="col-lg-3">
+                    <div class="input-group w-all">
+                        <input type="text" class="form-control input-sm" container="body"
+                              data-id="scrapDate" data-type="date">
+                    </div>
+                </div>
+                <label class="col-lg-2 control-label">报废操作人</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" maxlength="64" data-id="scrapPerson"
+                      validate="stringLimit0">
+                </div>
+             </div>
+             <div class="form-group">
+                <label class="col-lg-2 control-label">机柜号</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" maxlength="64" data-id="number">
+                </div>
+                <label class="col-lg-2 control-label">机柜大小</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" data-id="size" validate="stringLimit0">
+                </div>
+             </div>
+             <div class="form-group">
+                <label class="col-lg-2 control-label">维保状况</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" maxlength="64" data-id="status">
+                </div>
+                <label class="col-lg-2 control-label">承载应用系统</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" maxlength="300" data-id="applies" validate="stringLimit0">
+                </div>
+             </div>
+             <!-- <div class="form-group">
+                <label class="col-lg-2 control-label">所属司局/处室</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" data-id="company">
+                </div>
+                <label class="col-lg-2 control-label">主要服务</label>
+                <div class="col-lg-3">
+                    <input type="text" class="form-control input-sm" maxlength="64" data-id="serve" validate="stringLimit0">
+                </div>
+             </div> -->
+             <div class="form-group">
+                <label class="col-lg-2 control-label">供货单位</label>
+                <div class="col-lg-8">
+                    <textarea class="form-control input-sm" maxlength="512" data-id="supplyUnit"></textarea>
+                </div>
+             </div>
+
+        </form>
+    </div>  
+    <div id="um_step_3"  style="overflow: hidden;height:100%;padding-top:35px">
+          <div class="w-all h-all prel" style="padding:0 40px 0 150px" id="tab">
+              <div class="w-all h-all bdd" style="padding-top:20px">
+                  <div class="tab-content">
+                      <!-- tab1 -->
+                      <div class="tab-pane" id="tab_snmp">
+                          <form class="bs-example form-horizontal xs-form form-plr5">
+                              <div class="form-group">
+                                <label class="col-lg-2 control-label">版本</label>
+                                <div class="col-lg-3" data-id="snmp">
+                                  <select class="form-control input-sm" data-type="select" data-id="snmpVersion">
+                                      <option value="1">SNMP V1</option>
+                                      <option value="2">SNMP V2c</option>
+                                      <option value="3">SNMP V3</option>
+                                  </select> 
+                                </div>
+                                <label class="col-lg-2 control-label">SNMP模板</label>
+                                <div class="col-lg-3" data-id="snmp">
+                                  <select class="form-control input-sm" data-type="select" data-id="snmpName">
+                                  </select>
+                                </div>
+                              </div>
+
+                              <div id="snmp_info">
+                                <div id="snmp_v1">
+                                  <div class="form-group">
+                                    <label class="col-lg-2 control-label">读团体字</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <input type="text" class="form-control input-sm" data-id="snmpCommunity" maxlength="100" />
+                                    </div>
+                                    <label class="col-lg-2 control-label">写团体字</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <input type="text" class="form-control input-sm" data-id="snmpWCommunity" maxlength="100" />
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <div id="snmp_v3" style="display:none">
+                                  <div class="form-group">
+                                    <label class="col-lg-2 control-label">用户名</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <input type="text" class="form-control input-sm" data-id="snmpUserName" validate="stringLimit0" maxlength="100" />
+                                    </div>
+
+                                    <label class="col-lg-2 control-label">安全级别</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <select class="form-control input-sm" data-id="securityLevel" data-type="select">
+                                        <option value="1">NOAUTH_NOPRIV</option>
+                                        <option value="2">AUTH_NOPRIV</option>
+                                        <option value="3">AUTH_PRIV</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label class="col-lg-2 control-label">认证方式</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <select class="form-control input-sm" data-id="authWay" data-type="select">
+                                        <option value="-1">----</option>
+                                        <option value="1">SHA</option>
+                                        <option value="2">MD5</option>
+                                      </select>
+                                    </div>
+                                    <label class="col-lg-2 control-label">认证口令</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <input type="password" class="form-control input-sm" data-id="authPwd"/>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label class="col-lg-2 control-label">加密方式</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <select class="form-control input-sm" data-id="encryptionWay" data-type="select">
+                                        <option value="-1">----</option>
+                                        <option value="1">3DES</option>
+                                        <option value="2">AES128</option>
+                                        <option value="3">AES192</option>
+                                        <option value="4">AES256</option>
+                                        <option value="5">DES</option>
+                                      </select>
+                                    </div>
+                                    <label class="col-lg-2 control-label">加密口令</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <input type="password" class="form-control input-sm" data-id="encryptionPwd"/>
+                                    </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label class="col-lg-2 control-label">Context ID</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <input type="text" class="form-control input-sm" data-id="context" maxlength="100" />
+                                    </div>
+                                    <label class="col-lg-2 control-label">Context Name</label>
+                                    <div class="col-lg-3" data-id="snmp">
+                                      <input type="text" class="form-control input-sm" data-id="contextName" maxlength="100" />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label class="col-lg-2 control-label">SNMP端口</label>
+                                  <div class="col-lg-3" data-id="snmp">
+                                    <input type="text" class="form-control input-sm" data-id="snmpPort" validate="between1~65535" value="161"/>
+                                  </div>
+                                  <label class="col-lg-2 control-label">SNMP超时(秒)</label>
+                                  <div class="col-lg-3" data-id="snmp">
+                                    <input type="text" class="form-control input-sm" 
+                                            data-id="timeOut" validate="number"/>
+                                  </div>
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="col-lg-2 control-label">SNMP重试次数</label>
+                                  <div class="col-lg-3" data-id="snmp">
+                                    <input type="text" class="form-control input-sm"
+                                      data-id="tryTimes" validate="number"/>
+                                  </div>
+                                  <label class="col-lg-2 control-label">测试IP</label>
+                                  <div class="col-lg-3" data-id="snmp">
+                                    <select class="form-control input-sm" data-id="test_ip"
+                                    data-val="test_ip1" data-type="select">
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                <div class="col-lg-10">
+                                    <div class="table-oper">
+                                        <a href="javascript:void(0);" data-type="test_btn"
+                                        data-url="AssetOperation/doTestSnmp" data-tab="tab_snmp"
+                                        style="background-color:#62cb31;color:#fff">
+                                          <span>测试</span>
+                                        </a>
+                                    </div>
+                                </div>
+                              </div>
+                          </form>
+                      </div>
+                      <!-- tab2 -->
+                      <div class="tab-pane" id="tab_telnet">
+                          <form class="bs-example form-horizontal xs-form form-plr5">
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label">用户名</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="text" class="form-control input-sm" data-id="monitorUserName" validate="stringLimit0"/>
+                              </div>
+                              <label class="col-lg-2 control-label">密码</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="password" class="form-control input-sm" data-id="monitorPassWord"/>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label">端口号</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="text" class="form-control input-sm" data-id="monitorPort"
+                                      validate="number,between1~65535" value="23"/>
+                              </div>
+                              <label class="col-lg-2 control-label">超时(秒)</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="text" class="form-control input-sm"
+                                    data-id="timeOut" validate="number"/>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label">登录提示符</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="text" class="form-control input-sm" data-id="loginPrompt" />
+                              </div>
+
+                              <label class="col-lg-2 control-label">密码提示符</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="text" class="form-control input-sm" data-id="passwordPrompt" />
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label">命令提示符</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="text" class="form-control input-sm" data-id="commandPrompt" />
+                              </div>
+                              <label class="col-lg-2 control-label">测试IP</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <select class="form-control input-sm" data-id="test_ip"
+                                data-val="test_ip2" data-type="select">
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-lg-10">
+                                  <div class="table-oper">
+                                      <a href="javascript:void(0);" data-type="test_btn" data-tab="tab_telnet"
+                                        data-url="AssetOperation/doTestTelnet"
+                                        style="background-color:#62cb31;color:#fff">
+                                        <span>测试</span>
+                                      </a>
+                                  </div>
+                              </div>
+                            </div>
+                          </form>
+                      </div>
+                      <!-- tab3 -->
+                      <div class="tab-pane" id="tab_ssh">
+                          <form class="bs-example form-horizontal xs-form form-plr5">
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label">用户名</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="text" class="form-control input-sm" data-id="monitorUserName" validate="stringLimit0"/>
+                              </div>
+                              <label class="col-lg-2 control-label">密码</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="password" class="form-control input-sm" data-id="monitorPassWord"/>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="col-lg-2 control-label">端口号</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <input type="text" class="form-control input-sm"
+                                  data-id="monitorPort" validate="number,between1~65535" value="22"/>
+                              </div>
+                              <label class="col-lg-2 control-label">测试IP</label>
+                              <div class="col-lg-3" data-id="snmp">
+                                <select class="form-control input-sm" data-id="test_ip"
+                                data-val="test_ip3" data-type="select">
+                                </select>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="col-lg-10">
+                                  <div class="table-oper">
+                                      <a href="javascript:void(0);" data-type="test_btn" data-tab="tab_ssh"
+                                        data-url="AssetOperation/doTestSsh"
+                                        style="background-color:#62cb31;color:#fff">
+                                        <span>测试</span>
+                                      </a>
+                                  </div>
+                              </div>
+                            </div>
+                          </form>
+                      </div>
+                      <!-- tab4 -->
+                      <div class="tab-pane" id="tab_WMI">
+                          <form class="bs-example form-horizontal xs-form form-plr5">
+                              <div class="form-group">
+                                  <label class="col-lg-2 control-label">用户名</label>
+                                  <div class="col-lg-3">
+                                    <input type="text" class="form-control input-sm" data-id="monitorUserName"/>
+                                  </div>
+                                  <label class="col-lg-2 control-label">密码</label>
+                                  <div class="col-lg-3">
+                                    <input type="password" class="form-control input-sm" data-id="monitorPassWord"/>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label class="col-lg-2 control-label">端口</label>
+                                  <div class="col-lg-3">
+                                    <input type="text" class="form-control input-sm" data-id="monitorPort" value="135" validate="number,between1~65535"/>
+                                  </div>
+                                  <label class="col-lg-2 control-label">测试IP</label>
+                                  <div class="col-lg-3" data-id="snmp">
+                                    <select class="form-control input-sm" data-id="test_ip"
+                                    data-val="test_ip4" data-type="select">
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                <div class="col-lg-10">
+                                    <div class="table-oper">
+                                        <a href="javascript:void(0);" data-type="test_btn" data-tab="tab_WMI"
+                                          data-url="AssetOperation/doTestWmi"
+                                          style="background-color:#62cb31;color:#fff">
+                                          <span>测试</span>
+                                        </a>
+                                    </div>
+                                </div>
+                              </div>
+                          </form>
+                      </div>
+                      <!-- tab5 -->
+                      <div class="tab-pane" id="tab_tpcx">
+                          <form class="bs-example form-horizontal xs-form form-plr5">
+                              <div class="form-group">
+                                  <label class="col-lg-2 control-label">端口</label>
+                                  <div class="col-lg-3">
+                                    <input type="text" class="form-control input-sm" data-id="monitorPort" validate="number,between1~65535"/>
+                                  </div>
+                                  <label class="col-lg-2 control-label">测试IP</label>
+                                  <div class="col-lg-3" data-id="snmp">
+                                    <select class="form-control input-sm" data-id="test_ip"
+                                    data-val="test_ip5" data-type="select">
+                                    </select>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-lg-10">
+                                      <div class="table-oper">
+                                          <a href="javascript:void(0);" data-type="test_btn" data-tab="tab_tpcx"
+                                            data-url="AssetOperation/doTestTray"
+                                            style="background-color:#62cb31;color:#fff">
+                                            <span>测试</span>
+                                          </a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+              <ul class="pabs v-ul" data-id="tab-ul" style="top:0;left:70px;width:80px">
+                  <li>SNMP</li>
+                  <li>TELNET</li>
+                  <li>SSH2</li>
+                  <li style="display:none">WMI</li>
+                  <li style="display:none">托盘程序</li>
+              </ul>
+          </div>
+
+    </div>  
+    <div id="um_step_4"  style="overflow: hidden;height:auto;padding-top:35px;display:none">
+        <form class="bs-example form-horizontal xs-form">
+          <div class="form-group">
+            <label class="col-lg-2 control-label">外借部门</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="borrowDept" validate="stringLimit0" maxlength="64" />
+            </div>
+            <label class="col-lg-2 control-label">外借人</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="borrowUser" validate="stringLimit0" maxlength="64" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">电话</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="borrowTel"
+                validate="TelePhone"/>
+            </div>
+            <label class="col-lg-2 control-label">邮件</label>
+            <div class="col-lg-3">
+              <input type="text" class="form-control input-sm" data-id="borrowMail"
+                validate="email"/>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:245px">
+            <label class="col-lg-2 control-label">外借时间</label>
+            <div class="col-lg-3">
+              <div class="input-group w-all">
+                  <input type="text" class="form-control input-sm" 
+                        data-id="borrowStartTime" data-type="date">
+              </div>
+            </div>
+            <label class="col-lg-2 control-label">到期时间</label>
+            <div class="col-lg-3">
+              <div class="input-group w-all">
+                  <input type="text" class="form-control input-sm" 
+                        data-id="borrowEndTime" data-type="date">
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+    <div id="um_step_5"  style="overflow: hidden;height:auto;padding-top:35px;padding-bottom:15px;display:none">
+        <form class="bs-example form-horizontal xs-form"></form>
+    </div>
+</div>
+</div>
+
+<!-- 批量修改 -->
+<div class="template" id="asset_batch_update">
+    <div class="panel-body no-tb-padder">
+      <form class="bs-example form-horizontal xs-form">
+        <div class="form-group" >
+          <div class="col-lg-1">
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" checked name="check_all"><i></i>
+              </label>
+            </div>
+          </div>
+          <label class="col-lg-2 control-label tc" style="padding-left: 0;width:40px">全选</label>
+          <label class="col-lg-9 control-label tl" style="padding-left: 23px">（提示：若不修改某项内容，请在其前面取消勾选！）</label>
+        </div>
+        <div class="form-group" >
+          <div class="col-lg-1">
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" checked data-flag="isComputeRisk,assetValue"><i></i> 
+              </label>
+            </div>
+          </div>
+          <label class="col-lg-4 control-label tr">是否计算风险值 :</label>
+          <div class="col-lg-6 tl">
+            <div class="radio">
+                <label class="i-checks"> 
+                  <input type="radio" value="1" data-id="isComputeRisk" name="isComputeRisk" checked>
+                  <i></i>是
+                </label>
+
+                <label class="i-checks ml10">
+                  <input type="radio" value="0" name="isComputeRisk">
+                  <i></i>否
+                </label>
+              </div>
+          </div>
+        </div>
+
+        <div class="form-group" >
+          <div class="col-lg-1">
+          </div>
+          <label class="col-lg-4 control-label tr">资产价值 :</label>
+          <div class="col-lg-6 tl">
+            <select class="form-control input-sm" data-type="select" data-id="assetValue" validate="required">
+                <option value="">----</option>
+                <option value="5">很高</option>
+                <option value="4">高</option>
+                <option value="3">中</option>
+                <option value="2">低</option>
+                <option value="1">很低</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" >
+          <div class="col-lg-1">
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" checked data-flag="assetTypeId"><i></i> 
+              </label>
+            </div>
+          </div>
+          <label class="col-lg-4 control-label tr">资产类型 :</label>
+          <div class="col-lg-6 tl"> 
+              <div class="inputdrop" id="assetTypeId" required no-select="first-child"></div>           
+          </div>
+        </div>
+
+        <div class="form-group" >
+          <div class="col-lg-1">
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" checked data-flag="securityDomainId"><i></i> 
+              </label>
+            </div>
+          </div>
+          <label class="col-lg-4 control-label tr">安全域 :</label>
+          <div class="col-lg-6 tl">
+            <div class="inputdrop" id="securityDomainId" required></div>  
+          </div>
+        </div>
+
+        <div class="form-group" >
+          <div class="col-lg-1">
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox"  checked data-flag="bussinessDomainId"><i></i> 
+              </label>
+            </div>
+          </div>
+          <label class="col-lg-4 control-label tr">业务域 :</label>
+          <div class="col-lg-6 tl">
+            <div class="inputdrop" id="bussinessDomainId" required></div>  
+          </div>
+        </div>
+
+        <div class="form-group" id="osType_div">
+          <div class="col-lg-1">
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" checked data-flag="osType"><i></i> 
+              </label>
+            </div>
+          </div>
+          <label class="col-lg-4 control-label tr">操作系统类型 :</label>
+          <div class="col-lg-6 tl">
+            <select class="form-control input-sm" data-type="select" data-id="osType" validate="required">
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" id="responsiblePerson_div">
+          <div class="col-lg-1">
+            <div class="checkbox">
+              <label class="i-checks">
+                <input type="checkbox" checked data-flag="liablePersonId"><i></i> 
+              </label>
+            </div>
+          </div>
+          <label class="col-lg-4 control-label tr">责任人 :</label>
+          <div class="col-lg-6 tl">
+          <!-- 
+             <input type="text" mengge-id="response_id" class="form-control input-sm" data-id="responsiblePerson" validate="required"/> -->
+            <select class="form-control input-sm" data-id="liablePersonId" data-type="select" validate="required" multiple="multiple">
+            </select>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+<!-- 自定义导出模板名称  -->
+<div class="template" id="custom_export_template_name">
+  <div class="panel-body no-tb-padder">
+      <form class="bs-example form-horizontal xs-form">
+          <label class="col-lg-3 control-label required">模板名称</label>
+          <div class="col-lg-7">
+            <input type="text" class="form-control input-sm" data-id="name" validate="required">
+          </div>
+      </form>
+  </div>
+</div>
+
+<!-- 导入  -->
+<div class="template" id="import_template">
+  <div class="panel-body no-tb-padder">
+      <form class="bs-example form-horizontal xs-form" enctype="multipart/form-data">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">模板文件</label>
+            <div class="col-lg-6">
+                <div id="ptMap"></div>
+            </div>
+            <div class="col-lg-3" style="height:34px">
+              <a class="a_btn" style="line-height:34px">上传</a>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-12">
+                <div class="table_div" style="height:260px"></div>
+            </div>
+          </div>
+      </form>
+  </div>
+</div>
+
+<!-- 导入任务  -->
+<div class="template" id="import_task_template">
+  <form class="bs-example form-horizontal xs-form">
+      <div class="form-group">
+        <div class="col-lg-12">
+            <div class="table_div" style="height:310px"></div>
+        </div>
+      </div>
+  </form>
+</div>

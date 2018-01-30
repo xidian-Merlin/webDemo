@@ -1,0 +1,216 @@
+<div data-id="monitor_index" class="h-all">
+	<div class="form-group h-all">
+		<div class="pabs" style="left:5px;top:12px">
+		<div class="w-all h-all" id="token_info_div" style="display:none">
+			<div class="radio m0 dib">
+				<label class="i-checks">
+				  <input type="radio" value="1" name="proofRadio">
+				  <i></i>
+				  开启
+				</label>
+			</div>
+
+			<div class="radio m0 dib">
+				<label class="i-checks">
+				  <input type="radio" value="0" name="proofRadio" checked>
+				  <i></i>
+				  关闭
+				</label>
+			</div>
+			<div id="token_div" class="dib" style="display: none">
+				<a href="javascript:void(0)" id="token_btn" class="a_btn">
+					<span>令牌配置</span>
+					<i class="icon-cog"></i>
+				</a>
+				<span class="ml5" id="token_name"></span>
+			</div>
+		</div>
+		</div>
+		<!-- 操作栏 -->
+		<div class="table-oper" id="table_oper" style="margin-bottom:5px;height: 30px;line-height: 30px;">
+			<a href="javascript:void(0);" id="url_add_btn">
+				<span>添加URL</span>
+				<i class="icon-plus"></i>
+			</a>
+			<a href="javascript:void(0)" id="url_del_btn">
+				<span>批量删除</span>
+				<i class="icon-trash"></i>
+			</a>
+			
+		</div>
+		<div class="tab-div h-all" data-id="url_table" data-type="tpl" style="padding-bottom: 40px;"></div>
+	</div>
+
+	<tem id="url_edit_template">
+	<div data-id="monitor_index" class="h-all ovxh" style="margin-left:-4.5%;">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form">
+
+				<div data_tmp="detail_store_form">
+		      <div class="form-group">
+			      <label class="col-lg-2 control-label required">连接方式</label>
+			      <div class="col-lg-3">
+			        <select data-id="connectType" data-type="select">
+			        	<option value="http">http</option>
+			        	<option value="https">https</option>
+			        </select>
+			        <input type="hidden" data-id="monitorId">
+			        <input type="hidden" data-id="url_config_id">
+			      </div>
+		        <label class="col-lg-3 control-label pt0">端口</label>
+		        <div class="col-lg-3">
+		          <input type="text" class="form-control input-sm" data-id="monitorPort" maxlength="5" validate="port" />
+		        </div>
+		      </div>
+
+		      <div class="form-group">
+		        <label class="col-lg-2 control-label pt0">用户名</label>
+		        <div class="col-lg-3">
+		          <input type="text" class="form-control input-sm" maxlength="32" data-id="proxyUserName" />
+		        </div>
+		        <div id="snmp_v1">
+		          <label class="col-lg-3 control-label pt0">密码</label>
+		          <div class="col-lg-3">
+		            <input type="password" class="form-control input-sm" data-id="proxyPassWord" />
+		          </div>
+		        </div>
+		      </div>
+
+		      <div class="form-group">
+		        <label class="col-lg-2 control-label pt0">代理IP</label>
+		        <div class="col-lg-3">
+		          <input type="text" class="form-control input-sm" data-id="proxyIp" validate="ipv4"/>
+		        </div>
+		        <label class="col-lg-3 control-label pt0">代理端口</label>
+		        <div class="col-lg-3">
+		          <input type="text" class="form-control input-sm" data-id="proxyPort" maxlength="5" validate="port" />
+		        </div>
+		      </div>
+
+					<div class="form-group">
+			      <label class="col-lg-2 control-label">操作符</label>
+			      <div class="col-lg-3">
+			        <select data-id="errorCodeOption" data-type="select">
+			        	<option value="0">&lt;</option>
+			        	<option value="1">==</option>
+			        	<option value="2">&gt;</option>
+			        	<option value="3">&lt;=</option>
+			        	<option value="4">&gt;=</option>
+			        	<option value="5">!=</option>
+			        </select>
+			      </div>
+			      <label class="col-lg-3 control-label">HTTP状态码</label>
+			      <div class="col-lg-3">
+			        <input type="text" class="form-control input-sm" data-id="errorCodeValue" value="404"/>
+			      </div>
+					</div>
+
+					<div class="form-group">
+			      <label class="col-lg-2 control-label">请求方式</label>
+			      <div class="col-lg-3">
+			        <select data-id="checkRequest" data-type="select">
+			        	<option value="0">get</option>
+			        	<option value="1">post</option>
+			        </select>
+			      </div>
+			      <label class="col-lg-3 control-label required">请求URL</label>
+			      <div class="col-lg-3">
+			        <input type="text" class="form-control input-sm" data-id="urlAddress" validate="required,url"/>
+			      </div>
+					</div>
+
+					<div class="form-group">
+			      <label class="col-lg-2 control-label">超时时间(秒)</label>
+			      <div class="col-lg-3">
+			        <input type="text" class="form-control input-sm" data-id="timeOut" validate="float3"/>
+			      </div>
+			      <label class="col-lg-3 control-label">字符集</label>
+			      <div class="col-lg-3">
+			        <select data-id="monitorDatabaseName" data-type="select">
+			        	<option value="GBK">GBK</option>
+			        	<option value="ISO-8859-1">ISO-8859-1</option>
+			        	<option value="UTF-8">UTF-8</option>
+			        </select>
+			      </div>
+					</div>
+				</div>
+
+				<div class="form-group" data-form="correctKeyWord">
+		      <label class="col-lg-2 control-label">关键字白名单</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="correctKeyWord" />
+		      </div>
+		      <div class="col-lg-1">
+					  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-20px;top:5px;font-size:20px;" data-id="move_right" title="右移">
+					  	<i class="icon-chevron-right"></i>
+					  </div>
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-20px;top:45px;font-size:20px;" data-id="move_left" title="左移">
+				    	<i class="icon-chevron-left"></i>
+				    </div>
+					</div>
+					<div class="col-lg-5">
+						<div class="table-div" data-id="correctKeyWordList" style="height:150px;padding-left:15px;"></div>
+					</div>
+				</div>
+
+				<div class="form-group" data-form="errorKeyWord">
+		      <label class="col-lg-2 control-label">关键字黑名单</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="errorKeyWord" />
+		      </div>
+		      <div class="col-lg-1">
+					  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-20px;top:5px;font-size:20px;" data-id="move_right" title="右移">
+					  	<i class="icon-chevron-right"></i>
+					  </div>
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-20px;top:45px;font-size:20px;" data-id="move_left" title="左移">
+				    	<i class="icon-chevron-left"></i>
+				    </div>
+					</div>
+					<div class="col-lg-5">
+						<div class="table-div" data-id="errorKeyWordList" style="height:150px;padding-left:15px;"></div>
+					</div>
+				</div>
+
+				<div class="form-group" data-form="paramList">
+					<div class="col-lg-5">
+						<div class="form-group">
+				      <label class="col-lg-5 control-label">参数名称</label>
+				      <div class="col-lg-7">
+				        <input type="text" class="form-control input-sm" data-id="paramName" />
+				      </div>
+				     </div>
+						<div class="form-group">
+				      <label class="col-lg-5 control-label">参数值</label>
+				      <div class="col-lg-7">
+				        <input type="text" class="form-control input-sm" data-id="paramValue" />
+				      </div>
+						</div>
+					</div>
+		      <div class="col-lg-1">
+					  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-20px;top:5px;font-size:20px;" data-id="move_right" title="右移">
+					  	<i class="icon-chevron-right"></i>
+					  </div>
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-20px;top:45px;font-size:20px;" data-id="move_left" title="左移">
+				    	<i class="icon-chevron-left"></i>
+				    </div>
+					</div>
+					<div class="col-lg-5">
+						<div class="table-div" data-id="paramList" style="height:150px;padding-left:15px;"></div>
+					</div>
+				</div>
+
+	      <div class="table-oper" style="padding-right:8.83%;">
+	        <a href="javascript:void(0);" class="dib monitor_btn_styl" data-type="test_btn_in_step5">
+	          <span>测试配置</span>
+	          <i></i>
+	        </a> 
+	      </div> 
+			</form>
+		</div>
+	</div>
+	</tem>
+
+
+</div>
+
+

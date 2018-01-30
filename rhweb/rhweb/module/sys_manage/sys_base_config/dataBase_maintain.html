@@ -1,0 +1,42 @@
+<script src="/module/sys_manage/sys_base_config/dataBase_maintain.js"></script>
+
+
+<!-- 操作栏 -->
+<div class="table-div-outer" style="padding:0 10px">
+	<form  id="dataform" style="height:50px;overflow:hidden;padding-top:10px;min-width:860px;">
+		<div class="form-group">
+			<div class="radio col-lg-3" style="width:190px;padding:0;">
+				<label class="i-checks">
+					<input type="radio" value="0" name="type"><i></i>
+					按空间清理: 已用空间超过
+				</label>
+			</div>
+			<div class="col-lg-1" style="padding:0;margin-left:-10px;width:70px;">
+				<input type="text" class="form-control tc" custom-radio="custom-radio" custom-radio-vaule="0" data-id="diskUsage" name="diskUsage" style="width:65px;height:26px;margin-top:5px;padding:0 0 0 5px;" validate="required,between20~90"></div>
+			<div class="col-lg-1" style="padding:0;margin-top:10px;margin-left:0;">
+				<label class="control-label" style="text-align:left;padding:0;width:80px;">%时自动维护</label>
+			</div>
+			<div class="radio col-lg-2" style="width:190px;padding:0;">
+				<label class="i-checks">
+					<input type="radio" value="1" name="type">
+					<i></i>
+					按时间清理: 系统保留最近
+				</label>
+			</div>
+			<div class="col-lg-1" style="padding:0;margin-left:-10px;width:70px;">
+				<input type="text" class="form-control input-sm tc" custom-radio="custom-radio" custom-radio-vaule="1" data-id="saveData" validate="required,number" name="saveData" style="width:65px;height:26px;margin-top:5px;padding:0 0 0 5px;"></div>
+			<div class="col-lg-1" style="padding:0;margin-top:10px;margin-left:0;">
+				<label class="control-label" style="text-align:left;padding:0;width:80px;margin:0;">个月的数据</label>
+			</div>
+
+			<div class="table-oper pabs" id="table_oper" style="right:10px;top:2px">
+				<a href="javascript:void(0);" id="dataBaseConfigSubmit" class="bgblue">
+					<i class="btn-commen save-white-btn"></i>
+					<span>保存</span>
+				</a>
+			</div>
+		</div>
+	</form>
+	<div id="table_div" class="table-div table-list"></div>
+</div>
+

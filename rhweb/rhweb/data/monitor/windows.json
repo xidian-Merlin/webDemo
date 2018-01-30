@@ -1,0 +1,15 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Windows",
+					"fileName"  : "windows",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "windows/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "系统概述" ,"href" : "windows/system.html" ,"icon" : "monitor-system"},
+								{"text" : "配置监控" ,"href" : "windows/foundation.html" ,"icon" : "monitor-foundation"},
+								{"text" : "脚本文件监控" ,"href" : "windows/configure.html" ,"icon" : "monitor-configure"},
+								{"text" : "事件信息" ,"href" : "common/event_and_config.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

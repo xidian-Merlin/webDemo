@@ -1,0 +1,63 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>缓冲区信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="grid_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var grid_info_url = "monitorview/security/OracleRACMonitor/queryOracleRACWaitSession";
+
+var grid_info_header = [
+                            {text:'表空间名称',name:"instanceName"},
+                            {text:'缓冲区标识',name:"id"},
+                            {text:'缓冲池名称',name:"name"},
+                            {text:'缓冲池最大设置尺寸(B)',name:"setMsize"},
+                            {text:'替换列表中缓冲区数(B)',name:"cnumRepl"},
+                            {text:'写入列表中缓冲区数(B)',name:"cnumWrite"},
+                            {text:'设置获得缓冲区数(B)',name:"bufGot"},
+                            {text:'设置写入缓冲区数(B)',name:"sumWrite"},
+                            {text:'设置扫描缓冲区数(B)',name:"sumScan"},
+                            {text:'更新时间',name:"updateDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    grid_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    grid_info();
+}
+
+
+function grid_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#grid_info"),{
+         header:grid_info_header,
+         url:grid_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false,
+         dbThLine : true
+    });
+}
+
+
+});
+});
+</script>

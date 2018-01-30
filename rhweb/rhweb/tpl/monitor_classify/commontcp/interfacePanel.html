@@ -1,0 +1,23 @@
+
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+	<span>接口面板</span>
+	</div>
+	<div class="monitor-panel scale-panel" style="height:500px" id="scale_list">
+		<div style="height: 100%;width: 100%;" id="flashContainer">
+
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function (){
+		var this_params = index_query_param_get();
+
+		console.log(this_params);
+
+		var swf_html_str = ' <embed type="application/x-shockwave-flash" src="/flash/interfacePanel/InterfacePanel.swf" style="undefined" id="customFlexRightClick" name="customFlexRightClick" bgcolor="#CCCCCC" quality="high" allowscriptaccess="always" wmode="opaque" menu="false" flashvars="edId='+(this_params.assetId?this_params.assetId:"")+'&amp;monitorId='+(this_params.monitorId?this_params.monitorId:"")+'&amp;regionId='+(this_params.regionId?this_params.regionId:"/")+'&amp;serverIp='+index_web_app+'" height="100%" width="100%">';
+		/* edId=485,486&amp;monitorId=567&amp;regionId=/ */
+		$("#flashContainer").append(swf_html_str);
+	});
+</script>

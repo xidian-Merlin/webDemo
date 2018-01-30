@@ -1,0 +1,164 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>IP访问次数统计（TOP10）</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="ip_count_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>IP访问流量统计（TOP10）</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="ip_flow_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>请求返回码统计</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="response_code_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>请求错误码及对应URL列表</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="error_code_div"></div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js','/js/plugin/plot/plot.js'] ,function (monitor,plot){
+
+var ip_count_url = "monitorview/middleware/weblogic/queryVisitTimesHighChar";
+// var ip_flow_url = "monitorview/middleware/weblogic/queryVisitFluxHighChar"
+var response_code_url = "monitorview/middleware/weblogic/queryErrCodeCensus";
+var error_code_url = "monitorview/middleware/weblogic/queryErrorVsUrl"
+
+var error_code_header = [
+							{text:"错误码" ,name:"rtnCode"},
+							{text:"URL" ,name:"url"},
+							{text:"更新时间" ,name:"enterDate"}
+						 ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+	urlParamObj.time = $("#query_time_label").text();
+    ip_count_chart();
+    // ip_flow_chart();
+    response_code_chart();
+    error_code_list();
+}
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function ip_count_chart(){
+	um_ajax_get({
+		url : ip_count_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			//访问次数
+			var flux = data.flux;
+			var seriesArray = [];
+			var seriesObj = new Object();
+			seriesObj.name="值";
+			seriesObj.type="bar";
+			seriesObj.data=[];
+			var categoryArray = [];
+			for (var i = 0; i < flux.length; i++) {
+				seriesObj.data.push(flux[i].visitFlux);
+				categoryArray.push(flux[i].ipAddress);
+			}
+			seriesArray.push(seriesObj);
+			plot.barRender($("#ip_count_div") ,{
+				category : categoryArray,
+				series : seriesArray,
+				isVercital : true
+			});
+
+			//访问流量
+			var visitcnt = data.visitcnt;
+			var seriesArray2 = [];
+			var seriesObj2 = new Object();
+			seriesObj2.name="值";
+			seriesObj2.type="bar";
+			seriesObj2.data=[];
+			var categoryArray2 = [];
+			for (var i = 0; i < visitcnt.length; i++) {
+				seriesObj2.data.push(visitcnt[i].visitTimesCnt);
+				categoryArray2.push(visitcnt[i].ipAddress);
+			}
+			seriesArray2.push(seriesObj);
+			plot.barRender($("#ip_flow_div") ,{
+				category : categoryArray2,
+				series : seriesArray2,
+				isVercital : true
+			});
+		}
+	});	
+}
+
+//请求返回码统计
+function response_code_chart(){
+	um_ajax_get({
+		url : response_code_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			var item = data;
+			var seriesArray = [];
+			var seriesObj = new Object();
+			seriesObj.name="值";
+			seriesObj.type="bar";
+			seriesObj.data=[];
+			var categoryArray = [];
+			for (var i = 0; i < item.length; i++) {
+				seriesObj.data.push(item[i].num);
+				categoryArray.push(item[i].rtnCode);
+			}
+			seriesArray.push(seriesObj);
+			plot.barRender($("#response_code_div") ,{
+				category : categoryArray,
+				series : seriesArray,
+				isVercital : true
+			});
+		}
+	});	
+}
+
+//请求错误码及对应URL列表
+function error_code_list()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	g_grid.render($("#error_code_div") ,{
+		url : error_code_url,
+		header : error_code_header,
+		paramObj : urlParamObj,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		autoHeight : true
+	});
+}
+
+
+});
+});
+</script>

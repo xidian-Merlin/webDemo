@@ -1,0 +1,52 @@
+<script src="/module/stat_report/report_show.js"></script>
+
+<div id="report_div">
+	<div class="panel panel-default" style="margin-top:5px;">
+	    <div class="panel-heading font-bold prel">
+	      	<span>综合分析</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">			
+				<a id="rbb" data-type="report">
+					<div class="rp-icon rp-rbb"></div>
+					<span>日报表</span>
+				</a>
+				<a id="zbb" data-type="report">
+					<div class="rp-icon rp-zbb"></div>
+					<span>周报表</span>
+				</a>
+				<a id="ybb" data-type="comprehensive">
+					<div class="rp-icon rp-ybb"></div>
+					<span>月报表</span>
+				</a>
+				<a id="jdbb" data-type="comprehensive">
+					<div class="rp-icon rp-jdbb"></div>
+					<span>季度报表</span>
+				</a>
+				<a id="nbb" data-type="report">
+					<div class="rp-icon rp-nbb"></div>
+					<span>年报表</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="prel bgwh animated fadeInRight" id="report_detail_div" style="display:none">
+	<div class="table-oper" id="table_oper">
+		<a class="oper-array" href="javascript:void(0);">
+			<span>导出操作</span><i class="icon-caret-down"></i>
+			<ul class="oper-list animated fadeInRight" id="export_ul">
+				<li data-id="pdf">导出PDF</li>
+				<li data-id="word">导出WORD</li>
+				<li data-id="html">导出HTML</li>
+				<li data-id="excel">导出EXCEL</li>
+			</ul>
+		</a>
+		<a href="javascript:void(0);" id="close_btn">
+			<span>关闭</span>
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+	<div id="report_detail_show_div"></div>
+</div>

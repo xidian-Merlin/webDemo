@@ -1,0 +1,115 @@
+<tem>
+
+<!-- 用户编辑模板 -->
+<div class="template" id="comp_edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label required">厂商名称</label>
+			    <div class="col-lg-4">
+			        <input type="text" maxlength="32" class="form-control input-sm" data-id="supName"
+			         validate="required">
+			    </div>
+			    <label class="col-lg-2 control-label required">厂商编码</label>
+			    <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="supCode" maxlength="10" 
+			         validate="required,between1~9999999999">
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">联系人姓名</label>
+			    <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="supContacts">
+			    </div>		    
+			    <label class="col-lg-2 control-label">联系电话</label>
+			    <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="phoneNumber" validate="TelePhone">
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">E-MAIL地址</label>
+			    <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="email" validate="email">
+			    </div>		    
+			    <label class="col-lg-2 control-label">地址</label>
+			    <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="supAddress">
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">主页</label>
+			    <div class="col-lg-10">
+			        <input type="text" class="form-control input-sm" data-id="supUrl" validate="url">
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">备注</label>
+			    <div class="col-lg-10">
+			        <textarea class="form-control input-sm" maxlength="500" data-id="supMemo"></textarea>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 用户详情模板 -->
+<div class="template" id="comp_detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">厂商名称：</label>
+			    <div class="col-lg-3">
+			    	<label class="control-label tl" data-id="supName"></label>
+			    </div>		    
+			    <label class="col-lg-3 control-label">厂商编码：</label>
+			    <div class="col-lg-3">
+			    	<label class="control-label tl" data-id="supCode"></label>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">联系人姓名：</label>
+			    <div class="col-lg-3">
+			    	<label class="control-label tl" data-id="supContacts"></label>
+			    </div>		    
+			    <label class="col-lg-3 control-label">联系电话：</label>
+			    <div class="col-lg-3">
+			    	<label class="control-label tl" data-id="phoneNumber"></label>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">E-MAIL地址：</label>
+			    <div class="col-lg-3">
+			    	<label class="control-label tl" data-id="email"></label>
+			    </div>		    
+			    <label class="col-lg-3 control-label">地址：</label>
+			    <div class="col-lg-3">
+			    	<label class="control-label tl" data-id="supAddress"></label>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">主页：</label>
+			    <div class="col-lg-9">
+			    	<label class="control-label tl" data-id="supUrl"></label>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">备注：</label>
+			    <div class="col-lg-9">
+			    	<label class="control-label tl" data-id="supMemo"></label>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+</tem>

@@ -1,0 +1,91 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>注册与注销数</span>
+    </div>
+	<div class="monitor-panel">
+		<div class="table_div" id="database_info_div"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'],function (plot){
+
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+var current_database_url = "monitorview/db/sqlserver/queryMsSqlLogin";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+	ed_monitor_get();
+}
+
+window.index_monitor_init = function ()
+{
+	ed_monitor_get();
+}
+
+function ed_monitor_get()
+{
+    urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+           current_database_list(data.edmonitorstore[1].monitorId);       
+        }
+    });
+}
+
+function current_database_list(monitorId)
+{
+    um_ajax_get({
+        url : current_database_url,
+        paramObj : {monitorId : monitorId,
+					time : $("#query_time_label").text(),
+					},
+        successCallBack : function (data){
+            var items = data;
+            var legendArray = ['SQLServer注册数','SQLServer注销数'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesInObj = new Object();
+            seriesInObj.name = 'SQLServer注册数';
+            seriesInObj.type = "line";
+            seriesInObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].enterDateLn);
+                seriesInObj.data.push(items[i].logins);
+            }
+            seriesArray.push(seriesInObj);
+
+            var seriesOutObj = new Object();
+            seriesOutObj.name = 'SQLServer注销数';
+            seriesOutObj.type = "line";
+            seriesOutObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                seriesOutObj.data.push(items[i].logouts);
+            }
+            seriesArray.push(seriesOutObj);
+
+            plot.lineRender($("#database_info_div") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+
+});
+});
+</script>

@@ -1,0 +1,17 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Linux",
+					"fileName"  : "linux",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "linux/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "系统概述" ,"href" : "linux/system.html" ,"icon" : "monitor-system"},
+								{"text" : "配置监控" ,"href" : "linux/foundation.html" ,"icon" : "monitor-foundation"},
+								{"text" : "脚本文件监控" ,"href" : "linux/configure.html" ,"icon" : "monitor-configure"},
+								{"text" : "SSH命令配置" ,"href" : "linux/command.html" ,"icon" : "monitor-command"},
+								{"text" : "用户访问" ,"href" : "linux/user_access.html" ,"icon" : "monitor-users-access"},
+							    {"text" : "事件信息" ,"href" : "common/event_and_config.html" ,"icon" : "monitor-event"}
+							]
+				 }
+}

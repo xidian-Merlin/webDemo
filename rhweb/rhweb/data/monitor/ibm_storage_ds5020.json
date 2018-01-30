@@ -1,0 +1,16 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "IBM STORAGE DS5020",
+					"fileName" : "ibm_storage_ds5020",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "ibm_storage_ds5020/base.html","icon" : "monitor-base-info"},
+								{"text" : "物理分区" ,"href" : "ibm_storage_ds5020/physical.html","icon" : "monitor-physical"},
+								{"text" : "逻辑分区" ,"href" : "ibm_storage_ds5020/luoji.html","icon" : "monitor-luoji"},
+								{"text" : "通道" ,"href" : "ibm_storage_ds5020/pipe.html","icon" : "monitor-pipe"},
+								{"text" : "控制器" ,"href" : "ibm_storage_ds5020/controller.html","icon" : "monitor-controller"},
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

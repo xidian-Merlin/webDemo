@@ -1,0 +1,13 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "CommonScript",
+					"fileName"  : "commonscript",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "commonscript/base.html","icon" : "monitor-base-info"},
+								{"text" : "查询结果" ,"href" : "commonscript/query_result.html","icon" : "monitor-query-result"},
+								{"text" : "事件信息" ,"href" : "common/event_and_config.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

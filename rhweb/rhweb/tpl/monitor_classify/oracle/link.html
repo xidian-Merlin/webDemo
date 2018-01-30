@@ -1,0 +1,128 @@
+<div class="mt5 mb5" style="height:30px" id="instance_sel_div">
+    <select class="form-control input-sm" data-type="select" id="instance_sel">
+    </select>
+</div>
+
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>会话信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="session_info_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>等待会话</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="wait_session_div"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+
+
+
+var current_session_url = "monitorview/db/oracle/queryOracleCurrentSession";
+var current_session_header = [
+								{text:"会话标识" ,name:"sid"},
+								{text:"用户名" ,name:"username"},
+								{text:"当前执行命令" ,name:"command"},
+								{text:"等待锁地址" ,name:"lockwait", render:function(text){
+									if(text==null){
+										return '----';
+									}
+								}},
+								{text:"模式用户名" ,name:"schemaname"},
+								{text:"会话状态" ,name:"status"},
+								{text:"操作系统客户机名" ,name:"machine"},
+								{text:"内存使用率" ,name:"memUsedRation", render:function(text){
+									if(text!=null){
+										return (text * 100).toFixed(2) + "%";
+									}
+								}},
+								{text:"更新时间" ,name:"updateDate"}
+							 ];
+
+var wait_session_url = "monitorview/db/oracle/queryOracleWaitSession";
+var wait_session_header = [
+							{text:"会话标识" ,name:"sid"},
+							{text:"会话等待资源(K)" ,name:"event"},
+							{text:"等待时间(ms)" ,name:"waitTime"},
+							{text:"等待秒数(s)" ,name:"secondsInWait"},
+							{text:"等待状态" ,name:"state"},
+							{text:"等待客户机名称" ,name:"machine"},
+							{text:"更新时间" ,name:"updateDate"}
+						 ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+	index_form_init($("#instance_sel_div"));
+	index_ed_monitor_get(urlParamObj ,[$("#instance_sel")]);
+}
+
+function event_init()
+{
+	$("#instance_sel").change(function (){
+		current_session_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+		wait_session_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+	});
+}
+
+window.index_monitor_init = function ()
+{
+    index_ed_monitor_get(urlParamObj ,[$("#instance_sel") ,$("#instance_sel")]);
+}
+
+function current_session_list(opt)
+{
+	g_grid.render($("#session_info_div") ,{
+		url : current_session_url,
+		header : current_session_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+
+function wait_session_list(opt)
+{
+	g_grid.render($("#wait_session_div") ,{
+		url : wait_session_url,
+		header : wait_session_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		dbThLine : true,
+		autoHeight : true
+	});
+}
+
+
+
+
+});
+</script>

@@ -1,0 +1,74 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>通道</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="pipe_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var pipe_info_url = "monitorview/storage/ibmds5020/queryChannelInfo";
+
+var pipe_info_header = [
+                            {text:'名称',name:"name"},
+                            {text:'描述',name:"driveDesc"},
+                            {text:'状态',name:"status"},
+                            {text:'控制器A每秒错误数',name:"controllAErrorSec"},
+                            {text:'控制器A分区每秒错误数',name:"controllALogicErrorSec"},
+                            {text:'控制器A超时每秒错误数',name:"controllATimeoutErrorSec"},
+                            {text:'控制器A每秒I/O数',name:"controllALogicIOSec"},
+                            {text:'控制器A错误数',name:"controllAError"},
+                            {text:'控制器A分区错误数',name:"controllALogicError"},
+                            {text:'控制器A超时错误数',name:"controllATimeoutError"},
+                            {text:'控制器A I/O数',name:"controllALogicIO"},
+                            {text:'控制器B每秒错误数',name:"controllBErrorSec"},
+                            {text:'控制器B分区每秒错误数',name:"controllBLogicErrorSec"},
+                            {text:'控制器B超时每秒错误数',name:"controllBTimeoutErrorSec"},
+                            {text:'控制器B每秒I/O数',name:"controllBLogicIOSec"},
+                            {text:'控制器B错误数',name:"controllBError"},
+                            {text:'控制器B分区错误数',name:"controllBLogicError"},
+                            {text:'控制器B超时错误数',name:"controllBTimeoutError"},
+                            {text:'控制器B I/O数',name:"controllBLogicIO"},
+                            {text:'更新时间',name:"updateDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    pipe_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+
+function pipe_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#pipe_info"),{
+         header:pipe_info_header,
+         url:pipe_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         tableWidth : "2000px",
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

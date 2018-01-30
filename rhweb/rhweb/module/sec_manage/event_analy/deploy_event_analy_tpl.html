@@ -1,0 +1,296 @@
+<tem>
+<!-- 忽略全部弹出框 -->
+<div class="template" id="lgnore_all_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label required">忽略原因：</label>
+			    <div class="col-lg-10">
+			        <textarea class="form-control input-sm" validate="required" data-id="ignoreDesc" ></textarea>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 忽略弹出框 -->
+<div class="template" id="lgnore_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label required">忽略原因：</label>
+			    <div class="col-lg-9">
+			        <textarea class="form-control input-sm" validate="required" data-id="ignoreDesc"></textarea>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">生成忽略策略：</label>
+			    <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" data-id="faultName" name="test" value="test1"><i></i> 事件名称
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" data-id="faultModule"  name="test" value="test1"><i></i> 事件描述
+						  </label>
+					</div>
+		       </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 统计弹出框 -->
+<div class="template" id="count_template">
+	<div class="panel-body no-tb-padder">
+
+		<div class="tab-container" id="tab">
+			<div class="tab-content">
+				<!-- tab1 -->
+				<div class="tab-pane">
+					<div class="panel-body no-tb-padder">
+						<div class="table-oper" id="table_oper">
+							<a href="javascript:void(0);" id="eventFigure_show_btn">
+								<span>图形显示</span>
+								<i class="icon-plus"></i>
+							</a>
+							<a href="javascript:void(0);" id="eventTab_show_btn">
+								<span>表格显示</span>
+								<i class="icon-remove"></i>
+							</a>
+						</div>
+						<div class="form-group">
+							<div id="eventname_analy_chars" style="height: 278px" ></div>
+							<div id="eventname_analy_tab" class="table-div" style="height: 278px"></div>
+						</div>
+					</div>
+				</div>
+				<!-- tab2 -->
+				<div class="tab-pane">
+					<div class="panel-body no-tb-padder">
+						<div class="table-oper" id="table_oper">
+							<a href="javascript:void(0);" id="typeFigure_show_btn">
+								<span>图形显示</span>
+								<i class="icon-plus"></i>
+							</a>
+							<a href="javascript:void(0);" id="typeTab_show_btn">
+								<span>表格显示</span>
+								<i class="icon-remove"></i>
+							</a>
+						</div>
+						<div class="form-group">
+							<div id="typename_analy_chars" style="height: 278px" ></div>
+							<div id="typename_analy_tab" class="table-div" style="height: 278px"></div>
+						</div>
+					</div>
+				</div>
+				<!-- tab3 -->
+				<div class="tab-pane">
+					<div class="panel-body no-tb-padder">
+						<div class="table-oper" id="table_oper">
+							<a href="javascript:void(0);" id="gradeFigure_show_btn">
+								<span>图形显示</span>
+								<i class="icon-plus"></i>
+							</a>
+							<a href="javascript:void(0);" id="gradeTab_show_btn">
+								<span>表格显示</span>
+								<i class="icon-remove"></i>
+							</a>
+						</div>
+						<div class="form-group">
+							<div id="gradeName_analy_chars" style="height: 278px" ></div>
+							<div id="gradeName_analy_tab" class="table-div" style="height: 278px"></div>
+						</div>
+					</div>
+				</div>
+				<!-- tab4 -->
+				<div class="tab-pane">
+					<div class="panel-body no-tb-padder">
+						<div class="table-oper" id="table_oper">
+							<a href="javascript:void(0);" id="timeFigure_show_btn">
+								<span>图形显示</span>
+								<i class="icon-plus"></i>
+							</a>
+							<a href="javascript:void(0);" id="timeTab_show_btn">
+								<span>表格显示</span>
+								<i class="icon-remove"></i>
+							</a>
+						</div>
+						<div class="form-group">
+							<div id="timeName_analy_chars" style="height: 278px"></div>
+							<div id="timeName_analy_tab" class="table-div" style="height: 278px"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ul class="nav nav-tabs nav-justified" data-id="tab-ul">
+				<li>
+					<a href="javascript:void(0);" id="event_btn">
+						<span>事件名称</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" id="type_btn">
+						<span>类型</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" id="grade_btn">
+						<span>等级</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" id="time_btn">
+						<span>时间</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- 导出EXCEL弹出框 -->
+<div class="template" id="export_template">
+	<div class="panel-body no-tb-padder">
+
+	</div>
+</div>
+
+<!-- 自定义列弹出框 -->
+<div class="template" id="custom_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+		       <div class="col-lg-12">
+		        	<label>请选择在列表中显示的列，最多只能选择六项</label>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox"
+						    	data-id="ids" name="ids" value="depl_NAMECol" type="2"><i></i> 事件名称
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox"  name="ids" value="ed_IDCol" ><i></i> 资产名称
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="monitorNameCol"><i></i> 监控器名称
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox"   name="ids" value="enter_DATECol"><i></i> 最新发生时间
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="update_dateCol"><i></i> 恢复时间
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="depl_COUNTCol"><i></i> 数量
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="depl_MODULECol"><i></i> 事件描述
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="ipvAddressCol"><i></i> 资产IP
+						  </label>
+					</div>
+		       </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<!-- 详情模板 -->
+<div class="template detail-info" id="deploy_detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">事件名称 :</label>
+		       <div class="col-lg-4">
+		        	<label type="text" class="control-label tl" data-id="depl_NAME"></label>
+		       </div>
+		       <label class="col-lg-2 control-label">资产名称 :</label>
+		       <div class="col-lg-4">
+		       		<label type="text" class="control-label tl" data-id="ed_ID"></label>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">资产使用人 :</label>
+		       <div class="col-lg-4">
+		        	<label type="text" class="control-label tl" data-id="edUser"></label>
+		       </div>
+		       <label class="col-lg-2 control-label">监控器名称 :</label>
+		       <div class="col-lg-4">
+		       		<label type="text" class="control-label tl" data-id="monitorName"></label>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">最新发生时间 :</label>
+		       <div class="col-lg-4">
+		        	<label type="text" class="control-label tl" data-id="enter_DATE"></label>
+		       </div>
+		       <label class="col-lg-2 control-label">数量 :</label>
+		       <div class="col-lg-4">
+		       		<label type="text" class="control-label tl" data-id="depl_COUNT"></label>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">状态 :</label>
+		       <div class="col-lg-4">
+		        	<label type="text" class="control-label tl" data-id="event_STATUS"></label>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <label class="col-lg-2 control-label">事件内容 :</label>
+		       <div class="col-lg-10">
+		        	<label type="text" class="control-label tl" data-id="depl_MODULE"></label>
+		       </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!--详情内模板-->
+<div class="template" id="detailmore_template">
+	<div class="panel-body no-tb-padder">
+		<div id="table_in_query_detailmore" class="table-div" style="height: 278px"></div>
+	</div>
+</div>
+</tem>

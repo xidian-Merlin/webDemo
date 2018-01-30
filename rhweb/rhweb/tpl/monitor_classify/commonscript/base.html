@@ -1,0 +1,109 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>可用度</span>
+    </div>
+    <div class="monitor-panel" style="height:100px" id="scale_list">
+
+    </div>
+</div>
+
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>基本信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="base_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">监控器名称：</label>
+                    <label class="col-lg-3 control-label tl" data-id="monitorName"></label>
+                    <label class="col-lg-2 control-label">监控器类型：</label>
+                    <label class="col-lg-5 control-label tl" data-id="monitorTypeName"></label>
+                </div>
+            </div>
+            <div id="asset_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">被监控资产名称：</label>
+                    <label class="col-lg-3 control-label tl" data-id="assetName"></label>
+                    <label class="col-lg-2 control-label">资产类型：</label>
+                    <label class="col-lg-5 control-label tl" data-id="assetTypeName"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">IP：</label>
+                    <label class="col-lg-3 control-label tl" data-id="mainIpv4"></label>
+                    <label class="col-lg-2 control-label">安全域：</label>
+                    <label class="col-lg-5 control-label tl" data-id="securityDomainName"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">操作系统：</label>
+                    <label class="col-lg-3 control-label tl" data-id="osTypeName"></label>
+                    <label class="col-lg-2 control-label">物理位置：</label>
+                    <label class="col-lg-5 control-label tl" data-id="locationCbName"></label>
+                </div>
+            </div>
+<!--             <div id="test_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">探测信息详情：</label>
+                    <label class="col-lg-3 control-label tl" data-id="result"></label>                    
+                    <label class="col-lg-2 control-label"></label>
+                    <label class="col-lg-3 control-label tl" data-id=""></label>
+                </div>
+            </div> -->
+            
+        </form>
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var base_info_url = "monitorview/commonmonitor/commonscript/queryCommonScriptMonitorBaseInfo";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    base_info_render();
+}
+
+
+window.index_monitor_init = function ()
+{
+    base_info_render();
+}
+
+
+function base_info_render(cb)
+{
+    g_dialog.waitingAlert($("#monitor_info_detail"));
+    um_ajax_get({
+        url : base_info_url,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+                    assetId : urlParamObj.assetId,
+                    edId : urlParamObj.assetId,
+                    time:$("#query_time_label").text(),
+                    regionId : urlParamObj.regionId
+                    },
+        isLoad : false,
+        successCallBack : function (data){
+            $("#base_info_monitor_div").umDataBind("render" ,data.monitorbaseinfo);
+            $("#asset_info_monitor_div").umDataBind("render" ,data.assetinfo);
+            // $("#test_info_monitor_div").umDataBind("render" ,data.testInfo[0]);
+            index_monitor_status_get(urlParamObj.monitorId ,"COMMONSCRIPT" ,"monitorName");
+        }
+    });
+}
+
+
+
+
+});
+});
+</script>

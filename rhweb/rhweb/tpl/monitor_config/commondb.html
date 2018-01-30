@@ -1,0 +1,84 @@
+<div data-id="monitor_index" class="h-all">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div id="detail_store_form" style="height:120px;margin-left:-4.17%">
+				<div class="form-group">
+		      <label class="col-lg-3 control-label">数据库类型</label>
+		      <div class="col-lg-3">
+		        <select data-id="loginPrompt" data-type="select">
+		        	<option value="ORACLE">ORACLE</option>
+		        	<option value="ORACLERAC">ORACLERAC</option>
+		        	<option value="DB2">DB2</option>
+		        	<option value="INFORMIX">INFORMIX</option>
+		        	<option value="KINGBASEES_V6">KINGBASEES_V6</option>
+		        	<option value="MYSQL">MYSQL</option>
+		        	<option value="SQLSERVER">SQLSERVER</option>
+		        	<option value="SYBASE">SYBASE</option>
+		        </select>
+		      </div>
+		      <label class="col-lg-2 control-label">端口</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="monitorPort" validate="port" />
+		      </div>
+				</div>
+
+				<div class="form-group">
+		      <label class="col-lg-3 control-label required">用户名</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="monitorUserName" validate="required" />
+		      </div>
+		      <label class="col-lg-2 control-label required">密码</label>
+		      <div class="col-lg-3">
+		        <input type="password" class="form-control input-sm" data-id="monitorPassWord" validate="required" />
+		      </div>
+				</div>
+
+				<div class="form-group">
+		      <label class="col-lg-3 control-label required">数据库名</label>
+		      <div class="col-lg-3">
+		        <input type="text" class="form-control input-sm" data-id="monitorDatabaseName" validate="required" />
+		      </div>
+		      <label class="col-lg-2 control-label required">是否启用定时</label>
+		      <div class="col-lg-3">
+		        <select data-id="timerStatus" data-type="select">
+		        	<option value="0">启用</option>
+		        	<option value="1">停用</option>
+		        </select>
+		      </div>
+				</div>
+
+				<div class="form-group" data-name="cycleTime">
+					<label class="col-lg-3 control-label">执行周期</label>
+			    <div class="col-lg-3">
+			      <select class="form-control input-sm" value="typeWeek" data-type="select" data-id="monitorCycleType" validate="required">
+							<option value="1">每天</option>
+							<option value="2">每周</option>
+							<option value="3">每月</option>
+						</select>
+			    </div>
+			    <div class="col-lg-2">
+			       <select class="form-control input-sm" value="typeWeek" data-type="select" data-id="period" disabled></select>
+			    </div>
+			    <div class="col-lg-2">
+			       <input type="text" class="form-control input-sm" data-value="typeWeek" data-id="cycleTime" validate="required,Hms">
+			    </div>
+			    <div class="col-lg-2">
+			       <input type="text" class="form-control input-sm" data-id="cycleDay" hidden>
+			    </div>
+			    <div class="col-lg-2">
+			       <input type="text" class="form-control input-sm" data-id="cycleWeek" hidden>
+			    </div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!-- 操作栏 -->
+	<div class="table-oper mt0" id="table_oper" style="margin-bottom:5px;height: 30px;line-height: 30px;">
+		<span style="float:left">查询SQL：</span>
+		<a href="javascript:void(0);" id="add_sql_btn">
+			<span>添加SQL语句</span>
+			<i class="icon-edit"></i>
+		</a>
+	</div>
+	<div class="tab-div h-all mt5 mb5" id="sql_list_div" data-type="tpl" style="margin-top:10px;"></div>
+</div>

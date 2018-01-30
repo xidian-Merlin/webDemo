@@ -1,0 +1,175 @@
+<config>
+	<edit>
+		<selectBoxDatasource>
+			<item url="selectBox/selectBox_cursor.png" label="选择"
+				value="editHandle"/>
+			<item url="selectBox/selectBox_add.png" label="添加资产"
+			    value="domainAddNode"/>
+			<item url="selectBox/selectBox_line.png" label="连线"
+				value="addLine"/>
+			<item url="selectBox/selectBox_delete.png" label="删除"
+				value="delete"/>
+			<item url="selectBox/selectBox_generate_cloud.png" label="形成云图"
+				value="generateCloud"/>
+			<item url="selectBox/selectBox_remove_cloud.png" label="移除云图"
+				value="removeCloud"/>
+			<item url="selectBox/selectBox_setdesk.png" label="拓扑图信息"
+				value="desktopConifg"/>
+			<item url="selectBox/selectBox_fileUpload.png" label="图片上传及更换背景"
+				value="fileUploadAndBackgroundChange"/>
+			<item url="selectBox/selectBox_add_squareBox.png" label="添加方形框"
+				value="addSquareBox"/>
+			<item url="selectBox/selectBox_add_dynText.png" label="添加文本框"
+				value="addDynText"/>
+			<item url="selectBox/selectBox_topoDiscover.png" label="拓扑发现"
+				value="topoDiscover"/>
+			<item url="selectBox/selectBox_add.png" label="添加增量信息"
+				value="AddDeltaInformation"/>
+		</selectBoxDatasource>
+		<topBarDatasource>
+				<item url="topBar/topBar_save.png" label="保存"
+				value="save" />
+				<item url="topBar/topBar_export.png" label="导出"
+					value="export" />
+				<item url="topBar/topBar_biger.png" label="放大"
+					value="larger" />
+				<item url="topBar/topBar_normalsize.png" label="还原"
+					value="normal" />
+				<item url="topBar/topBar_smaller.png" label="缩小"
+					value="smaller" />
+				<item url="topBar/topBar_undo.png" label="撤销"
+					value="undo" />
+				<item url="topBar/topBar_redo.png" label="恢复"
+					value="redo" />
+				<item url="topBar/topBar_flushbottom.png" label="下对齐" 
+					value="flushbottom"/>
+				<item url="topBar/topBar_flushtop.png" label="上对齐" 
+					value="flushtop"/>
+				<item url="topBar/topBar_flushleft.png" label="左对齐" 
+					value="flushleft"/>
+				<item url="topBar/topBar_flushright.png" label="右对齐" 
+					value="flushright"/>
+				<item url="topBar/topBar_autoLayout.png" label="自动布局"
+					value="autoLayout" />
+				<item url="topBar/topBar_netgrid.png" label="网格"
+					value="grid" />
+				<item url="topBar/topBar_nav.png" label="导航树"
+					value="nav" />
+				<!-- <item url="topBar/topBar_goManager.png" label="跳转至拓扑管理页面"
+					value="goManager" /> -->
+		</topBarDatasource>
+		<importUrl>topoManage/getTopo?1=1</importUrl>
+		<infoUrl>topoManage/afterAddDevice?1=1</infoUrl>
+		<comboBoxUrl>topoManage/getCodeList?1=1</comboBoxUrl>
+		<searchUrl>topoManage/getDeviceList?1=1</searchUrl>
+		<saveUrl>topoManage/addTopoDetail?1=1</saveUrl>
+		<exportUrl>topoManage/exportImg?1=1</exportUrl>
+		<autoLayoutUrl>topoManage/topoAutoCreate?1=1</autoLayoutUrl>
+		<grtTopoSetInfoUrl>topoManage/getTopoListForJump?1=1</grtTopoSetInfoUrl>
+		<uploadFileUrl>topoManage/uploadFile?1=1</uploadFileUrl>
+		<imagePathUrl>topoManage/getImagePath?1=1</imagePathUrl>
+		<changeImageUrl>topoManage/changeImage?1=1</changeImageUrl>
+		<getBackgroundUrl>topoManage/getBackground?1=1</getBackgroundUrl>
+		<getTopoInfoUrl>topoManage/getTopoInfo?1=1</getTopoInfoUrl>
+		<deleteImageUrl>topoManage/deleteImage?1=1</deleteImageUrl>
+		<getDeltaInfoUrl>topoRelation/getDeviceList?1=1</getDeltaInfoUrl>
+		<pingMonitorUrl>topoManage/getPingMonitor?1=1</pingMonitorUrl>
+		<addPingMonitorUrl>topoManage/addPingMonitor?1=1</addPingMonitorUrl>
+		<topoDiscoverUrl>topo/task/topoDiscover?1=1</topoDiscoverUrl>
+		<topoDiscoverLoaderUrl>topo/task/topoDiscoverLoader?1=1</topoDiscoverLoaderUrl>
+	</edit>
+	<view>
+		<selectBoxDatasource>
+			<item url="selectBox/selectBox_cursor.png" label="选择"
+				value="editHandle"/>
+			<!--
+			<item url="selectBox/selectBox_setdesk.png" label="拓扑图信息查看"
+				value="desktopConifg"/>
+			-->
+			<item url="selectBox/selectBox_goParentTopo.png" label="父拓扑图"
+				value="goParentTopo" />
+			<item url="selectBox/selectBox_help.png" label="帮助"
+				value="help" />
+			<item url="selectBox/selectBox_monitorView.png" label="监控器查看"
+				value="monitorView" />
+			<!-- <item url="topBar/topBar_manualRefresh.png" label="手动刷新"
+				value="ManualRefresh"/> -->
+			<!--<item url="selectBox/selectBox_setdesk.png" label="拓扑图信息查看"
+				value="desktopConifg"/>-->
+		</selectBoxDatasource>
+		<topBarDatasource>
+				<item url="topBar/topBar_save.png" label="保存"
+					value="save" />
+				<item url="topBar/topBar_export.png" label="导出"
+					value="export" />
+				<item url="topBar/topBar_biger.png" label="放大"
+					value="larger" />
+				<item url="topBar/topBar_normalsize.png" label="还原"
+					value="normal" />
+				<item url="topBar/topBar_smaller.png" label="缩小"
+					value="smaller" />
+				<item url="topBar/topBar_undo.png" label="撤销"
+					value="undo" />
+				<item url="topBar/topBar_redo.png" label="恢复"
+					value="redo" />
+				<item url="topBar/topBar_background.png" label="背景"
+					value="background" />
+				<item url="topBar/topBar_nav.png" label="导航树"
+					value="nav" />
+				<!-- <item url="topBar/topBar_goManager.png" label="跳转至拓扑管理页面"
+					value="goManager" /> -->
+				<item url="topBar/topBar_goManager.png" label="跳转至下级拓扑监控页面"
+					value="goClassificationManager" />
+		</topBarDatasource>
+		<!--
+		<importUrl>topoManage/getTopo</importUrl>
+		-->
+		<importUrl>topoManage/getTopoMonitor?1=1</importUrl>
+		<exportUrl>topoManage/exportImg?1=1</exportUrl>
+		<getTopoInfoUrl>topoManage/getTopoInfo?1=1</getTopoInfoUrl>
+		<autoRefreshUrl>topoManage/getTopoMonitor?1=1</autoRefreshUrl>
+		<importClassificationUrl>topoManage/checkConfigClassification?1=1</importClassificationUrl>
+	</view>
+	<show>
+		<selectBoxDatasource>
+			<item url="selectBox/selectBox_cursor.png" label="选择"
+				value="editHandle"/>
+			<item url="selectBox/selectBox_goParentTopo.png" label="父拓扑图"
+				value="goParentTopo" />
+			<item url="selectBox/selectBox_help.png" label="帮助"
+				value="help" />
+			<item url="selectBox/selectBox_monitorView.png" label="监控器查看"
+				value="monitorView" />
+			<!-- <item url="topBar/topBar_manualRefresh.png" label="手动刷新"
+				value="ManualRefresh"/> -->
+		</selectBoxDatasource>
+		<topBarDatasource>
+				<item url="topBar/topBar_save.png" label="保存"
+					value="save" />
+				<item url="topBar/topBar_export.png" label="导出"
+					value="export" />
+				<item url="topBar/topBar_biger.png" label="放大"
+					value="larger" />
+				<item url="topBar/topBar_normalsize.png" label="还原"
+					value="normal" />
+				<item url="topBar/topBar_smaller.png" label="缩小"
+					value="smaller" />
+				<item url="topBar/topBar_undo.png" label="撤销"
+					value="undo" />
+				<item url="topBar/topBar_redo.png" label="恢复"
+					value="redo" />
+				<item url="topBar/topBar_background.png" label="背景"
+					value="background" />
+				<item url="topBar/topBar_nav.png" label="导航树"
+					value="nav" />
+				<item url="topBar/topBar_goManager.png" label="跳转至拓扑监控页面"
+					value="goManager" />
+				<item url="topBar/topBar_goManager.png" label="跳转至下级拓扑监控页面"
+					value="goClassificationManager" />
+		</topBarDatasource>
+		<importUrl>topoManage/getTopoMonitor?1=1</importUrl>
+		<exportUrl>topoManage/exportImg?1=1</exportUrl>
+		<getTopoInfoUrl>topoManage/getTopoInfo?1=1</getTopoInfoUrl>
+		<autoRefreshUrl>topoManage/getTopoMonitor?1=1</autoRefreshUrl>
+	</show>
+</config>

@@ -1,0 +1,258 @@
+.app-grey .pg-header-menu {
+    background-color: #39a1d5;
+}
+.app-grey .hor-menu .hor-ul > li:hover, .app-grey .hor-menu .hor-ul > li.active {
+    background: #268dc1;
+}
+.app-grey .menu-col-exp {
+    border-bottom: 1px solid #cecece;
+}
+
+.app-grey #user_pop_div {
+    background-color: #268dc1;
+}
+.app-grey .user_pop_list:hover ,.user_log_in_out:hover{
+    background-color: #39a1d5;
+}
+.app-grey .pg-left-menu-outer.active {
+    background-color: #eaeaea;
+}
+
+.app-grey .pg-left-menu-ul > li > a,.app-grey .pg-left-menu-ul > li > ul a{
+    color: #333;
+}
+
+.app-grey .pg-left-menu-ul > li > ul a,.app-grey .pg-left-menu-ul > li.active > a,.app-grey .thd-menu-ul li a{
+	background-color: #fcfcfc!important;
+}
+
+.app-grey .pg-left-menu-ul > li a:hover,.app-grey .thd-menu-ul li a:hover{
+	background-color: #f5f5f5!important;
+}
+
+.app-grey .thd-menu-ul li.active a{
+	background-color: #f5f5f5!important;
+	color: #5ba9d0;
+}
+
+.app-grey .left-panel,.app-grey .um-panel-head, .app-grey .right-panel,.app-grey .contentbg{
+    background-color: #fcfcfc!important;
+}
+
+.app-grey .menu-icon{
+    position: relative;
+    display: inline-block !important;
+    width: 20px;
+    height: 20px;
+    top: 5px;
+}
+
+.app-grey .menu-icon.oper_index{
+    background-image: url("../grey/img/oper_index.png");
+}
+
+.app-grey .menu-icon.asset_info{
+    background-image: url("../grey/img/asset_info.png");
+}
+
+.app-grey .menu-icon.monitor_obj{
+    background-image: url("../grey/img/monitor_obj.png");
+}
+
+.app-grey .menu-icon.kpi_show{
+    background-image: url("../grey/img/kpi_show.png");
+}
+
+.app-grey .menu-icon.topo_manage{
+    background-image: url("../grey/img/topo_manage.png");
+}
+
+.app-grey .menu-icon.app_monitor{
+    background-image: url("../grey/img/app_monitor.png");
+}
+
+.app-grey .menu-icon.event_analy{
+    background-image: url("../grey/img/event_analy.png");
+}
+
+.app-grey .menu-icon.risk_report{
+    background-image: url("../grey/img/risk_report.png");
+}
+
+.app-grey .menu-icon.monitor_report{
+    background-image: url("../grey/img/monitor_report.png");
+}
+
+.app-grey .menu-icon.fault_event_report{
+    background-image: url("../grey/img/fault_event_report.png");
+}
+
+.app-grey .menu-icon.comprehensive_report{
+    background-image: url("../grey/img/comprehensive_report.png");
+}
+
+.app-grey .menu-icon.biz_risk{
+    background-image: url("../grey/img/biz_risk.png");
+}
+
+.app-grey .menu-icon.sec_risk{
+    background-image: url("../grey/img/sec_risk.png");
+}
+
+.app-grey .menu-icon.asset_risk{
+    background-image: url("../grey/img/asset_risk.png");
+}
+
+.app-grey .menu-icon.overall_risk{
+    background-image: url("../grey/img/overall_risk.png");
+}
+
+.app-grey .menu-icon.workorder_handle{
+    background-image: url("../grey/img/workorder_handle.png");
+}
+
+.app-grey .menu-icon.workflow_manage{
+    background-image: url("../grey/img/workflow_manage.png");
+}
+
+.app-grey .menu-icon.duty_manage{
+    background-image: url("../grey/img/duty_manage.png");
+}
+
+.app-grey .menu-icon.report_show{
+    background-image: url("../grey/img/report_show.png");
+}
+
+.app-grey .menu-icon.creative_commons{
+    background-image: url("../grey/img/creative_commons.png");
+}
+
+.app-grey .menu-icon.bug_repo{
+    background-image: url("../grey/img/bug_repo.png");
+}
+
+.app-grey .menu-icon.sys_base_config{
+    background-image: url("../grey/img/sys_base_config.png");
+}
+
+.app-grey .menu-icon.monitor_config{
+    background-image: url("../grey/img/monitor_config.png");
+}
+
+.app-grey .menu-icon.asset_prop{
+    background-image: url("../grey/img/asset_prop.png");
+}
+
+.app-grey .menu-icon.fault_level_define{
+    background-image: url("../grey/img/fault_level_define.png");
+}
+
+.app-grey .menu-icon.perform_level_define{
+    background-image: url("../grey/img/perform_level_define.png");
+}
+
+.app-grey .menu-icon.asset_manage{
+    background-image: url("../grey/img/asset_manage.png");
+}
+
+.app-grey .menu-icon.event_notice_policy{
+    background-image: url("../grey/img/event_notice_policy.png");
+}
+
+.app-grey .menu-icon.report_send_policy{
+    background-image: url("../grey/img/report_send_policy.png");
+}
+
+.app-grey .menu-icon.monitor_event_ignore_policy{
+    background-image: url("../grey/img/monitor_event_ignore_policy.png");
+}
+
+.app-grey .menu-icon.user_manage{
+    background-image: url("../grey/img/user_manage.png");
+}
+
+.app-grey .menu-icon.user_group_manage{
+    background-image: url("../grey/img/user_group_manage.png");
+}
+
+.app-grey .menu-icon.menu_config{
+    background-image: url("../grey/img/menu_config.png");
+}
+
+.app-grey .menu-icon.log_query{
+    background-image: url("../grey/img/log_query.png");
+}
+
+.app-grey .menu-icon.log_backup{
+    background-image: url("../grey/img/log_backup.png");
+}
+
+.app-grey .menu-icon.big_screen_config{
+    background-image: url("../grey/img/big_screen_config.png");
+}
+
+.app-grey .menu-icon.auto_workorder{
+    background-image: url("../grey/img/auto_workorder.png");
+}
+
+.app-grey .menu-icon-thd{
+    width: 5px;
+    height: 5px;
+    background-image: url("../grey/img/menu-icon-thd.png");
+    margin: 0 8px 0 -7px;
+    position: relative;
+    display: inline-block !important;
+    top: -2px;
+}
+
+.app-grey .pg-header-name.active{
+    width: 200px;
+    height: 100%;
+    color: #fff;
+    font-size: 18px;
+    line-height: 25px;
+    padding-left: 100px;
+    padding-top: 10px;
+    background-image: url("../grey/img/logo.png");
+    background-size: 56px;
+    background-position: 26px 6px;
+    background-repeat: no-repeat;
+}
+
+.app-grey .menu-col-exp > div{
+    width: 22px;
+    height: 16px;
+    background-image: url('../grey/img/expand.png');
+    margin:0 auto;
+}
+
+.app-grey .menu-toggle-rotate{
+  top: -30px!important;
+  width: 60px!important;
+  height: 40px!important;
+  line-height: 40px!important;
+  background-color: #39a1d5!important;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  -webkit-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.app-grey .menu-toggle-rotate:hover{
+  top: -5px!important;
+  -webkit-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -moz-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -ms-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+

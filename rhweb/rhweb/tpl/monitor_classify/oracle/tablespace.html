@@ -1,0 +1,189 @@
+<div class="mt5 mb5" style="height:30px" id="instance_sel_div">
+    <select class="form-control input-sm" data-type="select" id="instance_sel">
+    </select>
+</div>
+
+<div class="panel panel-default mt10" id="instance_div">
+    <div class="panel-heading font-bold prel">
+        <span>表空间</span>
+    </div>
+    <div class="monitor-panel prel">
+        <div style="height:100px" id="table_space_chart"></div>
+        <div class="table_div" id="table_space_div" style="margin-top:20px"></div>
+        <div class="pabs tc" id="table_space_chart_yAxis"
+            style="left:30px;top:100px;width:23px;height:130px;display:none">表空间名称</div>
+        <div class="pabs tc" id="table_space_chart_xAxis"
+            style="left:47%;bottom:490px;display:none">表空间大小(M)</div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'] ,function (plot){
+
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+var table_space_list_url = "monitorview/db/oracle/queryOracleTableSpace";
+
+var table_space_list_header = [
+                              {text:'',name:"t",width:5,hideSearch:"hide"},
+                              {text:"表空间名称" ,name:"tablespaceName" ,align:"left",bold:"bold",width:19},
+                              {text:"表空间分配大小(M)" ,name:"total",width:19},
+                              {text:"表空间分配块数" ,name:"totalBlock",width:19},
+                              {text:"表空间可用大小(M)" ,name:"free",width:19},
+                              {text:"表空间可用块" ,name:"freeBlock",width:19}
+                           ];
+
+var table_space_chart_url = "monitorview/db/oracle/queryOracleTableSpaceHighChart";
+
+var instance_type_url = "monitorView/queryInstanceType";
+
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    index_form_init($("#instance_div"));
+    ed_monitor_get();
+}
+
+function event_init()
+{
+    $("#instance_sel").change(function (){
+        table_space_chart({
+                param : {monitorId : $(this).val(),
+                         flag : 1 ,
+                         inpuDate:$("#query_time_label").text()}
+            });
+        table_space_list({
+                param : {monitorId : $(this).val(),
+                         flag : 1 ,
+                         inpuDate:$("#query_time_label").text()}
+            });
+    });
+}
+
+window.index_monitor_init = function ()
+{
+    ed_monitor_get();
+}
+
+
+function ed_monitor_get()
+{
+    urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+           instance_type_get(data.edmonitorstore[1].monitorId);
+        }
+    });
+}
+
+function instance_type_get(monitorId)
+{
+    um_ajax_get({
+        url : instance_type_url,
+        paramObj : {monitorId:monitorId},
+        successCallBack : function (data){
+            var selBuff = [];
+            for (var i = 0; i < data.length; i++) {
+                selBuff.push({id:data[i].codevalue ,text:data[i].codename});
+            }
+            $("#instance_sel").select2({
+                  data: selBuff,
+                  width:"100%"
+            });
+
+            $("#instance_sel").change();
+        }
+    });
+}
+
+function table_space_list(opt)
+{
+    g_grid.render($("#table_space_div") ,{
+        url : table_space_list_url,
+        header : table_space_list_header,
+        paramObj : opt.param,
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+        allowCheckBox : false,
+        paginator : false,
+        showCount : true
+        //autoHeight : true
+    });
+}
+
+
+function table_space_chart(opt)
+{
+    $("#table_space_chart").html("");
+    $("#table_space_chart").height(50);
+    um_ajax_get({
+        url : table_space_chart_url,
+        paramObj : opt.param,
+        successCallBack : function (data){  
+            if (!data[0])
+            {
+                return false;
+            }
+            var length = data.length;
+            if (length >= 15)
+            {
+                length = 15;
+            }
+            $("#table_space_chart").height(40 * length);
+            var jsonObj = JsonTools.decode(data[0].jsonStr);
+            var datas = jsonObj.datas;
+            var legendArray = [];
+            var seriesArray = [];
+            for (var i = 0; i < datas.length; i++) {
+                legendArray.push(datas[i].name);
+                seriesArray.push({
+                    name : datas[i].name,
+                    type : "bar",
+                    stack: '表空间',
+                    data: datas[i].items.reverse()
+                });
+            }
+            plot.barRender($("#table_space_chart") ,{
+                legend : legendArray,
+                category : jsonObj.lableArr.reverse(),
+                series : seriesArray,
+                rotate : -30,
+                isVercital : true,
+                grid: {
+                    left: '6%',
+                    right: '4%',
+                    bottom: '15%',
+                    containLabel: true
+                }
+            });
+            $("#table_space_chart_xAxis").show();
+            $("#table_space_chart_yAxis").show();
+        }
+    });
+}
+
+
+
+});
+});
+
+
+
+
+</script>

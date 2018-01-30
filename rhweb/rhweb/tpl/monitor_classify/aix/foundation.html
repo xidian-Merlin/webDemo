@@ -1,0 +1,1110 @@
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>进程</span>
+	</div>
+<!-- 	<div class="table-oper" id="table_oper">
+        <a href="javascript:void(0);" data-set="Set_btu1" data-id="set_btn">
+            <span>设置基线</span>
+        </a>
+        <a href="javascript:void(0);" data-query="Query_btn1" data-id="query_btn">
+            <span>查看基线</span>
+        </a>
+        <a href="javascript:void(0);" data-contrast="Contrast_btn1" data-id="Contrast_btn">
+            <span>对比</span>
+        </a>
+        <a href="javascript:void(0);" data-blacklist="Blacklist_btn1" data-id="Blacklist_btn">
+            <span>黑名单</span>
+        </a>
+    </div> -->
+	<div class="monitor-panel">
+		<div class="table_div" id="process_list_div"></div>
+    </div>
+</div>
+
+<!-- <div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>文件</span>
+	</div>
+	<div class="table-oper" id="table_oper">
+        <a href="javascript:void(0);" id="file_btn">
+            <span>文件配置</span>
+        </a>
+        <a href="javascript:void(0);" data-set="Set_btu2" data-id="file_set_btn">
+            <span>设置基线</span>
+        </a>
+        <a href="javascript:void(0);" data-query="Query_btn2" data-id="file_query_btn">
+            <span>查看基线</span>
+        </a>
+        <a href="javascript:void(0);" data-contrast="Contrast_btn2" data-id="file_contrast_btn">
+            <span>对比</span>
+        </a>
+    </div>
+	<div class="monitor-panel">
+		<div class="table_div" id="file_list_div"></div>
+    </div>
+</div> -->
+
+<div class="panel panel-default mt20">
+	<div class="panel-heading font-bold prel">
+		<span>端口</span>
+	</div>
+<!-- 	<div class="table-oper" id="table_oper">
+        <a href="javascript:void(0);" data-set="Set_btu3" data-id="port_set_btn">
+            <span>设置基线</span>
+        </a>
+        <a href="javascript:void(0);" data-query="Query_btn3" data-id="port_query_btn">
+            <span>查看基线</span>
+        </a>
+        <a href="javascript:void(0);" data-contrast="Contrast_btn3" data-id="port_contrast_btn">
+            <span>对比</span>
+        </a>
+        <a href="javascript:void(0);" data-blacklist="Blacklist_btn" data-id="port_blackList_btn">
+            <span>黑名单</span>
+        </a>
+    </div> -->
+	<div class="monitor-panel">
+		<div class="table_div" id="port_list_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>启动项监控</span>
+	</div>
+<!-- 	<div class="table-oper" id="table_oper">
+        <a href="javascript:void(0);" data-set="Set_btu4" data-id="msconfig_set_btn">
+            <span>设置基线</span>
+        </a>
+        <a href="javascript:void(0);" data-query="Query_btn4" data-id="msconfig_query_btn">
+            <span>查看基线</span>
+        </a>
+        <a href="javascript:void(0);" data-contrast="Contrast_btn4" data-id="msconfig_contrast_btn">
+            <span>对比</span>
+        </a>
+    </div> -->
+	<div class="monitor-panel">
+		<div class="table_div" id="msconfig_list_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>主机账号口令策略监控</span>
+	</div>
+<!-- 	<div class="table-oper" id="table_oper">
+        <a href="javascript:void(0);" data-set="Set_btu5" data-id="account_set_btn">
+            <span>设置基线</span>
+        </a>
+        <a href="javascript:void(0);" data-query="Query_btn5" data-id="account_query_btn">
+            <span>查看基线</span>
+        </a>
+        <a href="javascript:void(0);" data-contrast="Contrast_btn5" data-id="account_contrast_btn">
+            <span>对比</span>
+        </a>
+    </div> -->
+	<div class="monitor-panel">
+		<div class="table_div" id="account_list_div"></div>
+    </div>
+</div>
+
+<!-- 弹窗模板 -->
+<tem id="template">
+	<!-- 查看基线 -->
+	<div id="query_baseline_template">
+		<div class="table-oper" id="table_oper">
+	        <a href="javascript:void(0);" id="follow">
+	            <span>关注</span>
+	        </a>
+	        <a href="javascript:void(0);" id="Rfollow">
+	            <span>取消关注</span>
+	        </a>
+    	</div>
+		<div id="query_baseline_table" class="table_div" style="height:400px;"></div>
+	</div>
+	<!-- 对比 -->
+	<div id="Contrast_baseline_template">
+		<div class="col-lg-6">
+			<div class="table-oper" id="table_oper">
+		            <span>基线数据</span>
+	    	</div>
+			<div id="Contrast_baseline_table" class="table_div" style="height:300px;"></div>
+		</div>
+		<div class="col-lg-6">
+			<div class="table-oper" id="table_oper_prev">
+		            <span>进程监控</span>
+	    	</div>
+			<div id="Contrast_baseline_table_prev" class="table_div" style="height:300px;"></div>
+		</div>
+	</div>
+	<!-- 进程黑名单 -->
+	<div id="porcessBlacklist_baseline_template">
+		<div class="col-lg-6">
+			<!-- 右移箭头 -->
+			<div style="right:0;top:21px;font-size:20px;z-index:2000" 
+							id="chevron-right" class="pabs square">
+						<i class="icon-chevron-right"></i>
+			</div>
+
+			<!-- 左移箭头 -->
+			<div style="right:0;top:67px;font-size:20px;z-index:2000" 
+							id="chevron-left" class="pabs square">
+				<i class="icon-chevron-left"></i>
+			</div>
+
+			<div class="form-group" style="margin-top:20px;margin-right:10px;">
+				<div class="col-lg-4 tr">
+					<div class="radio">
+						<label class="i-checks" style="padding-left:0px;">
+									进程名称：
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<input type="text" class="form-control input-sm required" data-flag="keyValue" validate="required"/>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div id="porcessBlacklist_baseline_table" class="table-div" style="height:200px"></div>
+		</div>
+	</div>
+	<!-- 端口黑名单 -->
+	<div id="portBlacklist_baseline_template">
+		<div class="col-lg-6">
+			<!-- 右移箭头 -->
+			<div style="right:0;top:21px;font-size:20px;z-index:2000" 
+							id="chevron-right" class="pabs square">
+						<i class="icon-chevron-right"></i>
+			</div>
+
+			<!-- 左移箭头 -->
+			<div style="right:0;top:67px;font-size:20px;z-index:2000" 
+							id="chevron-left" class="pabs square">
+				<i class="icon-chevron-left"></i>
+			</div>
+
+			<div class="form-group" style="margin-top:20px;margin-right:10px;">
+				<div class="col-lg-4 tr">
+					<div class="radio">
+						<label class="i-checks" style="padding-left:0px;">
+									起始端口：
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<input type="text" class="form-control input-sm required" data-name="startPort" validate="required ,port"/>
+				</div>
+			</div>
+			<div class="form-group" style="margin-top:66px;margin-right:10px;">
+				<div class="col-lg-4 tr">
+					<div class="radio">
+						<label class="i-checks" style="padding-left:0px;">
+									终止端口：
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<input type="text" class="form-control input-sm required" data-name="endPort" validate="required ,port"/>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div id="portBlacklist_baseline_table" class="table-div" style="height:200px"></div>
+		</div>
+	</div>
+	<!-- 文件配置 -->
+	<div id="file_baseline_template">
+		<div class="col-lg-6">
+			<!-- 右移箭头 -->
+			<div style="right:0;top:21px;font-size:20px;z-index:2000" 
+							id="chevron-right" class="pabs square">
+						<i class="icon-chevron-right"></i>
+			</div>
+
+			<!-- 左移箭头 -->
+			<div style="right:0;top:67px;font-size:20px;z-index:2000" 
+							id="chevron-left" class="pabs square">
+				<i class="icon-chevron-left"></i>
+			</div>
+
+			<div class="form-group" style="margin-top:20px;margin-right:10px;">
+				<div class="col-lg-4 tr">
+					<div class="radio">
+						<label class="i-checks">
+									文件路径：
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<input type="text" class="form-control input-sm required" maxlength="256" flag-name="fileName" validate="required"/>
+				</div>
+			</div>
+			<div class="form-group" style="margin-top:66px;margin-right:10px;">
+				<div class="col-lg-4 tr">
+					<div class="radio">
+						<label class="i-checks">
+									文件类型：
+						</label>
+					</div>
+				</div>
+				<div class="col-lg-8">
+					<input type="text" class="form-control input-sm required" flag-name="fileType" validate="required"/>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div id="file_baseline_table" class="table-div" style="height:200px"></div>
+		</div>
+	</div>
+</tem>
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+//设置基线Map
+var setMap = new HashMap();
+setMap.put("Set_btu1" ,{
+	baselineUrl : "monitorview/os/windows/updProcessBaseLine",
+	btn_name : "Set_btu1"
+});
+// setMap.put("Set_btu2" ,{
+// 	baselineUrl : "monitorview/os/windows/setFileBaseLine",
+// 	btn_name : "Set_btu2"
+// });
+setMap.put("Set_btu3" ,{
+	baselineUrl : "monitorview/os/windows/updProcessBaseLine",
+	btn_name : "Set_btu3"
+});
+setMap.put("Set_btu4" ,{
+	baselineUrl : "monitorview/os/windows/updProcessBaseLine",
+	btn_name : "Set_btu4"
+});
+setMap.put("Set_btu5" ,{
+	baselineUrl : "monitorview/os/windows/updProcessBaseLine",
+	btn_name : "Set_btu5"
+});
+//查看基线Map
+var queryMap = new HashMap();
+queryMap.put("Query_btn1" ,{
+	baselineUrl : "monitorview/os/windows/queryProcessBaseLineList",
+	baselineheader : [
+				{text:'进程名称',name:"procName" ,width:22},
+				{text:'进程路径',name:"procPath" ,tip : true,render:function(txt){
+					if (txt && txt.length > 20)
+					{
+						return txt.substr(0 ,20) + "...";
+					}
+					return txt;
+				} ,width:23},
+				{text:'进程数量',name:"procNum" ,width:11},
+				{text:'关注状态',name:"atteStatus" ,width:11},
+				{text:'运行状态',name:"runStatus" ,width:11},
+				{text:'数据获取时间',name:"enterDate" ,width:22}
+					]
+});
+// queryMap.put("Query_btn2" ,{
+// 	baselineUrl : "monitorview/os/windows/queryFileBaseLine",
+// 	baselineheader : [
+// 				{text:'文件路径',name:"fileName"},
+// 				{text:'文件类型',name:"fileType"},
+// 				{text:'关注状态',name:"atteStatusName"},
+// 				{text:'改变状态',name:"modifyName"},
+// 				{text:'数据获取时间',name:"getDate"},
+// 				{text:'更新时间',name:"enterDate"}
+// 					]
+// });
+queryMap.put("Query_btn3" ,{
+	baselineUrl : "monitorview/os/windows/queryPortBaseLine",
+	baselineheader : [
+				{text:'端口名称',name:"portName"},
+				{text:'关注状态',name:"atteStatusName"},
+				{text:'运行状态',name:"runStatusName"},
+				{text:'基线时间',name:"baselineDate"},
+				{text:'更新时间',name:"enterDate"}
+					]
+});
+queryMap.put("Query_btn4" ,{
+	baselineUrl : "monitorview/os/windows/queryStartUpBaseLine",
+	baselineheader : [
+				{text:'启动项名称',name:"runName"},
+				{text:'关注状态',name:"atteStatusName"},
+				{text:'基线时间',name:"baselineDate"},
+				{text:'更新时间',name:"enterDate"}
+					]
+});
+queryMap.put("Query_btn5" ,{
+	baselineUrl : "monitorview/os/windows/queryPolicyBaseLine",
+	baselineheader : [
+					  {text:'策略名称',name:"policyName"},
+					  {text:'策略值',name:"policyValue"},
+					  {text:'关注状态',name:"atteStatusName"},
+					  {text:'基线时间',name:"baselineDate"},
+					  {text:'更新时间',name:"enterDate"}
+					]
+});
+//对比Map
+var contrastMap = new HashMap();
+contrastMap.put("Contrast_btn1" ,{
+	btn_name2 : "Contrast_btn1",
+	baselineUrl : "monitorview/os/windows/queryProcessBaseLineList",
+	baselineUrlnew : "monitorview/os/windows/queryProcessList",
+	baselineheader : [					  
+					  {text:'进程路径',name:"procPath"},
+					  {text:'进程数量',name:"procNum"},
+					  {text:'关注状态',name:"atteStatus"},
+					  {text:'运行状态',name:"runStatus"},
+					  {text:'数据获取时间',name:"enterDate"}
+					],
+	baselineheadernew : [					  
+					  {text:'进程路径',name:"aixPath"},
+					  {text:'进程数量',name:"procNum"},
+					  {text:'关注状态',name:"atteStatus"},
+					  {text:'运行状态',name:"runStatus"},
+					  {text:'数据获取时间',name:"enterDate"}
+					]
+});
+
+// contrastMap.put("Contrast_btn2" ,{
+// 	btn_name2 : "Contrast_btn2",
+// 	baselineUrl : "monitorview/os/windows/queryFileBaseLine",
+// 	baselineUrlnew : "monitorview/os/windows/queryFileList",
+// 	baselineheader : [
+// 					{text:'文件路径',name:"fileName"},
+// 					{text:'文件类型',name:"fileType"},
+// 					{text:'关注状态',name:"atteStatus"},
+// 					{text:'改变状态',name:"modify"},
+// 					{text:'数据获取时间',name:"getDate"},
+// 					{text:'更新时间',name:"enterDate"}
+// 					],
+// 	baselineheadernew : [
+// 					  {text:'文件路径',name:"fileName"},
+// 					  {text:'文件类型',name:"fileType"},
+// 					  {text:'关注状态',name:"atteStatusName"},
+// 					  {text:'改变状态',name:"modifyName"},
+// 					  {text:'数据获取时间',name:"getDate"},
+// 					  {text:'更新时间',name:"enterDate"}
+// 					]
+// });
+contrastMap.put("Contrast_btn3" ,{
+	btn_name2 : "Contrast_btn3",
+	baselineUrl : "monitorview/os/windows/queryPortBaseLine",
+	baselineUrlnew : "monitorview/os/windows/queryHostsPortList",
+	baselineheader : [
+					  {text:'端口名称',name:"portName"},
+					  {text:'关注状态',name:"atteStatusName"},
+					  {text:'运行状态',name:"runStatusName"},
+					  {text:'更新时间',name:"enterDate"},
+					  {text:'进程信息(名称或所属)',name:"processInfo"},
+					  {text:'进程用户',name:"processUser"},
+					  {text:'进程ID(pid)',name:"processId"}
+					],
+	baselineheadernew : [
+					  {text:'端口名称',name:"portName"},
+					  {text:'关注状态',name:"atteStatusName"},
+					  {text:'运行状态',name:"runStatusName"},
+					  {text:'更新时间',name:"enterDate"},
+					  {text:'进程信息(名称或所属)',name:"processInfo"},
+					  {text:'进程用户',name:"processUser"},
+					  {text:'进程ID(pid)',name:"processId"}
+					]
+});
+contrastMap.put("Contrast_btn4" ,{
+	btn_name2 : "Contrast_btn4",
+	baselineUrl : "monitorview/os/windows/queryStartUpBaseLine",
+	baselineUrlnew : "monitorview/os/windows/queryStartUpList",
+	baselineheader : [
+					  {text:'启动项名称',name:"runName"},
+					  {text:'关注状态',name:"atteStatusName"},
+					  {text:'更新时间',name:"enterDate"}
+					 ],
+	baselineheadernew : [
+					  {text:'启动项名称',name:"runName"},
+					  {text:'关注状态',name:"atteStatusName"},
+					  {text:'更新时间',name:"enterDate"}
+					 ]
+});
+contrastMap.put("Contrast_btn5" ,{
+	btn_name2 : "Contrast_btn5",
+	baselineUrl : "monitorview/os/windows/queryPolicyBaseLine",
+	baselineUrlnew : "monitorview/os/windows/queryPolicyList",
+	baselineheader : [
+					  {text:'策略名称',name:"policyName"},
+					  {text:'策略值',name:"policyValue"},
+					  {text:'关注状态',name:"atteStatusName"},
+					  {text:'基线时间',name:"baselineDate"},
+					  {text:'更新时间',name:"enterDate"}
+					],
+	baselineheadernew :[
+					  {text:'策略名称',name:"policyName"},
+					  {text:'策略值',name:"policyValue"},
+					  {text:'关注状态',name:"atteStatus"},
+					  {text:'更新时间',name:"enterDate"}
+					]
+});
+//进程
+var process_list_url = "monitorview/os/windows/queryProcessList";
+var process_list_heard = [
+					  {text:'进程名称',name:"procName"},
+					  {text:'进程数量',name:"procNum"},
+					  {text:'进程路径',name:"aixPath" ,tip : true,render:function(txt){
+						  if (txt && txt.length > 20)
+						  {
+							  return txt.substr(0 ,20) + "...";
+						  }
+						  return txt;
+					  }},
+					  // {text:'关注状态',name:"atteStatus"},
+					  {text:'运行状态',name:"runStatus"},
+					  {text:'数据获取时间',name:"enterDate"}
+					];
+//文件
+var file_list_heard = [
+					  {text:'文件路径',name:"fileName"},
+					  {text:'文件类型',name:"fileType"},
+					  // {text:'关注状态',name:"atteStatusName"},
+					  {text:'改变状态',name:"modifyName"},
+					  {text:'数据获取时间',name:"getDate"},
+					  {text:'更新时间',name:"enterDate"}
+					];
+var file_list_url = "monitorview/os/windows/queryFileList";
+//端口
+var port_list_heard = [
+					  {text:'端口名称',name:"portName"},
+					  // {text:'关注状态',name:"atteStatusName"},
+					  {text:'运行状态',name:"runStatusName"},
+					  {text:'进程信息',name:"processInfo"},
+					  {text:'进程用户',name:"processUser"},
+					  {text:'进程ID(pid)',name:"processId"},
+					  {text:'更新时间',name:"enterDate"}
+					];
+var port_list_url = "monitorview/os/windows/queryHostsPortList";
+
+//启动项
+var msconfig_list_heard = [
+					  {text:'启动项名称',name:"runName"},
+					  // {text:'关注状态',name:"atteStatusName"},
+					  {text:'更新时间',name:"enterDate"}
+					];
+var msconfig_list_url = "monitorview/os/windows/queryStartUpList";
+
+//主机账号口令
+var account_list_heard = [
+					  {text:'策略名称',name:"policyName"},
+					  {text:'策略描述',name:"t",render : function (txt ,rowData){
+					  		return dict_pass_info[rowData.policyName];
+					  }},
+					  {text:'策略值',name:"policyValue"},
+					  // {text:'关注状态',name:"atteStatusName"},
+					  {text:'更新时间',name:"enterDate"}
+					];
+var account_list_url = "monitorview/os/windows/queryPolicyList";
+//关注和取消关注
+var follow_url = "monitorview/os/windows/updProcAttenStatus";
+
+
+var porcessBlacklist_baseline_list_url = "monitorview/os/windows/queryProcessBlackList";
+var save_process_black_url = "monitorview/os/windows/updProcessBlackList";
+
+var portBlacklist_baseline_list_url = "monitorview/os/windows/queryProcessBlackList";
+var save_port_black_url = "monitorview/os/windows/updProcessBlackList";
+
+var save_file_config_url = "monitorview/os/windows/fileConfig";
+
+// var el_list =$("#file_list_div");
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    process_info_render();
+}
+
+function event_init()
+{
+	$("[data-set]").click(function (){
+		var obj = setMap.get($(this).attr("data-set"));
+		set_baseline_init(obj);
+
+	})
+	$("[data-query]").click(function (){
+		var obj = queryMap.get($(this).attr("data-query"));
+		query_baseline_init(obj);
+
+	})
+	$("[data-contrast]").click(function (){
+		var obj = contrastMap.get($(this).attr("data-contrast"));
+		Contrast_baseline_init(obj);
+
+	})
+	$("[data-blacklist=Blacklist_btn1]").click(function(event) {
+		porcessBlacklist_baseline_init();
+	});
+	$("[data-blacklist=Blacklist_btn]").click(function(event) {
+		portBlacklist_baseline_init();
+	});
+	// $("#file_btn").click(function(event) {
+	// 	file_baseline_init();
+	// });
+}
+
+window.index_monitor_init = function ()
+{
+    process_info_render();
+}
+
+
+function process_info_render(cb)
+{
+    //g_dialog.waitingAlert();
+    //进程
+    g_grid.render($("#process_list_div") ,{
+        url : process_list_url,
+        header : process_list_heard,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+        	time:$("#query_time_label").text()},
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+		paginator : false,
+		showCount : true,
+        allowCheckBox : false
+    });
+    // //文件
+    // g_grid.render($("#file_list_div") ,{
+    //     url : file_list_url,
+    //     header : file_list_heard,
+    //     paramObj : {monitorId : urlParamObj.monitorId ,
+    //     			regionId : urlParamObj.regionId,
+    //                 time:$("#query_time_label").text()},
+    //     gridCss : "um-grid-style",
+    //     hasBorder : false,
+    //     hideSearch : true,
+    //     allowCheckBox : true
+    // });
+    //端口
+    g_grid.render($("#port_list_div") ,{
+        url : port_list_url,
+        header : port_list_heard,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+        			regionId : urlParamObj.regionId,
+                    time:$("#query_time_label").text()},
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+		paginator : false,
+		showCount : true,
+        allowCheckBox : false
+    });
+    //启动项监控
+    g_grid.render($("#msconfig_list_div") ,{
+        url : msconfig_list_url,
+        header : msconfig_list_heard,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+        			edId : urlParamObj.assetId,
+                    time:$("#query_time_label").text()},
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+		paginator : false,
+		showCount : true,
+        allowCheckBox : false
+    });
+    //主机账号口令策略监控
+    g_grid.render($("#account_list_div") ,{
+        url : account_list_url,
+        header : account_list_heard,
+        paramObj : {monitorId : urlParamObj.monitorId ,
+        			edId : urlParamObj.assetId,
+        			regionId : urlParamObj.regionId,
+                    time:$("#query_time_label").text()},
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+		paginator : false,
+		showCount : true,
+        allowCheckBox : false
+    });
+    g_dialog.waitingAlertHide();
+}
+//设置基线
+function set_baseline_init(opt,rowData){
+	if(opt.btn_name=="Set_btu1"){
+		var paramObj = {enterDate : $("#query_time_label").text(),
+						    monitorId : urlParamObj.monitorId,
+						    keyCode : "PROCESS"};
+	}
+
+	// if (opt.btn_name=="Set_btu2"){
+	// 	var data = g_grid.getData($("#file_list_div") ,{chk:true});
+	// 	if (data.length == 0)
+	// 	{
+	// 		g_dialog.operateAlert(null ,"请至少选择一条记录!" ,"error");
+	// 		return false;
+	// 	}
+	// 	paramObj = new Object();
+	// 	paramObj.fileStore = data;
+	// }
+
+	if(opt.btn_name=="Set_btu3"){
+		var paramObj = {enterDate : $("#query_time_label").text(),
+					    monitorId : urlParamObj.monitorId,
+					    keyCode : "PORT"};
+	}
+
+	if(opt.btn_name=="Set_btu4"){
+		var paramObj = {enterDate : $("#query_time_label").text(),
+					    monitorId : urlParamObj.monitorId,
+					    keyCode : "RUNCONFIG"};
+	}
+
+	if(opt.btn_name=="Set_btu5"){
+		var paramObj = {enterDate : $("#query_time_label").text(),
+					    monitorId : urlParamObj.monitorId,
+					    keyCode : "ACCOUNTPOLICY"};
+	}
+
+	g_dialog.operateConfirm("确定设置基线吗?",{
+		saveclick:function(){
+				um_ajax_post({
+					url : opt.baselineUrl,
+					paramObj : paramObj,
+					successCallBack:function(data){
+						g_dialog.operateAlert(null ,"设置成功！");
+					}
+				})
+			}
+	});
+}
+//查询基线
+function query_baseline_init(opt){
+	g_dialog.dialog($("#template").find('[id=query_baseline_template]').html(),{
+		width : "1000px",
+		title : "基线查看",
+		init : init,
+		initAfter : initAfter,
+		saveclick : saveclick,
+		isDetail : true
+	});
+	function init(el)
+	{
+
+	}
+	function initAfter(el)
+	{
+		//关注
+		el.find('[id=follow]').click(function(event) {
+			var keyNo = g_grid.getIdArray(el.find("[id=query_baseline_table]") ,{chk:true,attr:"keyNo"});
+			if (keyNo.length == 0)
+			{
+				g_dialog.operateAlert(el ,"请至少选择一条记录!" ,"error");
+				return false;
+			}
+			um_ajax_post({
+				url:follow_url,
+				paramObj:{monitorId : urlParamObj.monitorId,
+						  atteStatus : "关注",
+						  keyNO : keyNo.join(",")
+						},
+				successCallBack:function(data){
+					g_dialog.operateAlert(el ,"操作成功");
+					query_baseline();
+				}
+			});
+		});
+		//取消关注
+		el.find('[id=Rfollow]').click(function(event) {
+			var keyNo = g_grid.getIdArray(el.find("[id=query_baseline_table]") ,{chk:true,attr:"keyNo"});
+			if (keyNo.length == 0)
+			{
+				g_dialog.operateAlert(el ,"请至少选择一条记录!" ,"error");
+				return false;
+			}
+			um_ajax_post({
+				url:follow_url,
+				paramObj:{monitorId : urlParamObj.monitorId,
+					  atteStatus : "不关注",
+					  keyNO : keyNo.join(",")
+				},
+				successCallBack:function(data){
+					g_dialog.operateAlert(el ,"操作成功");
+					query_baseline();
+				}
+			})
+		});
+
+		query_baseline();
+		//查看基线
+		function query_baseline()
+		{
+			g_grid.render(el.find("[id=query_baseline_table]"),{
+				header : opt.baselineheader,
+				url : opt.baselineUrl,
+				paramObj:{monitorId : urlParamObj.monitorId, 
+						  edId : urlParamObj.assetId},
+				hideSearch : true,
+				paginator : false,
+				showCount : true,
+				allowCheckBox : true
+			});
+		}
+	}
+	function saveclick()
+	{
+		return true;
+	}
+}
+
+
+
+//对比
+function Contrast_baseline_init(opt){
+
+	// if (opt.btn_name=="Set_btu2"){
+	// 	var data = g_grid.getData($("#file_list_div") ,{chk:true});
+	// 	if (data.length == 0)
+	// 	{
+	// 		g_dialog.operateAlert(null ,"请至少选择一条记录!" ,"error");
+	// 		return false;
+	// 	}
+	// }
+
+	if(opt.btn_name2=="Contrast_btn1") {
+		$("#table_oper_prev span").html("进程监控");
+	}
+	// if(opt.btn_name2=="Contrast_btn2") {
+	// 	var data = g_grid.getData($("#file_list_div") ,{chk:true});
+	// 	if (data.length == 0)
+	// 	{
+	// 		g_dialog.operateAlert(null ,"请至少选择一条记录!" ,"error");
+	// 		return false;
+	// 	}
+	// 	for (var i = 0; i < data.length; i++) {
+	// 		if(data[i].modify=="0"){
+	// 			g_dialog.operateAlert(null ,"该文件内容未改变，请选择其他文件!" ,"error");
+	// 			return false;
+	// 		}
+	// 	}
+		
+	// 	$("#table_oper_prev span").html("文件监控");
+	// }
+	if(opt.btn_name2=="Contrast_btn3") {
+		$("#table_oper_prev span").html("端口监控");
+	}
+	if(opt.btn_name2=="Contrast_btn4") {
+		$("#table_oper_prev span").html("启动项监控");
+	}
+	if(opt.btn_name2=="Contrast_btn5") {
+		$("#table_oper_prev span").html("主机策略监控");
+	}
+
+	g_dialog.dialog($("#template").find('[id=Contrast_baseline_template]').html(),{
+		width : "1100px",
+		init : init,
+		title : "对比",
+		initAfter : initAfter,
+		saveclick : saveclick,
+		isDetail : true
+	});
+	function init(el)
+	{
+
+	}
+	function initAfter(el)
+	{
+		
+		g_grid.render(el.find('[id=Contrast_baseline_table]'),{
+			header : opt.baselineheader,
+			url : opt.baselineUrl,
+			paramObj : {monitorId : urlParamObj.monitorId,
+						edId : urlParamObj.assetId},
+			hideSearch : true,
+			allowCheckBox : false
+		});
+		g_grid.render(el.find('[id=Contrast_baseline_table_prev]'),{
+			header : opt.baselineheadernew,
+			url : opt.baselineUrlnew,
+        	paramObj : {monitorId : urlParamObj.monitorId ,
+			        	time:$("#query_time_label").text(),
+			        	edId : urlParamObj.assetId},
+			hideSearch : true,
+			allowCheckBox : false
+		});
+	}
+	
+	function saveclick()
+	{
+		return true;
+	}
+}
+//黑名单
+function porcessBlacklist_baseline_init(opt){
+	g_dialog.dialog($("#template").find('[id=porcessBlacklist_baseline_template]').html(),{
+		width : "800px",
+		init : init,
+		title : "黑名单",
+		initAfter : initAfter,
+		saveclick : save_click,
+		isDetail : false
+	});
+	function init(el)
+	{
+
+	}
+	function initAfter(el)
+	{
+		//右移事件
+		el.find("[id=chevron-right]").click(function (){
+			if (!g_validate.validate(el)){
+				return false;
+			}
+			var processArray = g_grid.getIdArray(el.find("[id=porcessBlacklist_baseline_table]") ,{attr:"keyValue"});
+			if (processArray.indexOf(el.find("[data-flag=keyValue]").val()) != -1)
+			{
+				g_dialog.operateAlert(el ,"记录重复！" ,"error");
+				return false;
+			}
+
+			g_grid.addData(el.find("[id=porcessBlacklist_baseline_table]") ,[{
+				keyValue : el.find("[data-flag=keyValue]").val()
+			}]);
+		});
+		// 左移事件
+		el.find("[id=chevron-left]").click(function (){
+			var data = g_grid.getData(el.find("[id=porcessBlacklist_baseline_table]") ,{chk:true});
+			if (data.length == 0)
+			{
+				g_dialog.operateAlert(el ,"请选择一条记录。" ,"error");
+			}
+			else if (data.length > 1)
+			{
+				g_dialog.operateAlert(el ,"只允许选择一条记录。" ,"error");
+			}
+			else
+			{
+				el.find("[data-flag=keyValue]").val(data[0].keyValue);
+				g_grid.removeData(el.find("[id=porcessBlacklist_baseline_table]"));
+			}
+			
+		});
+
+		g_grid.render(el.find('[id=porcessBlacklist_baseline_table]'),{
+			header : [{text:'黑名单进程',name:"keyValue"}],
+			url : porcessBlacklist_baseline_list_url,
+			paramObj : {monitorId : urlParamObj.monitorId},
+			paginator : false,
+			allowCheckBox : true,
+			hideSearch : true
+		});
+	}
+
+	function save_click(el ,saveObj)
+	{
+		var paramObj = new Object();
+		var data = g_grid.getData(el.find('[id=porcessBlacklist_baseline_table]') ,{});
+		// if (data.length == 0)
+		// {
+		// 	g_dialog.operateAlert(el ,"请至少选择一条记录!" ,"error");
+		// 	return false;
+		// }
+		paramObj.monitorId = urlParamObj.monitorId;
+		paramObj.keyCode = "PROCESS";
+		paramObj.blackStore = data;
+		um_ajax_post({
+			url : save_process_black_url,
+			paramObj: paramObj,
+			maskObj:el,
+			successCallBack : function(data){
+				g_dialog.hide(el);
+				g_dialog.operateAlert(null ,"操作成功");
+			}
+		})
+	}
+}
+//端口黑名单
+function portBlacklist_baseline_init(opt){
+	g_dialog.dialog($("#template").find('[id=portBlacklist_baseline_template]').html(),{
+		width : "800px",
+		init : init,
+		title : "黑名单",
+		initAfter : initAfter,
+		saveclick : save_click,
+		isDetail : false
+	});
+	function init(el)
+	{
+
+	}
+	function initAfter(el)
+	{
+		//右移事件
+		el.find("[id=chevron-right]").click(function (){
+			if (!g_validate.validate(el)){
+				return false;
+			}
+			var portNameArray = g_grid.getIdArray(el.find("[id=portBlacklist_baseline_table]") ,{attr:"startPort"});
+			if (portNameArray.indexOf(el.find("[data-name=startPort]").val()) != -1)
+			{
+				g_dialog.operateAlert(el ,"记录重复！" ,"error");
+				return false;
+			}
+
+			g_grid.addData(el.find("[id=portBlacklist_baseline_table]") ,[{
+				startPort : el.find("[data-name=startPort]").val(),
+				endPort : el.find("[data-name=endPort]").val()
+			}]);
+		});
+		// 左移事件
+		el.find("[id=chevron-left]").click(function (){
+			var data = g_grid.getData(el.find("[id=portBlacklist_baseline_table]") ,{chk:true});
+			if (data.length == 0)
+			{
+				g_dialog.operateAlert(el ,"请选择一条记录。" ,"error");
+			}
+			else if (data.length > 1)
+			{
+				g_dialog.operateAlert(el ,"只允许选择一条记录。" ,"error");
+			}
+			else
+			{
+				el.find("[data-name=startPort]").val(data[0].startPort);
+				el.find("[data-name=endPort]").val(data[0].endPort);
+				g_grid.removeData(el.find("[id=portBlacklist_baseline_table]"));
+			}
+		});
+
+		g_grid.render(el.find('[id=portBlacklist_baseline_table]'),{
+			header : [{text:'起始端口',name:"startPort"},
+						{text:'终止端口',name:"endPort"}],
+			url : portBlacklist_baseline_list_url,
+			paramObj : {monitorId : urlParamObj.monitorId, keyCode : "PORT"},
+			paginator : false,
+			allowCheckBox : true
+		});
+	}
+	function save_click(el ,saveObj)
+	{
+		var paramObj = new Object();
+		var data = g_grid.getData(el.find('[id=portBlacklist_baseline_table]') ,{});
+		// if (data.length == 0)
+		// {
+		// 	g_dialog.operateAlert(el ,"请至少选择一条记录!" ,"error");
+		// 	return false;
+		// }
+
+		for (var i = 0; i < data.length; i++)
+		{
+			data[i].keyValue = data[i].startPort +"-"+data[i].endPort;
+		}
+		paramObj.monitorId = urlParamObj.monitorId;
+		paramObj.keyCode = "PORT";
+		paramObj.blackStore = data;
+
+		um_ajax_post({
+			url : save_port_black_url,
+			paramObj: paramObj,
+			maskObj:el,
+			successCallBack : function(data){
+				g_dialog.hide(el);
+				g_dialog.operateAlert(null ,"操作成功");
+			}
+		})
+	}
+}
+// //文件配置
+// function file_baseline_init(opt){
+// 	g_dialog.dialog($("#template").find('[id=file_baseline_template]').html(),{
+// 		width : "800px",
+// 		init : init,
+// 		title : "文件配置",
+// 		initAfter : initAfter,
+// 		saveclick : save_click,
+// 		isDetail : false
+// 	});
+// 	function init(el)
+// 	{
+
+// 	}
+// 	function initAfter(el ,data)
+// 	{
+// 		//右移事件
+// 		el.find("[id=chevron-right]").click(function (){
+// 			if (!g_validate.validate(el)){
+// 				return false;
+// 			}
+// 			var fileNameArray = g_grid.getIdArray(el.find("[id=file_baseline_table]") ,{attr:"fileName"});
+// 			if (fileNameArray.indexOf(el.find("[flag-name=fileName]").val()) != -1)
+// 			{
+// 				g_dialog.operateAlert(el ,"记录重复！" ,"error");
+// 				return false;
+// 			}
+
+// 			g_grid.addData(el.find("[id=file_baseline_table]") ,[{
+// 				fileName : el.find("[flag-name=fileName]").val(),
+// 				fileType : el.find("[flag-name=fileType]").val()
+// 			}]);
+// 			el.find("[flag-name=fileName]").val("");
+// 			el.find("[flag-name=fileType]").val("");
+// 		});
+// 		// 左移事件
+// 		el.find("[id=chevron-left]").click(function (){
+// 			var data = g_grid.getData(el.find("[id=file_baseline_table]") ,{chk:true});
+// 			if (data.length == 0)
+// 			{
+// 				g_dialog.operateAlert(el ,"请选择一条记录。" ,"error");
+// 			}
+// 			else if (data.length > 1)
+// 			{
+// 				g_dialog.operateAlert(el ,"只允许选择一条记录。" ,"error");
+// 			}
+// 			else
+// 			{
+// 				el.find("[flag-name=fileName]").val(data[0].fileName);
+// 				el.find("[flag-name=fileType]").val(data[0].fileType);
+// 				g_grid.removeData(el.find("[id=file_baseline_table]"));
+// 			}
+// 		});
+
+// 		g_grid.render(el.find('[id=file_baseline_table]'),{
+// 			header : [{text:'文件路径',name:"fileName"},{text:'文件类型',name:"fileType"}],
+// 			url : file_list_url,
+// 			paginator:false,
+// 			paramObj : {monitorId : urlParamObj.monitorId ,
+// 	        			regionId : urlParamObj.regionId,
+// 	                    time:$("#query_time_label").text()},
+// 			hideSearch : true,
+// 			allowCheckBox : true
+// 		});
+// 	}
+// 	function save_click(el ,saveObj)
+// 	{
+// 		var paramObj = new Object();
+// 		var data = g_grid.getData(el.find('[id=file_baseline_table]') ,{});
+// 		// if (data.length == 0)
+// 		// {
+// 		// 	g_dialog.operateAlert(el ,"请至少选择一条记录!" ,"error");
+// 		// 	return false;
+// 		// }
+// 		paramObj.monitorId = urlParamObj.monitorId;
+// 		paramObj.keyCode = "FILE";
+// 		paramObj.fileStore = data;
+// 		um_ajax_post({
+// 			url : save_file_config_url,
+// 			paramObj: paramObj,
+// 			maskObj:el,
+// 			successCallBack : function(data){
+// 				g_dialog.hide(el);
+// 				g_dialog.operateAlert(null ,"操作成功");
+// 			}
+// 		})
+// 	}
+// }
+
+
+
+
+
+});
+});
+</script>

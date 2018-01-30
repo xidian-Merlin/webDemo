@@ -1,0 +1,149 @@
+<div data-id="monitor_index" class="h-all ovxh" style="margin-left:4.5%;">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+
+			<div id="detail_store_form">
+				<div class="form-group">
+					<label class="control-label col-lg-2">CPU使用率阈值(%)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="cpuUseRate" maxlength="3" validate="between1~100" value="80">
+					</div>
+					<label class="control-label col-lg-2">连续达到阈值次数</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="cpuGetTimes" maxlength="1" validate="between1~9" value="3">
+					</div>
+					<label class="control-label col-lg-1" style="text-align:left;">(1-9)</label>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-lg-2">内存使用率阈值(%)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="memoryUseRate" maxlength="3" validate="between1~100" value="80">
+					</div>
+					<label class="control-label col-lg-2">连续达到阈值次数</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="memoryGetTimes" maxlength="1" validate="between1~9" value="3">
+					</div>
+					<label class="col-lg-1 control-label" style="text-align:left;">(1-9)</label>
+				</div>
+
+	      <div class="form-group">
+	      	<label class="control-label col-lg-2 required">操作系统字符编码</label>
+	      	<div class="col-lg-3 prel">
+		      	<input type="text" class="form-control input-sm" data-id="hostCode" validate="required">
+						<ul data-name="hostCodeSel" class="dn bdd pabs hostCodeSel">
+							<li class="hostCodeSelLi">UTF-8</li>
+							<li class="hostCodeSelLi">GBK</li>
+						</ul>
+	      	</div>
+	      	<label class="control-label col-lg-2">基线</label>
+	      	<div class="col-lg-5 table-oper prel tl" style="height:30px;top:-9px">
+		      	<a href="javascript:void(0);" class="dib monitor_btn_styl" data-btn="setProcessBaseLine">
+		          <span>进程基线</span>
+		        </a>
+		        <a href="javascript:void(0);" class="dib monitor_btn_styl" data-btn="setPortBaseLine">
+		          <span>端口基线</span>
+		        </a>
+		        <a href="javascript:void(0);" class="dib monitor_btn_styl" data-btn="setDiskBaseLine">
+		          <span>磁盘基线</span>
+		        </a>
+	      	</div>
+	      </div>
+				<div class="form-group">
+					<label class="control-label col-lg-2">配额默认比例(%)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="unifyThreshold" maxlength="2" validate="between1~99" value="80">
+					</div>
+					<div class="col-lg-1"></div>
+					<div class="table-oper col-lg-6" style="text-align: left;margin-top: -10px;top:20px">
+						<a href="javascript:void(0);" class="dib monitor_btn_styl" data-id="querytable">
+		          <span>获取所有分区</span>
+		        </a> 
+						<a href="javascript:void(0);" class="dib monitor_btn_styl" data-id="cleartable">
+		          <span>清空分区</span>
+		        </a>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group" data-name="block1">
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-al" data-block="url" style="height:200px;"></div>
+				</div>
+				<div class="col-lg-1">
+				  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="url_add" title="添加">
+				  	<i class="icon-chevron-right"></i>
+				  </div>
+			    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="url_remove" title="删除">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-ar" style="height:200px;"></div>
+				</div>
+			</div>
+
+			<div class="form-group" data-name="block2" data-block="script">
+				<div class="col-lg-5">
+					<div class="form-group">
+						<label class="control-label col-lg-6">脚本全路径</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control input-sm" maxlength="256" data-flag="name" validate="pathL">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-lg-6">脚本参数</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control input-sm" data-flag="value">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-lg-12" style="color: #ec7063;">多个参数用英文逗号(,)分隔</label>
+					</div>
+				</div>
+				<div class="col-lg-1">
+				  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="script_add" title="添加">
+				  	<i class="icon-chevron-right"></i>
+				  </div>
+			    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="script_remove" title="删除">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-i" style="height:200px;"></div>
+				</div>
+			</div>
+			<!--
+			<div class="form-group" data-name="block3" data-block="fault">
+				<label class="control-label col-lg-2">进程路径</label>
+				<div class="col-lg-3">
+					<div class="form-group">
+						<div class="col-lg-12">
+							<input type="text" class="form-control input-sm" maxlength="256" data-flag="faultModule">
+						</div>
+						<div class="col-lg-12 dn" data-show="edit">
+							<input type="text" class="form-control input-sm" value="可选进程" disabled="disabled">
+						</div>
+						<div class="col-lg-12 dn" data-show="edit" style="height:150px;overflow: auto;">
+							<ul data-id="process_ul" style="border: 1px solid #cfdadd;border-top:none;overflow-x: hidden;overflow-y: auto;">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-1">
+				  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="fault_add" title="添加">
+				  	<i class="icon-chevron-right"></i>
+				  </div>
+			    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="fault_remove" title="删除">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-u" style="height:200px;"></div>
+				</div>
+			</div>
+			-->
+
+		</form>
+	</div>
+</div>

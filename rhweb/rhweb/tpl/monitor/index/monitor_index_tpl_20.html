@@ -1,0 +1,83 @@
+<tem>
+<!-- snmp 添加oid信息-->
+<div data-id="oid_add_div" class="template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form form-plr5">
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">oid字段</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="oidField" validate="required" />
+					</div>
+					<label class="col-lg-3 control-label required">oid字段类型</label>
+					<div class="col-lg-3">
+						<select data-id="oidFieldType" data-type="select">
+							<option value="-1">----</option>
+							<option value="1">字符型</option>
+							<option value="2">数值型</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">oid显示名称</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="oidShowName" validate="required" />
+					</div>
+					<label class="col-lg-3 control-label required">显示模式</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="showMode" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">性能阈值</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="performValue" validate="number" />
+					</div>
+					<label class="col-lg-3 control-label">操作符</label>
+					<div class="col-lg-3">
+						<select data-id="perfThresholdOper" data-type="select">
+							<option value="-1">----</option>
+							<option value="0"> < </option>
+							<option value="1"> == </option>
+							<option value="2"> > </option>
+							<option value="3"> != </option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">属于表名称：</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="belongTableName"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label" queryStr>性能事件描述：</label>
+					<div class="col-lg-9">
+						<textarea class="form-control input-sm" data-id="performDesc"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">故障阈值：</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="failValue" validate="number" />
+					</div>
+					<label class="col-lg-3 control-label">操作符：</label>
+					<div class="col-lg-3">
+						<select data-id="faultThresholdOper" data-type="select">
+							<option value="-1">----</option>
+							<option value="0"> < </option>
+							<option value="1"> == </option>
+							<option value="2"> > </option>
+							<option value="3"> != </option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label" queryStr>故障事件描述：</label>
+					<div class="col-lg-9">
+						<textarea class="form-control input-sm" data-id="failDesc"></textarea>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</tem>

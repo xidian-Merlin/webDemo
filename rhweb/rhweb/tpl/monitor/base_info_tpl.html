@@ -1,0 +1,76 @@
+<form class="bs-example form-horizontal xs-form" id="base_info" data-id="base_info" data-type="tpl">
+		<div class="form-group">
+    <label class="col-lg-2 control-label required">监控器名称</label>
+    <div class="col-lg-3">
+      <input type="text" class="form-control input-sm" data-id="monitorType" validate="required">
+    </div>
+    <label class="col-lg-2 control-label" queryStr>状态</label>
+    <div class="col-lg-3">
+      <div class="radio l">
+				<label class="i-checks">
+					<input type="radio" value="0" data-id="status" name="status" checked>
+					<i></i>
+						启用
+				</label>
+			</div>
+			<div class="radio l ml5">
+				<label class="i-checks">
+				  <input type="radio" value="1" name="status">
+				  <i></i>
+				  停用
+				</label>
+			</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label class="col-lg-2 control-label">轮询时间</label>
+      <div class="col-lg-2">
+        <select class="form-control input-sm" data-id="pollUnit" data-type="select">
+          <option name="pollUnit" value="1">分</option>
+          <option name="pollUnit" value="2">小时</option>
+          <option name="pollUnit" value="3">天</option>
+        </select>
+      </div>
+      <div class="col-lg-1">
+	              <input type="text" class="form-control input-sm" data-id="pollDateText" validate="number">
+      </div>
+      <label class="col-lg-2 control-label" queryStr>代理服务器</label>
+      <div class="col-lg-3">
+        <select class="form-control input-sm" data-type="select" data-id="monitorAgent">
+          <option name="monitorAgent" value="0">---</option>
+        </select>
+      </div>
+  </div>
+  <div class="form-group">
+  	<label class="col-lg-2 control-label" queryStr>备注</label>
+  	<div class="col-lg-8">
+          <textarea class="form-control input-sm" data-id="remark"></textarea>
+      </div>
+  </div>
+</form>
+
+<script>
+$(document).ready(function(){
+  $.ajax({
+    type : "GET",
+    url : "tpl/monitor/base_info_tpl.html",
+    success : function (data) 
+    {
+      $("[data-id="+$("[data-id=temp_name]").val()+"]").one(function(){
+        $(this).append(data);
+      });
+      um_ajax_get({
+        url : "monitorConfig/queryMonitorAgent",
+        successCallBack : function (data) 
+        {
+          for (var i = 0; i < data.length; i++) {
+            $("[data-id=monitorAgent]").append('<option name="monitorAgent" value="'+data[i].agentId+'">'+data[i].agentName+'</option>');
+          }
+        }
+      });
+      return;
+    }
+  });
+});
+</script>

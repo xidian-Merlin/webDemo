@@ -1,0 +1,96 @@
+<div data-id="monitor_index" class="h-all ovxh">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div id="detail_store_form">
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">用户名</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="monitorUserName" maxlength="32" validate="required"/>
+					</div>
+					<label class="col-lg-3 control-label required">密码</label>
+					<div class="col-lg-3">
+						<input type="password" class="form-control input-sm" data-id="monitorPassWord" maxlength="128" validate="required"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">数据库名</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="monitorDatabaseName" maxlength="32" validate="required" />
+					</div>
+					<label class="col-lg-3 control-label required">端口</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="monitorPort" maxlength="5" validate="required,port" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">会话数阈值(个)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="sessionCount" value="80" maxlength="3" validate="between1~100" />
+					</div>
+					<label class="col-lg-3 control-label">连接数使用率阈值(%)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="connectUseRate" value="80" maxlength="3" validate="between1~100" />
+					</div>
+				</div>
+			</div>
+
+      <div class="form-group" data-name="monitorPerformGridBlock">
+	      <div class="col-lg-5">
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">表空间使用率</label>
+		        <div class="col-lg-6" data-bind="bind">
+		          <div class="radio l">
+		              <label class="i-checks">
+	                  <input type="radio" value="1" data-id="configStatus" name="configStatus" checked>
+	                  <i></i>
+	                  统一配置
+		              </label>
+		              <label class="i-checks">
+		                <input type="radio" value="2" name="configStatus">
+		                <i></i>
+		                单一配置
+		              </label>
+		          </div>
+		        </div>
+	      	</div>
+	      	<div class="form-group" data-bind="bind">
+		        <label class="col-lg-5 control-label">表空间使用率阈值(%)</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="unifyThreshold" maxlength="8" validate="number" />
+		        </div>
+	      	</div>
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">表空间</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-flag="performModule" maxlength="30" disabled="disabled" />
+		        </div>
+	      	</div>
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">阈值(%)</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-flag="value" maxlength="3" validate="between1~100" disabled="disabled" />
+		        </div>
+	      	</div>
+	      </div>
+				<div class="col-lg-1">
+				  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="userCfg_add" title="添加">
+				  	<i class="icon-chevron-right"></i>
+				  </div>
+			    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="userCfg_remove" title="删除">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="monitorPerformGrid" style="height:200px;"></div>
+				</div>
+      </div>
+
+      <div class="table-oper" style="padding-right:8.33%;">
+        <a href="javascript:void(0);" class="dib monitor_btn_styl" data-type="test_btn_in_step5">
+          <span>测试配置</span>
+          <i></i>
+        </a> 
+      </div>
+		</form>
+	</div>
+</div>

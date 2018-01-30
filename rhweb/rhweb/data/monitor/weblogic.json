@@ -1,0 +1,24 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Weblogic",
+					"fileName"  : "weblogic",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "weblogic/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "JVM/安全", "href" : "weblogic/jvm_info.html" ,"icon" : "monitor-jvm-dynamic"},
+								{"text" : "线程池信息", "href" : "weblogic/thread_pool.html" ,"icon" : "monitor-thread"},
+								{"text" : "JMS信息", "href" : "weblogic/jms.html" ,"icon" : "monitor-jms"},
+								{"text" : "SAFAgent信息", "href" : "weblogic/saf_agent.html" ,"icon" : "monitor-saf-agent"},
+								{"text" : "JTA信息", "href" : "weblogic/jta.html" ,"icon" : "monitor-jta"},
+								{"text" : "应用信息", "href" : "weblogic/application.html" ,"icon" : "monitor-application"},
+								{"text" : "服务器状态信息", "href" : "weblogic/service_status.html" ,"icon" : "monitor-service-status"},
+								{"text" : "Access日志分析", "href" : "weblogic/access_log.html" ,"icon" : "monitor-access-log" ,"hide" : "true"},
+								{"text" : "默认存储", "href" : "weblogic/default_storage.html" ,"icon" : "monitor-default-storage"},
+								{"text" : "集群信息", "href" : "weblogic/connective.html" ,"icon" : "monitor-connective"},
+								{"text" : "工作量信息", "href" : "weblogic/work.html" ,"icon" : "monitor-work"},
+								{"text" : "JDBC/通道信息", "href" : "weblogic/jdbc_pipe.html" ,"icon" : "monitor-jdbc-pipe"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

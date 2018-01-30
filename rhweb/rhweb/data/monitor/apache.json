@@ -1,0 +1,14 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Apache",
+					"fileName" : "apache",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "apache/base.html","icon" : "monitor-base-info"},
+								{"text" : "CPU信息" ,"href" : "apache/cpu.html","icon" : "monitor-cpu"},
+								{"text" : "请求传输信息" ,"href" : "apache/request_transform.html","icon" : "monitor-request"},
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

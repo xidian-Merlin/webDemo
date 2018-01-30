@@ -1,0 +1,62 @@
+<script src="/module/risk_statistics/overall_risk.js"></script>
+<!-- 左侧晴雨表 -->
+<div class="p-panel" style="left:0;top:0;width:30%;">
+	<div class="panel panel-default m0 um-panel">
+		<div class="panel-heading um-panel-head">当前整体风险</div>
+		<div class="panel-body um-panel-body" style="min-height:380px">
+			<div class="row prel" style="height:40%">
+				<div class="weather-icon-250" style="margin:0 auto" data-type="weather"></div>
+				<p></p>
+			</div>
+			<div class="row prel ovh" style="height:60%">
+				<div class="um-middle" style="top:10%">
+					<div style="padding:20px;color:#777">过去3天的网络安全态势如下</div>
+					<div class="col-xs-4 text-center p0">
+				        <div class="weather-icon-100" style="margin:0 auto" data-type="weather"></div>
+				        <p></p>
+				    </div>
+				    <div class="col-xs-4 text-center p0">
+				        <div class="weather-icon-100" style="margin:0 auto" data-type="weather"></div>
+				        <p></p>
+				    </div>
+				    <div class="col-xs-4 text-center p0">
+				        <div class="weather-icon-100" style="margin:0 auto" data-type="weather"></div>
+				        <p></p>
+				    </div>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 右上趋势图 -->
+<div class="p-panel" style="left:30%;right:0;top:0;height:50%">
+	<div class="panel panel-default m0 um-panel">
+		<div class="panel-heading um-panel-head">
+			整体风险趋势图
+			<div class="pabs" style="right:10px;top:5px" id="time_sel_div">
+				<select data-type="select" id="time_sel">
+					<option value="0">最近一天</option>
+					<option value="1" selected>最近一周</option>
+					<option value="2">最近一月</option>
+				</select>
+			</div>
+		</div>
+		<div class="panel-body um-panel-body p10">
+			<div class="w-all h-all" id="sec_area"></div>
+		</div>
+	</div>
+</div>
+<!-- 右下统计图 -->
+<div class="p-panel" style="left:30%;right:0;top:50%;height:50%">
+	<div class="panel panel-default m0 um-panel">
+		<div class="panel-heading um-panel-head">整体资产事件统计图</div>
+		<div class="panel-body um-panel-body p10" style="overflow:hidden">
+			<div class="col-lg-6 h-all">
+				<div class="h-all" id="sec_area1"></div>
+			</div>
+			<div class="col-lg-6 h-all">
+				<div class="h-all" id="sec_area2"></div>
+			</div>
+		</div>
+	</div>
+</div>

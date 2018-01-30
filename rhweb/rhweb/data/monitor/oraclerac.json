@@ -1,0 +1,22 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Oracle",
+					"fileName"  : "oracle",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "oraclerac/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "集群用户访问信息" ,"href" : "oraclerac/user_access.html" ,"icon" : "monitor-instance"},
+								{"text" : "集群会话信息" ,"href" : "oraclerac/session.html" ,"icon" : "monitor-link"},
+								{"text" : "集群实例信息" ,"href" : "oraclerac/instance.html" ,"icon" : "monitor-rollback"},
+								{"text" : "数据文件" ,"href" : "oraclerac/date_file.html" ,"icon" : "monitor-sga"},
+								{"text" : "日志文件" ,"href" : "oraclerac/log_file.html" ,"icon" : "monitor-perform"},
+								{"text" : "SGA信息" ,"href" : "oraclerac/sga.html" ,"icon" : "monitor-sga"},
+								{"text" : "等待会话" ,"href" : "oraclerac/wait_session.html" ,"icon" : "monitor-user-access"},
+								{"text" : "缓冲区信息" ,"href" : "oraclerac/cache.html" ,"icon" : "monitor-file"},
+								{"text" : "缓冲区命中率" ,"href" : "oraclerac/cached.html" ,"icon" : "monitor-data-table"},
+								{"text" : "表空间" ,"href" : "oraclerac/tablespace.html" ,"icon" : "monitor-dynamic-info"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

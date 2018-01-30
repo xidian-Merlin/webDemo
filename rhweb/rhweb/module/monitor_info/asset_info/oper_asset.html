@@ -1,0 +1,67 @@
+<script src="/module/monitor_info/asset_info/oper_asset.js"></script>
+
+<!-- 左侧 -->
+<div class="p-panel um-panel left-panel" id="left-panel" style="width:210px">
+	<div class="um-panel-head" id="accordion_icon">
+		<div class="col-lg-4 unit-col" data-name="assetTypeTreeWithCnt" data-type="4" style="padding:0 5px">资产类型</div>
+		<div class="col-lg-4 unit-col" data-name="sdTreeWithCnt" data-type="3" style="padding:0 5px">安全域</div>
+		<div class="col-lg-4 unit-col" data-name="bdTreeWithCnt" data-type="1" style="padding:0 5px">业务域</div>
+	</div>
+	<div class="um-panel-body">
+		<ul id="accordion" class="ztree" style="height:100%;overflow:hidden;overflow-y:auto"></ul>
+	</div>
+</div>
+
+<!-- 右侧 -->
+<div class="p-panel um-panel right-panel" id="right-panel" style="left:210px;overflow-x: hidden">
+	<div class="um-panel-head">
+		<div class="table-oper" id="table_oper">
+			<a href="javascript:void(0);" id="add_btn" class="bgblue">
+				<i class="btn-commen add-btn"></i>
+				<span>新增</span>
+			</a>
+			<a class="oper-array" href="javascript:void(0);">
+				<i class="btn-commen export-operl-btn"></i>
+				<span>导出操作&nbsp;&nbsp;</span><i class="icon-caret-down"></i>
+				<ul class="oper-ul tran" id="export_ul" style="width:132px">
+					<li id="custom_export_btn">自定义导出</li>
+					<li data-id="AssetOperation/exportAssetPdf">导出PDF</li>
+					<li data-id="AssetOperation/exportAssetDoc">导出WORD</li>
+					<li data-id="AssetOperation/exportAssetXml">导出XML</li>
+					<li data-id="AssetOperation/exportExcel">导出EXCEL</li>
+				</ul>
+			</a>
+			<a class="oper-array" href="javascript:void(0);">
+				<i class="btn-commen import-btn"></i>
+				<span>导入操作&nbsp;&nbsp;</span><i class="icon-caret-down"></i>
+				<ul class="oper-ul tran" style="width:132px">
+					<li id="import_template_download_btn">导入模板下载</li>
+					<li id="import_btn">导入</li>
+					<li id="import_task_btn">导入任务</li>
+				</ul>
+			</a>
+			<a class="oper-array" href="javascript:void(0);">
+				<i class="btn-commen batch-btn"></i>
+				<span>批量操作&nbsp;&nbsp;</span><i class="icon-caret-down"></i>
+				<ul class="oper-ul tran" style="right:3px;width:129px;">
+					<li id="batch_add_btn">批量增加</li>
+					<li id="batch_update_btn">批量修改</li>
+					<li id="batch_delete_btn">批量删除</li>
+				</ul>
+			</a>
+			<a href="javascript:void(0);" id="custom_col_btn" class="dn">
+				<span>自定义列</span><i class="icon-search"></i>
+			</a>
+			<a href="javascript:void(0);" id="query_btn" class="dn">
+				<span>查询</span>
+			</a>
+			<a href="javascript:void(0);" id="refresh_btn">
+				<i class="btn-commen refresh-btn"></i>
+				<span>刷新</span>
+			</a>
+		</div>
+	</div>
+	<div class="um-panel-body">
+		<div id="table_div" class="table-div table-list"></div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+<tem>
+
+<!-- 详情模板 -->
+<div class="template" id="bugTraq_detail_template" >
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+
+			<div  class=" bdc pt20 prel">
+			    <div style=" top:-10px; left:20px; padding: 0 5px;" class="pabs g6 bgwh">漏洞详细信息</div>
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">漏洞编号</label>
+				    <label class="col-lg-8 control-label tl" data-id="id"></label>   
+				</div>
+			
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">漏洞名称</label>
+				    <label class="col-lg-8 control-label tl" data-id="name"></label>   
+				</div>
+			</div>
+
+			<div  class="mt20 bdc pt20 prel">
+				<div style=" top:-10px; left:20px; padding: 0 5px;" class="pabs g6 bgwh">漏洞信息</div>
+				<label class=" form-control input-sm no-write" readonly="true" style="border:none; height:auto;" data-id="info"></label>
+			</div>
+
+			<div  class="mt20 bdc pt20 prel">
+				<div style=" top:-10px; left:20px; padding: 0 5px;" class="pabs g6 bgwh">漏洞危害</div>
+				<label class=" form-control input-sm no-write" readonly="true" style="border:none; height:auto;" data-id="exploit"></label> 
+			</div>
+
+			<div  class="mt20 bdc pt20 prel">
+				<div style=" top:-10px; left:20px; padding: 0 5px;" class="pabs g6 bgwh">讨论</div>
+				<label class=" form-control input-sm no-write" readonly="true" style="border:none; height:auto;" data-id="discussion"></label> 
+			</div>
+
+
+			<div  class="mt20 bdc pt20 prel">
+				<div style=" top:-10px; left:20px; padding: 0 5px;" class="pabs g6 bgwh">参考</div>
+				<label class=" form-control input-sm no-write" readonly="true" style="border:none; height:auto;" data-id="reference"></label> 
+			</div>
+
+			<div  class="mt20 bdc pt20 prel">
+				<div style=" top:-10px; left:20px; padding: 0 5px;" class="pabs g6 bgwh">解决方案</div>
+				<label class=" form-control input-sm no-write" readonly="true" style="border:none;height:auto; " data-id="solution"></label> 
+			</div>
+
+		</form>
+	</div>
+</div>
+
+</tem>

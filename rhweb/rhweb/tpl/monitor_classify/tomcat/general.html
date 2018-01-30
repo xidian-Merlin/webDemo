@@ -1,0 +1,144 @@
+<div class="row">
+	<div class="col-md-6 pr5 pl5">
+		<div class="panel panel-default panel-style">
+			<div class="panel-heading font-bold prel">
+				<span>WEB模块信息</span>
+			</div>
+			<div class="panel-body p1" style="height: 292px;padding: 10px">
+				<div class="table-div h-all" id="web_div"></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-6  pr5 pl5">
+		<div class="panel panel-default panel-style">
+			<div class="panel-heading font-bold prel">
+				<span>线程信息</span>
+			</div>
+			<div class="panel-body p1" style="height: 292px;padding: 10px">
+				<div class="table-div h-all" id="thread_div"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12 pr5 pl5">
+		<div class="panel panel-default panel-style" id="pro_time_div">
+			<div class="panel-heading font-bold prel">
+				<span>Tomcat进程时间(单位：ms)</span>
+			</div>
+			<div class="panel-body p1" style="padding: 10px">
+				<div style="height:290px" id="pro_time_chart"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'] ,function (plot){
+
+var JVM_url = "monitorview/middleware/tomcat/queryMemoryInfo";
+
+var pro_time_url = "monitorview/middleware/tomcat/queryTomcatProTimeInfo";
+
+var web_info_url = "monitorview/middleware/tomcat/queryWebList";
+var web_info_header = [
+							{text:'模块名称',name:"moduleName"},
+							{text:'模块启用时间',name:"startDate"},
+							{text:'状态',name:"status", render : function(text){
+								return text == 0 ? "不可用" : "可用";
+							}},
+							{text:'更新时间',name:"enterDate"}
+						 ];
+
+var thread_info_url = "monitorview/middleware/tomcat/queryThreadList";
+var thread_info_header = [
+							{text:'线程名称',name:"threadName"},
+							{text:'线程状态',name:"threadStatus"},
+							{text:'更新时间',name:"enterDate"}
+						 ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+function view_init()
+{
+	web_info_list();
+	thread_info_list();
+	pro_time_chart();
+}
+
+function web_info_list()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	g_grid.render($("#web_div"),{
+		header:web_info_header,
+		url:web_info_url,
+		paramObj:urlParamObj,
+		allowCheckBox:false,
+		hasBorder : false,
+		gridCss : "um-grid-style",
+		hideSearch : true
+	});
+}
+
+function thread_info_list(option)
+{
+	urlParamObj.time = $("#query_time_label").text();
+	g_grid.render($("#thread_div"),{
+		 header:thread_info_header,
+		 url:thread_info_url,
+ 		 paramObj:urlParamObj,
+		 gridCss : "um-grid-style",
+		 hasBorder : false,
+		 hideSearch : true,
+		 allowCheckBox : false
+	});
+}
+
+function pro_time_chart()
+{
+	urlParamObj.time = $("#query_time_label").text();		
+	um_ajax_get({
+		url : pro_time_url,
+		paramObj : urlParamObj,
+		successCallBack : function (data){
+			var legendArray = [];
+			var categoryArray = [];
+			var seriesArray = [];
+			for (var i = 0; i < data.length; i++) {
+				legendArray.push(data[i].lineName);
+				var seriesObj = new Object();
+				seriesObj.name = data[i].lineName;
+				seriesObj.type = "line";
+				seriesObj.data = [];
+				for (var j = 0; j < data[i].items.length; j++) {
+					seriesObj.data.push(data[i].items[j].value);
+					if (i == 0)
+					{
+						categoryArray.push(data[i].items[j].lable);
+					}
+				}
+				seriesArray.push(seriesObj);
+			}
+			plot.lineRender($("#pro_time_chart") ,{
+				legend : legendArray,
+				category :categoryArray,
+				series : seriesArray
+			});
+		}
+	});
+}
+
+
+});
+});
+
+</script>

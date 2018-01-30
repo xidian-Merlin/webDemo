@@ -1,0 +1,133 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>JVM信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="base_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">JVM宿主操作系统名称：</label>
+                    <label class="col-lg-3 control-label tl" data-id="osName"></label>
+                    <label class="col-lg-3 control-label">JVM堆最大值：</label>
+                    <label class="col-lg-3 control-label tl" data-id="heapSizeMax"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">JVM宿主操作系统版本：</label>
+                    <label class="col-lg-3 control-label tl" data-id="osVersion"></label>
+                    <label class="col-lg-3 control-label">JVM堆当前值：</label>
+                    <label class="col-lg-3 control-label tl" data-id="heapSizeCurrent"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">JVM版本：</label>
+                    <label class="col-lg-3 control-label tl" data-id="javaVersion"></label>
+                    <label class="col-lg-3 control-label">JVM堆空闲值：</label>
+                    <label class="col-lg-3 control-label tl" data-id="heapFreeCurrent"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">JVM提供商：</label>
+                    <label class="col-lg-3 control-label tl" data-id="javaVmvendor"></label>
+                    <label class="col-lg-3 control-label">JVM堆空闲百分比（%）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="heapFreePercent"></label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>安全信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="security_info">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">名称：</label>
+                    <label class="col-lg-3 control-label tl" data-id="name"></label>
+                    <label class="col-lg-3 control-label">描述：</label>
+                    <label class="col-lg-3 control-label tl" data-id="desc"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">取消锁定的用户总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="unlockedUsersTotalCount"></label>
+                    <label class="col-lg-3 control-label">在被锁定时尝试登陆的总次数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="loginAttemptsWhileLockedTotalCount"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">无效登陆总次数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="invalidLoginAttemptsTotalCount"></label>
+                    <label class="col-lg-3 control-label">无效登陆最多次数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="invalidLoginUsersHighCount"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">用户锁定总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="userLockoutTotalCount"></label>
+                    <label class="col-lg-3 control-label">被锁定的用户：</label>
+                    <label class="col-lg-3 control-label tl" data-id="lockedUsersCurrentCount"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">更新时间：</label>
+                    <label class="col-lg-3 control-label tl" data-id="enterDate"></label>
+                    <label class="col-lg-3 control-label"></label>
+                    <label class="col-lg-3 control-label tl" data-id=""></label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var base_info_url = "monitorview/middleware/weblogic/queryWeblJvm";
+var security_info_url = "monitorview/middleware/weblogic/queryWeblServerSecurity";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    base_info_render();
+    security_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function base_info_render()
+{
+    urlParamObj.time = $("#query_time_label").text();   
+    um_ajax_get({
+        url : base_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            $("#base_info_monitor_div").umDataBind("render" ,data[0]);
+        }
+    });
+}
+
+function security_info()
+{
+    urlParamObj.time = $("#query_time_label").text();   
+    um_ajax_get({
+        url : security_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            $("#security_info").umDataBind("render" ,data[0]);
+            if(data[0].desc=="null" || data[0].desc==null){
+                $("[data-id=desc]").text('----');
+            }
+        }
+    });
+}
+
+
+
+});
+});
+</script>

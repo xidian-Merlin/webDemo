@@ -1,0 +1,406 @@
+<tem>
+	<!-- 查询弹出框 Start-->
+	<div class="template" id="query_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form" id="query_form">
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>监控器名称</label>
+			      <div class="col-lg-9">
+			        <input type="text" class="form-control input-sm" data-id="assetName" queryValue>
+			      </div>
+			    </div>
+
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>监控器类型</label>
+			      <div class="col-lg-9">
+			        <div class="inputdrop" id="assetTypeId"></div>
+			      </div>
+			    </div>
+
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label" queryStr>资产名称</label>
+			      <div class="col-lg-9">
+			        <input type="text" class="form-control input-sm" data-id="assetName" queryValue>
+			      </div>
+			    </div>
+
+			    <div class="form-group">
+			      <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+			          <label class="i-switch bg-primary m-t-xs m-r" style="margin-right: 0">
+			            <input type="radio" checked="" name="switch" value="IPV4">
+			            <i></i>
+			          </label>
+			          <label queryStr>IPV4</label>
+			      </div>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="startIp" id="startIp" validate="ipv4" queryValue>
+			      </div>
+			      <div class="col-lg-1 p0" style="width:auto;padding:0 17px">
+			        -
+			      </div>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="endIp" id="endIp" validate="ipv4" queryValue>
+			      </div>
+			    </div>
+
+			    <div class="form-group">
+			      <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+			        <label class="i-switch bg-warning m-t-xs m-r" style="margin-right: 0">
+			          <input type="radio" name="switch" value="IPV6">
+			          <i></i>
+			        </label>
+			        <label queryStr>IPV6</label>
+			      </div>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" disabled data-id="mainIp" id="mainIp" validate="ipv6">
+			      </div>
+			    </div>
+			</form>
+		</div>
+	</div>
+	<!-- 查询弹出框 End-->
+
+	<!-- 修改弹出框不在switch中 Start -->
+	<div class="template" id="update_template_out_switch">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form" id="update_form">
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">监控器名称</label>
+			        <div class="col-lg-4">
+			            <input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">状态</label>
+			        <div class="col-lg-4" style="height:30px">
+						<div class="radio">
+			              <label class="i-checks">
+			                <input type="radio" value="option1" name="a">
+			                <i></i>
+			                启用
+			              </label>
+			              <label class="i-checks">
+			                <input type="radio" value="option2" name="a">
+			                <i></i>
+			                停用
+			              </label>
+						</div>
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">监控器类型</label>
+			        <div class="col-lg-4">
+			            <input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">轮询时间</label>
+			        <div class="col-lg-1">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			        </div>
+			        <div class="col-lg-2">
+		              <input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">被监控资产名称</label>
+			        <div class="col-lg-4">
+			        	<div class="input-group w-all">
+			        		<div id="inputdrop" class="inputdrop"></div>
+				            <span class="input-group-btn">
+				            	<button class="btn btn-default btn-date" type="button">
+				            		<i class="glyphicon glyphicon-calendar"></i>
+				            	</button>
+				            </span>
+			            </div>
+			        </div>
+			        <label class="col-lg-2 control-label">代理服务器</label>
+			        <div class="col-lg-4">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">连接方式</label>
+			        <div class="col-lg-4">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			        </div>
+			        <label class="col-lg-2 control-label">登陆提示符</label>
+			        <div class="col-lg-4">
+		              <input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">密码提示符</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">命令提示符</label>
+			        <div class="col-lg-4">
+		              <input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">用户名</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">密码</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>	
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">端口</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>	
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">CPU使用率阈值(%)</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">连续达到阈值次数</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>	
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">内存使用率阈值(%)</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">连续达到阈值次数</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>	
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">配额默认比例(%)</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			    	<div class="col-lg-6 prel">
+			    		<div id="table1" class="table-div" style="height:150px"></div>
+			    		<i class="icon-chevron-right icon-animate pabs f14" style="z-index:2000;right:-5px;top:5px"></i>
+			    		<i class="icon-chevron-left icon-animate pabs f14" style="z-index:2000;right:-5px;top:25px"></i>
+			    	</div>
+			    	<div class="col-lg-6">
+			    		<div id="table2" class="table-div" style="height:150px"></div>
+			    	</div>
+			    </div>
+
+			    <div class="form-group">
+			    	<div class="col-lg-6 prel" style="padding-left:0;padding-right:0">
+				    	<label class="col-lg-4 control-label">脚本全路径</label>
+				        <div class="col-lg-8">
+							<input type="text" class="form-control input-sm" data-id="assetName">
+				        </div>
+				    	<label class="col-lg-4 control-label mt10">脚本参数</label>
+				        <div class="col-lg-8 mt10">
+							<input type="text" class="form-control input-sm" data-id="assetName">
+				        </div>
+				        <label class="col-lg-12 control-label mt10 tr">多个参数用逗号隔开</label>
+			    		<i class="icon-chevron-right icon-animate pabs f14" style="z-index:2000;right:-5px;top:5px"></i>
+			    		<i class="icon-chevron-left icon-animate pabs f14" style="z-index:2000;right:-5px;top:25px"></i>
+			    	</div>
+			    	<div class="col-lg-6">
+			    		<div id="table3" class="table-div" style="height:150px"></div>
+			    	</div>
+			    </div>
+
+			    <div class="form-group">
+			    	<div class="col-lg-6 prel" style="padding-left:0;padding-right:0">
+				    	<label class="col-lg-4 control-label">进程路径</label>
+				        <div class="col-lg-8">
+							<input type="text" class="form-control input-sm" data-id="assetName">
+				        </div>
+				        <div class="col-lg-4"></div>
+				        <div class="col-lg-8" style="height:121px;overflow: hidden">
+				        	<ul data-id="process_ul" 
+				        			style="border: 1px solid #cfdadd;border-top:none">
+				        		<li class="p5 bbd">
+				        			<i style="color:#ddd;" class="icon-circle f12"></i>
+				        			<span>进程1</span>
+				        		</li>
+				        		<li class="p5 bbd">
+				        			<i style="color:#ddd;" class="icon-circle f12"></i>
+				        			<span>进程2</span>
+				        		</li>
+				        	</ul>
+				        </div>
+			    		<i class="icon-chevron-right icon-animate pabs f14" style="z-index:2000;right:-5px;top:5px"></i>
+			    		<i class="icon-chevron-left icon-animate pabs f14" style="z-index:2000;right:-5px;top:25px"></i>
+			    	</div>
+			    	<div class="col-lg-6">
+			    		<div id="table4" class="table-div" style="height:150px"></div>
+			    	</div>
+			    </div>
+
+			    <div class="form-group">
+					<label class="col-lg-2 control-label">备注</label>
+					<div class="col-lg-10">
+						<textarea class="form-control input-sm"></textarea>
+					</div>
+			    </div>
+			</form>
+		</div>
+	</div>
+	<!-- 修改弹出框 End -->
+
+	<!-- 修改弹出框 在switch中 Start-->
+	<div class="template" id="update_template_in_switch">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form" id="update_form">
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">监控器名称</label>
+			        <div class="col-lg-4">
+			            <input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">状态</label>
+			        <div class="col-lg-4" style="height:30px">
+						<div class="radio">
+			              <label class="i-checks">
+			                <input type="radio" value="option1" name="a">
+			                <i></i>
+			                启用
+			              </label>
+						</div>
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">监控器类型</label>
+			        <div class="col-lg-4">
+			            <input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">轮询时间</label>
+			        <div class="col-lg-1" style="width:100px">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			        </div>
+			        <div class="col-lg-2">
+		              <input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">被监控资产名称</label>
+			        <div class="col-lg-4">
+			        	<div class="input-group w-all">
+			        		<div id="inputdrop" class="inputdrop"></div>
+				            <span class="input-group-btn">
+				            	<button class="btn btn-default btn-date" type="button">
+				            		<i class="glyphicon glyphicon-calendar"></i>
+				            	</button>
+				            </span>
+			            </div>
+			        </div>
+			        <label class="col-lg-2 control-label">代理服务器</label>  
+			        <div class="col-lg-4">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">CPU使用率阈值(%)</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">连续达到阈值次数</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>	
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">内存使用率阈值(%)</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			        <label class="col-lg-2 control-label">连续达到阈值次数</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>	
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">SNMP模板</label>
+			        <div class="col-lg-4">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">版本</label>
+			        <div class="col-lg-4">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			        </div>
+			        <label class="col-lg-2 control-label">端口</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+			        <label class="col-lg-2 control-label">读COMMUNITY</label>
+			        <div class="col-lg-4">
+						<input type="text" class="form-control input-sm" data-id="assetName">
+			        </div>
+			    </div>
+
+			    <div class="form-group">
+					<label class="col-lg-2 control-label">备注</label>
+					<div class="col-lg-10">
+						<textarea class="form-control input-sm" data-id="remark"></textarea>
+					</div>
+			    </div>
+			</form>
+		</div>
+	</div>
+	<!-- 修改弹出框 在switch中 End-->
+
+	<!-- 进程探测弹出框 -->
+	<div class="template" id="process_test_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form">
+			    
+			</form>
+		</div>
+	</div>
+</tem>

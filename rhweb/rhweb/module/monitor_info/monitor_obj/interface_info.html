@@ -1,0 +1,263 @@
+<div class="panel-body no-tb-padder" style="width:900px;overflow:auto">
+
+<h1>接口明细</h1>
+<form class="bs-example form-horizontal xs-form clearfix" id="detail_form">
+	<div class="form-group">
+		<label class="col-lg-2 control-label">接口索引：</label>
+	    <label class="col-lg-4 control-label tl" data-id="interfaceInd"></label>
+	    <label class="col-lg-2 control-label">管理IP：</label>
+	    <label class="col-lg-4 control-label tl" data-id="interfaceIp"></label>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-2 control-label">连接资产：</label>
+	    <label class="col-lg-4 control-label tl" data-id="linkEdName"></label>
+	    <label class="col-lg-2 control-label">资产名称：</label>
+	    <label class="col-lg-4 control-label tl" data-id="assetName"></label>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-2 control-label">资产类型：</label>
+	    <label class="col-lg-4 control-label tl" data-id="assetTypeName"></label>
+	    <label class="col-lg-2 control-label">接口入口流速：</label>
+	    <label class="col-lg-4 control-label tl" data-id="portalFlux"></label>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-2 control-label">接口入口出速：</label>
+	    <label class="col-lg-4 control-label tl" data-id="exportFlux"></label>
+	    <label class="col-lg-2 control-label">接口状态：</label>
+	    <label class="col-lg-4 control-label tl" data-id="currentStatus"></label>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-2 control-label">接口描述：</label>
+	    <label class="col-lg-4 control-label tl" data-id="interfaceDesc"></label>
+	</div>
+</form>
+
+
+<h1>流量图相关</h1>
+<form class="form-horizontal xs-form clearfix bdd p5 form-horizontalp5" id="query_form">
+	<label class="col-lg-2 control-label" style="width:75px">时间范围：</label>
+	<div class="col-lg-3" style="width:135px">
+		<select class="form-control input-sm" data-type="select" id="time_range_sel">
+			<option value="day">上一天</option>
+			<option value="week">上一周</option>
+			<option value="month">上一月</option>
+			<option value="custom">自定义</option>
+		</select>
+	</div>
+	<label class="col-lg-2 control-label" style="width:75px">起始时间：</label>
+	<div class="col-lg-3" style="width: 205px">
+        <div class="input-group w-all">
+            <input type="text" class="form-control input-sm" data-type="date" id="start_date">
+        </div>
+    </div>
+	<label class="col-lg-2 control-label" style="width:75px">终止时间：</label>
+	<div class="col-lg-3" style="width: 205px">
+        <div class="input-group w-all">
+            <input type="text" class="form-control input-sm" data-type="date" id="end_date">
+        </div>
+    </div>
+    <div class="col-lg-1" style="width:85px">
+    	<a class="a_btn prel" style="top:5px" id="query_btn">查询</a>
+    </div>
+</form>
+<div class="w-all bdd mt5 p5" style="height:400px" id="flow_flux_chart_div"></div>
+
+<div class="w-all bdd mt5 p5" style="height:400px" id="flow_error_chart_div"></div>
+
+<div class="w-all bdd mt5 p5" style="height:400px" id="flow_loss_chart_div"></div>
+
+<h1>平均流速</h1>
+<div class="w-all bdd" style="height:400px" id="avg_chart_div"></div>
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'] ,function (plot){
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+$("#time_range_sel").change();
+
+flow_chart_render();
+
+avg_chart_render();
+
+detail_info_get();
+
+function view_init()
+{
+	index_form_init($("#query_form"));
+}
+
+function event_init()
+{
+	var start_day;
+	var end_day;
+	$("#time_range_sel").change(function (){
+		if ($(this).val() == "day")
+		{
+			start_day = g_moment().subtract(1, 'days').format("YYYY-MM-DD");
+			$("#start_date").val(start_day + " 00:00:00");
+			$("#end_date").val(start_day + " 23:59:59");
+		}
+		if ($(this).val() == "week")
+		{
+			var d = getPreviousWeekStartEnd();
+			$("#start_date").val(d.start + " 00:00:00");
+			$("#end_date").val(d.end + " 23:59:59");
+		}
+		if ($(this).val() == "month")
+		{
+			var prev_month_firstday_str = g_moment().subtract(1, 'months').format("YYYY-MM") + "-01";
+			var current_month_firstday_str = g_moment().format("YYYY-MM") + "-01";
+			$("#start_date").val(prev_month_firstday_str + " 00:00:00");
+			$("#end_date").val(g_moment(current_month_firstday_str).subtract(1, 'days').format("YYYY-MM-DD") + " 23:59:59");
+		}
+	});
+
+	$("#query_btn").click(function (){
+		flow_chart_render();
+	});
+}
+
+function detail_info_get()
+{
+	um_ajax_get({
+		url : "interfaceInfo/queryInterface",
+		paramObj : {edId : urlParamObj.assetId ,interfaceInd : urlParamObj.interfaceId ,monitorId:urlParamObj.monitorId},
+		successCallBack : function (data){
+			$("#detail_form").umDataBind("render" ,data[0]);
+			$("[data-id=linkEdName]").text(data[0].linkEdName?data[0].linkEdName:"没有配置");
+			$("[data-id=currentStatus]").text(data[0].currentStatus==1?"UP":"DOWN");
+		}
+	});
+}
+
+function flow_chart_render()
+{
+	// 起止时间校验
+	var start_date = $("#start_date").val();
+	var end_date = $("#end_date").val();
+	if (""===start_date) 
+	{
+		g_validate.setError($("#start_date"), "不能为空。");
+		return false;
+	} 
+	else 
+	{
+		g_validate.setError($("#start_date"), "");
+	}
+	if (""===end_date) 
+	{
+		g_validate.setError($("#end_date"), "不能为空。");
+		return false;
+	} 
+	else 
+	{
+		g_validate.setError($("#end_date"), "");
+	}
+	var start_int = Date.parse(new Date(start_date))/1000;
+	var end_int = Date.parse(new Date(end_date))/1000;
+	if (start_int > end_int) 
+	{
+		g_validate.setError($("#end_date"), "终止时间应当晚于起止时间。");
+		return false;
+	} 	
+	g_validate.setError($("#end_date"), "");
+
+	um_ajax_get({
+		url : "interfaceInfo/queryInterfaceInfo",
+		paramObj : {
+					  edId : urlParamObj.assetId ,interfaceInd : urlParamObj.interfaceId,monitorId:urlParamObj.monitorId,
+					  startTime : $("#start_date").val(),endTime:$("#end_date").val()
+				   },
+		successCallBack : function (data){
+			chart_render($("#flow_flux_chart_div") ,data.jsonStringFluxMap ,"端口流速信息");
+			chart_render($("#flow_error_chart_div") ,data.jsonStringErrorMap ,"端口错误信息");
+			chart_render($("#flow_loss_chart_div") ,data.jsonStringLossMap ,"端口丢包信息");
+		}
+	});
+}
+
+function avg_chart_render()
+{
+	um_ajax_get({
+		url : "interfaceInfo/queryAveSpeed",
+		isLoad : false,
+		paramObj : {
+					  edId : urlParamObj.assetId ,interfaceInd : urlParamObj.interfaceId ,monitorId:urlParamObj.monitorId
+				   },
+		successCallBack : function (data){
+			chart_render($("#avg_chart_div") ,data.jsonStringSpeedMap ,"平均流速");
+		}
+	});
+}
+
+
+function getPreviousWeekStartEnd(date)
+{
+	var date = new Date() || date, day, start, end, dayMSec = 24 * 3600 * 1000;
+	today = date.getDay() - 1;
+	end = date.getTime() - today * dayMSec;
+	start = end - 7 * dayMSec;
+	end = date.getTime() - (today + 1) * dayMSec;
+	return {start : getFormatTime(start), end : getFormatTime(end)};
+	function getFormatTime(time){
+		date.setTime(time);
+		return date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+	}
+}
+
+function chart_render(el ,chartData ,title)
+{
+	var datas = chartData.datas;
+	var legend = [];
+	var category = [];
+	var series = [];
+	for (var i = 0; i < datas.length; i++) {
+		legend.push(datas[i].lineName);
+		var tmp = datas[i].items;
+		var obj = new Object();
+		obj.name = datas[i].lineName;
+		obj.type = "line";
+		obj.areaStyle = {normal: {}};
+		obj.data = [];
+		for (var j = 0; j < tmp.length; j++) {
+			obj.data.push(tmp[j].value);
+		};
+		series.push(obj);
+	};
+	if (datas && datas.length > 0)
+	{
+		for (var i = 0; i < datas[0].items.length; i++) {
+			if(datas[0].items[i].lable.length>10)
+				datas[0].items[i].lable += ':00';
+			category.push(datas[0].items[i].lable);
+		};
+	}
+
+	plot.lineRender(el ,{
+		legend : legend,
+		category : category,
+		series : series,
+		axisLabelRotate : 15,
+		grid: {
+		        left: '6%',
+		        right: '3%',
+		        bottom: '10%',
+		        containLabel: true
+		    },
+		title: title+"("+chartData.units+")"
+	});
+
+}
+
+
+});
+});
+</script>

@@ -1,0 +1,88 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>应用信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="application_info_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">总请求次数(次)：</label>
+                    <label class="col-lg-3 control-label tl" data-id="requestCount"></label>
+                    <label class="col-lg-2 control-label">错误请求次数(次)：</label>
+                    <label class="col-lg-3 control-label tl" data-id="errorCount"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">当前请求次数(次)：</label>
+                    <label class="col-lg-3 control-label tl" data-id="currentCount2"></label>
+                    <label class="col-lg-2 control-label">更新时间：</label>
+                    <label class="col-lg-3 control-label tl" data-id="enterDate"></label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="monitor-panel">
+        <div class="table_div" id="application_info_list_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var application_info_url = "monitorview/middleware/websphere/queryWeblApplication";
+
+var application_info_header = [
+                            {text:'Service路径',name:"jmsName"},
+                            {text:'低水位(次)',name:"bytesCurrentcnt"},
+                            {text:'高水位(次)',name:"bytesPendingcnt"},
+                            {text:'所有调用执行时长(ms)',name:"bytesPageaCurtcnt"},
+                            {text:'最长调用执行时长(ms)',name:"messagesCurrentcnt"},
+                            {text:'最短调用执行时长(ms)',name:"messagesPendcnt"},
+                            {text:'总请求次数(次)',name:"messagesPageCurtcnt"},
+                            {text:'当前请求次数(次)',name:"messagesPageCurtcnt"},
+                            {text:'入库时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    application_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function application_info()
+{
+    urlParamObj.time = $("#query_time_label").text();   
+    um_ajax_get({
+        url : application_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            $("#application_info_div").umDataBind("render" ,data.weblapplicationstore);
+            
+            g_grid.render($("#application_info_list_div"),{
+                 header:service_info_header,
+                 data:data.weblappwebservletstore,
+                 gridCss : "um-grid-style",
+                 hasBorder : false,
+                 hideSearch : true,
+                 allowCheckBox : false
+            });
+        }
+    });
+}
+
+
+});
+});
+</script>

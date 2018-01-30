@@ -1,0 +1,91 @@
+
+  <div class="panel-body no-tb-padder" data-getter="cert">
+    <form class="bs-example form-horizontal xs-form" data-type="form">
+
+      <input type="hidden" data-store="connectType" />
+      <div class="form-group">
+        <label class="col-lg-2 tr mb0">连接方式</label>
+        <div class="col-lg-4 checkbox tl ml5">
+          <label class="i-checks">
+            <input type="checkbox" data-name="open"><i></i> 开启
+          </label>
+        </div>
+      </div>
+
+      <div class="h-all prel" data-box="tab-div" style="min-height: 150px;">
+        <ul class="pabs v-ul" data-id="tab-ul" style="top:0;left:20px;width:80px"> <!-- consoleIp -->
+            <li value="SSH2">SSH2</li>
+            <li value="TELNET">TELNET</li>
+        </ul>
+
+        <div class="tab-content bdd pt10 pb10 mb10" style="margin-left: 100px;height:320px">
+          <!-- ssh2 -->
+          <div class="tab-pane" data-getter="ssh">
+            <div class="form-group">
+              <label class="col-lg-2 control-label required">用户名</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="trustName" validate="required" disabled="disabled">
+              </div>
+              <label class="col-lg-2 control-label required">密码</label>
+              <div class="col-lg-3">
+                <input type="password" class="form-control input-sm" data-id="trustPassWord" validate="required" disabled="disabled">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label required">端口</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="consolePort" validate="required,port" disabled="disabled">
+              </div>
+            </div>
+            <div class="table-oper" style="padding-right:16.67%;">
+              <a href="javascript:void(0);" class="dib monitor_btn_styl" data-test="ssh">
+                <span>测试</span>
+              </a>
+            </div> 
+          </div>
+          <!-- telnet -->
+          <div class="tab-pane" data-getter="telnet">
+            <div class="form-group">
+              <label class="col-lg-2 control-label required">用户名</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="trustName" validate="required" disabled="disabled">
+              </div>
+              <label class="col-lg-2 control-label required">密码</label>
+              <div class="col-lg-3">
+                <input type="password" class="form-control input-sm" data-id="trustPassWord" validate="required" disabled="disabled">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label required">端口</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="consolePort" validate="required,port" disabled="disabled">
+              </div>
+              <label class="col-lg-2 control-label required">命令提示符</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" validate="required" data-id="commandPrompt" disabled="disabled">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label">登录提示符</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="loginPrompt" disabled="disabled">
+              </div>
+              <label class="col-lg-2 control-label">密码提示符</label>
+              <div class="col-lg-3">
+                <input type="text" class="form-control input-sm" data-id="passwordPrompt" disabled="disabled">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label" style="color: #ec7063;">提示：</label>
+              <label class="col-lg-4 control-label tl" style="color: #ec7063;">登录、密码提示符为选填项，请根据实际情况填写。</label>
+            </div>
+            <div class="table-oper" style="padding-right:16.67%;">
+              <a href="javascript:void(0);" class="dib monitor_btn_styl" data-test="telnet">
+                <span>测试</span>
+              </a>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,12 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "ARRAY",
+					"fileName" : "array",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "array/base.html","icon" : "monitor-base-info"},
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

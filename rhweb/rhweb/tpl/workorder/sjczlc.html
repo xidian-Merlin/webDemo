@@ -1,0 +1,146 @@
+<div>
+<div data-type="workorder">
+	<div id="workorder_div">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<h1 style="text-align:center;">事件处置单</h1>
+			</div>
+			<div class="panel panel-default animated fadeInRight" id="step1">
+				<div class="panel-body no-tb-padder">
+					<div id="one" class="prel">
+						<div class="form-group mb20">
+						    <label class="col-lg-2 control-label">填写日期：</label>
+						    <label class="col-lg-2 control-label tl" style="width:180px" data-id="wf_step1_applydate" sysDate></label>
+
+						    <label class="col-lg-2 control-label" style="width:90px">起草人：</label>
+						    <label class="col-lg-2 control-label tl"  style="width:180px" data-id="wf_step1_applicant_name" sessionUser></label>
+						    <input class="hidden" data-id="wf_step1_applicant">
+						    <input type="hidden" data-id="htmlFormKeyClass">
+						    <input type="hidden" data-id="procInstanceId">
+					        <input type="hidden" data-id="bussinessSytemId">
+
+						    <label class="col-lg-2 control-label" style="width:90px">编号：</label>
+						    <label class="col-lg-2 control-label tl"  style="width:180px" data-id="workorderCode"></label>
+						</div>
+						<div class="form-group">
+						    <label class="col-lg-2 control-label">工单名称：</label>
+						    <div class="col-lg-2 tl" style="width:180px" >
+								<input type="text" class="form-control input-sm" data-id="wf_step1_wfname" validate="required"> 
+							</div>
+					        <label class="col-lg-2 control-label" style="width:90px">工单类型：</label>
+						    <div class="col-lg-2 tl" style="width:180px" >
+						    	<select class="form-control input-sm" data-type="select" data-id="eventType" validate="required">
+									<option value="2">故障事件</option>
+									<option value="3">性能事件</option>
+									<option value="13">配置事件</option>
+									<option value="14">脆弱性事件</option>
+								</select>
+					        </div>
+						    <label class="col-lg-2 control-label" style="width:90px">工单等级：</label>
+						    <div class="col-lg-2 tl" style="width:180px" >
+					        	<select class="form-control input-sm" data-type="select" data-id="wf_step1_workorderlevel" validate="required">
+									<option value="">----</option>
+									<option value="1">很高</option>
+									<option value="2">高</option>
+									<option value="3">中</option>
+									<option value="4">低</option>
+									<option value="5">很低</option>
+								</select>
+					        </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-lg-2 control-label">安全域：</label>
+						    <div class="col-lg-2 tl" style="width:180px" >
+					        	<div id="securityDomianId" class="inputdrop" securityarea required></div>
+					        </div>
+					        <label class="col-lg-2 control-label" style="width:90px">业务域：</label>
+						    <div class="col-lg-2 tl" style="width:180px" >
+					        	<div id="bussinessDomianId" class="inputdrop" businessarea></div>
+					        </div>
+					        <label class="col-lg-2 control-label" style="width:90px">资产：</label>
+						    <div class="col-lg-2 tl" style="width:180px" >
+					        	<div type="text" class="inputdrop" id="wf_step1_assetname" asset required></div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-lg-2 control-label">事件描述：</label>
+							<div class="col-lg-10 tl" style="width:721px">
+								<textarea class="form-control input-sm" data-id="wf_step1_applymemo"></textarea>
+							</div>
+						</div>
+					</div>
+
+					<div class="table-oper" style="padding-bottom:7px" id="table_oper">
+						<a href="javascript:void(0);" id="notice_btn">
+							<span>通知</span>
+						</a>
+						<a href="javascript:void(0);" id="email_associate_btn">
+							<span>邮件关联</span>
+						</a>
+					</div>
+					<div id="notice_table_div" class="table-div" style="height: 300px"></div>
+				</div>
+				<div class="mask"></div>
+			</div>
+
+			<div class="panel panel-default animated fadeInRight mt20" id="step2">
+				<div class="panel-body no-tb-padder">
+					<div class="prel" style="padding-bottom: 2px">
+						<div class="form-group">
+						    <div class="col-lg-3 tl">
+					        	<div class="checkbox">
+									  <label class="i-checks">
+									    <input type="checkbox" id="aprresult">
+									    <i></i> 返回上一环节
+									  </label>
+								</div>
+								<input type="hidden" data-id="wf_step2_aprresult" value="1" />
+					       </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-lg-2 control-label tr">处置人：</label>
+						    <div class="col-lg-3 tl">
+						    	<input type="text" class="form-control input-sm no-write" data-id="wf_step2_approver_name" readonly sessionUser/>
+						    	<input type="hidden" data-id="wf_step2_approver">
+						    	<input type="hidden" data-id="htmlFormKeyClass">
+						    	<input type="hidden" data-id="wf_step1_applicant">
+						    	<input type="hidden" data-id="eventType">
+						    </div>
+
+						    <label class="col-lg-2 control-label tr">处置日期：</label>
+						    <div class="col-lg-3 tl">
+						    	<input type="text" class="form-control input-sm no-write" data-id="wf_step2_aprdate" readonly sysDate/>
+						    </div>
+						</div>
+						<div class="form-group">
+						    <label class="col-lg-2 control-label tr">处置结果：</label>
+						    <div class="col-lg-8 tl">
+						        <textarea class="form-control input-sm" data-id="wf_step2_aprview"></textarea>
+						    </div>
+						</div>
+						<div class="mask"></div>
+					</div>
+					<div class="form-group">
+					    <label class="col-lg-2 control-label tr">附件：</label>
+					    <label class="col-lg-3 control-label tl" id="attachments">
+					    	<i class="icon-folder-open" id="upload_btn" title="附件信息" style="font-size:16px;"></i>
+					    </label>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+	require(['js/plugin/workorder/workorder.js'] ,function (workorder){
+		workorder.workorder_init("sjczlc_step1");
+		$("#submit_btn").click(function(){
+			workorder.sjczlc_step1_submit();
+		});		
+});
+});
+</script>

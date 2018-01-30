@@ -1,0 +1,129 @@
+<div data-id="monitor_index" class="h-all" style="overflow-y:auto">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+
+			<div id="detail_store_form">
+	      <div class="form-group">
+		      <label class="col-lg-2 control-label">Weblogic版本</label>
+		      <div class="col-lg-3">
+		        <select data-id="version" data-type="select">
+		        	<option value="WEBLOGIC">9以上版本</option>
+		        	<option value="WEBLOGIC8">8</option>
+		        </select>
+		      </div>
+	        <label class="col-lg-2 control-label pt0 required">端口</label>
+	        <div class="col-lg-4">
+	          <input type="text" class="form-control input-sm" data-id="monitorPort" maxlength="5" validate="required,between1~65535" value="7001"/>
+	        </div>
+	      </div>
+
+	      <div class="form-group">
+		      <label class="col-lg-2 control-label">连接方式</label>
+		      <div class="col-lg-3">
+		        <select data-id="connectType" data-type="select">
+		        	<option value="RMI">RMI</option>
+		        	<option value="T3">T3</option>
+		        </select>
+		      </div>
+	        <label class="col-lg-2 control-label pt0">用户名</label>
+	        <div class="col-lg-4">
+	          <input type="text" class="form-control input-sm" data-id="monitorUserName" validate="stringLimit0" />
+	        </div>
+	      </div>
+
+	      <div class="form-group">
+	        <label class="col-lg-2 control-label pt0">密码</label>
+	        <div class="col-lg-3">
+	          <input type="password" class="form-control input-sm" data-id="monitorPassWord" />
+	        </div>
+	        <label class="col-lg-2 control-label pt0">jdbc连接数据阈值告警(%)</label>
+	        <div class="col-lg-4">
+	          <input type="text" class="form-control input-sm" data-id="dbUser" validate="number,between0~100"/>
+	        </div>
+	      </div>
+	      <div class="form-group">
+				<label class="control-label col-lg-2">web应用程序基线</label>
+				<div class="col-lg-3 table-oper prel tl" style="height:30px;top:-9px">
+			      	<a href="javascript:void(0);" class="dib monitor_btn_styl" data-btn="setWebBaseLine">
+			          <span>web基线</span>
+			        </a>
+		      	</div>
+				<input type="text" hidden="hidden" data-id="dbUser"/>
+		  </div>
+
+				<div data-name="for_open" class="dn">
+					<div class="form-group">
+						<label class="control-label col-lg-2">Server日志路径</label>
+						<div class="col-lg-9">
+							<input type="text" class="form-control input-sm" data-id="monitorDatabaseName" validate="path">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-lg-2">Domain日志路径</label>
+						<div class="col-lg-9">
+							<input type="text" class="form-control input-sm" data-id="rcCmd" validate="path">
+						</div>
+					</div>	
+
+					<div class="form-group">
+						<label class="control-label col-lg-2">Access日志路径</label>
+						<div class="col-lg-9">
+							<input type="text" class="form-control input-sm" data-id="scCmd" validate="path">
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group" id="app_url">
+				<label class="control-label col-lg-2">应用URL</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="urlAddress" data-flag="url_flag" validate="url">
+				</div>
+				<div class="col-lg-1">
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="url_add" title="添加">
+				  	  	<i class="icon-chevron-right"></i>
+				    </div>
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="url_remove" title="删除">
+				    	<i class="icon-chevron-left"></i>
+				    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-he" style="height:200px;"></div>
+				</div>
+			</div>
+			<div class="form-group" style="margin-bottom:5px">
+				<div class="col-lg-1">服务器名称</div>
+				<div class="col-lg-1">
+					<a class="a_btn" id="server_name_btn" style="background-color: #62cb31">获取</a>
+				</div>
+			</div>
+			<div class="form-group" id="server_name">
+				<div class="col-lg-5">
+					<!--
+					<input type="text" class="form-control input-sm" data-id="srcIpOrInterface" data-flag="server_flag">
+					-->
+					<div class="table_div" id="grid-server-left" style="height:200px;"></div>
+				</div>
+				<div class="col-lg-1">
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="server_add" title="添加">
+				  	  	<i class="icon-chevron-right"></i>
+				    </div>
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="server_remove" title="删除">
+				    	<i class="icon-chevron-left"></i>
+				    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-server" style="height:200px;"></div>
+				</div>
+			</div>
+
+      <div class="table-oper" style="padding-right:8.33%;">
+        <a href="javascript:void(0);" class="dib monitor_btn_styl" data-type="test_btn_in_step5">
+          <span>测试配置</span>
+        </a> 
+      </div> 
+		</form>
+	</div>
+</div>

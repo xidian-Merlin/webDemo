@@ -1,0 +1,20 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "SQLSERVER",
+					"fileName" : "sqlserver",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "sqlserver/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "数据库信息" ,"href" : "sqlserver/database.html" ,"icon" : "monitor-database"},
+								{"text" : "数据库配置信息" ,"href" : "sqlserver/database_config.html" ,"icon" : "monitor-database-config"},
+								{"text" : "注册与注销数" ,"href" : "sqlserver/regist.html" ,"icon" : "monitor-jta"},
+								{"text" : "高速缓存信息" ,"href" : "sqlserver/cache.html" ,"icon" : "monitor-request"},
+								{"text" : "作业明细" ,"href" : "sqlserver/work.html" ,"icon" : "monitor-query-result"},
+								{"text" : "缓冲区信息" ,"href" : "sqlserver/cache_space.html" ,"icon" : "monitor-data-storage"},
+								{"text" : "内存信息" ,"href" : "sqlserver/memory.html" ,"icon" : "monitor-data-info"},
+								{"text" : "锁信息" ,"href" : "sqlserver/lock.html" ,"icon" : "monitor-user-access"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

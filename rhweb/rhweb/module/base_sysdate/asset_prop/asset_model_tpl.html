@@ -1,0 +1,91 @@
+<tem>
+<!-- 编辑 -->
+<div class="template" id="edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" enctype="multipart/form-data">
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">资产型号</label>
+				<div class="col-lg-8">
+					<input type="hidden" name="edmtId" data-id="edmtId">
+					<input type="text" maxlength="32" class="form-control input-sm"
+						data-id="edmtName" name="edmtName" validate="required,stringLimit">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-3 control-label required">型号高度(U)</label>
+				<div class="col-lg-8">
+					<input type="text" class="form-control input-sm"
+						data-id="edmtUnit" name="edmtUnit" validate="required,between1~99"> 
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-3 control-label">描述</label>
+				<div class="col-lg-8">
+					<textarea class="form-control input-sm" maxlength="512" data-id="edmtDesc" name="edmtDesc"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group" id="edmtImgDiv" style="display:none">
+		        <label class="col-lg-3 control-label">面板图</label>
+		        <div class="col-lg-8 pt5">
+		      	    <img data-id="edmtImg"/>
+		        </div>
+		    </div>
+
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">面板图</label>
+		      	<div class="col-lg-8">
+			       <div id="edmtMap"></div>
+			    </div>
+		    </div>
+
+		    <div class="form-group">
+		      <label class="col-lg-3 control-label">提示信息:</label>
+		      <label class="col-lg-8 control-label" style="text-align:left;">最好选用宽度为200px的图片。组件高度单位为:U。1U=74px。组件高度最好和图片高度一致，以便更好的显示图片。</label>
+		    </div>
+
+		    <div class="form-group">
+		    	<label class="col-lg-3 control-label">面板示例说明:</label>
+		    	<div class="col-lg-8">
+						<img src="/img/assetmodel/error1.jpg" class="col-lg-6" style="width:175px;height:30px;margin:5px;">
+						<img src="/img/assetmodel/error2.jpg" class="col-lg-6" style="width:175px;height:30px;margin:5px;">
+						<img src="/img/assetmodel/error3.jpg" class="col-lg-6" style="width:175px;height:30px;margin:5px;">
+						<img src="/img/assetmodel/correct.jpg" class="col-lg-6" style="width:175px;height:30px;margin:5px;">
+					</div>
+		    </div>
+		</form>
+	</div>
+</div>
+
+<!-- 详情 -->
+<div class="template" id="detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form xs-form-mb5">
+			<div class="form-group">
+				<label class="col-lg-4 control-label">资产型号：</label> 
+				<label class="col-lg-7 control-label tl" data-id="edmtName"></label>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">型号高度：</label> <label
+					class="col-lg-7 control-label tl" data-id="edmtUnit"></label>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">描述：</label> <label
+					class="col-lg-7 control-label tl" data-id="edmtDesc"></label>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">面板图：</label>
+				<div class="col-lg-6">
+					<img src="#" data-id="img">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+</tem>

@@ -1,0 +1,128 @@
+<div>
+<div data-type="workorder">
+	<div id="workorder_div">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<h1 style="text-align:center;">资产报废申请单</h1>
+			</div>
+
+			<div class="panel panel-default animated fadeInRight" id="step1">
+				<div class="panel-body no-tb-padder">
+					<div class="form-group mb20">
+					    <label class="col-lg-2 control-label tr">申请日期：</label>
+					    <label class="col-lg-3 control-label tl" data-id="wf_step1_applydate" sysDate></label>
+
+					    <label class="col-lg-2 control-label tr">申请人：</label>
+					    <label class="col-lg-3 control-label tl" data-id="wf_step1_applicant_name" sessionUser></label>
+					    <input type="hidden" data-id="wf_step1_applicant"/>
+					    <input type="hidden" data-id="htmlFormKeyClass">
+					</div>
+
+					<div class="form-group">
+					    <label class="col-lg-2 control-label tr">工单名称：</label>
+					    <div class="col-lg-3 tl">
+					        <input type="text" class="form-control input-sm" data-id="wf_step1_wfname" validate="required"/>
+					    </div>
+
+					    <label class="col-lg-2 control-label tr">资产名称：</label>
+					    <div class="col-lg-3 tl">
+				        	<div class="inputdrop" id="wf_step1_assetname" asset required></div>
+				        </div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-2 control-label tr">申请原因：</label>
+						<div class="col-lg-8 tl" >
+							<textarea class="form-control input-sm" data-id="wf_step1_applymemo"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="mask"></div>
+			</div>
+				
+			<div class="panel panel-default animated fadeInRight mt10" id="step2">
+				<div class="panel-body no-tb-padder">
+					<div class="form-group mb10">
+					    <label class="col-lg-2 control-label tr">审批日期：</label>
+					    <div class="col-lg-3 tl">
+					        <input type="text" class="form-control input-sm no-write" data-id="wf_step2_aprdate" readonly sysDate/>
+					    </div>
+
+					    <label class="col-lg-2 control-label tr">审批人：</label>
+					    <div class="col-lg-3 tl">
+					        <input type="text" class="form-control input-sm no-write" data-id="wf_step2_approver_name" readonly sessionUser/>
+					        <input type="hidden" data-id="wf_step2_approver"/>
+					        <input type="hidden" data-id="htmlFormKeyClass">
+					        <input type="hidden" data-id="wf_step1_assetname">
+					    </div>
+					</div>
+
+					<div class="form-group">
+					    <label class="col-lg-2 control-label">审批结果：</label>
+					    <div class="col-lg-3 radio">
+							<label class="i-checks">
+							    <input type="radio" value="1" name="wf_step2_aprresult" data-id="wf_step2_aprresult">
+							    <i></i>
+							     同意
+							</label>
+							<label class="i-checks ml20" >
+							    <input type="radio" value="0" name="wf_step2_aprresult">
+							    <i></i>
+							     不同意
+							</label>
+					    </div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-2 control-label tr">审批意见：</label>
+						<div class="col-lg-8 tl" >
+							<textarea class="form-control input-sm" data-id="wf_step2_aprview"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="mask"></div>
+			</div>
+			
+			<div class="panel panel-default animated fadeInRight mt10" id="step3">
+				<div class="panel-body no-tb-padder">
+					<div class="form-group mb15">
+						<label class="col-lg-2 control-label tr" >执行日期：</label>
+					    <div class="col-lg-3 tl">
+					    	<input type="text" class="form-control input-sm no-write" data-id="wf_step3_carrydate" readonly sysDate/>
+					    </div>
+
+						<label class="col-lg-2 control-label tr">执行人：</label>
+					    <div class="col-lg-3 tl">
+					        <input type="text" class="form-control input-sm no-write" data-id="wf_step3_carryperson_name" readonly sessionUser/>
+					        <input type="hidden" data-id="wf_step3_carryperson"/>
+					        <input type="hidden" data-id="htmlFormKeyClass">
+					        <input type="hidden" data-id="wf_step1_applicant"/>
+					        <input type="hidden" data-id="wf_step1_assetname">
+					    </div>		   
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-2 control-label tr">执行情况：</label>
+						<div class="col-lg-8 tl" >
+							<textarea class="form-control input-sm" data-id="wf_step3_carrystatus"></textarea>
+						</div>
+					</div>	
+				</div>
+				<div class="mask"></div>
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['js/plugin/workorder/workorder.js'] ,function (workorder){
+	workorder.workorder_init("zcbflc_step1");
+	$("#submit_btn").click(function(){
+		workorder.zcbflc_step1_submit();
+	});
+});
+});
+	
+</script>

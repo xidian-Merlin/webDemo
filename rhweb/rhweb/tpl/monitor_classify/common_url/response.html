@@ -1,0 +1,215 @@
+<div class="mt5 mb5" style="height:30px" id="url_sel_div">
+    <select class="form-control input-sm" data-type="select" id="url_sel">
+    </select>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>页面信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="page_info">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">响应码：</label>
+                    <label class="col-lg-3 control-label tl" data-id="resultCode"></label>
+                    <label class="col-lg-2 control-label">响应时间（ms）：</label>
+                    <label class="col-lg-5 control-label tl" data-id="responseTime"></label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">是否匹配白名单：</label>
+                    <label class="col-lg-3 control-label tl" data-id="matchWhite"></label>
+                    <label class="col-lg-2 control-label">是否匹配黑名单：</label>
+                    <label class="col-lg-5 control-label tl" data-id="matchBlack"></label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">页面大小（Byte）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="urlPageSize"></label>
+                    <label class="col-lg-2 control-label">请求URL：</label>
+                    <label class="col-lg-5 control-label tl" data-id="urlAddress"></label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>响应时间</span>
+    </div>
+    <div class="monitor-panel" style="height:300px;padding:0">
+        <div class="col-lg-12 h-all" id="response_time_chart_div"></div>
+    </div>
+</div>
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>页面大小</span>
+    </div>
+    <div class="monitor-panel" style="height:300px;padding:0">
+        <div class="col-lg-12 h-all" id="page_size_chart_div"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js',
+         '/js/plugin/monitor/monitorInfo.js'] ,function (plot ,monitorInfo){
+
+var page_info_url = "monitorview/commonmonitor/commonurl/queryPageInfo";
+
+var response_info_chart_url = "monitorview/commonmonitor/commonurl/queryResponseTime";
+
+var urlParamObj = index_query_param_get();
+
+urlParamObj.time = $("#query_time_label").text();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    index_form_init($("#url_sel_div"));
+    url_sel(true);
+    response_time_chart();
+    page_size_chart();
+}
+
+function event_init()
+{
+    $("#url_sel").change(function (){
+        urlParamObj.time = $("#query_time_label").text();
+        urlParamObj.urlConfigId =  $(this).val()
+        page_info();
+        response_time_chart();
+        page_size_chart();
+    });
+}
+
+
+window.index_monitor_init = function ()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    page_info();
+	response_time_chart();
+	page_size_chart();
+}
+
+
+function url_sel(flag)
+{
+    um_ajax_get({
+        url : "monitorview/commonmonitor/commonurl/queryCommonUrlConfig",
+        paramObj : {monitorId : urlParamObj.monitorId},
+        isLoad : false,
+        successCallBack : function (data){
+            //$("#url_sel").umDataBind("render" ,data);
+            for (var i = 0; i < data.length; i++) {
+                $("#url_sel").append('<option value="'+data[i].urlConfigId+'">'+data[i].urlAddress+'</option>')
+            }
+            $("#url_sel").trigger("change");
+            if (flag)
+            {
+                page_info();
+            }
+        }
+    });
+}
+
+function page_info()
+{
+    $("#page_info").umDataBind("reset");
+    urlParamObj.urlConfigId = $("#url_sel").val();
+    um_ajax_get({
+        url : page_info_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+            $("#page_info").umDataBind("render" ,data);
+        }
+    });
+}
+
+//响应时间
+function response_time_chart()
+{
+    urlParamObj.urlConfigId = $("#url_sel").val();
+	um_ajax_get({
+        url : response_info_chart_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+            
+            var legendArray = ['响应时间(ms)'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var responseTimeObj = new Object();
+            responseTimeObj.name = '响应时间(ms)';
+            responseTimeObj.type = "line";
+            responseTimeObj.data = [];
+            for (var i = 0; i < data.length; i++) {
+                categoryArray.push(data[i].enterDate);
+            	responseTimeObj.data.push(data[i].responseTime);
+            }
+            seriesArray.push(responseTimeObj);
+
+            plot.lineRender($("#response_time_chart_div") ,{
+                legend : legendArray,
+                category :categoryArray,
+                series : seriesArray,
+                grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '3%',
+                    containLabel: true
+                }
+            });
+        }
+    });
+}
+
+//页面大小
+function page_size_chart()
+{
+    urlParamObj.urlConfigId = $("#url_sel").val();
+	um_ajax_get({
+        url : response_info_chart_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            
+            var legendArray = ['页面大小(byte)'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var urlPageSizeObj = new Object();
+            urlPageSizeObj.name = '页面大小(byte)';
+            urlPageSizeObj.type = "line";
+            urlPageSizeObj.data = [];
+            for (var i = 0; i < data.length; i++) {
+                categoryArray.push(data[i].enterDate);
+                urlPageSizeObj.data.push(data[i].urlPageSize);
+            }
+            seriesArray.push(urlPageSizeObj);
+
+            plot.lineRender($("#page_size_chart_div") ,{
+                legend : legendArray,
+                category :categoryArray,
+                series : seriesArray,
+                grid: {
+                    left: '10%',
+                    right: '10%',
+                    bottom: '3%',
+                    containLabel: true
+                }
+            });
+        }
+    });
+}
+
+});
+});
+</script>

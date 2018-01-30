@@ -1,0 +1,42 @@
+<script type="text/javascript" src="/module/monitor_info/monitor_obj/monitor_info.js"></script>
+<div class="w-all prel" style="min-height:100%">
+
+    <!-- 时间选择 -->
+    <div class="monitor_time_pick prel" id="time_pick_div">
+    	<i class="btn-commen refresh-btn mr10" style="cursor:pointer;" id="monitor_refresh_btn"></i>
+    	<label style="margin-right:20px">当前为：<span id="query_time_label"></span></label>
+    	<div style="display:inline-block" class="input-append date form_datetime prel">
+    		<i class="icon-cog icon-animate"></i>
+    		<input type="hidden" id="test" />
+    		<input class="pabs poi" type="text" id="timeinphidden"
+    				style="width:12px;height:15px;opacity: 0;top:0px;right:0px;">
+    	</div>
+    </div>
+
+	<!-- 左侧指标 -->
+	<div class="monitor_info_tree animated" id="monitor_quota_div">
+		<div class="pabs monitor_info_tree monitor_quota_info_div" id="monitor_quota_info_div">
+			<div id="monitor_quota_info_outer_div">
+				<div class="monitor-info-name monitor-icon prel">
+					<span class="pabs" style="left:60px;top:10px;line-height:20px;height:20px;width:140px;								white-space:nowrap;">
+					</span>
+					<span class="pabs" style="left:60px;top:20px;" id="ip_info_span"></span></div>
+					<!-- <p style="font-size:20px"></p> -->
+				<ul>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 详细信息 -->
+	<div class="monitor_info_detail" style="min-height: 700px;">
+		<input type="hidden" data-id="monitorId">
+		<input type="hidden" data-id="param-assetId">
+		<input type="hidden" data-id="param-monitorTypeId">
+		<input type="hidden" data-id="param-zte-dbname">
+		<div class="animated fadeInRight" id="monitor_info_detail"></div>
+	</div>
+
+
+</div>

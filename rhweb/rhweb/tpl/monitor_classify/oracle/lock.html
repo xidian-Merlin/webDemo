@@ -1,0 +1,129 @@
+<div class="mt5 mb5" style="height:30px" id="instance_sel_div">
+    <select class="form-control input-sm" data-type="select" id="instance_sel">
+    </select>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>全局锁信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="lock_list_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>全局阻塞锁信息</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="block_lock_list_div"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+	
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'] ,function (plot){
+
+var lock_list_url = "monitorview/db/oracle/queryOracleRawLock";
+var block_lock_list_url = "monitorview/db/oracle/queryOracleLock";
+var lock_list_header = [
+						      {text:"持有锁的客户机名称" ,name:"machine"},
+						      {text:"持有锁的程序名称" ,name:"program"},
+						      {text:"锁的类型" ,name:"type"},
+						      {text:"锁的持有模式" ,name:"lmode"},
+						      {text:"锁的请求模式" ,name:"request"},
+						      {text:"锁的持续时间" ,name:"ctime"},
+						      {text:"被锁对象ID" ,name:"obid"},
+						      {text:"被锁对象" ,name:"obname"},
+						      {text:"被锁对象类型" ,name:"obtype"},
+						      {text:"更新时间" ,name:"updateDate"}
+						   ];
+
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    index_form_init($("#instance_sel_div"));
+    ed_monitor_get();
+}
+
+function event_init()
+{
+	$("#instance_sel").change(function (){
+		lock_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+        block_lock_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+    });
+}
+
+window.index_monitor_init = function ()
+{
+	ed_monitor_get();
+}
+
+
+function ed_monitor_get()
+{
+	urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+           index_instance_type_get(data.edmonitorstore[1].monitorId ,[$("#instance_sel")]);
+        }
+    });
+}
+
+
+function lock_list(opt)
+{
+	g_grid.render($("#lock_list_div") ,{
+		url : lock_list_url,
+		header : lock_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		autoHeight : true,
+		dbThLine : true
+	});
+}
+
+function block_lock_list(opt)
+{
+	g_grid.render($("#block_lock_list_div") ,{
+		url : block_lock_list_url,
+		header : lock_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false,
+		autoHeight : true,
+		dbThLine : true
+	});
+}
+
+});
+});
+
+</script>

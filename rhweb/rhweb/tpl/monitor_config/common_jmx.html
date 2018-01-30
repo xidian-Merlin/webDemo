@@ -1,0 +1,46 @@
+<div data-id="monitor_index" class="h-all">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div id="detail_store_form">
+				<div class="form-group">
+					<label class="col-lg-2 control-label required">端口</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="monitorPort" maxlength="5" validate="required,port" value="37179"/>
+					</div>
+					<label class="col-lg-3 control-label required">JNDI</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="commandPrompt" validate="required"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">用户名</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="monitorUserName" />
+					</div>
+					<label class="col-lg-3 control-label">密码</label>
+					<div class="col-lg-3">
+						<input type="password" class="form-control input-sm" data-id="monitorPassWord" />
+					</div>
+				</div>
+			</div>
+			<div class="form-group" id="mbean_info">
+				<label class="control-label col-lg-2">MBean域：</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="005" data-flag="mbean_flag">
+				</div>
+				<div class="col-lg-1">
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="mbean_add" title="添加">
+				  	  	<i class="icon-chevron-right"></i>
+				    </div>
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="mbean_remove" title="删除">
+				    	<i class="icon-chevron-left"></i>
+				    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-mbean" style="height:200px;"></div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>

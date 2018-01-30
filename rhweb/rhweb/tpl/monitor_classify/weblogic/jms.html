@@ -1,0 +1,106 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>JMS信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="base_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">当前连接数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="connCurrentcnt"></label>
+                    <label class="col-lg-3 control-label">当前JMS服务器数量：</label>
+                    <label class="col-lg-3 control-label tl" data-id="jmsSerCurrentcnt"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">最大连接数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="connHighcnt"></label>
+                    <label class="col-lg-3 control-label">最大JMS服务器数量：</label>
+                    <label class="col-lg-3 control-label tl" data-id="jmsSerHighcnt"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">连接总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="connTotalcnt"></label>
+                    <label class="col-lg-3 control-label">JMS服务器总数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="jmsSerTotalcnt"></label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading font-bold prel">
+        <span>Server信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="jms_service_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var base_info_url = "monitorview/middleware/weblogic/queryWeblJms";
+var service_info_url = "monitorview/middleware/weblogic/queryWeblJmsServer";
+
+var service_info_header = [
+                            {text:'JMS服务器名称',name:"jmsName"},
+                            {text:'当前字节数',name:"bytesCurrentcnt"},
+                            {text:'挂起字节数',name:"bytesPendingcnt"},
+                            {text:'当前可交换字节数',name:"bytesPageaCurtcnt"},
+                            {text:'当前信息数',name:"messagesCurrentcnt"},
+                            {text:'挂起信息数',name:"messagesPendcnt"},
+                            {text:'当前可交换信息数',name:"messagesPageCurtcnt"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    base_info_render();
+    service_info_list();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function base_info_render()
+{
+    urlParamObj.time = $("#query_time_label").text();   
+    um_ajax_get({
+        url : base_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            $("#base_info_monitor_div").umDataBind("render" ,data[0]);
+        }
+    });
+}
+
+function service_info_list()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#jms_service_div"),{
+         header:service_info_header,
+         url:service_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

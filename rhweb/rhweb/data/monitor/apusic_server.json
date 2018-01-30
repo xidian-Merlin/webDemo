@@ -1,0 +1,19 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "APUSIC_SERVER",
+					"fileName"  : "apusic_server",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "apusic_server/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "HTTP线程池服务信息" ,"href" : "apusic_server/http_pool.html" ,"icon" : "monitor-http-pool"},
+								{"text" : "License配置信息" ,"href" : "apusic_server/license.html" ,"icon" : "monitor-license"},
+								{"text" : "数据源详细信息" ,"href" : "apusic_server/datasource.html" ,"icon" : "monitor-datasource"},
+								{"text" : "ACP服务信息" ,"href" : "apusic_server/acp_service.html" ,"icon" : "monitor-acp-service"},
+								{"text" : "AJP服务信息" ,"href" : "apusic_server/ajp_service.html" ,"icon" : "monitor-ajp-service"},
+								{"text" : "EJB服务信息" ,"href" : "apusic_server/ejb_service.html" ,"icon" : "monitor-ejb-service"},
+								{"text" : "应用服务信息" ,"href" : "apusic_server/application.html" ,"icon" : "monitor-application"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

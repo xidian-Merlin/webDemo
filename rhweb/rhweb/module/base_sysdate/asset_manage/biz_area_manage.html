@@ -1,0 +1,143 @@
+<script src="/module/base_sysdate/asset_manage/biz_area_manage.js"></script>
+
+<!-- 左侧 -->
+<div class="p-panel um-panel left-panel" id="left-panel">
+	<div class="um-panel-head" id="accordion_icon">
+		<div class="col-lg-4 unit-col">业务域</div>
+	</div>
+	<div class="um-panel-body">
+		<ul id="biz_tree" class="ztree" style="height:100%;overflow:hidden"></ul>
+	</div>
+</div>
+
+<!-- 右侧 -->
+<div class="p-panel um-panel right-panel" id="right-panel">
+	<div class="um-panel-head"></div>
+	<div class="um-panel-body">
+		<div class="w-all h-all wrap-cover">
+			<div class="animated fadeInRight panel-default prel" id="biz_area_form">
+				<div id="mask" class="mask"></div>
+				<div class="panel panel-default panel-style">
+					<div class="panel-heading font-bold prel">
+						<span>基本信息</span>
+							<div class="table-oper" style="margin-top:-20px;margin-bottom:25px">
+								<a href="javascript:void(0);" id="biz_area_edit_submit" class="bgblue">
+									<i class="btn-commen submit-btn"></i>
+									<span>提交</span>
+								</a>
+							</div>
+					</div>
+					<div class="panel-body p1">
+						<form class="bs-example form-horizontal xs-form p15" id="base_form" style="background:#fff">
+							<div class="form-group">
+						      <label class="col-lg-2 control-label required">业务域名称</label>
+						      <div class="col-lg-3">
+						        <input type="text" maxlength="16" class="form-control input-sm" data-id="domaName" validate="required,stringLimit">
+						      </div>
+						      <label class="col-lg-2 control-label">简称</label>
+						      <div class="col-lg-3">
+						        <input type="text" class="form-control input-sm" maxlength="16" data-id="domaAbbreviation" validate="stringLimit">
+						      </div>
+						    </div>
+
+							<div class="form-group">
+						      <label class="col-lg-2 control-label">传真号码</label>
+						      <div class="col-lg-3">
+						        <input type="text" class="form-control input-sm" data-id="faxNo" validate="fax">
+						      </div>
+						      <label class="col-lg-2 control-label">投诉电话</label>
+						      <div class="col-lg-3">
+						        <input type="text" class="form-control input-sm" data-id="complaintTel" validate="TelePhone">
+						      </div>
+						    </div>
+						    
+							<div class="form-group">
+						      <label class="col-lg-2 control-label">办公电话</label>
+						      <div class="col-lg-3">
+						        <input type="text" class="form-control input-sm" data-id="officeTel" validate="TelePhone">
+						      </div>
+						      <label class="col-lg-2 control-label">电子邮箱</label>
+						      <div class="col-lg-3">
+						        <input type="text" class="form-control input-sm" data-id="email"
+						        	validate="email">
+						      </div>
+						    </div>
+
+							<div class="form-group">
+						      <label class="col-lg-2 control-label">地址</label>
+						      <div class="col-lg-3">
+						        <input type="text" class="form-control input-sm" data-id="domaAddress" validate="stringLimit">
+						      </div>
+						      <label class="col-lg-2 control-label required">代理服务器</label>
+						      <div class="col-lg-3">
+						        <div class="inputdrop" id="nodeId" required></div>
+						      </div>
+						    </div>
+
+						    <div class="form-group" style="margin-bottom:60px">
+						      <label class="col-lg-2 control-label">备注</label>
+						      <div class="col-lg-8">
+						        <textarea type="text" class="form-control input-sm" data-id="domaMemo"></textarea>
+						      </div>
+						    </div>
+						</form>
+					</div>
+				</div>
+				<div class="panel panel-default panel-style" id="user_info_div">
+					<div class="panel-heading font-bold prel">
+						<span>人员信息</span>
+					</div>
+					<div class="panel-body p1">
+						<div id="user-info-list" class="col-lg-12" style="height: 330px; background : #fff;z-index : 200">
+							<div class="table-oper" id="table_oper" style="margin-top:-28px;margin-bottom:25px">
+								<a href="javascript:void(0);" id="user_add_btn" class="bgblue">
+									<i class="btn-commen add-btn"></i>
+									<span>新增</span>
+								</a>
+								<a href="javascript:void(0);" id="user_remove_btn">
+									<i class="btn-commen delete-btn"></i>
+									<span>批量删除</span>
+								</a>
+							</div>
+							<div class="table-div w-all" id="user-um-grid-table-div" style="height: 270px"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-default panel-style" id="sec_chck_div">
+					<div class="panel-heading font-bold prel">
+						<span>安全检查</span>
+					</div>
+					<div class="panel-body p1">
+						<div id="sec-check-list" class="col-lg-12" style="height: 330px; background : #fff;z-index:200;">
+							<div class="table-oper" id="table_oper" style="margin-top:-28px;margin-bottom:25px">
+								<a href="javascript:void(0);" id="sec_add_btn" class="bgblue">
+									<i class="btn-commen add-btn"></i>
+									<span>新增</span>
+								</a>
+							</div>
+							<div class="table-div w-all" id="sec-um-grid-table-div" style="height: 270px"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel panel-default panel-style" style="margin-bottom:0" id="emergency_event_div">
+					<div class="panel-heading font-bold prel">
+						<span>应急事件</span>
+					</div>
+					<div class="panel-body p1">
+						<div id="emergency-list" class="col-lg-12" style="height: 330px; background : #fff;z-index:200;">
+							<div class="table-oper" id="table_oper" style="margin-top:-28px;margin-bottom:25px">
+								<a href="javascript:void(0);" id="emergency_add_btn" class="bgblue">
+									<i class="btn-commen add-btn"></i>
+									<span>新增</span>
+								</a>
+							</div>
+							<div class="table-div w-all" id="emergency-um-grid-table-div" style="height: 270px"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

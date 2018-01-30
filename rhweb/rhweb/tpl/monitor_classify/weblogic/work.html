@@ -1,0 +1,63 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>工作量信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="work_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var work_info_url = "monitorview/middleware/weblogic/queryWeblWork";
+
+var work_info_header = [
+                            {text:'名称',name:"name"},
+                            {text:'描述',name:"desc",render:function(text){
+                                if(text=="null" || text==null){
+                                    return "----";
+                                }
+                                return text;
+                            }},
+                            {text:'暂挂请求',name:"pendingRequests"},
+                            {text:'完成的请求',name:"completedRequests"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    work_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+
+function work_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#work_info"),{
+         header:work_info_header,
+         url:work_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

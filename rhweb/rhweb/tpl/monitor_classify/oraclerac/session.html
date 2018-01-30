@@ -1,0 +1,67 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>集群会话信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="grid_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var grid_info_url = "monitorview/security/OracleRACMonitor/queryOracleRACCurrentSession";
+
+var grid_info_header = [
+                            {text:'实例名称',name:"instanceName"},
+                            {text:'会话标识',name:"sid"},
+                            {text:'Oracle用户名',name:"username"},
+                            {text:'当前执行命令',name:"command"},
+                            {text:'等待锁地址',name:"lockwait"},
+                            {text:'模式用户名',name:"schemaname"},
+                            {text:'会话状态',name:"status"},
+                            {text:'操作系统客户机名',name:"machine"},
+                            {text:'操作系统程序名',name:"program"},
+                            {text:'会话块争取',name:"blockGets"},
+                            {text:'会话一致性读取',name:"consistentGets"},
+                            {text:'会话物理读取',name:"physicalChanges"},
+                            {text:'会话块更改',name:"blockChanges"},
+                            {text:'更新时间',name:"updateDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    grid_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    grid_info();
+}
+
+
+function grid_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#grid_info"),{
+         header:grid_info_header,
+         url:grid_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false,
+         dbThLine : true
+    });
+}
+
+
+});
+});
+</script>

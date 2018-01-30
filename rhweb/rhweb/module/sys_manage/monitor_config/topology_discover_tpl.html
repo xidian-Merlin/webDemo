@@ -1,0 +1,191 @@
+<tem>
+<!-- 编辑模板 -->
+<div class="template" id="discover_edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group" id="task_name_div">
+			    <label class="col-lg-2 control-label required">任务名称</label>
+			    <div class="col-lg-4">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="taskName"
+			         validate="required">
+			    </div>
+			    <div class="col-lg-6" style="margin-top:5px;">
+						<label class="i-checks col-lg-4">
+							<input type="checkbox" data-id="taskStatus" checked="checked" value="1"><i></i> 启用任务
+						</label>
+			    </div>
+			</div>
+			
+			<!--网段-->
+			<div id="file_baseline_template">
+				<div class="form-group">
+					<div class="border-text" style="margin-right:13px;">
+						<div id="selected_name">网段</div>
+					</div>
+					<div class="col-lg-6">
+						<!-- 右移箭头 -->
+						<div style="right:-1px;top:21px;font-size:20px;z-index:2000" 
+								id="chevron-right" class="pabs square">
+							<i class="icon-chevron-right"></i>
+						</div>
+						<!-- 左移箭头 -->
+						<div style="right:-1px;top:67px;font-size:20px;z-index:2000" 
+								id="chevron-left" class="pabs square">
+							<i class="icon-chevron-left"></i>
+						</div>
+
+						<div class="form-group" style="margin-top:20px;">
+							<div class="col-lg-3 tr">
+								<div class="radio">
+									<label class="i-checks">
+										<input type="radio" value="1" data-id="IPV4" name="ipVersion" checked>
+											<i></i>
+											  IPV4
+										</label>
+									</div>
+							</div>
+							<div class="col-lg-3" style="width:31%;padding-right:0;padding-left:0">
+								<input type="text" class="form-control input-sm" data-flag="startIp" maxlength="15" validate="required,ipv4">
+							</div>
+							<div class="col-lg-1 p0" style="width:auto;padding:0 6px">
+							    -
+							</div>
+							<div class="col-lg-3" style="width:31%;padding-left:0;padding-right:0">
+							    <input type="text" class="form-control input-sm" data-flag="endIp" maxlength="15" validate="required,ipv4">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-3 tr">
+								<div class="radio">
+									<label class="i-checks">
+										<input type="radio" value="0" data-id="IPV6" name="ipVersion">
+											<i></i>
+											  IPV6
+									</label>
+								</div>
+							</div>
+							<div class="col-lg-7" style="width:66%;padding-left:0;padding-right:0">
+								<input type="text" class="form-control input-sm" data-flag="mainIp" data-id="required,ipV6"  id="mainIp" validate="ipv6" maxlength="39" disabled>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div id="ipList_table" data-id="ipRangeDisplay" class="table-div" style="height:120px"></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 定时任务 -->
+			<div id="timer_task_div">
+				<div class="form-group">
+					<div class="border-text" style="margin-right:13px;">
+						<div id="selected_name" style="position:absolute; left:34%;">定时任务(不配置此区域内容为立即扫描任务)</div>
+					</div>
+					<div class="col-lg-12">
+						<label class="col-lg-2 control-label">开启功能：</label>
+				    	<div class="col-lg-10">
+				    		<label class="i-checks col-lg-3" style="margin-top:5px;">
+				        		<input type="checkbox" data-id="taskType" name="typeOpen" value="1"><i></i>
+				        	</label>
+				    	</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label" style="margin-left:10px;">运行周期：</label>
+				    <div class="col-lg-3">
+				        <select class="form-control input-sm" value="typeWeek" data-type="select" data-id="taskPeriodType" validate="required" disabled>
+				        	<option value=""></option>
+							<option value="2">每天</option>
+							<option value="1">每周</option>
+							<option value="6">每月</option>
+							<option value="5">每季度</option>
+							<option value="4">每半年</option>
+							<option value="3">每年</option>
+						</select>
+				    </div>
+				    <div class="col-lg-3">
+				        <select class="form-control input-sm" data-type="select" data-id="taskMonth" disabled></select>
+				    </div>
+				    <div class="col-lg-3">
+				        <select class="form-control input-sm" data-type="select" data-id="taskPeriod" disabled></select>
+				    </div>
+				</div>
+				<!-- <div class="form-group">
+					<label class="col-lg-2 control-label" style="margin-left:10px;">运行时间：</label>
+				    <div class="col-lg-3">
+				        <input type="text" class="form-control input-sm" data-value="typeWeek" data-id="taskTime"
+				         validate="required,Hms" disabled>
+				    </div>
+				    <label class="col-lg-2 control-label" style="margin-left:-30px;">(HH:MM:SS)</label>
+				</div> -->
+
+				<div class="form-group">
+					<label class="col-lg-2 control-label" style="margin-left:10px;">运行时间：</label>
+				    <div class="col-lg-3">
+				        <timeinp id="taskTime"></timeinp>
+				    </div>
+				    <label class="col-lg-2 control-label" style="margin-left:-30px;">(HH:MM:SS)</label>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<!-- 详情模板 -->
+<div class="template detail-info" id="discover_detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">任务名称：</label>
+			    <label class="col-lg-4 control-label tl" data-id="taskName"></label>	    
+			    <label class="col-lg-2 control-label">运行状态：</label>
+			    <label class="col-lg-4 control-label tl" data-id="runStatusDisplay"></label>	    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">修改人：</label>
+			    <label class="col-lg-4 control-label tl" data-id="updater"></label>
+			    <label class="col-lg-2 control-label">修改时间：</label>
+			    <label class="col-lg-4 control-label tl" data-id="updDate"></label>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-2 control-label">扫描IP：</label>
+				<label class="col-lg-4 control-label tl" data-id="ips"></label>
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label">任务类型：</label>
+			    <label class="col-lg-4 control-label tl" data-id="taskType"></label>
+			</div>
+
+			<div class="form-group" style="margin:5px 0;display:none" id="discover_gif_div">
+				<label class="col-lg-2 control-label"></label>
+				<div class="col-lg-6">
+						<div class="loadinggif"></div>
+				</div>
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-2 control-label"></label>
+			    <div class="col-lg-4">
+			    	<div class="form-control input-sm prel" data-id="finishedPercent" style="padding:2px">
+			    		<div class="prel w-all h-all">
+			    			<div id="finishedPercent_div" 
+			    				class="pabs tran" style="left:0;top:0;width:0;height:100%;background:#bae0ba"></div>
+			    		</div>	
+			    	</div>
+			    </div>
+			    <label class="col-lg-6 control-label" style="text-align:left;" id="run_status_info"></label>
+			</div>
+
+			<div  class="mt20 bdc pt20 prel">
+				<div style=" top:-10px; left:20px; padding: 0 5px;" class="pabs g6 bgwh">详细信息</div>
+				<label class=" form-control input-sm no-write" readonly="true" style="border:none; height:auto;" data-id="resultInfo"></label>
+			</div>
+		</form>
+	</div>
+</div>
+
+</tem>

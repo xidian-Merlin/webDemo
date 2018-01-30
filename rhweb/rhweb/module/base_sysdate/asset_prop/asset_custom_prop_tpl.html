@@ -1,0 +1,82 @@
+<tem>
+
+<!-- 编辑 -->
+<div class="template" id="edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group">
+		      <label class="col-lg-4 control-label required">属性名称</label>
+		      <div class="col-lg-7">
+		        <input type="hidden" class="form-control input-sm" data-id="attributeId">
+		        <input type="text" maxlength="16" class="form-control input-sm" data-id="attributeName"
+		         validate="required,stringLimit">
+		      </div>
+		    </div>
+
+		    <div class="form-group">
+		      <label class="col-lg-4 control-label">属性类型</label>
+		      <div class="col-lg-7">
+		        <select class="form-control input-sm" data-type="select" data-id="attributeType">
+		          	<option value="字符类型">字符类型</option>
+		          	<option value="数值类型">数值类型</option>
+				</select>
+		      </div>
+		    </div>
+		    
+		    <div class="form-group">
+		      <label class="col-lg-4 control-label required"> 属性长度（字节）</label>
+		      <div class="col-lg-7">
+		      	<input type="text" class="form-control input-sm" data-id="attributeLength" validate="required,between1~4000">
+		      </div>
+		    </div>
+		    
+		    <div class="form-group">
+		      <label class="col-lg-4 control-label">是否为空</label>
+		      <div class="col-lg-7">
+		            <select class="form-control input-sm" data-type="select" data-id="attributeIsNull">
+		          	<option value="是">是</option>
+		          	<option value="否">否</option>
+				</select>
+		      </div>
+		    </div>
+		</form>
+	</div>
+</div>
+
+<!-- 详情 -->
+<div class="template" id="detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group">
+		      <label class="col-lg-6 control-label">属性名称：</label>
+		      <div class="col-lg-6">
+		      	<label class="control-label tl" data-id="attributeName"></label>
+		      </div>
+		    </div>
+
+		    <div class="form-group">
+		      <label class="col-lg-6 control-label">属性类型：</label>
+		      <div class="col-lg-6">
+		      	<label class="control-label tl" data-id="attributeType"></label>
+		      </div>
+		    </div>
+		    
+		    <div class="form-group">
+		      <label class="col-lg-6 control-label"> 属性长度（字节）：</label>
+		      <div class="col-lg-6">
+		     	 <label class="control-label tl" data-id="attributeLength"></label>
+		      </div>
+		    </div>
+		    
+		    <div class="form-group">
+		      <label class="col-lg-6 control-label">是否为空：</label>
+		      <div class="col-lg-6">
+		      	<label class="control-label tl" data-id="attributeIsNull"></label>
+		      </div>
+		    </div>
+		</form>
+	</div>
+</div>
+
+
+</tem>

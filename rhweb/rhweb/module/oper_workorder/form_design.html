@@ -1,0 +1,97 @@
+<script src="/module/oper_workorder/form_design.js"></script>
+<!-- 左侧 -->
+<div class="p-panel" id="left-panel" style="left: 0;top: 0;width: 350px;">
+	<!-- 元素信息显示 -->
+	<div class="bdc h-all p5 prel" style="padding-top:100px">
+		<form class="form-horizontal xs-form um-fd-el-info" id="form_el_info">
+
+			<input type="hidden" class="form-control input-sm" data-id="type">
+			<!-- label -->
+			<div class="form-group" data-type="label">
+				<label class="col-lg-3 control-label">标签</label>
+				<div class="col-lg-8">
+	                <input type="text" class="form-control input-sm" data-id="text">
+            	</div>
+			</div>
+
+			<!-- input -->
+			<div class="form-group" data-type="input">
+				<label class="col-lg-3 control-label">ID</label>
+				<div class="col-lg-8">
+	                <input type="text" class="form-control input-sm" data-id="id">
+            	</div>
+			</div>
+
+			<div class="form-group" data-type="radio,checkbox">
+				<label class="col-lg-3 control-label">Name</label>
+				<div class="col-lg-8">
+	                <input type="text" class="form-control input-sm" data-id="name">
+            	</div>
+			</div>
+
+			<div class="form-group" data-type="input,select,split">
+				<label class="col-lg-3 control-label"
+						style="height:40px;line-height:40px">宽度</label>
+				<div class="col-lg-8">
+	                <input type="text" class="form-control input-sm" id="range">
+            	</div>
+			</div>
+
+			<div class="form-group pabs w-all" data-id="btn_group" 
+					style="display:block;bottom:100px">
+	  		    <div class="col-lg-6 tc">
+	  			    <button id="delete" class="btn btn" type="button">删除</button>
+	  		    </div>
+	  		    <div class="col-lg-6 tc">
+	  			    <button id="update" class="btn btn-info" type="button">修改</button>
+	  		    </div>
+		    </div>
+		</form>
+	</div>
+</div>
+
+<!-- 右侧 -->
+<div class="p-panel" id="right-panel" style="top: 0;left: 350px;right: 0;min-width:450px;">
+	
+	<div class="bdc h-all w-all um-panel" id="form_design">
+		<!-- 工具栏 -->
+		<div class="um-panel-head bbc bgf0" style="height:100px">
+			<div class="h-all p10">
+				<ul class="float-ul ul-li-p5" style="#98a6ad" data-id="fd_tool_ul">
+					<li>
+						<a href="javascript:void(0)" data-id="label">标签</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-id="input">输入框</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-id="select">选择框</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-id="radio">单选按钮</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-id="checkbox">多选按钮</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" data-id="split">分割线</a>
+					</li>
+				</ul>
+			</div>
+			<div class="pabs" style="right:5px;bottom:5px">
+				<button id="submit" class="btn btn-info" type="button">提交</button>
+			</div>
+		</div>
+		
+
+		<!-- 表单绘图区域 -->
+		<div class="um-panel-body form-design-container noselect" style="top:100px" 
+													id="form_design_container">
+
+		</div>
+		
+	</div>
+
+</div>
+
+

@@ -1,0 +1,47 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :
+	[
+		{
+		 "enftpName":"控制台","attr2":"服务器","attr3":"123","attr4":"资产价值",
+		 "attr5":"应用务器","attr6":"windows","attr7":"使用中","attr8":"10.2.132","recordCount": 101
+		},
+		{
+		 "enftpName":"控制台1","attr2":"服务器2","attr3":"123","attr4":"很低",
+		 "attr5":"应用务器","attr6":"windows","attr7":"使用中","attr8":"10.2.132"
+		},
+		{
+		 "attr1":"控制台1","attr2":"服务器2","attr3":"123","attr4":"很低",
+		 "attr5":"应用务器2","attr6":"windows","attr7":"使用中","attr8":"10.2.132"
+		},
+		{
+		 "attr1":"控制台1","attr2":"服务器2","attr3":"123","attr4":"很低",
+		 "attr5":"应用务器","attr6":"windows","attr7":"使用中","attr8":"10.2.132"
+		},
+		{
+		 "attr1":"控制台2","attr2":"服务器2","attr3":"123","attr4":"很低",
+		 "attr5":"应用务器","attr6":"windows","attr7":"使用中","attr8":"10.2.132"
+		},
+		{
+		 "attr1":"控制台3","attr2":"服务器2","attr3":"123","attr4":"很低",
+		 "attr5":"应用务器","attr6":"windows","attr7":"使用中","attr8":"10.2.132"
+		},
+		{
+		 "attr1":"控制台4","attr2":"服务器2","attr3":"123","attr4":"很低",
+		 "attr5":"应用务器","attr6":"windows","attr7":"使用中","attr8":"10.2.132"
+		},
+		{
+		 "attr1":"控制台5","attr2":"服务器2","attr3":"123","attr4":"很低",
+		 "attr5":"应用务器","attr6":"windows","attr7":"使用中","attr8":"10.2.132"
+		},
+		{
+		 "attr1":"控制台5","attr2":"服务器2","attr3":"123","attr4":"很低",
+		 "attr5":"应用务器","attr6":"windows","attr7":"使用中","attr8":"10.2.132"
+		},
+		{
+		 "attr1":"控制台5","attr2":"服务器2","attr3":"123","attr4":"很低",
+		 "attr5":"应用务器","attr6":"windows","attr7":"使用中","attr8":"10.2.132"
+		}
+	]
+}

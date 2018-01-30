@@ -1,0 +1,106 @@
+<div data-id="monitor_certificate">
+  <form class="bs-example form-horizontal xs-form form-plr5">
+      <div class="form-group">
+        <label class="col-lg-2 control-label">版本</label>
+        <div class="col-lg-3" data-id="snmp">
+          <select class="form-control input-sm" data-type="select" data-id="snmpVersion">
+              <option value="1">SNMP V1</option>
+              <option value="2">SNMP V2c</option>
+              <option value="3">SNMP V3</option>
+          </select> 
+        </div>
+        <label class="col-lg-2 control-label">SNMP模板</label>
+        <div class="col-lg-3" data-id="snmp">
+          <select class="form-control input-sm" data-type="select" data-id="snmpName">
+          <option value="1">public</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="snmp_v1">
+        <div class="form-group">
+          <label class="col-lg-2 control-label">读COMMUNITY</label>
+          <div class="col-lg-3" data-id="snmp">
+            <input type="text" class="form-control input-sm" data-id="snmpCommunity" />
+          </div>
+          <label class="col-lg-2 control-label">端口</label>
+          <div class="col-lg-3" data-id="snmp">
+            <input type="text" class="form-control input-sm" data-id="snmpWCommunity" />
+          </div>
+        </div>
+      </div>
+
+
+      <div id="snmp_v3" style="display:none">
+        <div class="form-group">
+          <label class="col-lg-2 control-label">用户名</label>
+          <div class="col-lg-3" data-id="snmp">
+            <input type="text" class="form-control input-sm" data-id="snmpUserName"/>
+          </div>
+          <label class="col-lg-2 control-label">安全级别</label>
+          <div class="col-lg-3" drta-id="snmp">
+          	<select class="form-control input-sm" data-id="secLevel" data-type="select">
+          		<option value="-1">---</option>
+          		<option value="1">NOAUTH_NOPRIV</option>
+          		<option value="2">AUTH_NOPRIV</option>
+          		<option value="3">AUTH_PRIV</option>
+          	</select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">认证方式</label>
+          <div class="col-lg-3" data-id="snmp">
+            <select class="form-control input-sm" data-id="authWay" data-type="select">
+              <option value="-1">---</option>
+              <option value="1">SHA</option>
+              <option value="2">MD5</option>
+            </select>
+          </div>
+          <label class="col-lg-2 control-label">认证口令</label>
+          <div class="col-lg-3" data-id="snmp">
+            <input type="text" class="form-control input-sm" data-id="snmpPort"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">加密方式</label>
+          <div class="col-lg-3" data-id="snmp">
+            <select class="form-control input-sm" data-id="encryptionWay" data-type="select">
+              <option value="-1">---</option>
+              <option value="1">3DES</option>
+              <option value="2">AES128</option>
+              <option value="3">AES192</option>
+              <option value="4">AES256</option>
+              <option value="5">DES</option>
+            </select>
+          </div>
+          <label class="col-lg-2 control-label">加密口令</label>
+          <div class="col-lg-3" data-id="snmp">
+            <input type="text" class="form-control input-sm" data-id="snmpPort"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Context ID</label>
+          <div class="col-lg-3" data-id="snmp">
+            <input type="text" class="form-control input-sm" data-id="snmpPort"/>
+          </div>
+          <label class="col-lg-2 control-label">Context Name</label>
+          <div class="col-lg-3" data-id="snmp">
+            <input type="text" class="form-control input-sm" data-id="snmpPort"/>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-10">
+            <div class="table-oper">
+                <a href="javascript:void(0);" data-type="test_btn">
+                  <span>测试</span>
+                </a>
+            </div>
+        </div>
+      </div>
+  </form>	
+</div>

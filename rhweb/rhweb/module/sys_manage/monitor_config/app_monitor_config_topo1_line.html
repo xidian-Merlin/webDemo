@@ -1,0 +1,135 @@
+<tem>
+
+<div id="modifyline" class="template">
+<div id="canvasDrawShowAttrLine">
+        	<input id="mousedown_x" type="hidden"/>
+        	<input id="mousedown_y" type="hidden"/>
+        	<input id="pidLine" type="hidden"/>
+        	<input id="pTypeLine" type="hidden"/>
+        	<div class="table-oper" >
+		        <a href="javascript:void(0);" id="deleteLine" style="display: none;">
+		            <i class="btn-commen delete-btn"></i>
+		            <span>删除连线</span>
+		        </a>
+<!-- 		        <a id="canvasDrawShowAttrLine_close" href="javascript:void(0);">
+		            <i class="btn-commen"></i>
+		            <span>关闭</span>
+		        </a>
+  			    <a id="canvasDrawShowAttrLine_reset" name="canhide" href="javascript:void(0);">
+		            <i class="btn-commen"></i>
+		            <span>修改</span>
+		        </a> -->
+		    </div>
+		    <div class="panel-body" id="pLine_dependence" style="display: none;">
+		    	<div class="form-group">
+		    		<label class="col-lg-2 control-label">依赖类型</label>
+				    <div class="col-lg-10">
+				        <span class="form-control input-sm" >
+				        <input id="canvasDrawShowAttrLine_line_KEY" value="KEY" name="reType" type="radio"/>关键依赖
+				        <input id="canvasDrawShowAttrLine_line_REF" value="REF" name="reType" type="radio"/>参考依赖</span>
+				    </div>
+				    </div>
+				<div class="form-group">
+				    <label class="col-lg-2 control-label">连线类型</label>
+				    <div class="col-lg-10">
+				        <span class="form-control input-sm" >
+				        <input id="canvasDrawShowAttrLine_LineType1" value="Link" name="reLineType" type="radio"/>直连
+				        <input id="canvasDrawShowAttrLine_LineType2" value="FoldLink" name="reLineType" type="radio"/>折线
+				        <input id="canvasDrawShowAttrLine_LineType3" value="FlexionalLink" name="reLineType" type="radio"/>2次折线
+				        <input id="canvasDrawShowAttrLine_LineType4" value="NoLink" name="reLineType" type="radio"/>直线
+				        <input id="canvasDrawShowAttrLine_LineType5" value="SquarelyFlexionalLink" name="reLineType" type="radio"/>直角2次折线</span>
+				        
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label class="col-lg-2 control-label">拐点类型</label>
+				    <div class="col-lg-10">
+				        <span class="form-control input-sm" >
+				        <input id="canvasDrawShowAttrLine_vertical" value="vertical" name="vhLineType" type="radio"/>垂直
+				        <input id="canvasDrawShowAttrLine_horizontal" value="horizontal" name="vhLineType" type="radio"/>水平
+				        </span>
+				    </div>
+				</div>
+				
+				<!-- vertical horizontal -->
+				
+				<div class="form-group">
+				    <label class="col-lg-2 control-label">拐点距离</label>
+				    <div class="col-lg-5">
+				        <span class="form-control input-sm" >
+				        <input id="canvasDrawShowAttrLine_doMod" type="checkbox"/>是否启用同级批量操作
+				        </span>
+				        
+				    </div>
+				    <label class="col-lg-2 control-label">距离</label>
+				    <div class="col-lg-3">
+				        <input class="form-control input-sm" id="canvasDrawShowAttrLine_distance" value="44" name="reLineType" type="text"/>
+				    </div>
+				</div>
+		    </div>
+		    <div class="panel-body" id="pLine_line_arrow_layer" style="display: none;">
+		    	<div class="form-group">
+					<label class="col-lg-2 control-label">连线名称</label>
+				    <div class="col-lg-10">
+				        <input name="lineText" type="text" class="form-control input-sm" data-id="" />
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label class="col-lg-2 control-label">线条宽度</label>
+				    <div class="col-lg-10">
+				        <input name="size" type="hidden" trgfunction="setLineSize"/>
+				         <div class="form-control" style="height: 106px;">
+				         	<div value="1" id="lineSize1" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 5px;">
+				         		<div style="width: 100%;height: 1px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="2" id="lineSize2" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 5px;">
+				         		<div style="width: 100%;height: 2px;background-color: black;">
+				         		</div>
+				         	</div>
+						    <div value="3" id="lineSize3" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 4px;">
+				         		<div style="width: 100%;height: 3px;background-color: black;">
+				         		</div>
+				         	</div>
+ 						    <div value="4" id="lineSize4" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 4px;">
+				         		<div style="width: 100%;height: 4px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="5" id="lineSize5" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 3px;">
+				         		<div style="width: 100%;height: 5px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="6" id="lineSize6" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 3px;">
+				         		<div style="width: 100%;height: 6px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="7" id="lineSize7" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 2px;">
+				         		<div style="width: 100%;height: 7px;background-color: black;">
+				         		</div>
+				         	</div>
+				         	<div value="8" id="lineSize8" class="lineBack" style="width: 100%;height: 12px;text-align: center;padding-top: 2px;">
+				         		<div style="width: 100%;height: 8px;background-color: black;">
+				         		</div>
+				         	</div>
+				         </div>
+				    </div>
+				</div>
+		    	<div class="form-group">
+					<label class="col-lg-2 control-label"></label>
+				    <div class="col-lg-10">
+				    	<input name="slider" type="hidden" trgfunction="setSlider"/>
+				         <iframe style="border: none;" scrolling="no" name="slideriframe" id="slideriframe" src="/slider/slider.html" width="420px" height="60px" onload="setSlider($(this).parent().find('input[name=slider]').val());"></iframe>
+				    </div>
+				</div>
+		    	<div class="form-group">
+				    <label class="col-lg-2 control-label">线条颜色</label>
+				    <div class="col-lg-10">
+				         <input name="color" type="hidden" trgfunction="setColor"/>
+				         <iframe style="border: none;" scrolling="no" name="coloriframe" id="coloriframe" src=""  width="420px" height="220px"></iframe>
+				    </div>
+				</div>
+		    </div>
+        </div>
+    </div>
+	
+</tem>

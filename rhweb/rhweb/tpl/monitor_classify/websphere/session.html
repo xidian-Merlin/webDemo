@@ -1,0 +1,59 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>会话动态信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="session_dynamic_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var session_dynamic_url = "monitorview/middleware/websphere/querySessionList";
+
+var session_dynamic_header = [
+                            {text:'应用名称',name:"name"},
+                            {text:'会话类型',name:"type"},
+                            {text:'当前存活会话总数',name:"liveCount"},
+                            {text:'创建会话数',name:"createCount"},
+                            {text:'失效会话数',name:"invalidCount"},
+                            {text:'平均会话生存期(毫秒)',name:"lifeTime"},
+                            {text:'当前访问会话总数',name:"activeCount"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    session_dynamic_list();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function session_dynamic_list()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#session_dynamic_div"),{
+         header:session_dynamic_header,
+         url:session_dynamic_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

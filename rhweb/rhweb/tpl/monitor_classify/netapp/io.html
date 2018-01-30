@@ -1,0 +1,115 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>网络I/O信息</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="io_info_chart"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>磁盘I/O信息</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="disk_info_chart"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'],function (plot){
+
+var io_info_chart_url = "monitorview/storage/netapp/queryNetAndDiskIODynamicInfo";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    io_info_chart();
+}
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function io_info_chart()
+{
+    um_ajax_get({
+        url : io_info_chart_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            //网络io
+            var netStore = data.netIoStore;
+            var legendArray = ['发送速率（kb）','接收速率（kb）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesObj = new Object();
+            seriesObj.name = '发送速率（kb）';
+            seriesObj.type = "line";
+            seriesObj.data = [];
+            for (var i = 0; i < netStore.length; i++) {
+                categoryArray.push(netStore[i].updateDate);
+                seriesObj.data.push(netStore[i].sentBytes);
+            }
+            seriesArray.push(seriesObj);
+
+            var seriesObj2 = new Object();
+            seriesObj2.name = '接收速率（kb）';
+            seriesObj2.type = "line";
+            seriesObj2.data = [];
+            for (var i = 0; i < netStore.length; i++) {
+                seriesObj2.data.push(netStore[i].rcvdBytes);
+            }
+            seriesArray.push(seriesObj2);
+            
+            plot.lineRender($("#io_info_chart") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+
+            //磁盘io
+            var diskStore = data.diskIostore;
+            var legendArray = ['读取速率（kb）','写入速率（kb）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesObj = new Object();
+            seriesObj.name = '读取速率（kb）';
+            seriesObj.type = "line";
+            seriesObj.data = [];
+            for (var i = 0; i < diskStore.length; i++) {
+                categoryArray.push(diskStore[i].updateDate);
+                seriesObj.data.push(diskStore[i].readBytes);
+            }
+            seriesArray.push(seriesObj);
+
+            var seriesObj2 = new Object();
+            seriesObj2.name = '写入速率（kb）';
+            seriesObj2.type = "line";
+            seriesObj2.data = [];
+            for (var i = 0; i < diskStore.length; i++) {
+                seriesObj2.data.push(diskStore[i].writeBytes);
+            }
+            seriesArray.push(seriesObj2);
+            
+            plot.lineRender($("#disk_info_chart") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+
+});
+});
+</script>

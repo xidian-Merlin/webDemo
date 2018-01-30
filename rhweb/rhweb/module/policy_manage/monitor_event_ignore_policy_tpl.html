@@ -1,0 +1,139 @@
+<tem>
+	<!-- 编辑 -->
+	<div class="template" id="edit_template">
+
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form">
+				<div style="padding-left: 8px">
+					<div class="form-group">
+						<label class="col-lg-1 control-label required" style="width: 90px;">策略名称</label>
+						<div class="col-lg-2" id="main_div" style="padding-left: 0;width: 200px;">
+							<input type="text" maxlength="64" class="form-control input-sm" data-id="eipName"
+				        	validate="required">
+				        </div>
+						<label class="col-lg-1 control-label" style="width: 90px;margin-left:-10px">策略状态</label>
+						<div class="col-lg-3" style="padding-left: 0;width: 200px;">
+							<select class="form-control input-sm" data-type="select" data-id="eipStatus">
+								<option value="1">启用</option>
+								<option value="0">停用</option>
+							</select>
+						</div>
+						<label class="col-lg-1 control-label required" style="width: 90px;margin-left:-10px">资产名称</label>
+						<div class="col-lg-3" style="padding-left: 0;width: 200px;">
+							<div type="text" class="form-control input-sm tl inputdrop" data-id="entityDevice" id="entityDevice" date-type="asset" style="padding:0" required></div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-lg-1 control-label tr" style="width: 90px;padding-top: 7px;">生命周期</label>
+						<div class="col-lg-1" style="padding-left: 0;width: 100px;">
+							<select class="form-control input-sm" data-id="eipCycle" data-type="select">
+								<option value="-1">----</option>
+								<option value="1">天</option>
+								<option value="2">周</option>
+								<option value="3">月</option>
+							</select>
+						</div>
+						<div class="col-lg-1" style="padding-left: 0;width: 100px;">
+							<select class="form-control input-sm" data-id="eipCyclePeriod" data-type="select" disabled>
+							</select>
+						</div>
+						<label class="col-lg-1 control-label tr" style="width: 90px;margin-left:-10px;padding-top: 7px;">执行时间</label>
+						<div class="col-lg-1" style="padding-left: 0;width: 98px;">
+							<input type="text" class="form-control input-sm" style="padding-right: 0" data-flag="time" data-id="validityStart" disabled validate="required,Hms">
+						</div>
+						<div class="col-lg-1 p0" style="width:auto;padding:4px 6px;margin-left: -14px;">
+				          -
+				        </div>
+						<div class="col-lg-1" style="padding-left: 0;width: 98px;">
+							<input type="text" class="form-control input-sm" style="padding-right: 0" data-flag="time" data-id="validityEnd"  validate="required,Hms" disabled>
+						</div>
+						<label class="col-lg-1 control-label tr" style="width: 90px;margin-left:-10px;padding-top: 7px;">事件类型</label>
+						<div class="col-lg-3" style="padding-left: 0;width: 200px;">
+							<select class="form-control input-sm" data-type="select" data-id="eventType" data-flag="false">
+							<option value="1">故障事件</option>
+							<option value="2">性能事件</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-lg-1 control-label" style="width: 90px;">备注信息</label>
+						<div class="col-lg-11 tl" style="padding-left: 0; width:760px">
+							<textarea class="form-control input-sm" data-id="eipDesc"></textarea>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="form-group" style="margin-bottom: 0">
+						<div class="border-text">
+						  <div id="">事件信息</div>
+						</div>
+					</div>
+				</div>
+				<div style="padding-left: 8px"> 
+					<div class="form-group">
+						<div class="col-lg-6" style="width: 390px;">
+							<select class="form-control input-sm" data-type="select" data-id="eventTypeComboBox">
+							</select>
+						</div>
+					</div>			
+					<div class="form-group">
+						<div class="col-lg-5" style="width: 390px">
+							<div id="eventList_left_table" class="table-div" style="height:180px"></div>
+						</div>
+						<div class="col-lg-1">
+							<!-- 右移箭头 -->
+							<div style="right:23px;top:50px;font-size:20px;z-index:2000" 
+									id="chevron-right" class="pabs square">
+								<i class="icon-chevron-right"></i>
+							</div>
+							<!-- 左移箭头 -->
+							<div style="right:23px;top:100px;font-size:20px;z-index:2000" 
+									id="chevron-left" class="pabs square">
+								<i class="icon-chevron-left"></i>
+							</div>
+						</div>
+						<div class="col-lg-6" style="width: 390px">
+							<div id="eventList_right_table" class="table-div" style="height:180px"></div>
+						</div>
+					</div>
+				</div>	
+			</form>
+		</div>
+	</div>
+
+<!-- 详情 -->
+<div class="template detail-info" id="detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group">
+				<label class="col-lg-2 control-label">策略名称 :</label>
+				<label class="col-lg-4 control-label tl" data-id="eipName"></label>
+				<label class="col-lg-2 control-label">策略状态 :</label>
+				<label class="col-lg-4 control-label tl" data-id="eipStatusName"></label>
+		    </div>
+		    <div class="form-group">
+				<label class="col-lg-2 control-label">资产名称 :</label>
+				<label class="col-lg-4 control-label tl" data-id="edName"></label>
+				<label class="col-lg-2 control-label">周期信息 :</label>
+				<label class="col-lg-4 control-label tl" data-id="circle"></label>
+		    </div>
+		    <div class="form-group">
+				<label class="col-lg-2 control-label">事件类型 :</label>
+				<label class="col-lg-4 control-label tl" data-id="eventTypeName"></label>
+				<label class="col-lg-2 control-label">事件名称 :</label>
+				<div class="col-lg-4">
+	              <label type="text" class="control-label tl control-label-text" data-id="eventName"></label>
+		        </div>
+		    </div>
+		    <div class="form-group">
+				<label class="col-lg-2 control-label">备注信息 :</label>
+				<div class="col-lg-9">
+	              <label type="text" class="control-label tl control-label-text" data-id="eipDesc"></label>
+		        </div>
+		    </div>
+		</form>
+	</div>
+</div>
+
+</tem>

@@ -1,0 +1,45 @@
+<tem>
+<!-- 资产添加模板 -->
+<div class="template" id="asset_edit_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">资产名称 :</label>
+			    <div class="col-lg-7">
+			        <input type="text" class="form-control input-sm" data-id="assetName" validate="required">
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">资产编号 :</label>
+			    <div class="col-lg-7">
+			        <input type="text" class="form-control input-sm" data-id="assetCode" validate="stringLimit0">
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">资产类型 :</label>
+			    <div class="col-lg-7">
+			        <div class="inputdrop" id="assetTypeId" data-id="assetTypeId"></div>
+			    </div>		    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-4 control-label tr">操作系统类型 :</label>
+				<div class="col-lg-7">
+					<select class="form-control input-sm" data-id="osType" data-type="select">
+              		</select>
+				</div> 		    
+			</div>
+
+			<div class="form-group" style="margin-bottom:30px">
+			    <label class="col-lg-4 control-label tr">生产厂商 :</label>
+				<div class="col-lg-7">
+					<select class="form-control input-sm" data-id="supplierId" data-type="select">
+              		</select>
+				</div> 		    
+			</div>
+		</form>
+	</div>
+</div>
+</tem>

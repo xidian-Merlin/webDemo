@@ -1,0 +1,15 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "IBM STORAGE",
+					"fileName" : "ibm_storage",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "ibm_storage/base.html","icon" : "monitor-base-info"},
+								{"text" : "CPU使用率" ,"href" : "ibm_storage/cpu.html","icon" : "monitor-cpu-percent"},
+								{"text" : "动态信息" ,"href" : "ibm_storage/dynamic.html","icon" : "monitor-dynamic-info"},
+								{"text" : "状态信息" ,"href" : "ibm_storage/status.html","icon" : "monitor-status"},
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

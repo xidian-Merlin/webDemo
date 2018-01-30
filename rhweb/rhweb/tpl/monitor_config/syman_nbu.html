@@ -1,0 +1,40 @@
+<div data-id="monitor_index" class="h-all ovxh" style="margin-left:4.5%;">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+
+			<div class="form-group" data-block="fault">
+				<label class="control-label col-lg-2">进程路径</label>
+				<div class="col-lg-3">
+					<div class="form-group">
+						<div class="col-lg-12">
+							<input type="text" class="form-control input-sm" maxlength="256" data-flag="faultModule">
+						</div>
+						<div class="col-lg-12 dn" data-show="edit">
+							<input type="text" class="form-control input-sm" value="可选进程" disabled="disabled">
+						</div>
+						<div class="col-lg-12 dn" data-show="edit" style="height:150px;overflow: auto;">
+							<ul data-id="process_ul" style="border: 1px solid #cfdadd;border-top:none;overflow-x: hidden;overflow-y: auto;">
+								<!-- <li class="p5 bbd">
+									<i style="color:#ddd;" class="icon-circle f12"></i>
+									<span>进程1</span>
+								</li> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-1">
+				  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="fault_add" title="添加">
+				  	<i class="icon-chevron-right"></i>
+				  </div>
+			    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="fault_remove" title="删除">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-u" style="height:200px;"></div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>

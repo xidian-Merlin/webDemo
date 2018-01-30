@@ -1,0 +1,122 @@
+{
+	"resultCode": 0,
+	"resultMsg": "",
+	"resultObj": [{
+		"monitorType": [
+			[
+				["网络设备", "网络设备"],
+				["Array负载均衡", "ARRAY"],
+				["IBM光纤交换机", "IBM_FC_SWITCH"],
+				["博科交换机", "BROCADE"],
+				["华三网络设备", "H3C"],
+				["华为网络设备", "NE_HUAWEI"],
+				["迈普交换机", "MAIPU"],
+				["锐捷网络设备", "RUIJIE_RSR"],
+				["思科网络设备", "NE_CISCO"],
+				["中兴网络设备", "ZTE"],
+				["启明负载均衡", "VENUS_LOAD"]
+			],
+			[
+				["安全设备", "安全设备"],
+				["Juniper防火墙", "JUNIPER"],
+				["NETKEEPER纵向加密认证网关", "NETKEEPER"],
+				["安恒USM堡垒机", "DBAPP_USM"],
+				["安恒WEB防火墙", "DBAPPWEB_FW"],
+				["安信华WEB防火墙", "ANCHIVA_WAF"],
+				["安信华WEB网关", "ANCHIVA_SWG"],
+				["迪普IPS监控器", "DPTECH_IPS"],
+				["迪普防火墙", "DPTECH_FW"],
+				["东软防火墙", "NETEYE_FIREWALL"],
+				["联想VPN", "LENOVOVPN"],
+				["联想网御入侵检测系统", "LENOVOIDS"],
+				["联想网御星云", "LEADSEC"],
+				["绿盟安全审计系统", "NSFOCUS_SAS"],
+				["绿盟入侵检测系统", "NSFOCUS"],
+				["绿盟远程安全评估系统", "NSFOCUS_RSAS"],
+				["启明星辰防火墙", "VENUS_FW"],
+				["启明星辰Web应用防火墙", "VENUS_WAF"],
+				["启明星辰抗DDoS", "VENUS_ADM_DDOS"],
+				["启明星辰入侵检测系统", "VENUS"],
+				["启明星辰统一威胁管理", "VENUS_UTM"],
+				["瑞星病毒监测预警系统", "RISING"],
+				["锐捷防火墙", "RUIJIE_FIREWALL"],
+				["思科ASA防火墙", "CISCO_ASA"],
+				["天玥网络安全审计系统", "VENUS_NSAS"],
+				["天融信防病毒网关", "TOPSECAV"],
+				["天融信防火墙", "TOPSECFW"],
+				["天融信入侵检测系统", "TOPSEC_IDS"],
+				["天阗网络入侵检测与管理系统", "VENUST_IDS"],
+				["网御神州安全设备", "SECWORLD"]
+			],
+			[
+				["操作系统", "操作系统"],
+				["AIX", "AIX"],
+				["AIX双机热备", "AIX_HA"],
+				["HP-UX", "HP_UNIX"],
+				["Linux", "LINUX"],
+				["Linux双机设备", "LINUX_HA"],
+				["Solaris", "SOLARIS"],
+				["Tru64 UNIX", "TRU_64"],
+				["Windows", "WINDOWS"],
+				["Windows双机热备", "WINDOWS_HA"]
+			],
+			[
+				["数据库", "数据库"],
+				["DB2", "DB2"],
+				["DB2双机热备", "DB2_HA"],
+				["Informix", "INFORMIX"],
+				["MySQL", "MYSQL"],
+				["ORACLE ASM", "ORACLE_ASM"],
+				["Oracle", "ORACLE"],
+				["Oracle RAC", "ORACLERAC"],
+				["SQL Server", "SQLSERVER"],
+				["Sybase", "SYBASE"]
+			],
+			[
+				["中间件", "中间件"],
+				["Apache", "APACHE"],
+				["Microsoft IIS", "IIS6"],
+				["Tomcat", "TOMCAT"],
+				["Tomcat双机热备", "TOMCAT_HA"],
+				["Tuxedo", "TUXEDO8"],
+				["WebLogic", "WEBLOGIC"],
+				["WebSphere", "WEBSPHERE"],
+				["WebSphere集群", "WEBSPHERE_CLUSTER"],
+				["Weblogic集群", "WL"],
+				["Websphere双机热备", "WEBSPHERE_HA"],
+				["金蝶应用服务器", "APUSIC_SERVER"]
+			],
+			[
+				["存储备份", "存储备份"],
+				["EMC-VMAX10k", "EMC_VMAX"],
+				["IBM DS5020", "IBM_STORAGE_DS5020"],
+				["IBM V7000存储设备", "IBM_STORAGE"],
+				["NetApp存储设备", "NETAPP"],
+				["惠普磁盘阵列", "HP_RAID"],
+				["日立HDS磁盘阵列", "HDS_RAID"],
+				["赛门铁克NBU存储设备", "SYMAN_NBU"],
+				["华为存储设备", "HW_OCEANSTOR"]
+			],
+			[
+				["应用软件", "应用软件"],
+				["APCUPS", "APC_UPS"],
+				["微软补丁服务器", "MICRPATCH"]
+			],
+			[
+				["通用协议", "通用协议"],
+				["HTTP", "COMMON_URL"],
+				["ICMP", "PING"],
+				["JMX", "COMMON_JMX"],
+				["SNMP", "COMMON_SNMP"],
+				["端口监控", "PORT_MONITOR"]
+			],
+			[
+				["通用监控器", "通用监控器"],
+				["SQL监控器", "COMMONDB"],
+				["WEBSERVICE", "WEBSERVICE"],
+				["通用脚本", "COMMONSCRIPT"],
+				["通用协议", "COMMONTCP"]
+			]
+		]
+	}]
+}

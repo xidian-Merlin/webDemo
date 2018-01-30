@@ -1,0 +1,141 @@
+<link href='/css/app.css' rel='stylesheet' />
+<link href='/css/init.css' rel='stylesheet' />
+<link href='/css/animate.min.css' rel='stylesheet' />
+<link href='/css/font-awesome.css' rel='stylesheet' />
+<link href='/js/lib/bootstrap/css/bootstrap.css' rel='stylesheet' />
+<link href='/js/lib/fullcalendar/css/fullcalendar.css' rel='stylesheet' />
+<link href='/js/lib/fullcalendar/css/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href='/js/lib/fancybox/jquery.fancybox.css' rel='stylesheet' />
+<link href='/js/lib/spectrum/spectrum.css' rel='stylesheet' />
+<script src='/js/lib/jquery/jquery.1.10.2.js'></script>
+<script src='/js/lib/jquery/jquery-ui.js'></script>
+<script src='/js/lib/fullcalendar/js/moment.min.js'></script>
+<script src='/js/lib/fullcalendar/js/fullcalendar.js'></script>
+<script src="/js/lib/fancybox/jquery.fancybox.js"></script>
+<script src="/js/lib/spectrum/spectrum.js"></script>
+<script src="/js/lib/JsonTools.js"></script>
+<script src="/js/lib/HashMap.js"></script>
+<script src="/module/oper_workorder/duty_manage/calendar.js"></script>
+<script src="/js/ip.js"></script>
+
+<link href='/js/lib/ztree/css/metroStyle.css' rel='stylesheet' />
+
+<style type="text/css">
+
+	.fc-event{
+		padding: 3px;
+		margin-bottom: 8px;
+	}
+
+	.form-group{
+		margin-left:0 !important;
+		margin-right:0 !important;
+	}
+
+	.panel{
+		box-shadow :0 2px 1px rgba(0, 0, 0, 0.05);
+		border :none;
+	}
+
+	.panel-heading{
+		background-color: #f5f5f5;
+	    color: #777 !important;
+	    border-bottom: 1px #ddd solid;
+	}
+
+	#external-events .fc-event{
+		width: 130px;
+	}
+
+	.fc-toolbar{
+		padding: 10px;
+		background-color: #efefef;
+	}
+
+	.fc-day-grid-event{
+		margin: 0 10px;
+	}
+
+	.icon-png{
+	  display:inline-block;
+	  width:30px;
+	  height:30px;
+	  background-size:cover !important;
+	  background-repeat: no-repeat !important;
+	}
+
+	.icon-png-ji{
+	  background: url("/img/osIcon/ji_grey.png");
+	}
+
+</style>
+
+<div class="mask" id="mask">
+	<div class="w-all h-all prel">
+		<div class="pabs" style="left:49%;top:40%">
+			<div class="sk-rotating-plane" data-id="loading-icon"></div>
+		</div>
+	</div>
+</div>
+
+<div class="p-panel" id="left-panel" 
+		style="left: 0;top: 0;width: 280px;background:#efefef;padding-right:15px">
+	<div class="panel" style="margin-top:0;padding-top: 50px;background: #efefef">
+		<div class="panel-heading">用户列表</div>
+		<div class="panel-body bgwh" id='external-events'></div>
+	</div>
+</div>
+
+<div class="p-panel" id="right-panel" 
+	style="top: 0;left: 280px;right: 0;min-width:450px;overflow:auto;padding:0">
+	<div id="calendar"></div>
+</div>
+
+
+<div id="msg_template" style="display:none;width:560px;height:300px;">
+	<form class="form-horizontal xs-form um-fd-el-info" id="form_el_info">
+		<div class="form-group" data-type="label">
+			<label class="col-lg-4 control-label">短信模板</label>
+			<div class="col-lg-7">
+                <select class="form-control input-sm" id="smsTempId">
+                	<option value="-1">---</option>
+                </select>
+        	</div>
+		</div>
+
+		<div class="form-group" data-type="label">
+			<label class="col-lg-4 control-label">提前发送短信时间(小时)</label>
+			<div class="col-lg-7">
+                <input type="text" class="form-control input-sm" id="adTime">
+        	</div>
+		</div>
+
+		<div class="form-group" data-type="label" id="alarm" style="display: none;margin-top:-8px">
+			<label class="col-lg-4 control-label"></label>
+        	<label class="col-lg-7 control-label tl" style="color: #f00">提前发送短信时间已超过当前时间，请重新输入。</label>
+		</div>
+
+		<div class="form-group" data-type="label" id="alarm1" style="display: none;margin-top:-8px">
+			<label class="col-lg-4 control-label"></label>
+        	<label class="col-lg-7 control-label tl" style="color: #f00">提前发送短信时间:只能输入非0的数字。</label>
+		</div>
+		
+		<div class="form-group" data-type="label">
+			<label class="col-lg-4 control-label">短信内容</label>
+			<div class="col-lg-7">
+                <textarea class="form-control input-sm" id="adContent"></textarea>
+        	</div>
+		</div>
+		<div class="form-group" data-type="label">
+			<label class="col-lg-4 control-label">备注</label>
+			<div class="col-lg-7">
+                <textarea class="form-control input-sm" id="adDesc"></textarea>
+        	</div>
+		</div>
+		<div class="form-group" data-type="label">
+			<div class="col-lg-12" style="text-align:center">
+                <button id="msg_btn" class="btn btn-info" type="button">提交</button>
+        	</div>
+		</div>
+	</form>
+</div>

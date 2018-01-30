@@ -1,0 +1,114 @@
+<tem>
+
+
+
+
+
+
+
+
+
+<div class="template" id="baseinfo_template">
+
+<div class="pabs" style="right: 20px; top: 9px;" id="menu_right_oper_div"><div class="monitor_time_pick prel" id="time_pick_div">
+    	<label style="margin-right:20px">当前为：<span id="query_time_label"></span></label>
+    	<div style="display:inline-block" class="input-append date form_datetime">
+    		<i class="icon-cog icon-animate"></i>
+    		<input type="hidden" id="test">
+    	</div>
+    </div></div>
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>可用度</span>
+    </div>
+    <div class="monitor-panel" style="height: 115px;" id="scale_list">
+    </div>
+</div>
+<div class="panel panel-default mt10">
+
+    <div class="panel-heading font-bold prel">
+        <span>基本信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="base_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">监控器名称：</label>
+                    <label class="col-lg-3 control-label tl" data-id="monitorName">WebService监控器</label>
+                    <label class="col-lg-2 control-label">监控器类型：</label>
+                    <label class="col-lg-3 control-label tl" data-id="monitorTypeName">WEBSERVICE</label>
+                </div>
+                <!-- check-div-data 会自动检查结果集中时候包含result中的属性，如不包含将自动删除此节点 -->
+                <div class="form-group check-div-data" result="">
+                    <label class="col-lg-2 control-label">数据库版本：</label>
+                    <label class="col-lg-8 control-label tl" data-id="monitorTypeName">WEBSERVICE</label>
+                </div>
+                <!-- check-div-data 会自动检查结果集中时候包含result中的属性，如不包含将自动删除此节点 -->
+                <div class="form-group check-div-data" result="">
+                    <label class="col-lg-2 control-label">字符集：</label>
+                    <label class="col-lg-8 control-label tl" data-id="monitorTypeName">WEBSERVICE</label>
+                </div>
+            </div>
+            <div id="asset_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">被监控资产名称：</label>
+                    <label class="col-lg-3 control-label tl" data-id="assetName">112.21.1.1</label>
+                    <label class="col-lg-2 control-label">资产类型：</label>
+                    <label class="col-lg-3 control-label tl" data-id="assetTypeName">二层交换机</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">IP：</label>
+                    <label class="col-lg-3 control-label tl" data-id="mainIpv4">112.21.1.1</label>
+                    <label class="col-lg-2 control-label">安全域：</label>
+                    <label class="col-lg-3 control-label tl" data-id="securityDomainName">1</label>
+                </div>
+                <!-- 
+                radio-div-one,radio-div-group 不可同时存在,将自动选择权值最大的显示（删除交集之后再算权值）
+                check-div-data 会自动检查结果集中时候包含result中的属性，如不包含将自动删除此节点
+                 -->
+                <div class="form-group radio-div-one check-div-data" result="">
+                    <label class="col-lg-2 control-label">操作系统：</label>
+                    <label class="col-lg-3 control-label tl" data-id="osTypeName">IOS</label>
+                    <label class="col-lg-2 control-label">物理位置：</label>
+                    <label class="col-lg-3 control-label tl" data-id="locationCbName"></label>
+                </div>
+
+                <div class="form-group radio-div-group check-div-data" result="">
+                    <label class="col-lg-2 control-label">物理位置：</label>
+                    <label class="col-lg-3 control-label tl" data-id="locationCbName"></label>
+                </div>
+                
+                <div class="form-group radio-div-group check-div-data" result="">
+                    <label class="col-lg-2 control-label">CPU个数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="locationCbName"></label>
+                    <label class="col-lg-2 control-label">CPU核数：</label>
+                    <label class="col-lg-3 control-label tl" data-id="locationCbName"></label>
+                </div>
+                <div class="form-group radio-div-group check-div-data" result="">
+                    <label class="col-lg-2 control-label">CPU品牌：</label>
+                    <label class="col-lg-8 control-label tl" data-id="locationCbName"></label>
+                </div>
+            </div>
+            <!-- check-div-data 会自动检查结果集中时候包含result中的属性，如不包含将自动删除此节点 -->
+            <div id="test_info_monitor_div" class="check-div-data" result="result">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">探测信息详情：</label>
+                    <label class="col-lg-3 control-label tl" data-id="result">配置信息有误，未配置代理服务器。</label>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+
+</div>
+</div>
+
+
+<div class="template" id="eventtable_template">
+	<div id="table_div_event_fault" class="table_div" style="height:380px;border:1px solid #ddd;width: 600px;">
+	</div>
+</div>
+
+
+
+</tem>

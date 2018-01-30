@@ -1,0 +1,47 @@
+<script src="/module/base_sysdate/asset_manage/backup_asset.js"></script>
+
+
+<div class="tab-container" id="tab">
+	<ul class="nav nav-tabs nav-justified underline-ul" data-id="tab-ul" style="height: 50px;">
+		<li style="width:100px">
+			<a href="javascript:void(0);" style="padding-top:15px;padding-bottom:15px">
+				<span>备用资产</span>
+			</a>
+			<div class="mask-div"></div>
+		</li>
+		<li style="width:100px">
+			<a href="javascript:void(0);" style="padding-top:15px;padding-bottom:15px">
+				<span>可更新资产</span>
+			</a>
+			<div class="mask-div"></div>
+		</li>
+	</ul>
+	<div class="tab-content prel">
+		<div class="tab-pane">
+			<div class="table-div-outer" style="padding:0 10px">
+				<div class="table-oper" style="line-height:50px">
+					<a href="javascript:void(0);" id="backup_change_btn" class="bgblue">
+						<i class="btn-commen change-btn"></i>
+						<span>批量转换</span>
+					</a>
+					<a href="javascript:void(0);" id="backup_delete_btn">
+						<i class="btn-commen delete-btn"></i>
+						<span>批量删除</span>
+					</a>
+				</div>
+				<div id="backup_table_div" class="table-div table-list" style="height:300px;"></div>
+			</div>
+		</div>
+		<div class="tab-pane">
+			<div class="table-div-outer" style="padding:0 10px">
+				<div class="table-oper" style="line-height:50px">
+					<a href="javascript:void(0);" id="updateble_delete_btn" class="bgblue">
+						<i class="btn-commen delete-white-btn"></i>
+						<span>批量删除</span>
+					</a>
+				</div>
+				<div id="updateble_table_div" class="table-div table-list" style="height:300px"></div>
+			</div>
+		</div>
+	</div>
+</div>

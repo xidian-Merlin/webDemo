@@ -1,0 +1,64 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>内存信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="memory_info_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'],function (plot){
+
+var memory_info_url = "monitorview/middleware/iis/queryIisMemoryInfo";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    memory_info_chart();
+}
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function memory_info_chart()
+{
+    um_ajax_get({
+        url : memory_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var items = data;
+            var legendArray = ['内存（%）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesObj = new Object();
+            seriesObj.name = '内存（%）';
+            seriesObj.type = "line";
+            seriesObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].enterDate);
+                seriesObj.data.push(items[i].memoryValue);
+            }
+            seriesArray.push(seriesObj);
+
+            plot.lineRender($("#memory_info_div") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+
+});
+});
+</script>

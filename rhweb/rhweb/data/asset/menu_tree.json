@@ -1,0 +1,43 @@
+{
+    "resultCode": 0,
+    "resultMsg": "",
+    "resultObj": [
+        {
+            "id": "roota",
+            "label": "菜单一",
+            "leaf": false,
+            "parentID": "root"
+        },
+        {
+            "id": "IMAP21",
+            "label": "菜单1-1",
+            "leaf": true,
+            "parentID": "roota"
+        },
+        {
+            "id": "BDUNKNOWN",
+            "label": "菜单1-2",
+            "leaf": true,
+            "parentID": "roota"
+        },
+        {
+            "id": "roota2",
+            "label": "菜单二",
+            "leaf": false,
+            "parentID": "root"
+        },
+        {
+            "id": "IMAP21",
+            "label": "菜单2-1",
+            "leaf": true,
+            "parentID": "roota2"
+        },
+        {
+            "id": "BDUNKNOWN",
+            "label": "菜单2-2",
+            "leaf": true,
+            "parentID": "roota2"
+        }
+        
+    ]
+}

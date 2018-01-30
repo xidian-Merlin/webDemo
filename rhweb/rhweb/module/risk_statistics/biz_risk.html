@@ -1,0 +1,112 @@
+</div>
+<script src="/module/risk_statistics/biz_risk.js"></script>
+
+<!-- 左侧 -->
+<div class="p-panel um-panel left-panel" id="left-panel">
+	<div class="um-panel-head" id="accordion_icon">
+		<div class="col-lg-4 unit-col" data-name="businessDomainTreeStore" data-type="1">业务域</div>
+	</div>
+	<div class="um-panel-body">
+		<ul id="accordion" class="ztree" style="height:100%;overflow:hidden"></ul>
+	</div>
+</div>
+
+<!-- 右侧 -->
+<div class="p-panel um-panel right-panel" id="right-panel">
+	<div class="um-panel-head">
+		<div class="table-oper" id="table_oper">
+			<a href="javascript:void(0);" id="export_btn" class="bgblue">
+				<i class="btn-commen export-white-btn"></i>
+				<span>导出</span>
+			</a>
+		</div>
+	</div>
+	<div class="um-panel-body">
+		<div class="w-all h-all prel">
+			<div id="table_div" class="table-div table-list"></div>
+
+			<div class="pabs tran5 bgfb ovh" id="chart_div" 
+					style="right:0;top:0;bottom:0;z-index:2001;width:0">
+				<div class="p-panel" style="left:0;right:0;top:0;height:50%">
+					<div class="panel panel-default m0 um-panel ">
+						<div class="panel-heading um-panel-head" style="height:40px">
+							业务域风险趋势图
+							<div class="pabs" style="right:10px;top:5px" id="time_sel_div">
+								<select data-type="select" id="time_sel">
+									<option value="0">最近一天</option>
+									<option value="1" selected>最近一周</option>
+									<option value="2">最近一月</option>
+								</select>
+							</div>
+						</div>
+						<div class="panel-body um-panel-body p10 ovh" style="top:40px">
+							<div class="w-all h-all" id="sec_area"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="p-panel" style="left:0;right:0;top:50%;height:50%">
+					<div class="panel panel-default m0 um-panel">
+						<div class="panel-heading um-panel-head" style="height:40px">
+							业务域资产事件统计图
+							<span class="dib r">
+								<label class="i-checks">
+								  <input type="radio" value="1" name="show_type" checked>
+								  <i></i>图形显示
+								</label>
+								<label class="i-checks ml10">
+								  <input type="radio" value="2" name="show_type">
+								  <i></i>表格显示
+								</label>
+							</span>
+						</div>
+						<div class="panel-body um-panel-body p10 ovh" style="top:40px">
+							<div id="chart_show_div" class="h-all">
+								<div class="col-lg-6 h-all">
+									<div class="h-all" id="sec_area1"></div>
+								</div>
+								<div class="col-lg-6 h-all">
+									<div class="h-all" id="sec_area2"></div>
+								</div>
+							</div>
+							<div id="table_show_div" class="h-all" style="display:none">
+								<div class="table_div h-all" id="event_list_div"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 收回 -->
+				<div class="pabs circle" id="chevron-right"
+						style="left:3px;top:-51px;font-size:20px;z-index:1003">
+					<i class="icon-chevron-right"></i>
+				</div>
+
+				<!-- title -->
+				<div class="pabs" style="left:51px;top:-34px;font-size:12px;z-index:1003">
+					<span style="color:#777" id="chevron-title"></span>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="template" id="riskValue_query_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">风险值上限</label>
+			    <div class="col-lg-8">
+			        <input type="text" class="form-control input-sm" validate="between1~100">
+			    </div>		    
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-3 control-label">风险值下限</label>
+			    <div class="col-lg-8">
+			        <input type="text" class="form-control input-sm"  validate="between1~100">
+			    </div>		    
+			</div>
+		</form>
+	</div>
+</div>

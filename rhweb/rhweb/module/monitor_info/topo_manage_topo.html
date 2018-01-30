@@ -1,0 +1,46 @@
+<div id="flashContent" style="padding:0px;width:100%;height:100%;overflow: hidden;"></div>
+<form id="exportForm" method="post">
+	<input type="hidden" id='asset' name='asset' value='' />
+</form>
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+
+	index_menuHide();
+
+//	g_dialog.waitingAlert();
+	var this_params = index_query_param_get();
+	var topoId = !this_params.topoId?"":this_params.topoId;
+	var topoType = !this_params.topoType?"":this_params.topoType;
+	var defaultShow = !this_params.defaultShow?"":this_params.defaultShow;
+	var image = !this_params.image?"":this_params.image;
+	var flag = !this_params.flag?"":this_params.flag;
+	var taskId = !this_params.taskId?"":this_params.taskId;
+	var topoDiscoverIcon = !this_params.topoDiscoverIcon?"":this_params.topoDiscoverIcon;
+
+	var autoRefreshTime = this_params.autoRefreshTime;
+	var pingMonitor = this_params.pingMonitor;
+	var regionId = this_params.regionId;
+	var lowerDeId = this_params.lowerDeId;
+	var lowerTopoGirdList = this_params.lowerTopoGirdList;
+	var localTopoXmlFlag = this_params.localTopoXmlFlag;
+	var appMonitorFlag = this_params.appMonitorFlag;
+	var standardEdition = this_params.standardEdition;
+	var lineDetailInfo = this_params.lineDetailInfo;
+	var imgView = this_params.imgView;
+	var guohaiBondFlag = this_params.guohaiBondFlag;
+	var bsName = this_params.bsName;
+	var themePath = this_params.themePath;
+
+	var globalTopoFlag = this_params.globalTopoFlag;
+		
+	var swf_html_str = "<embed height=\"100%\" width=\"100%\" "+
+	"flashvars=\"topoId="+topoId+"&amp;image="+image+"&amp;topoType="+topoType+"&amp;defaultShow="+defaultShow+"&amp;autoRefreshTime=300000&amp;pingMonitor=0&amp;regionId=null&amp;taskId="+taskId+"&amp;lowerDeId=null&amp;lowerTopoGirdList=null&amp;localTopoXmlFlag=null&amp;appMonitorFlag=null&amp;standardEdition=1&amp;lineDetailInfo=0&amp;imgView=null&amp;topoDiscoverIcon="+topoDiscoverIcon+"&amp;guohaiBondFlag=0&amp;bsName=业务域&amp;themePath=green/&amp;serverIp="+index_web_app+"\" "+
+	"menu=\"false\" wmode=\"opaque\" allowscriptaccess=\"always\" quality=\"high\" bgcolor=\"#CCCCCC\" name=\"topo\" id=\"topo\" style=\"undefined\" src=\"flash/topo/TopoMain.swf\" type=\"application/x-shockwave-flash\">"
+
+	$("#flashContent").html(swf_html_str);
+	g_topo.topo_rightClickInit();
+	
+});
+</script>

@@ -1,0 +1,66 @@
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>用户访问</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="user_access_list_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+
+var urlParamObj = index_query_param_get();
+
+var user_access_list_url = "monitorview/os/liunx/queryLinuxUserAuditInfo";
+var user_access_list_header = [
+						      {text:"登录用户名" ,name:"userName",searchRender:function (el){
+						      	el.append('<input type="hidden" search-data="monitorId" value="'+urlParamObj.monitorId+'" searchCache/>');
+						      	el.append('<input type="hidden" search-data="time" value="'+$("#query_time_label").text()+'" searchCache/>');
+						      	el.append('<input type="hidden" search-data="regionId" value="'+urlParamObj.regionId+'" searchCache/>');
+						      	el.append('<input class="form-control input-sm" search-data="userName" type="text">');
+						      }},
+						      {text:"登录IP" ,name:"loginIp" ,searchRender:function (el){
+								index_render_div(el ,{type:"ip" ,startKey:"login_ip_start" ,endKey:"login_ip_end"});
+							  }},
+						      {text:"登录时间" ,name:"loginDate",searchRender:function (el){
+								index_render_div(el ,{type:"date",startKey:"loginStart" ,endKey:"loginEnd"});
+							  }},
+						      {text:"登出时间" ,name:"logOutDate",searchRender:function (el){
+								index_render_div(el ,{type:"date",startKey:"logoutStart" ,endKey:"logoutEnd"});
+							  }},
+						   ];
+
+
+view_init();
+
+function view_init()
+{
+	user_access_list();
+}
+
+window.index_monitor_init = function ()
+{
+	user_access_list();
+}
+
+function user_access_list()
+{
+	urlParamObj.time = $("#query_time_label").text();
+	
+	g_grid.render($("#user_access_list_div") ,{
+		url : user_access_list_url,
+		header : user_access_list_header,
+		paramObj : urlParamObj,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		allowCheckBox : false
+	});
+}
+
+});
+
+
+</script>

@@ -1,0 +1,202 @@
+<tem>
+
+<!-- 系统事件列表 -->
+
+
+
+<!-- 系统事件-监控器详情信息 -->
+<div class="template" id="systemeventmonitor_template">
+<div class="panel-body">
+	<!-- 运行状态 -->
+	<div class="form-group">
+
+	    <div class="col-lg-4">
+	        <ul class="ztree p15" id="sec_tree" style="overflow-y: auto;height: 500px;"></ul>
+	    </div>
+	    <div class="col-lg-8">
+	    	
+	        <div class="systemeventmonitor-table">
+			</div>
+	    </div>		    
+	</div>
+</div>
+</div>
+<!-- 系统事件-故障性能详情-->
+<div class="template" id="systemeventfault_template">
+
+	<div class="tab-container" id="tab">
+		<ul class="nav nav-tabs nav-justified" data-id="tab-ul">
+			<li id="tab_ul_li1" class="active" onclick="chenge(1,this);">
+				<a>事件详情</a>
+			</li>
+			<li class="" onclick="chenge(2,this);">
+				<a>处置记录</a>
+			</li>
+		</ul>
+	</div>
+	<div class="panel-body" id="panel-body1">
+
+		<div class="" style="padding-bottom: 15px;">
+	    </div>
+		<div class="form-group">
+		    <label class="col-lg-4 control-label tr">
+		        <span>事件类型：</span>
+		    </label>	    
+		    <label class="col-lg-8 control-label">
+		        <span name="className"></span>
+		    </label>	    
+		</div>
+		<div class="form-group">
+		    <label class="col-lg-4 control-label tr">
+		        <span>事件名称：</span>
+		    </label>	    
+		    <label class="col-lg-8 control-label">
+		        <span name="eventName"></span>
+		    </label>	    
+		</div>
+		<div class="form-group">
+		    <label class="col-lg-4 control-label tr">
+		        <span>节点名称：</span>
+		    </label>	    
+		    <label class="col-lg-8 control-label">
+		        <span name="mnName">&nbsp;</span>
+		    </label>	    
+		</div>
+		<div class="form-group">
+		    <label class="col-lg-4 control-label tr">
+		        <span>事件模块：</span>
+		    </label>	    
+		    <label class="col-lg-8 control-label">
+		        <span name="eventMoudle"></span>
+		    </label>
+		</div>
+		<div class="form-group">
+		    <label class="col-lg-4 control-label tr">
+		        <span>资产名称：</span>
+		    </label>
+		    <label class="col-lg-8 control-label">
+		        <span name="mdName"></span>
+		    </label>
+		</div>
+		
+		
+		<div class="form-group">
+		    <label class="col-lg-4 control-label tr">
+		        <span>IP地址：</span>
+		    </label>
+		    <label class="col-lg-8 control-label">
+		        <span name="ip"></span>
+		    </label>
+		</div>
+		<!-- check-div-association 关联属性，如当关联属性eventType的值为3 时才显示-->
+		<div class="form-group check-div-data check-div-association" associationlen="1" association="eventType:3" result="perfValue">
+		    <input type="hidden" name="eventType" value="">
+		    <label class="col-lg-4 control-label tr">
+		        <span>性能值：</span>
+		    </label>	    
+		    <label class="col-lg-4 control-label tr">
+		        <span name="perfValue"></span>
+		  	</label>    
+		</div>
+		<div class="form-group">
+		    <label class="col-lg-4 control-label tr">
+		        <span>解决方案：</span>
+		    </label>    
+		    <label class="col-lg-8 control-label">
+		        <span name="eventSolution"></span>
+		    </label>	    
+		</div>
+	</div>
+	<div class="panel-body" id="panel-body2">
+		<div id="table_div_agent_fault" class="table_div" style="height:280px;border:1px solid #ddd;"></div>
+	</div>
+
+
+	<script type="text/javascript">
+	chenge(1,$("#tab_ul_li1"));
+	function chenge(index,tag)
+	{
+	try
+	{
+		$(tag).parent().find("li").removeClass("active");
+		$(tag).addClass("active");
+		$("[id^=panel-body]").hide();
+		$("[id='panel-body"+index+"']").show();
+	}catch(e)
+	{alert(e);}
+
+	}
+	</script>
+	</div>
+	</div>
+</div>
+
+<!-- 中心设备运行指标模板 -->
+<div class="template" id="systemstate_query_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">设备名称：</label>
+			    <label class="col-lg-8 control-label tl" data-id="nodeName"></label>	    
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">设备IP：</label>
+			    <label class="col-lg-8 control-label tl" data-id="nodeIp"></label>	
+			</div>
+
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">CPU使用率：</label>
+			    <label class="col-lg-8 control-label tl" data-id="cpu"></label>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">内存使用率：</label>
+			    <label class="col-lg-8 control-label tl" data-id="memoryInfo"></label>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-4 control-label">硬盘使用率：</label>
+			    <label class="col-lg-8 control-label tl" data-id="diskUsedRate"></label>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 代理服务器运行指标模板 -->
+<div class="template" id="systemagent_query_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="panel-body" >
+				<div class="form-group">
+				    <label class="col-lg-4 control-label">设备名称：</label>
+			    	<label class="col-lg-8 control-label tl" data-id="nodeName"></label>
+				</div>
+
+				<div class="form-group">
+				    <label class="col-lg-4 control-label">设备状态：</label>
+			    	<label class="col-lg-8 control-label tl" data-id="nodeStatus"></label>
+				</div>
+
+				<div class="form-group">
+				    <label class="col-lg-4 control-label">CPU使用率：</label>
+			    	<label class="col-lg-8 control-label tl" data-id="cpu"></label>
+				</div>
+				<div class="form-group">
+				    <label class="col-lg-4 control-label">内存使用率：</label>
+			    	<label class="col-lg-8 control-label tl" data-id="memoryInfo"></label>
+				</div>
+				<div class="form-group">
+				    <label class="col-lg-4 control-label">硬盘使用率：</label>
+			    	<label class="col-lg-8 control-label tl" data-id="diskUsedRate"></label>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+
+
+
+
+</tem>

@@ -1,0 +1,144 @@
+<script src="/module/oper_workorder/workorder_handle/workorder_test.js"></script>
+<h1>表单一</h1>
+<form class="bs-example form-horizontal xs-form" id="form1">
+	<div class="form-group">
+      <label class="col-lg-2 control-label">申请日期</label>
+      <div class="col-lg-4">
+          <div class="input-group w-all">
+            <input type="text" class="form-control input-sm" 
+                    id="apply_date" validate="required" data-id="apply_date">
+          </div>
+        </div>
+      <label class="col-lg-2 control-label" queryStr>申请人</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control input-sm" data-id="apply_person" queryValue>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label" queryStr>设备类型</label>
+      <div class="col-lg-4">
+        <select class="form-control input-sm" data-type="select" 
+        			data-id="device_category">
+	        <option value="option 2">闲置</option>
+	        <option value="option 3">使用中</option>
+      	</select>
+      </div>
+      <label class="col-lg-2 control-label" queryStr>设备名称</label>
+      <div class="col-lg-4">
+        <select class="form-control input-sm" data-type="select"
+        			data-id="device_name">
+	        <option value="option 2">闲置</option>
+	        <option value="option 3">使用中</option>
+      	</select>
+      </div>
+    </div>
+
+    <div class="form-group">
+    	<label class="col-lg-2 control-label">工单名称</label>
+	    <div class="col-lg-10">
+	       <input type="text" class="form-control input-sm" data-id="workorder_name">
+	    </div>
+    </div>
+
+    <div class="form-group">
+    	<label class="col-lg-2 control-label">申请原因</label>
+	    <div class="col-lg-10">
+              <textarea class="form-control input-sm" style="width:100%;height:100px"
+              	data-id="workorder_reason"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+  		<div class="col-lg-12 tc">
+  			<button data-id="close" class="btn btn-default" type="button">提交</button>
+  		</div>
+	  </div>
+</form>
+
+<h1>表单二</h1>
+
+<form class="bs-example form-horizontal xs-form" id="form2">
+	<div class="form-group">
+      <label class="col-lg-2 control-label">审批日期</label>
+      <div class="col-lg-4">
+          <div class="input-group w-all">
+            <input type="text" class="form-control input-sm" 
+                    id="deal_date" data-id="deal_date" validate="required">
+          </div>
+        </div>
+      <label class="col-lg-2 control-label">审批人</label>
+      <div class="col-lg-4">
+        <input type="text" class="form-control input-sm" data-id="deal_person" queryValue>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">审批结果</label>
+      <div class="col-lg-4">
+		<div class="radio l">
+			<label class="i-checks">
+			  <input type="radio" value="option1" name="deal_result" checked>
+			  <i></i>
+			  同意
+			</label>
+		</div>
+		<div class="radio l ml10">
+			<label class="i-checks">
+			  <input type="radio" value="option2" name="deal_result">
+			  <i></i>
+			  不同意
+			</label>
+		</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+    	<label class="col-lg-2 control-label" queryStr>申请意见</label>
+	    <div class="col-lg-10">
+              <textarea class="form-control input-sm" style="width:100%;height:100px"
+              	data-id="deal_reason"></textarea>
+        </div>
+    </div>
+
+	<div class="form-group">
+		<div class="col-lg-12 tc">
+			<button data-id="close" class="btn btn-default" type="button">提交</button>
+		</div>
+	</div>
+
+    
+</form>
+
+<h1>表单三</h1>
+
+<form class="bs-example form-horizontal xs-form" id="form3">
+	<div class="form-group">
+	  <label class="col-lg-2 control-label">执行日期</label>
+	  <div class="col-lg-4">
+	      <div class="input-group w-all">
+	        <input type="text" class="form-control input-sm" 
+	                id="exe_date" validate="required" data=id="exe_date">
+	      </div>
+	    </div>
+	  <label class="col-lg-2 control-label">执行人</label>
+	  <div class="col-lg-4">
+	    <input type="text" class="form-control input-sm" data-id="exe_person">
+	  </div>
+	</div>
+
+	<div class="form-group">
+    	<label class="col-lg-2 control-label" queryStr>执行情况</label>
+	    <div class="col-lg-10">
+              <textarea class="form-control input-sm" style="width:100%;height:100px"
+              	data-id="exe_reason"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+		<div class="col-lg-12 tc">
+			<button data-id="close" class="btn btn-default" type="button">提交</button>
+		</div>
+	</div>
+</form>
+

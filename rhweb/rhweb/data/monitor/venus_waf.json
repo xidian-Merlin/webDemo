@@ -1,0 +1,19 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "VENUS_WAF",
+					"fileName"  : "venus_waf",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "venus_waf/base.html","icon" : "monitor-base-info"},
+
+								{"text" : "CPU内存信息" ,"href" : "venus_waf/used_rate.html","icon" : "monitor-sga"},
+
+								{"text" : "路由信息" ,"href" : "venus_waf/route.html","icon" : "monitor-route-info"},
+
+								{"text" : "接口面板" ,"href" : "venus_waf/interface.html","icon" : "monitor-interface"},
+
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

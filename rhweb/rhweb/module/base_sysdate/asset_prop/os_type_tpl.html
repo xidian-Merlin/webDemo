@@ -1,0 +1,140 @@
+<tem>
+	<!-- 查询 -->
+	<div class="template" id="query_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form" id="query_form">
+
+				<div class="form-group">
+			      <label class="col-lg-3 control-label" queryStr>策略名称</label>
+			      <div class="col-lg-8">
+			        <input type="text" class="form-control input-sm" data-id="enftpName" queryValue>
+			      </div>
+			    </div>
+
+			    <div class="form-group">
+			      <label class="col-lg-3 control-label" queryStr>策略状态</label>
+				  <div class="col-lg-8">
+					  <select class="form-control input-sm" data-type="select" 
+					  			data-id="enftpStatus" queryValue>
+						  <option value="-1">请选择</option>
+						  <option value="1">启用</option>
+						  <option value="0">停用</option>
+					  </select>
+				  </div>
+			    </div>
+
+			    <div class="form-group">
+			      <label class="col-lg-3 control-label" queryStr>事件类型</label>
+				  <div class="col-lg-8">
+					  <select class="form-control input-sm" data-type="select" queryValue>
+						  <option value="-1">请选择</option>
+						  <option value="1">安全事件</option>
+						  <option value="2">故障事件</option>
+						  <option value="3">性能事件</option>
+						  <option value="4">链路故障事件</option>
+					  </select>
+				  </div>
+			    </div>
+
+			    <div class="form-group">
+			      <label class="col-lg-3 control-label" queryStr>创建人</label>
+				  <div class="col-lg-8">
+					  <select class="form-control input-sm" data-type="select"
+					  			data-id="createUser" queryValue>
+						  <option value="">请选择</option>
+					  </select>
+				  </div>
+			    </div>
+
+			    <div class="form-group">
+			      <label class="col-lg-3 control-label" queryStr>创建起始时间</label>
+				  <div class="col-lg-8">
+				    <div class="input-group w-all">
+				      <input type="text" class="form-control input-sm" 
+				              validate="required" data-type="date" data-position="top" 
+				              data-id="enterStartDate" queryValue>
+				    </div>
+				  </div>
+			    </div>
+
+			    <div class="form-group">
+			      <label class="col-lg-3 control-label" queryStr>创建终止时间</label>
+				  <div class="col-lg-8">
+				    <div class="input-group w-all">
+				      <input type="text" class="form-control input-sm" 
+				              validate="required" data-type="date" data-position="top" 
+				              data-id="enterEndDate" queryValue>
+				    </div>
+				  </div>
+			    </div>
+
+			</form>
+		</div>
+	</div>
+
+	<!-- 编辑 -->
+	<div class="template" id="edit_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form" enctype="multipart/form-data" id="edit_form">
+				<div class="form-group">
+			      <label class="col-lg-3 control-label required">操作系统名称</label>
+			      <div class="col-lg-8">
+			        <input type="hidden" data-id="ptId" name="ptId">
+			        <input type="text" maxlength="16" class="form-control input-sm" data-id="ptName"
+			        	name="ptName" validate="required,stringLimit">
+			      </div>
+			    </div>
+			    <div class="form-group" id="osimagediv" style="display:none">
+			      <label class="col-lg-3 control-label">操作系统图标</label>
+			      <div class="col-lg-8">
+			      	<img data-id="osimage"/>
+			      </div>
+			    </div>
+			    
+			     <div class="form-group">
+			      <label class="col-lg-3 control-label">操作系统图标</label>
+			      <div class="col-lg-8">
+			        <div id="ptMap"></div>
+			      </div>
+			    </div>
+	    
+			    <div class="form-group">
+			      <label class="col-lg-3 control-label"> 提示信息：</label>
+			      <div class="col-lg-8">
+			   	     最好选中16*16px的图片。表格的高度为16px，图片的高度最好和表格高度一致，以便正常显示图片。
+			      </div>
+			    </div>
+			    
+			   
+			    <div class="form-group">
+			      <label class="col-lg-3 control-label">备注</label>
+			      <div class="col-lg-8">
+			        <textarea class="form-control input-sm" maxlength="128" name="ptMemo" data-id="ptMemo"></textarea>
+			      </div>
+			    </div>
+			</form>
+		</div>
+	</div>
+
+	<!-- 详情 -->
+	<div class="template" id="detail_template">
+		<div class="panel-body no-tb-padder">
+			<form class="bs-example form-horizontal xs-form xs-form-mb5">
+				<div class="form-group">
+					<label class="col-lg-3 control-label">操作系统名称：</label>
+					<label class="col-lg-3 control-label tl" data-id="ptName"></label>
+				</div>
+				<div class="form-group mt20">
+					<label class="col-lg-3 control-label">操作系统图标：</label>
+					<label class="col-lg-3 control-label tl">
+						<img src="" id="os_icon"/>
+					</label>
+				</div>
+				<div class="form-group mt20">
+					<label class="col-lg-3 control-label">操作系统描述：</label>
+					<label class="col-lg-3 control-label tl" data-id="ptMemo"></label>
+				</div>
+			</form>
+		</div>
+	</div>
+</tem>

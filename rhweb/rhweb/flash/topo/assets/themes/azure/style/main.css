@@ -1,0 +1,413 @@
+/*
+////////////////////////////////////////////////////////////////////////////////
+//
+//  ADOBE SYSTEMS INCORPORATED
+//  Copyright 2006 Adobe Systems Incorporated
+//  All Rights Reserved.
+//
+//  NOTICE: Adobe permits you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
+//
+////////////////////////////////////////////////////////////////////////////////
+*/
+
+/* Global style declaration */
+global
+{
+	/*backgroundAlpha: 0.0;  this runs the opacity of nearly every square piece of the components */
+/*	backgroundSize: "auto";*/
+	
+	/*borderColor: #767473;	 set up border colors for components */
+	
+	/*fillAlphas: 1, 1, 0.85, 0.75;  last pair are for OVER state */
+/*	fillColors: #8D8E87, #D8D8D7, #FE9800, #D57000;*/
+	
+/*	headerColors: #A65904, #EA8A01;*/
+
+	/*highlightAlphas: 0.07, 0.20;  use this to control the 'light' cast on the components */
+	
+	/* themeColor	*/
+/*	themeColor: #E18401;
+	rollOverColor: #FFCA79;
+	selectionColor: #FF9900; */
+}
+ToolTip{
+	font-size: 12;
+}
+
+.canvasFont
+{
+	font-size:12;
+	color:#ffa414;
+}
+
+.cloudFont
+{
+	font-size:12;
+	color:#0e478c;
+}
+
+.menuFont
+{
+	font-size:12;
+	color:#000000;
+}
+
+.navTreeBox
+{
+	color: black;
+	borderColor: #F9F5DD;
+	backgroundColor: #F9F5DD;
+	titleStyleName: "myTitleWindow"; /*titleWindow表头字体颜色*/
+}
+
+.myTitleWindow {
+	color: black;
+	fontWeight: "bold";
+}
+.navTree
+{
+	backgroundColor: #F9F5DD;
+	borderColor: #F9F5DD;
+}
+
+/*
+//------------------------------
+//  Application
+//------------------------------
+*/
+
+Application
+{
+	font-size:12px;
+	/*borderStyle: "none";
+	/*backgroundColor: #48200C; 
+	backgroundImage: Embed(source="smoke_bg.jpg");
+	backgroundAlpha: 1.0;
+    backgroundSize: "100%";
+    horizontalAlign: "center";*/
+}
+
+/*
+//------------------------------
+//  ApplicationControlBar
+//------------------------------
+*/
+/*
+ApplicationControlBar
+{
+	borderStyle: "applicationControlBar";
+	cornerRadius: 5;
+	docked: false;
+	dropShadowEnabled: true;
+	fillColors: #706967, #CCCCCC;
+	fillAlphas: 0.6, 0.4;
+	highlightAlphas: 0.07, 0.20; 
+}
+*/
+/*
+//------------------------------
+//  .comboDropDown
+//------------------------------
+*/
+
+/*.comboDropDown
+{
+	backgroundAlpha: 0.6;
+	color: #0B333C;
+}*/
+
+/*
+//------------------------------
+//  HScrollBar
+//------------------------------
+*/
+
+/*
+HScrollBar
+{
+	borderColor: #B7BABC;
+	cornerRadius: 4;
+	trackColors: #94999b, #e7e7e7;
+}
+*/
+
+/*
+//------------------------------
+//  Panel
+//------------------------------
+*/
+/*Panel
+{
+	backgroundColor: #CCCCCC;
+	backgroundAlpha: 0.3; 
+	borderAlpha: 0.3; 
+	borderStyle: "default";
+	cornerRadius: 4;
+	dropShadowEnabled: true;
+}*/
+
+TitleWindow
+{
+	backgroundColor: #B6BDC4;
+	backgroundAlpha: 1.0;
+	cornerRadius: 0;
+	borderThicknessLeft: 15;
+	borderThicknessRight: 15;
+	font-Color: black;
+	titleStyleName: myTitleStyleName;
+	modalTransparencyColor: #B3B3B3;
+/*	closeButtonSkin: Embed("./assets/themes/images/bc.gif");
+	closeButtonDisabledSkin: ClassReference(null);
+	closeButtonDownSkin: ClassReference(null);
+	closeButtonOverSkin: ClassReference(null);
+	closeButtonUpSkin: ClassReference(null);
+	borderSkin: Embed(source="./assets/themes/images/mm.png") repeat;
+	*/
+	roundedBottomCorners: false;
+	borderColor: #2293BF;
+    borderAlpha: 1.0;
+	dropShadowEnabled: false;
+}
+.myTitleStyleName
+{
+	color: white;
+	fontWeight: "bold";
+}
+.addNodeWindow    /*占位的Hox背景颜色*/
+{
+	backgroundColor: "#2293BF";
+}
+
+Alert
+{
+    backgroundColor: #2293BF;
+    backgroundAlpha: 1.0;
+    cornerRadius: 0;
+	borderColor: #2293BF;
+	borderAlpha: 1.0;
+    color: white;
+	buttonStyleName: myButtonStyleName;
+	modalTransparencyColor: #B3B3B3;
+}
+
+.myButtonStyleName 
+{
+	cornerRadius: 0;
+	color: black;
+	fontWeight: normal;
+/*	fontFamily: myComicSansMS;
+	fontSize: 10;
+	textDecoration: underline;
+	themeColor: red;*/
+}
+
+Button
+{
+	cornerRadius: 0;
+	font-size: 12;
+	padding-left: 5;
+	padding-top: 5;
+	padding-right: 5;
+	height: 21;
+	fontWeight: normal;
+	/*
+	text-align:center;	
+	borderColor:haloOrange;
+	fillColors: #B6BDC4,#2293BF;
+	icon: url(./assets/themes/images/button-bg.gif) repeat;	assets\themes\lightblue\button-bg.gif*/
+	skin: Embed(source="./assets/themes/lightblue/button-bg.gif") repeat;
+	overSkin: Embed(source="./assets/themes/lightblue/buttonHover-bg.gif") repeat;
+}
+
+.searchButton
+{
+	skin: Embed(source="./assets/themes/lightblue/search.png");
+	overSkin: Embed(source="./assets/themes/lightblue/search.png");
+}
+.toLeftButton
+{
+	skin: Embed(source="./assets/themes/lightblue/toLeft.png");
+	overSkin: Embed(source="./assets/themes/lightblue/overToLeft.png");
+}
+
+.toRightButton
+{
+	skin: Embed(source="./assets/themes/lightblue/toRight.png");
+	overSkin: Embed(source="./assets/themes/lightblue/overToRight.png");
+}
+
+.allToLeftButton
+{
+	skin: Embed(source="./assets/themes/lightblue/allToLeft.png");
+	overSkin: Embed(source="./assets/themes/lightblue/overAllToLeft.png");
+}
+
+.allToRightButton
+{
+	skin: Embed(source="./assets/themes/lightblue/allToRight.png");
+	overSkin: Embed(source="./assets/themes/lightblue/overAllToRight.png");
+}
+
+DataGrid
+{
+	headerColors: #2293BF,#B6BDC4;/*表头为两种颜色渐变*/
+	fontWeight: normal;
+	alternatingItemColors: #FFFFFF,#FFFFFF;/*交替格分两种颜色渐变*/
+	borderColor: "#1183EF";/*边框颜色*/
+	verticalGridLines: false; /*去除分割竖线*/
+	horizontalGridLines: true;
+    horizontalGridLineColor: #E8EEF3;
+	headerStyleName: myHeaderStyleName;
+}
+
+.headerStyleName
+{
+	fontWeight: normal;
+	font-color: white;
+}
+
+ComboBox 
+{
+	cornerRadius: 0;
+	fillColors: #E8EEF3,#E8EEF3;
+/*	fillColors: "#0C2437";*/
+	iconColor: #007462;
+	borderColor: "#1183EF";
+	color: black;
+	font-size: 12;
+	fontWeight: normal;
+	dropDownStyleName: "myComboBoxDropDowns";
+}
+.myComboBoxDropDowns 
+{
+	color: #000000;
+}
+
+
+TextArea
+{
+	backgroundColor: "#E8EEF3";
+	borderColor: "#1183EF";
+	width: 160;
+}
+.notRequiredTextArea
+{
+	backgroundColor: "#FFFFFF";
+	backgroundDisabledColor: "#ADAEB2";/*遮罩背景色*/
+	borderColor: "#1183EF";
+	borderStyle: "solid";
+	disabledColor:"#CDD4D9";
+}
+
+IPv4AddressInput
+{
+	backgroundColor: "#E8EEF3";
+	borderColor: "#1183EF";
+}
+
+.myImageList
+{
+	backgroundColor: "#B6BDC4";
+	borderColor: "#2293BF";
+	verticalScrollBarStyleName: "myVerticalScrollBar";
+}
+
+.myVerticalScrollBar
+{
+	trackColors: #F8F8F8, #F8F8F8;
+	borderColor: #F8F8F8;
+	borderThickness : 20;
+	cornerRadius: 0;
+	iconColor: #787878;
+	highlightAlphas: 0, 0;
+	fillAlphas: 1, 1, 1, 1;
+	fillColors: #E9E9E9, #E9E9E9, #E9E9E9, #E9E9E9;
+	themeColor: #E9E9E9; 
+}
+/*
+//------------------------------
+//  ScrollBar
+//------------------------------
+*/
+
+/*ScrollBar
+{
+	backgroundColor: #4C2323; 
+	borderColor:#4C2323;
+	cornerRadius: 4;
+	trackColors: #4C2323, #4C2323;
+}
+*/
+
+/*
+//------------------------------
+//  Tab
+//------------------------------
+*/
+
+/*Tab
+{
+	backgroundAlpha: 1.0; 	
+	cornerRadius: 4;
+	horizontalGap: 2;
+}*/
+
+/*
+//------------------------------
+//  TabNavigator
+//------------------------------
+*/
+
+/*TabNavigator
+{
+	borderColor: #914B41;	
+	backgroundAlpha: 1.0; 	
+	backgroundColor: #FFFFFF;
+	borderStyle: "solid";
+	horizontalAlign: "left";
+	horizontalGap: -1;
+	paddingTop: 10;
+}*/
+
+
+/*
+//------------------------------
+//  VScrollBar
+//------------------------------
+*/
+
+/*VScrollBar
+{
+	borderColor: #B7BABC;
+	cornerRadius: 4;
+	trackColors: #94999b, #e7e7e7;	
+}*/
+
+
+/*
+//------------------------------
+//  .windowStatus
+//------------------------------
+
+// This empty style declaration is required to make the
+// status field of Panel/Window correctly pick up global
+// default style properties.
+*/
+
+/*.windowStatus
+{
+	color: #FFCC99;
+}*/
+
+/*
+//------------------------------
+//  .windowStyles
+//------------------------------
+*/
+
+/*.windowStyles
+{
+	fontWeight: "bold";
+	color: #FFFFFF;
+}*/

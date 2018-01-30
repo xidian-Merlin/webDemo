@@ -1,0 +1,70 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>集群信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="connective_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var connective_info_url = "monitorview/middleware/weblogic/queryWeblCluster";
+
+var connective_info_header = [
+                            {text:'名字',name:"name"},
+                            {text:'描述',name:"desc",render:function(text){
+                                // debugger;
+                                if(text=="null" || text==null){
+                                    return "----";
+                                }
+                                return text;
+                            }},
+                            {text:'集群地址',name:"clusterAddress",render:function(text){
+                                if(text=="null" || text==null){
+                                    return "----";
+                                }
+                                return text;
+                            }},
+                            {text:'多播地址',name:"multicastAddress"},
+                            {text:'多播端口',name:"multicastPort"},
+                            {text:'多播TTL',name:"multicastTTL"},
+                            {text:'默认负载算法',name:"defaultLoadAlgorithm"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    connective_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function connective_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#connective_info"),{
+         header:connective_info_header,
+         url:connective_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

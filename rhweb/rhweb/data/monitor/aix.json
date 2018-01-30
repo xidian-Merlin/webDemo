@@ -1,0 +1,17 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "AIX",
+					"fileName" : "aix",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "aix/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "系统概述" ,"href" : "aix/system.html" ,"icon" : "monitor-system"},
+								{"text" : "配置监控" ,"href" : "aix/foundation.html" ,"icon" : "monitor-foundation"},
+								{"text" : "脚本文件监控" ,"href" : "aix/configure.html" ,"icon" : "monitor-configure"},
+								{"text" : "SSH命令配置" ,"href" : "aix/command.html" ,"icon" : "monitor-command"},
+								{"text" : "用户访问" ,"href" : "aix/user_access.html" ,"icon" : "monitor-users-access"},
+							    {"text" : "事件信息" ,"href" : "common/event_and_config.html" ,"icon" : "monitor-event"}
+							]
+				 }
+}

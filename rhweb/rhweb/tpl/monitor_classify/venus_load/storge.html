@@ -1,0 +1,157 @@
+
+<div class="panel panel-default mt0">
+    <div class="panel-heading font-bold prel">
+        <span>CPU、内存使用率</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="cpu_use_line_chart"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>连接数</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="session_num_chart_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>转发率</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="forward_rate_chart_div"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js',
+         '/js/plugin/monitor/monitorInfo.js'] ,function (plot ,monitorInfo){
+
+var monitor_CPU_url = "monitorview/storage/venusload/queryVenusLoadInfo";
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    data_get();
+    index_monitor_status_get(urlParamObj.monitorId ,"NETAPP" ,"monitorName");
+}
+
+window.index_monitor_init = function ()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    data_get();
+    index_monitor_status_get(urlParamObj.monitorId ,"NETAPP" ,"monitorName");
+}
+
+//cpu 使用率
+function data_get(){
+
+    um_ajax_get({
+        url : monitor_CPU_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            cpu_use(data);
+            session_num(data);
+            forward_rate(data);
+        }
+    });
+}
+    
+function cpu_use(data)
+{
+    var cpuData = data;
+    var physicalMemData = data;
+    var legendArray = ['CPU使用率(%)' ,'内存使用率(%)'];
+    var categoryArray = [];
+    var seriesArray = [];
+    var seriesCpuObj = new Object();
+    seriesCpuObj.name = 'CPU使用率(%)';
+    seriesCpuObj.type = "line";
+    seriesCpuObj.data = [];
+    for (var i = 0; i < cpuData.length; i++) {
+        categoryArray.push(cpuData[i].updateDate);
+        seriesCpuObj.data.push(cpuData[i].cpuUsage);
+    }
+    seriesArray.push(seriesCpuObj);
+
+    var seriesphysicalMemObj = new Object();
+    seriesphysicalMemObj.name = '内存使用率(%)';
+    seriesphysicalMemObj.type = "line";
+    seriesphysicalMemObj.data = [];
+    for (var i = 0; i < physicalMemData.length; i++) {
+        seriesphysicalMemObj.data.push(physicalMemData[i].memUsage);
+    }
+    seriesArray.push(seriesphysicalMemObj);
+
+
+    plot.lineRender($("#cpu_use_line_chart") ,{
+        legend : legendArray,
+        category :categoryArray,
+        series : seriesArray,
+        lineStyle : true,
+        color_array : ['#62cb31' ,'#23b7e5']
+    });
+}
+
+function session_num(data)
+{
+    var items = data;
+    var legendArray = ['连接数(%)'];
+    var categoryArray = [];
+    var seriesArray = [];
+    
+    var sessionNumObj = new Object();
+    sessionNumObj.name = '连接数(%)';
+    sessionNumObj.type = "line";
+    sessionNumObj.data = [];
+    for (var i = 0; i < items.length; i++) {
+        categoryArray.push(items[i].updateDate);
+        sessionNumObj.data.push(items[i].sessionNum);
+    }
+    seriesArray.push(sessionNumObj);
+
+    plot.lineRender($("#session_num_chart_div") ,{
+        legend : legendArray,
+        category : categoryArray,
+        series : seriesArray,
+        color_array : ['#f4bc37']
+    });
+}
+
+function forward_rate(data)
+{
+    var items = data;
+    var legendArray = ['转发率(%)'];
+    var categoryArray = [];
+    var seriesArray = [];
+    
+    var forwardRateObj = new Object();
+    forwardRateObj.name = '转发率(%)';
+    forwardRateObj.type = "line";
+    forwardRateObj.data = [];
+    for (var i = 0; i < items.length; i++) {
+        categoryArray.push(items[i].updateDate);
+        forwardRateObj.data.push(items[i].forwardRate);
+    }
+    seriesArray.push(forwardRateObj);
+
+    plot.lineRender($("#forward_rate_chart_div") ,{
+        legend : legendArray,
+        category : categoryArray,
+        series : seriesArray,
+        color_array : ["#2380a6"]
+    });
+}
+
+
+});
+});
+</script>

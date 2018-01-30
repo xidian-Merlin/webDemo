@@ -1,0 +1,125 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>可用度</span>
+    </div>
+    <div class="monitor-panel scale-panel" style="height:100px" id="scale_list">
+
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>基本信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="base_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">监控器名称：</label>
+                    <label class="col-lg-3 control-label tl" data-id="monitorName"></label>
+                    <label class="col-lg-2 control-label">监控器类型：</label>
+                    <label class="col-lg-5 control-label tl" data-id="monitorType"></label>
+                </div>
+            </div>
+
+            <div id="base_info_asset_div">
+                <div class="form-group" style="height:0;padding:0"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">被监控资产名称：</label>
+                    <label class="col-lg-3 control-label tl" data-id="assetName"></label>
+                    <label class="col-lg-2 control-label">资产类型：</label>
+                    <label class="col-lg-5 control-label tl" data-id="assetTypeName"></label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">IP：</label>
+                    <label class="col-lg-3 control-label tl" data-id="mainIp"></label>
+                    <label class="col-lg-2 control-label">安全域：</label>
+                    <label class="col-lg-5 control-label tl" data-id="securityDomainName"></label>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">操作系统：</label>
+                    <label class="col-lg-3 control-label tl" data-id="osTypeName"></label>
+                    <label class="col-lg-2 control-label">物理位置：</label>
+                    <label class="col-lg-5 control-label tl" data-id="locationCbName"></label>
+                </div>
+            </div>
+            
+            <div id="base_info_asset_div2">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">数据库版本：</label>
+                    <label class="col-lg-10 control-label tl" data-id="version"></label>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+var base_info_url = "monitorview/db/sqlserver/querySqlserverMonitorBaseInfo";
+
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    ed_monitor_get();
+}
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+g_dialog.waitingAlert($("#monitor_info_detail"));
+function ed_monitor_get()
+{
+    urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+           base_info_render(data.edmonitorstore[1].monitorId ,true); 
+        }
+    });
+}
+
+function base_info_render(monitorId ,cb)
+{
+    var assetIdTemp = urlParamObj.assetId.split(",")[0];
+    um_ajax_get({
+        url : base_info_url,
+        paramObj : {    monitorId : monitorId ,
+                        instStatus : 1,
+                        time:$("#query_time_label").text(),
+                        assetId:assetIdTemp,
+                        edId : assetIdTemp
+                        },
+        isLoad : false,
+        successCallBack : function (data){
+            $("#base_info_monitor_div").umDataBind("render" ,data.monitorbaseinfo);
+            $("#base_info_asset_div2").umDataBind("render" ,data.monitorbaseinfo);
+            $("#base_info_asset_div").umDataBind("render" ,data.assetinfo);
+            cb && index_monitor_status_get(monitorId ,"SQLSERVER" ,"dbName");
+        }
+    });
+}
+
+
+
+});
+});
+</script>

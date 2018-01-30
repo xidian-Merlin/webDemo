@@ -1,0 +1,16 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :[
+					{"text" : "使用中" ,"val" : "1"},
+					{"text" : "闲置" ,"val" : "0"},
+					{"text" : "待维修" ,"val" : "2"},
+					{"text" : "维修" ,"val" : "3"},
+					{"text" : "送修" ,"val" : "4"},
+					{"text" : "外借" ,"val" : "5"},
+					{"text" : "分配" ,"val" : "6"},
+					{"text" : "待报废" ,"val" : "7"},
+					{"text" : "报废" ,"val" : "8"},
+					{"text" : "库房" ,"val" : "9"}
+				]
+}	

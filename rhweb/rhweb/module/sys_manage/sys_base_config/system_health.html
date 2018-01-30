@@ -1,0 +1,78 @@
+<script src="/module/sys_manage/sys_base_config/system_health.js"></script>
+<script src="/tpl/sys_manage/sys_base_config/systemeventTableCol.js"></script>
+
+<div class="row" id="panel-list" data-id="grid-drable-row"
+	style="background: #efefef;padding: 20px 20px 0px 20px;margin-top:-10px">
+	<div class="col-md-12 pr5 pl5">
+		<div class="panel panel-default panel-style" style="height:330px">
+			<div class="panel-heading font-bold prel">
+		    <span style="font-weight: bold;">系统运行状况</span>
+		   	<div class="pabs" style="right:70px;top:10px">
+			<i class="icon-sitemap" title="逻辑图" id="sys_run_icon_sitemap"></i>
+			</div>
+			<div class="pabs" style="right:40px;top:10px">
+			<i class="icon-desktop" title="设备监控" id="sys_run_icon_desktop"></i>
+			</div>
+			<div class="pabs" style="right:10px;top:10px">
+			<i class="icon-tasks" title="网络拓扑图"></i>
+			</div>
+		   </div>
+	        <div id="table_div_X" class="table_div" style="height:280px;background-color: white;">
+	        </div>
+        </div>
+	</div>
+
+	<div class="col-md-12 pr5 pl5">
+		<div class="panel panel-default panel-style" style="height:380px">
+	    	<div class="panel-heading font-bold prel"style="height:40px;">
+			    <span style="font-weight: bold;">中心设备运行指标</span>
+			    <div class="pabs" style="width:100px;right:40px;top:10px"
+			    	id="hyh_systemstate_refresh_time_div">
+				   	<select id="hyh_systemstate_refresh_time" class="form-control input-sm"
+				   		data-type="select">
+				   		<option value="0">手动</option>
+				   		<option value="300000">5分钟</option>
+				   		<option value="600000">10分钟</option>
+				   		<option value="900000">15分钟</option>
+				   	</select>
+			    </div>
+			   	<div class="pabs" style="right:10px;top:15px;padding-right: 10px;">
+			   	<i class="icon-refresh" title="刷新" id="hyh_systemstate_refresh"></i>
+			    </div>
+		    </div>
+	        <div id="table_div_state" class="table_div p10" style="height:330px;background-color: white;"></div>
+	    </div>
+	</div>
+
+	<div class="col-md-12 pr5 pl5">
+		<div class="panel panel-default panel-style" style="height:380px">
+	    	<div class="panel-heading font-bold prel" style="height:40px;">
+			    <span style="font-weight: bold;">代理服务器运行指标</span>
+			    <div class="pabs" style="width:100px;right:40px;top:10px"
+			    	id="hyh_systemagent_refresh_time_div">
+			   	<select id="hyh_systemagent_refresh_time" class="form-control input-sm"
+			   		data-type="select">
+			   		<option value="0">手动</option>
+			   		<option value="300000">5分钟</option>
+			   		<option value="600000">10分钟</option>
+			   		<option value="900000">15分钟</option>
+			   	</select>
+			    </div>
+			    <div class="pabs" style="right:10px;top:15px;padding-right: 10px;">
+			   	<i class="icon-refresh" title="刷新" id="hyh_systemagent_refresh"></i>
+			    </div>
+		    </div>
+	        <div id="table_div_agent" class="table_div p10" style="height:330px;background-color: white;"></div>
+	    </div>
+	</div>
+
+	<div class="col-md-12 pr5 pl5">
+		<div class="panel panel-default panel-style" style="height:330px; margin-bottom:0px;">
+		    <div class="panel-heading font-bold prel">
+			   <span style="font-weight: bold;">系统事件列表</span>
+			</div>
+		    <div id="table_div_envent" class="table_div" style="height:280px;background-color: white;">
+		    </div>
+		</div>
+	</div>
+</div>

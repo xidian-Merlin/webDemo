@@ -1,0 +1,219 @@
+<!-- <div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>实例列表</span>
+    </div>
+    <div class="panel-body p1">
+        <div class="table_div" id="instance_list_div" style="height:150px"></div>
+    </div>
+</div> -->
+
+<div class="mt5 mb5" style="height:30px" id="instance_sel_div">
+    <select class="form-control input-sm" data-type="select" id="instance_sel">
+    </select>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>实例</span>
+    </div>
+    <div class="monitor-panel" id="instance_div">
+        <form class="bs-example form-horizontal xs-form">
+            <div>
+                <div id="instance_info_div">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">控制文件类型：</label>
+                        <label class="col-lg-4 control-label tl" data-id="controlfileType"></label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">数据库创建时间：</label>
+                        <label class="col-lg-4 control-label tl" data-id="created"></label>
+                        <label class="col-lg-2 control-label">日志模式：</label>
+                        <label class="col-lg-4 control-label tl" data-id="logMode"></label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" >访问模式：</label>
+                        <label class="col-lg-4 control-label tl" data-id="openMode"></label>
+                        <label class="col-lg-2 control-label">更新时间：</label>
+                        <label class="col-lg-4 control-label tl" data-id="enterDate"></label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">连接数：</label>
+                        <label class="col-lg-4 control-label tl" data-id="sessionCount"></label>
+                        <label class="col-lg-2 control-label">进程数：</label>
+                        <label class="col-lg-4 control-label tl" data-id="processCount"></label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">密码过期时间：</label>
+                        <label class="col-lg-10 control-label tl" data-id="expiryDate"></label>
+                    </div>
+                </div>
+
+                <div id="component_div">
+                    <div class="form-group" style="height:0"></div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">实例启动时间：</label>
+                        <label class="col-lg-4 control-label tl" data-id="startTime"></label>
+                        <label class="col-lg-2 control-label">实例状态：</label>
+                        <label class="col-lg-4 control-label tl" data-id="status"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">是否并行服务器：</label>
+                        <label class="col-lg-4 control-label tl" data-id="parallevl"></label>
+                        <label class="col-lg-2 control-label">实例打开重做线：</label>
+                        <label class="col-lg-4 control-label tl" data-id="thread"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">是否归档：</label>
+                        <label class="col-lg-4 control-label tl" data-id="archiver"></label>
+                        <label class="col-lg-2 control-label">登陆方式：</label>
+                        <label class="col-lg-4 control-label tl" data-id="logins"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">数据库状态：</label>
+                        <label class="col-lg-10 control-label tl" data-id="databaseStatus"></label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'] ,function (plot){
+
+
+
+var instance_list_url = "monitorview/db/oracle/queryOracleInstance";
+
+var instance_list_header = [
+							  {text:"实例名称" ,name:"instanceName"},
+							  {text:"实例启动时间" ,name:"startTime"},
+							  {text:"实例状态" ,name:"status"},
+							  {text:"是否并行服务器模式" ,name:"parallevl"},
+							  {text:"实例打开重做线程数" ,name:"thread"},
+							  {text:"是否归档" ,name:"archiver"},
+							  {text:"登录方式" ,name:"logins"},
+							  {text:"数据库状态" ,name:"databaseStatus"},
+                              {text:"更新时间" ,name:"updateDate"}
+						   ];
+
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+var instance_type_url = "monitorView/queryInstanceType";
+
+var oracle_static_url = "monitorview/db/oracle/queryOracleStatic";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    index_form_init($("#instance_div"));
+    ed_monitor_get();
+}
+
+function event_init()
+{
+	$("#instance_sel").change(function (){
+        $("#instance_info_div").umDataBind("reset");
+        $("#component_div").umDataBind("reset");
+        oracle_static($(this).val());
+    });
+}
+
+window.index_monitor_init = function ()
+{
+    ed_monitor_get();
+}
+
+
+function ed_monitor_get()
+{
+    urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+           instance_list({
+				param : {monitorId : data.edmonitorstore[1].monitorId,
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+           instance_type_get(data.edmonitorstore[1].monitorId);
+        }
+    });
+}
+
+function instance_type_get(monitorId)
+{
+    um_ajax_get({
+        url : instance_type_url,
+        paramObj : {monitorId:monitorId},
+        successCallBack : function (data){
+            var selBuff = [];
+            for (var i = 0; i < data.length; i++) {
+                selBuff.push({id:data[i].codevalue ,text:data[i].codename});
+            }
+            $("#instance_sel").select2({
+                  data: selBuff,
+                  width:"100%"
+            });
+
+            // $("#instance_sel").change();
+           	oracle_static(monitorId ,true);
+        }
+    });
+}
+
+
+function oracle_static(monitorId ,cb)
+{
+    um_ajax_get({
+        url : oracle_static_url,
+        paramObj : {monitorId : $("#instance_sel").val() ,flag : 1 ,
+                        inpuDate:$("#query_time_label").text()},
+        isLoad : (cb?false:true),
+        successCallBack : function (data){
+            $("#instance_div").umDataBind("reset");
+            $("#instance_div").umDataBind("render" ,data.oracleStaticStore);
+            $("#component_div").umDataBind("render" ,data.oracleInstanceStore);
+            cb && index_monitor_status_get($("#instance_sel").val() ,"ORACLE" ,"dbName");
+        }
+    });
+}
+
+function instance_list(opt)
+{
+	// g_grid.render($("#instance_list_div") ,{
+	// 	url : instance_list_url,
+	// 	header : instance_list_header,
+	// 	paramObj : opt.param,
+	// 	gridCss : "um-grid-style",
+ //        paginator : false,
+	// 	hasBorder : false,
+	// 	hideSearch : true,
+	// 	allowCheckBox : false,
+ //        showCount : true,
+	// 	autoHeight : true,
+	// });
+}
+
+
+
+});
+});
+</script>

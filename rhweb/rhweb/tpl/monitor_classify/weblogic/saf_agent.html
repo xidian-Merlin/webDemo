@@ -1,0 +1,64 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>SAFAgent信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="SAFAgent_info_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var SAFAgent_info_url = "monitorview/middleware/weblogic/queryWeblSAFAgent";
+
+var SAFAgent_info_header = [
+                            {text:'SAF代理名称',name:"safName"},
+                            {text:'当前远程端点数',name:"remoteEndpotsCurtcnt"},
+                            {text:'最大远程端点数',name:"remoteEndpotsHighcnt"},
+                            {text:'远程端点总数',name:"remoteEndpotsTotcnt"},
+                            {text:'当前对话数',name:"conversationsCurtcnt"},
+                            {text:'最大对话数',name:"conversationsHighcnt"},
+                            {text:'对话总数',name:"conversationsTotalcnt"},
+                            {text:'暂停传入',name:"pausedForIncoming"},
+                            {text:'暂停接收',name:"pausedForReceiving"},
+                            {text:'暂停转发',name:"pausedForForwarding"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    SAFAgent_info_list();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+
+function SAFAgent_info_list()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#SAFAgent_info_div"),{
+         header:SAFAgent_info_header,
+         url:SAFAgent_info_url,
+         paramObj:urlParamObj,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         dbThLine : true,
+         allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

@@ -1,0 +1,124 @@
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>性能事件（未处理）</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="perform_event_list_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+	<div class="panel-heading font-bold prel">
+		<span>故障事件（未处理）</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="fault_event_list_div"></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+	
+
+$(document).ready(function (){
+
+
+var perform_event_list_url = "performanceEvent/queryPerformanceEventList";
+var perform_event_list_header = [
+						      {text:"事件名称" ,name:"perfName"},
+						      {text:"当前状态" ,name:"currentStatus"},
+						      {text:"状态" ,name:"perfStatus"},
+						      {text:"事件类型" ,name:"className"},
+						      {text:"资产名称" ,name:"edName"},
+						      {text:"业务域" ,name:"bdomainName"},
+						      {text:"安全域" ,name:"sdomainName"},
+						      {text:"事件描述" ,name:"perfModule"},
+						      {text:"性能值" ,name:"value"},
+						      {text:"发生时间" ,name:"enterDate"},
+						      {text:"恢复时间" ,name:"updateDate"}
+						   ];
+
+var fault_event_list_url = "faultAlarmEvent/queryFaultEventList";
+var fault_event_list_header = [
+						      {text:"事件名称" ,name:"faultName"},
+						      {text:"当前状态" ,name:"currentStatus"},
+						      {text:"状态" ,name:"faultStatus"},
+						      {text:"事件类型" ,name:"className"},
+						      {text:"资产名称" ,name:"edName"},
+						      {text:"业务域" ,name:"bdomainName"},
+						      {text:"安全域" ,name:"sdomainName"},
+						      {text:"事件描述" ,name:"faultModule"},
+						      {text:"发生时间" ,name:"enterDate"},
+						      {text:"恢复时间" ,name:"updateDate"}
+						   ];
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+	ed_monitor_get();
+}
+
+
+function ed_monitor_get()
+{
+	urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+           perform_event_list({
+				param : {monitorId : data.edmonitorstore[1].monitorId,
+						 flag : 1 ,
+						 inpuDate:g_moment().format("YYYY-MM-DD HH:mm:ss")}
+			});
+           fault_event_list({
+				param : {monitorId : data.edmonitorstore[1].monitorId,
+						 flag : 1 ,
+						 inpuDate:g_moment().format("YYYY-MM-DD HH:mm:ss")}
+			});
+        }
+    });
+}
+
+window.index_monitor_init = function ()
+{
+	ed_monitor_get();
+}
+
+function perform_event_list(opt)
+{
+	g_grid.render($("#perform_event_list_div") ,{
+		url : perform_event_list_url,
+		header : perform_event_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		dbThLine : true,
+		hideSearch : true
+	});
+}
+
+function fault_event_list(opt)
+{
+	g_grid.render($("#fault_event_list_div") ,{
+		url : fault_event_list_url,
+		header : fault_event_list_header,
+		paramObj : opt.param,
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		dbThLine : true,
+		hideSearch : true
+	});
+}
+
+});
+
+</script>

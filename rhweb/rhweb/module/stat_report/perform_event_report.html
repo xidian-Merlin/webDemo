@@ -1,0 +1,44 @@
+<script src="/module/stat_report/report_show.js"></script>
+
+<div id="report_div">
+	<div class="panel panel-default">
+	    <div class="panel-heading font-bold prel">
+	      	<span>性能事件</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">
+				<a id="perfReport" data-type="event">
+					<div class="rp-icon rp-xnsjtjbb"></div>
+					<span>性能事件统计报表</span>
+				</a>
+				<a id="performanceTop10" data-type="event">
+					<div class="rp-icon rp-zxxnsj"></div>
+					<span>最新性能<br/>事件TOP-10</span>
+				</a>
+				<a id="performanceEventTop10" data-type="event">
+					<div class="rp-icon rp-xnsjmcsl"></div>
+					<span>性能事件<br/>名称-数量TOP-10</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="prel bgwh animated fadeInRight" id="report_detail_div" style="display:none">
+	<div class="table-oper" id="table_oper">
+		<a class="oper-array" href="javascript:void(0);">
+			<span>导出操作</span><i class="icon-caret-down"></i>
+			<ul class="oper-list animated fadeInRight" id="export_ul">
+				<li data-id="pdf">导出PDF</li>
+				<li data-id="word">导出WORD</li>
+				<li data-id="html">导出HTML</li>
+				<li data-id="excel">导出EXCEL</li>
+			</ul>
+		</a>
+		<a href="javascript:void(0);" id="close_btn">
+			<span>关闭</span>
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+	<div id="report_detail_show_div"></div>
+</div>

@@ -1,0 +1,178 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>命令配置</span>
+    </div>
+    <div class="monitor-panel" id="commandRender" style="height:450px;padding:20px;overflow-x:hidden;overflow-y:auto;"></div>
+    <div class="table-oper" id="table_oper" style="margin:20px 0;min-width:1088px;position: relative; right:51px">
+        <input type="text" name="command" id="command_text" style="width:60%;" />
+        <a href="javascript:void(0);" id="run_btn">
+            <span>运行命令</span>
+        </a>
+        <a href="javascript:void(0);" id="ctrl_btn">
+            <span>CTRL</span>
+
+        </a>
+        <a href="javascript:void(0);" id="esc_btn">
+            <span>ESC</span>
+
+        </a>
+        <a href="javascript:void(0);" id="j_btn">
+            <span>#</span>
+        </a>
+        <a href="javascript:void(0);" id="reconnection_btn">
+            <span>重新连接</span>
+        </a>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var queryConnection_info_url = "monitorview/os/sshconfig/querySshHaInfo";
+
+var getSShConnection_info_url = "monitorview/os/sshconfig/getSShConnection";
+
+var readSshConnection_info_url = "monitorview/os/sshconfig/readSsh";
+
+var run_info_url = "monitorview/os/sshconfig/runSsh";
+
+var reconnection_info_url = "monitorview/os/sshconfig/closeSsh";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+    querySShConnection();
+}
+function event_init()
+{
+    $("#run_btn").click(function(event) {
+        runCommandClick();
+    });
+    $("#ctrl_btn").click(function(event) {
+        ctrlClick();
+    });
+    $("#esc_btn").click(function(event) {
+        escClick();
+    });
+    $("#j_btn").click(function(event) {
+        j_btnClick();
+    });
+    $("#reconnection_btn").click(function(event) {
+        reconnectionClick();
+    });
+}
+
+window.index_monitor_init = function ()
+{
+    querySShConnection();
+}
+var mainIp;
+var mainPort;
+var mainUsername;
+var mainPassWord;
+//查询连接
+function querySShConnection()
+{
+    g_dialog.waitingAlert();
+    um_ajax_get({
+            url : queryConnection_info_url,
+            paramObj : {sshconfigstore:{monitorId : urlParamObj.monitorId ,edId : urlParamObj.assetId,
+                                regionId :urlParamObj.regionId}},
+            isLoad : false,
+            successCallBack : function (data){
+                mainIp = data.sshresultstore[0].ip;
+                mainPort = data.sshresultstore[0].port;
+                mainUsername = data.sshresultstore[0].username;
+                mainPassWord = data.sshresultstore[0].password;
+                $("#commandRender").umDataBind("render" ,data.sshresultstore[0].username);
+                getSshConnection(mainIp , mainPort, mainUsername , mainPassWord);
+            }
+    });
+}
+//获得链接
+function getSshConnection()
+{
+        um_ajax_get({
+            url : getSShConnection_info_url,
+            paramObj : {sshconfigstore:{ip : mainIp ,port : mainPort,
+                                                            username: mainUsername ,password: mainPassWord}},
+            isLoad : false,
+            successCallBack : function (data){
+                    readSshConnection(mainIp , mainPort, mainUsername);
+            }
+        });
+}
+//读取链接
+function readSshConnection()
+{
+    um_ajax_get({
+        url : readSshConnection_info_url,
+        paramObj : {sshconfigstore:{ip : mainIp ,port : mainPort,
+                                                        username: mainUsername}},
+        isLoad : false,
+        successCallBack : function (data){
+            $("#commandRender").html(data.result);
+            $("#commandRender").scrollTop(document.getElementById("commandRender").scrollHeight);
+        }
+    });
+    g_dialog.waitingAlertHide();
+}
+//运行命令
+function runCommandClick()
+{
+    um_ajax_get({
+        url : run_info_url,
+        paramObj : {sshconfigstore:{ip : mainIp ,port : mainPort,
+                            username: mainUsername ,command :$("#command_text").val()}},
+        isLoad : false,
+        successCallBack : function (data){
+            readSshConnection(mainIp , mainPort, mainUsername , mainPassWord);
+            $("#commandRender").html(data.result);
+            $("#commandRender").scrollTop(document.getElementById("commandRender").scrollHeight);
+        }
+    });
+
+}
+
+//ctrl按钮
+function ctrlClick(opt)
+{
+    $("input[type=text]").val("#-1");
+}
+//esc按钮
+function escClick(opt)
+{
+    $("input[type=text]").val("#1B");
+}
+//#按钮
+function j_btnClick(opt)
+{
+    $("input[type=text]").val("#23");
+}
+//重新连接按钮
+function reconnectionClick()
+{
+    um_ajax_get({
+        url : reconnection_info_url,
+        paramObj : {sshconfigstore:{monitorType : urlParamObj.monitorTypeId ,monitorId : urlParamObj.monitorId, ip : mainIp ,username: mainUsername}},
+        isLoad : true,
+        successCallBack : function (data){
+            querySShConnection();
+            $("#commandRender").html(data.result);
+            $("#commandRender").scrollTop(document.getElementById("commandRender").scrollHeight);
+        }
+    });
+}
+
+
+
+});
+});
+</script>
+

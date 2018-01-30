@@ -1,0 +1,214 @@
+<script src="/module/stat_report/report_show.js"></script>
+
+<div id="report_div">
+    <div class="panel panel-default" style="margin-top:5px">
+	    <div class="panel-heading font-bold prel">
+	      	<span>风险趋势</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">			
+				<a id="allZoneRisk" data-type="riskCurrent">
+					<div class="rp-icon rp-qwfxqs"></div>
+					<span>全网风险趋势</span>
+				</a>
+				<a id="securityDomainRisk" data-type="riskCurrent">
+					<div class="rp-icon rp-aqyfxqs"></div>
+					<span>安全域风险趋势</span>
+				</a>
+				<a id="businessRisk" data-type="riskCurrent">
+					<div class="rp-icon rp-ywyfxqs"></div>
+					<span>业务域风险趋势</span>
+				</a>
+				<a id="assetRisk" data-type="riskCurrent">
+					<div class="rp-icon rp-zcfxqs"></div>
+					<span>资产风险趋势</span>
+				</a>					
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+	    <div class="panel-heading font-bold prel">
+	      	<span>风险对比</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">			
+				<a id="sameSecurityDomainComp" data-type="difTime">
+					<div class="rp-icon rp-taqybtsjfxdb"></div>
+					<span>同安全域<br/>不同时间风险对比</span>
+				</a>
+				<a id="sameBusinessDomainComp" data-type="difTime">
+					<div class="rp-icon rp-tywybtsjfxdb"></div>
+					<span>同业务域<br/>不同时间风险对比</span>
+				</a>
+				<a id="sameAssetComp" data-type="difTime">
+					<div class="rp-icon rp-tzcbtsjfxdb"></div>
+					<span>同资产<br/>不同时间风险对比</span>
+				</a>
+				<a id="diffSecurityDomainComp" data-type="sameTime">
+					<div class="rp-icon rp-btaqytsjfxdb"></div>
+					<span>不同安全域<br/>同时间风险对比</span>
+				</a>
+				<a id="diffBusinessDomainComp" data-type="sameTime">
+					<div class="rp-icon rp-btywytsjfxdb"></div>
+					<span>不同业务域<br/>同时间风险对比</span>
+				</a>
+				<a id="diffAssetComp" data-type="sameTime">
+					<div class="rp-icon rp-btzctsjfxdb"></div>
+					<span>不同资产<br/>同时间风险对比</span>
+				</a>				
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+	    <div class="panel-heading font-bold prel">
+	      	<span>事件</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">	
+				<div style="display: none;">		
+					<a id="newDeploy" data-type="event">
+						<div class="rp-icon rp-zxpzsj"></div>
+						<span>最新配置<br/>事件TOP-10</span>
+					</a>
+					<a id="deployName" data-type="event">
+						<div class="rp-icon rp-pzsjmc"></div>
+						<span>配置事件<br/>名称-数量TOP-10</span>
+					</a>	
+				</div>
+				<a id="faultReport" data-type="event">
+					<div class="rp-icon rp-gzsjtjbb"></div>
+					<span>故障事件统计报表</span>
+				</a>
+				<a id="NewFault" data-type="event">
+					<div class="rp-icon rp-zxgzsj"></div>
+					<span>最新故障<br/>事件TOP-10</span>
+				</a>
+				<a id="FaultName" data-type="event">
+					<div class="rp-icon rp-gzsjmcsl"></div>
+					<span>故障事件<br/>名称-数量TOP-10</span>
+				</a>	
+				<a id="perfReport" data-type="event">
+					<div class="rp-icon rp-xnsjtjbb"></div>
+					<span>性能事件统计报表</span>
+				</a>
+				<a id="performanceTop10" data-type="event">
+					<div class="rp-icon rp-zxxnsj"></div>
+					<span>最新性能<br/>事件TOP-10</span>
+				</a>
+				<a id="performanceEventTop10" data-type="event">
+					<div class="rp-icon rp-xnsjmcsl"></div>
+					<span>性能事件<br/>名称-数量TOP-10</span>
+				</a>
+				<div style="display: none;">
+					<a id="eventTypeNum" data-type="securityEvent">
+						<div class="rp-icon rp-aqsjlxsl"></div>
+						<span>安全事件<br/>类型-数量TOP-10</span>
+					</a>
+					<a id="eventLevelNameNumber" data-type="securityEvent">
+						<div class="rp-icon rp-aqsjdjmcsl"></div>
+						<span>安全事件等级-名称-数量TOP-10</span>
+					</a>
+					<a id="secEventDegreeNum" data-type="securityEvent">
+						<div class="rp-icon rp-aqsjdjsl"></div>
+						<span>安全事件等级-数量</span>
+					</a>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default hide">
+	    <div class="panel-heading font-bold prel">
+	      	<span>资产统计</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">			
+				<a id="assetStatistics" data-type="assetCount" style="display: none;">
+					<div class="rp-icon rp-zcfbtj"></div>
+					<span>资产分布统计</span>
+				</a>
+				<a id="assetsPurase" data-type="assetCount" style="display: none;">
+					<div class="rp-icon rp-zcgzrqtj"></div>
+					<span>资产购置日期统计</span>
+				</a>
+				<a id="assetDeadlineDate" data-type="assetCount" style="display: none;">
+					<div class="rp-icon rp-zcwbdqqktj"></div>
+					<span>资产维保到期<br/>情况统计</span>
+				</a>
+				<a id="acxxtj">
+					<div class="rp-icon rp-zcxxtj"></div>
+					<span>资产信息统计</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+	    <div class="panel-heading font-bold prel">
+	      	<span>综合分析</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">			
+				<a id="rbb" data-type="report">
+					<div class="rp-icon rp-rbb"></div>
+					<span>日报表</span>
+				</a>
+				<a id="zbb" data-type="report">
+					<div class="rp-icon rp-zbb"></div>
+					<span>周报表</span>
+				</a>
+				<a id="ybb" data-type="comprehensive">
+					<div class="rp-icon rp-ybb"></div>
+					<span>月报表</span>
+				</a>
+				<a id="nbb" data-type="report">
+					<div class="rp-icon rp-nbb"></div>
+					<span>年报表</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default" style="display: none">
+	    <div class="panel-heading font-bold prel">
+	      	<span>工单</span>
+	    </div>
+	    <div class="row report">
+			<div class="col-lg-12 mt20">			
+				<a id="zxgd" data-type="workOrder">
+					<div class="rp-icon rp-zxgd"></div>
+					<span>最新工单TOP-10</span>
+				</a>
+				<a id="sjclgdfltj" data-type="workOrder">
+					<div class="rp-icon rp-sjclgdfltj"></div>
+					<span>事件处理<br/>工单分类统计</span>
+				</a>
+				<a id="sjclgddjtj" data-type="workOrder">
+					<div class="rp-icon rp-sjclgddjtj"></div>
+					<span>事件处理<br/>工单等级统计</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="prel bgwh animated fadeInRight" id="report_detail_div" style="display:none">
+	<div class="table-oper" id="table_oper">
+		<a class="oper-array" href="javascript:void(0);">
+			<span>导出操作</span><i class="icon-caret-down"></i>
+			<ul class="oper-list animated fadeInRight" id="export_ul">
+				<li data-id="pdf">导出PDF</li>
+				<li data-id="word">导出WORD</li>
+				<li data-id="html">导出HTML</li>
+				<li data-id="excel">导出EXCEL</li>
+			</ul>
+		</a>
+		<a href="javascript:void(0);" id="close_btn">
+			<span>关闭</span>
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+	<div id="report_detail_show_div" class="tran report-scale"></div>
+</div>

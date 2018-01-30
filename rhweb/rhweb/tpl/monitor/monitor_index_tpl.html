@@ -1,0 +1,152 @@
+<form class="bs-example form-horizontal xs-form" id="monitor_index">
+	<div class="form-group">
+		<label class="col-lg-2 control-label">CPU使用率阈值(%)</label>
+		<div class="col-lg-3">
+			<input type="text" class="form-control input-sm" data-id="storage">
+		</div>
+		<label class="col-lg-2 control-label">连续达到阈值次数</label>
+		<div class="col-lg-3">
+			<input type="text" class="form-control input-sm" data-id="timesforstorage">
+		</div>
+		<label class="col-lg-1">(1-9)</label>
+	</div>
+	<div class="form-group">
+		<label class="col-lg-2 control-label">内存使用率阈值(%)</label>
+		<div class="col-lg-3">
+			<input type="text" class="form-control input-sm" data-id="storage">
+		</div>
+		<label class="col-lg-2 control-label">连续达到阈值次数</label>
+		<div class="col-lg-3">
+			<input type="text" class="form-control input-sm" data-id="timesforstorage">
+		</div>
+		<label class="col-lg-1">(1-9)</label>
+	</div>
+
+	<div class="form-group">
+		<label class="col-lg-2 control-label">配额默认比例(%)</label>
+		<div class="col-lg-3">
+			<input type="text" class="form-control input-sm" data-id="storage">
+		</div>
+		<div class="col-lg-1">获取所有分区</div>
+	</div>
+
+	<div class="form-group">
+	<div class="col-lg-1"></div>
+		<div class="col-lg-5">
+			<div class="table-div" data-id="mornitored_partition" style="height:200px"></div>
+	    <div class="pabs square" style="z-index:2000;right:-12.5px;top:5px;font-size:20px;">
+	    	<i class="icon-chevron-left"></i>
+	    </div>
+		  <div class="pabs square" style="z-index:2000;right:-12.5px;top:45px;font-size:20px;">
+		  	<i class="icon-chevron-right"></i>
+		  </div>
+		</div>
+		<div class="col-lg-5">
+			<div class="table-div" data-id="unmornitored_partition" style="height:200px"></div>
+		</div>
+	</div>
+	<div id="index_for_ssh_telent" style="display:none">
+		<div class="form-group show-for-ssh-telent">
+			<label class="col-lg-2 control-label">脚本全路径</label>
+			<div class="col-lg-4">
+				<input type="text" class="form-control input-sm" data-id="script_full_path">
+			    <div class="pabs square" style="z-index:2000;right:-12.5px;top:5px;font-size:20px;">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+    		  <div class="pabs square" style="z-index:2000;right:-12.5px;top:45px;font-size:20px;">
+    		  	<i class="icon-chevron-right"></i>
+    		  </div>
+			</div>
+			<div class="col-lg-5">
+				<div class="table-div" data-id="script_full_path_list" style="height:200px"></div>
+			</div>
+			<label class="col-lg-2 control-label" style="margin-top:-150px">脚本参数</label>
+			<div class="col-lg-4" style="margin-top:-150px;margin-left:16.7%">
+				<input type="text" class="form-control input-sm" data-id="script_arguments">
+			</div>
+			<div class="col-lg-4" style="margin-top:-110px;margin-left:16.7%">多个参数用英文逗号(,)分隔</div>
+		</div>
+
+		<div class="form-group show-for-ssh-telent">
+			<label class="col-lg-2 control-label">进程路径</label>
+			<div class="col-lg-4">
+				<input type="text" class="form-control input-sm" data-id="process_path">
+			    <div class="pabs square" style="z-index:2000;right:-12.5px;top:5px;font-size:20px;">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+    		  <div class="pabs square" style="z-index:2000;right:-12.5px;top:45px;font-size:20px;">
+    		  	<i class="icon-chevron-right"></i>
+    		  </div>
+			</div>
+			<div class="col-lg-5">
+				<div class="table-div" data-id="process_path_list" style="height:200px"></div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+<script>
+$(document).ready(function(){
+var url = {
+	form_url_list : "data/tablegrid.json",
+}
+
+var header = {
+	asset_list : [
+							{text:'资产名称'     ,name:"entityName"},
+							{text:'IP地址'     ,name:"ipvAddress"},
+							{text:'资产类型'     ,name:"entityType"},
+							{text:'安全域简称' ,name:"securityName"},
+							{text:'业务域简称'   ,name:"businessName"},
+							{text:'添加时间'       ,name:"assetCreateDate"},
+						],
+	monitored_partition_list : [
+							{text : "被监控分区",name:"portUnderMonitored"},
+							{text : "阈值(%)",name : "threshold"},
+							{text : "剩余空间(M)" ,name : "freeSpace"}
+						],
+	unmonitored_partition_list : [
+							{text : "不被监控分区",name:"portNotMonitored"},
+							{text : "阈值(%)",name : "threshold"},
+							{text : "剩余空间(M)" ,name : "freeSpace"}
+							],
+	script_path_list : [
+							{text : "脚本全路径",name:"scriptFullPath"},
+							{text : "脚本参数",name : "scriptArgument"}
+							],
+	config_process_list : [
+							{text : "已配置进程",name:"configProcess"}
+							]
+};
+	$.ajax({
+		type : "GET",
+		url : "tpl/monitor/monitor_index_tpl.html",
+		success : function (data) 
+		{
+			$("[data-id="+$("[data-id=temp_name]").val()+"]").one(function(){
+				$("[data-id="+$("[data-id=temp_name]").val()+"]").append(data);
+			});
+			grid_in_tpl_render("mornitored_partition" ,url.form_url_list ,header.monitored_partition_list);
+			grid_in_tpl_render("unmornitored_partition" ,url.form_url_list ,header.unmonitored_partition_list);
+			grid_in_tpl_render("script_full_path_list" ,url.form_url_list ,header.script_path_list);
+			grid_in_tpl_render("process_path_list" ,url.form_url_list ,header.config_process_list);
+		}
+	});
+	($("[data-id=temp_show_index_for_ssh]").val() == "show")
+	? $("#index_for_ssh_telent").show()
+	: $("#index_for_ssh_telent").hide();
+
+
+	function grid_in_tpl_render(target ,url ,header) 
+	{
+	 	g_grid.render($("[data-id="+target+"]") ,{
+	 		url : url,
+	 		header : header,
+	 		server : "/",
+	 		isLoad : false,
+	 		paginator : false
+	 	});
+	}
+});
+</script>

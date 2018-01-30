@@ -1,0 +1,211 @@
+<div data-id="monitor_index" class="h-all ovxh">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div id="detail_store_form">
+				<div class="form-group">
+					<label class="col-lg-2 control-label">IIS服务名</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="monitorDatabaseName" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">CPU使用率阈值(%)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="cpuUseRate" value="80" maxlength="3" validate="between1~100" />
+					</div>
+					<label class="col-lg-3 control-label">内存使用率阈值(%)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="memoryUseRate" value="80" maxlength="3" validate="between1~100" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-lg-2 control-label">传输文件数量阈值(个)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="transFileThreshold" maxlength="8" validate="number" />
+					</div>
+					<label class="col-lg-3 control-label">传输文件字节阈值(bit)</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" data-id="transFileBitThreshold" maxlength="8" validate="number" />
+					</div>
+				</div>
+			</div>
+
+      <div class="form-group" data-name="userCfg">
+	      <div class="col-lg-5">
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">非匿名用户使用数配置</label>
+		        <div class="col-lg-6" data-bind="bind">
+		          <div class="radio l">
+		              <label class="i-checks">
+	                  <input type="radio" value="1" data-id="userConfigStatus" name="userConfigStatus" checked>
+	                  <i></i>
+	                  统一配置
+		              </label>
+		              <label class="i-checks">
+		                <input type="radio" value="2" name="userConfigStatus">
+		                <i></i>
+		                单一配置
+		              </label>
+		          </div>
+		        </div>
+	      	</div>
+	      	<div class="form-group" data-bind="bind">
+		        <label class="col-lg-5 control-label">非匿名用户使用数阈值(个)</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="singleUserUseRate" maxlength="8" validate="number" />
+		        </div>
+	      	</div>
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">名称</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="userName" maxlength="30" disabled="disabled" />
+		        </div>
+	      	</div>
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">阈值(个)</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="userUseRate" maxlength="8" validate="number" disabled="disabled" />
+		        </div>
+	      	</div>
+	      </div>
+				<div class="col-lg-1">
+				  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="userCfg_add" title="添加">
+				  	<i class="icon-chevron-right"></i>
+				  </div>
+			    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="userCfg_remove" title="删除">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-1" style="height:200px;"></div>
+				</div>
+      </div>
+
+      <div class="form-group" data-name="noUserCfg">
+	      <div class="col-lg-5">
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">匿名用户使用数配置</label>
+		        <div class="col-lg-6" data-bind="bind">
+		          <div class="radio l">
+		              <label class="i-checks">
+                  <input type="radio" value="1" data-id="noConfigStatus" name="noConfigStatus" checked>
+                  <i></i>
+                  统一配置
+		              </label>
+		              <label class="i-checks">
+	                <input type="radio" value="2" name="noConfigStatus">
+	                <i></i>
+	                单一配置
+		              </label>
+		          </div>
+		        </div>
+	      	</div>
+	      	<div class="form-group" data-bind="bind">
+		        <label class="col-lg-5 control-label">匿名用户使用数阈值(个)</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="singleNoUserUseRate" maxlength="8" validate="number" />
+		        </div>
+	      	</div>
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">名称</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="noUserName" maxlength="30" disabled="disabled" />
+		        </div>
+	      	</div>
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">阈值(个)</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="noUserUseRate" maxlength="8" validate="number" disabled="disabled" />
+		        </div>
+	      	</div>
+	      </div>
+				<div class="col-lg-1">
+				  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="noUserCfg_add" title="添加">
+				  	<i class="icon-chevron-right"></i>
+				  </div>
+			    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="noUserCfg_remove" title="删除">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-2" style="height:200px;"></div>
+				</div>
+      </div>
+
+      <div class="form-group" data-name="linkCfg">
+	      <div class="col-lg-5">
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">链接使用数配置</label>
+		        <div class="col-lg-6" data-bind="bind">
+		          <div class="radio l">
+		              <label class="i-checks">
+                  <input type="radio" value="1" data-id="linkConfigStatus" name="linkConfigStatus" checked>
+                  <i></i>
+                  统一配置
+		              </label>
+		              <label class="i-checks">
+	                <input type="radio" value="2" name="linkConfigStatus">
+	                <i></i>
+	                单一配置
+		              </label>
+		          </div>
+		        </div>
+	      	</div>
+	      	<div class="form-group" data-bind="bind">
+		        <label class="col-lg-5 control-label">链接使用数阈值(个)</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="linkRate" maxlength="8" validate="number" />
+		        </div>
+	      	</div>
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">名称</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="linkName" maxlength="30" disabled="disabled" />
+		        </div>
+	      	</div>
+	      	<div class="form-group">
+		        <label class="col-lg-5 control-label">阈值(个)</label>
+		        <div class="col-lg-7">
+		          <input type="text" class="form-control input-sm" data-id="linkValue" maxlength="8" validate="number" disabled="disabled" />
+		        </div>
+	      	</div>
+	      </div>
+				<div class="col-lg-1">
+				  <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="linkCfg_add" title="添加">
+				  	<i class="icon-chevron-right"></i>
+				  </div>
+			    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="linkCfg_remove" title="删除">
+			    	<i class="icon-chevron-left"></i>
+			    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-3" style="height:200px;"></div>
+				</div>
+      </div>
+
+			<div class="form-group" data-name="urlCfg">
+				<label class="control-label col-lg-2">应用URL</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="url" validate="url">
+				</div>
+				<div class="col-lg-1">
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="url_add" title="添加">
+				  	  	<i class="icon-chevron-right"></i>
+				    </div>
+				    <div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="url_remove" title="删除">
+				    	<i class="icon-chevron-left"></i>
+				    </div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-he" style="height:200px;"></div>
+				</div>
+			</div>
+      <div class="table-oper" style="padding-right:8.33%;">
+        <a href="javascript:void(0);" class="dib monitor_btn_styl" data-type="test_btn_in_step5">
+          <span>测试配置</span>
+          <i></i>
+        </a> 
+      </div>
+		</form>
+	</div>
+</div>

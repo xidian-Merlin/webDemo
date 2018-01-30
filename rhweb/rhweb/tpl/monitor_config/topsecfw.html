@@ -1,0 +1,39 @@
+<div data-id="monitor_index" class="h-all ovxh" style="margin-left:4.5%;">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="detail_store_form">
+
+			<div class="form-group">
+				<label class="control-label col-lg-2">CPU使用率阈值(%)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="001" value="80" maxlength="3" validate="between1~100">
+				</div>
+				<label class="control-label col-lg-2">连续达到阈值次数</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="002" value="3" maxlength="1" validate="between1~9">
+				</div>
+				<label class="control-label col-lg-1" style="text-align:left;">(1-9)</label>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-2">内存使用率阈值(%)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="003" value="80" maxlength="3" validate="between1~100">
+				</div>
+				<label class="control-label col-lg-2">连续达到阈值次数</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="004" value="3" maxlength="1" validate="between1~9">
+				</div>
+				<label class="col-lg-1 control-label" style="text-align:left;">(1-9)</label>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-lg-2">事件过滤字段</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="003" validate="between1~100">
+				</div>
+				<label class="col-lg-3 control-label" style="text-align:left; color:red">多个字段用英文分号(;)分隔</label>
+			</div>
+
+		</form>
+	</div>
+</div>

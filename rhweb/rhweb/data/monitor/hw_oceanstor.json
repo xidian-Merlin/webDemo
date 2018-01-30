@@ -1,0 +1,12 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "HW OCEANSTOR",
+					"fileName"  : "hw_oceanstor",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "hw_oceanstor/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "存储信息" ,"href" : "hw_oceanstor/storge.html" ,"icon" : "monitor-cpu-percent"}
+							  ]
+				 }
+}

@@ -1,0 +1,194 @@
+<div data-id="monitor_index" class="h-all">
+	<!-- <form class="bs-example form-horizontal xs-form form-plr5"> -->
+		<div class="form-group h-all">
+			<!-- 操作栏 -->
+			<div class="table-oper" id="table_oper" style="margin-top:-28px;margin-bottom:5px">
+				<a href="javascript:void(0);" id="database_add_btn">
+					<span>添加数据库实例</span>
+					<i class="icon-plus"></i>
+				</a>
+			</div>
+			<div class="tab-div h-all" data-id="database-nu" data-type="tpl"></div>
+		</div>
+	<!-- </form> -->
+</div>
+
+<script>
+$(document).ready(function(){
+var url = {
+	oracle : ""
+};
+var header = {
+	oracle : [
+				{text:"数据库名",name:"databasename"},
+				{text:"端口",name:"port"},
+				{text:"用户名",name:"username"},
+				{text:"连接数使用率阈值(%)",name:"connectUseRate"}
+			]
+};
+var oper = {
+	oracle : [
+				{icon:"icon-pencil",text:"修改"},
+				{icon:"icon-trash",text:"删除",aclick:instance_remove}
+			]
+};
+
+init();
+event_init();
+function event_init() 
+{
+	var databaseDataStr = "";
+	$("#database_add_btn").click(function(){
+		$.ajax({
+			type : "GET",
+			url : "tpl/monitor/index/monitor_index_tpl_22.html",
+			success : function (data) 
+			{
+				g_dialog.dialog($(data).find("[data-id=monitor_index_edit]") ,{
+					width : "900px",
+					title : "添加数据库信息",
+					init : init,
+					saveclick : save
+				});
+			}
+		});
+
+		function init(el) 
+		{
+			databaseDataStr = $("[data-id=temp_database_instance]").val() === "" ? "" : $("[data-id=temp_database_instance]").val() + "~";
+		}
+
+		function save(saveObj) 
+		{
+			var databaseData = {
+				monitorType : $("[data-id=temp_type]").val(),
+				// notMonitoredEntity : ,
+				monitorUserName : $("[data-id=monitorUserName]").val(),
+				monitorPassWord : $("[data-id=monitorPassWord]").val(),
+				monitorDatabaseName : $("[data-id=monitorDatabaseName]").val(),
+				monitorPort : $("[data-id=monitorPort]").val(),
+				serviceName : "",
+				monitorAgent : $("[data-id=monitorAgent]").val(),
+				vip : "",
+				connectUseRate : $("[data-id=connectUseRate]").val(),
+				sessionCount : $("[data-id=sessionCount]").val(),
+				locksCount : $("[data-id=locksCount]").val(),
+				processCount : $("[data-id=processCount]").val(),
+				tsvalues : $("[data-id=temp_table_space]").val(),
+				unTsvalues : $("[data-id=temp_not_table_space]").val(),
+				unifyThreshold : $("[data-id=tablethreshold]").val(),
+				connectType : $("[data-id=connectType]").val()
+			};
+			databaseDataStr += databaseData.monitorType+"#"
+													+databaseData.monitorUserName+"#"
+													+databaseData.monitorPassWord+"#"
+													+databaseData.monitorDatabaseName+"#"
+													+databaseData.monitorPort+"#"
+													+databaseData.serviceName+"#"
+													+databaseData.monitorAgent+"#"
+													+databaseData.vip+"#"
+													+databaseData.connectUseRate+"#"
+													+databaseData.sessionCount+"#"
+													+databaseData.locksCount+"#"
+													+databaseData.processCount+"#"
+													+databaseData.unifyThreshold+"#"
+													+databaseData.connectType+"#"
+													+databaseData.tsvalues+"#"
+													+databaseData.unTsvalues+"~";
+			databaseDataStr = databaseDataStr.substring(0,databaseDataStr.length-1);
+			$("[data-id=temp_database_instance]").val(databaseDataStr);
+			var renderData = [];
+			var renderRows = databaseDataStr.split("~");
+			for (var i = 0; i < renderRows.length; i++) {
+				var rowData = renderRows[i].split("#");
+				var renderRowData = {databasename:rowData[3],port:rowData[4],username:rowData[1],connectUseRate:rowData[8]};
+				renderData = [];
+				renderData.push(renderRowData);
+			}
+			g_dialog.hide("monitor_index_edit");
+			g_grid.addData($("[data-id=database-nu]") ,renderData);
+		}
+
+	});
+
+}
+
+function init() 
+{
+
+
+	g_grid.render($("[data-id=database-nu]") ,{
+		url : url.oracle,
+		header : header.oracle,
+		oper : oper.oracle,
+		operWidth : "100px",
+		paramObj : null,
+		hideSearch : true,
+		isLoad : true,
+		maskObj : "body"
+	});
+	
+
+	// $.ajax({
+	// 	type : "GET",
+	// 	url : url.oracle,
+	// 	success : function (data) 
+	// 	{
+	// 		g_grid.render($("[data-id=database-nu]") ,{
+	// 			header : header.oracle,
+	// 			// oper : oper.oracle,
+	// 			// operWidth : "100px",
+	// 			paginator : true,
+	// 			data : []
+	// 		});
+	// 	}
+	// });
+}
+
+function instance_remove(el,rowData) 
+{
+	//console.log(el);
+	//匹配、修改临时数据
+	//console.log(rowData);
+	//console.log($("[data-id=temp_database_instance]").val());
+	var tempList = $("[data-id=temp_database_instance]").val().split("~");
+	//console.log(tempList);
+	var targetRow = [];
+	var tempRows = [];
+	for (var i = 0; i < tempList.length; i++) 
+	{
+		targetRow = tempList[i].split("#");
+		// console.log(targetRow);
+		if (el.username == targetRow[1] && el.port == targetRow[4] && el.databasename == targetRow[3] && el.connectUseRate == targetRow[8]) 
+		{
+			continue;
+		}
+		else 
+		{
+			tempRows.push(targetRow);
+		}
+		
+	}
+	targetRow = tempRows;
+	tempRows = [];
+	//删除当前行
+	$(rowData[0]).remove();
+	var sub_temp_str = "";
+	var temp_str = "";
+	for (var m = 0; m < targetRow.length; m++) 
+	{
+		for (var n = 0; n < targetRow[m].length; n++) 
+		{
+			sub_temp_str += targetRow[m][n] + "#";
+		}
+		targetRow[m] = sub_temp_str.substring(0,sub_temp_str.length-1);
+		temp_str += targetRow[m] + "~";
+	}
+	temp_str = temp_str.substring(0,temp_str.length-1);
+	$("[data-id=temp_database_instance]").val(temp_str);
+
+}
+
+});
+
+</script>

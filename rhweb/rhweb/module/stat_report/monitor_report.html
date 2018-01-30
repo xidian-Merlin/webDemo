@@ -1,0 +1,331 @@
+<script src="module/stat_report/monitor_report.js"></script>
+
+<div id="report_div">
+	<div class="panel panel-default" style="margin-top:5px;">
+		<div class="panel-heading font-bold prel">
+			<span>网络设备</span>
+		</div>
+		<div class="row report" id="monitor_report_div">
+			<div class="col-lg-12 mt20">			
+				<a id="ciscoMonitor" data-type="report_query" data-monitorType="NE_CISCO">
+					<div class="rp-icon rp-skwlsb"></div>
+					<span>思科网络设备</span>
+				</a>
+				<a id="H3C" data-type="report_query" data-monitorType="H3C">
+					<div class="rp-icon rp-hswlsb"></div>
+					<span>华三网络设备</span>
+				</a>
+				<a id="huaweiMonitor" data-type="report_query" data-monitorType="NE_HUAWEI">
+					<div class="rp-icon rp-hwwlsb"></div>
+					<span>华为网络设备</span>
+				</a>
+				<a id="lenovoVPNMonitor" data-type="report_query" data-monitorType="LENOVOVPN">
+					<div class="rp-icon rp-lxvpn"></div>
+					<span>联想VPN</span>
+				</a>
+				<a id="netKeeperMonitor" data-type="report_query" data-monitorType="NETKEEPER">
+					<div class="rp-icon rp-nzxjmrzwg"></div>
+					<span>NETKEEPER纵向加密认证网关</span>
+				</a>
+				<a id="sysKeeperMonitor" data-type="report_query" data-monitorType="SYSKEEPER">
+					<div class="rp-icon rp-wlaqglzz"></div>
+					<span>网络安全隔离装置</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold prel">
+			<span>安全设备</span>
+		</div>
+		<div class="row report tl" id="monitor_report_div">
+			<div class="col-lg-12 mt20 tl">
+				<a id="LENOVOIDS" data-type="report_query" data-monitorType="LENOVOIDS">
+					<div class="rp-icon rp-lxrqjcxt"></div>
+					<span>联想入侵检测系统</span>
+				</a>
+				<a id="NsfocusIDS" data-type="report_query" data-monitorType="NSFOCUS">
+					<div class="rp-icon rp-lmrqjcxt"></div>
+					<span>绿盟入侵检测系统</span>
+				</a>
+				<a id="NetEyeFW" data-type="report_query" data-monitorType="NETEYE_FIREWALL">
+					<div class="rp-icon rp-drfhq"></div>
+					<span>东软防火墙</span>
+				</a>
+				<a id="Kill" data-type="report_query" data-monitorType="KILL">
+					<div class="rp-icon rp-gqjcbdjcyjxt"></div>
+					<span>冠群金辰病毒监测预警系统</span>
+				</a>
+				<a id="Netentsec" data-type="report_query" data-monitorType="NETENTSEC">
+					<div class="rp-icon rp-wkswxwgl"></div>
+					<span>网康上网行为管理</span>
+				</a>
+				<a id="RisingVDS" data-type="report_query" data-monitorType="RISING">
+					<div class="rp-icon rp-rxbdjcyjxt"></div>
+					<span>瑞星病毒监测预警系统</span>
+				</a>
+				<a id="VenusIDS" data-type="report_query" data-monitorType="VENUS">
+					<div class="rp-icon rp-qmxcrqjcxt"></div>
+					<span>启明星辰入侵检测系统</span>
+				</a>
+				<a id="TopsecIDS" data-type="report_query" data-monitorType="TOPSEC_IDS">
+					<div class="rp-icon rp-trxrqjcxt"></div>
+					<span>天融信入侵检测系统</span>
+				</a>
+				<a id="topsecAV" data-type="report_query" data-monitorType="TOPSECAV">
+					<div class="rp-icon rp-trxfbdwg"></div>
+					<span>天融信防病毒网关</span>
+				</a>
+				<a id="topsecFW" data-type="report_query" data-monitorType="TOPSECFW">
+					<div class="rp-icon rp-trxfhq"></div>
+					<span>天融信防火墙</span>
+				</a>
+				<a id="checkPointFW" data-type="report_query" data-monitorType="NOKIA_CHECK_POINT">
+					<div class="rp-icon rp-njyfhq"></div>
+					<span>诺基亚防火墙</span>
+				</a>
+				<a id="surfilter" data-type="report_query" data-monitorType="SURFILTER">
+					<div class="rp-icon rp-rzxswxwgl"></div>
+					<span>任子行上网行为管理</span>
+				</a>				
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold prel">
+			<span>操作系统</span>
+		</div>
+		<div class="row report" id="monitor_report_div">
+			<div class="col-lg-12 mt20">			
+				<a id="AIX" data-type="report_query" data-monitorType="AIX">
+					<div class="rp-icon rp-aix"></div>
+					<span>AIX</span>
+				</a>
+				<a id="linux" data-type="report_query" data-monitorType="LINUX">
+					<div class="rp-icon rp-linux"></div>
+					<span>Linux</span>
+				</a>
+				<a id="Windows" data-type="report_query" data-monitorType="WINDOWS">
+					<div class="rp-icon rp-windows"></div>
+					<span>Windows</span>
+				</a>
+				<a id="hpUnix" data-type="report_query" data-monitorType="HP_UNIX">
+					<div class="rp-icon rp-hp-ux"></div>
+					<span>HP-UX</span>
+				</a>
+				<a id="solaris" data-type="report_query" data-monitorType="SOLARIS">
+					<div class="rp-icon rp-solaris"></div>
+					<span>Solaris</span>
+				</a>
+				<a id="tru64" data-type="report_query" data-monitorType="TRU_64">
+					<div class="rp-icon rp-tru-unix"></div>
+					<span>Tru64 UNIX</span>
+				</a>					
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold prel">
+			<span>数据库</span>
+		</div>
+		<div class="row report" id="monitor_report_div">
+			<div class="col-lg-12 mt20">			
+				<a id="db2Monitor" data-type="report_query" data-monitorType="DB2">
+					<div class="rp-icon rp-db"></div>
+					<span>DB2</span>
+				</a>
+				<a id="mySqlMonitor" data-type="report_query" data-monitorType="MYSQL">
+					<div class="rp-icon rp-mysql"></div>
+					<span>MySQL</span>
+				</a>
+				<a id="oracleMonitor" data-type="report_query" data-monitorType="ORACLE">
+					<div class="rp-icon rp-oracle"></div>
+					<span>Oracle</span>
+				</a>
+				<a id="informixMonitor" data-type="report_query" data-monitorType="INFORMIX">
+					<div class="rp-icon rp-informix"></div>
+					<span>Informix</span>
+				</a>
+				<a id="oracleRACMonitor" data-type="report_query" data-monitorType="ORACLERAC">
+					<div class="rp-icon rp-oracle-rac"></div>
+					<span>Oracle RAC</span>
+				</a>
+				<a id="sqlserverMontior" data-type="report_query" data-monitorType="SQLSERVER">
+					<div class="rp-icon rp-sql-server"></div>
+					<span>SQL Server</span>
+				</a>
+				<a id="sybaseMonitor" data-type="report_query" data-monitorType="SYBASE">
+					<div class="rp-icon rp-sybase"></div>
+					<span>Sybase</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold prel">
+			<span>中间件</span>
+		</div>
+		<div class="row report" id="monitor_report_div">
+			<div class="col-lg-12 mt20">
+				<a id="tomcatMonitorReport" data-type="report_query" data-monitorType="TOMCAT">
+					<div class="rp-icon rp-tomcat"></div>
+					<span>Tomcat</span>
+				</a>
+				<a id="webLogicMonitorReport" data-type="report_query" data-monitorType="WEBLOGIC">
+					<div class="rp-icon rp-weblogic"></div>
+					<span>WebLogic</span>
+				</a>
+				<a id="webSphereMonitorReport" data-type="report_query" data-monitorType="WEBSPHERE">
+					<div class="rp-icon rp-websphere"></div>
+					<span>WebSphere</span>
+				</a>
+				<a id="apache" data-type="report_query" data-monitorType="APACHE">
+					<div class="rp-icon rp-apache"></div>
+					<span>Apache</span>
+				</a>
+				<a id="IIS" data-type="report_query" data-monitorType="IIS6">
+					<div class="rp-icon rp-microsoft-iis"></div>
+					<span>Microsoft IIS</span>
+				</a>
+				<a id="Tuxedo" data-type="report_query" data-monitorType="TUXEDO8">
+					<div class="rp-icon rp-tuxedo"></div>
+					<span>Tuxedo</span>
+				</a>					
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold prel">
+			<span>存储设备</span>
+		</div>
+		<div class="row report" id="monitor_report_div">
+			<div class="col-lg-12 mt20">			
+				<a id="emcMonitor" data-type="report_query" data-monitorType="EMC_CLARIION">
+					<div class="rp-icon rp-emc-clariion"></div>
+					<span>EMC CLARiiON</span>
+				</a>
+				<a id="hpraidMonitor" data-type="report_query" data-monitorType="HP_DISCARRAY">
+					<div class="rp-icon rp-hp-disk-array"></div>
+					<span>HP Disk Array</span>
+				</a>
+				<a id="legatoMonitor" data-type="report_query" data-monitorType="LEGATO">
+					<div class="rp-icon rp-legato"></div>
+					<span>Legato</span>
+				</a>				
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold prel">
+			<span>应用软件</span>
+		</div>
+		<div class="row report" id="monitor_report_div">
+			<div class="col-lg-12 mt20">			
+				<a id="apcups" data-type="report_query" data-monitorType="APC_UPS">
+					<div class="rp-icon rp-apc-ups"></div>
+					<span>APC UPS</span>
+				</a>
+				<a id="ibmMb" data-type="report_query" data-monitorType="IBM_MB">
+					<div class="rp-icon rp-ibm-mb"></div>
+					<span>IBM MB</span>
+				</a>
+				<a id="ibmMq" data-type="report_query" data-monitorType="IBM_MQ">
+					<div class="rp-icon rp-ibm-mq"></div>
+					<span>IBM MQ</span>
+				</a>
+				<a id="DNSMonitor" data-type="report_query" data-monitorType="DNS">
+					<div class="rp-icon rp-microsoft-dns"></div>
+					<span>Microsoft DNS</span>
+				</a>
+				<a id="ExchangeMonitor" data-type="report_query" data-monitorType="EXCHANGE">
+					<div class="rp-icon rp-microsoft-exchange"></div>
+					<span>Microsoft Exchange</span>
+				</a>
+				<a id="IIS_FTPMonitor" data-type="report_query" data-monitorType="IIS_FTP">
+					<div class="rp-icon rp-microsoft-iis-ftp"></div>
+					<span>Microsoft IIS FTP</span>
+				</a>
+				<a id="ISA_SERVERMonitor" data-type="report_query" data-monitorType="ISA_SERVER">
+					<div class="rp-icon rp-microsoft-isa-server"></div>
+					<span>Microsoft ISA Server</span>
+				</a>
+				<a id="LOTUSMonitor" data-type="report_query" data-monitorType="LOTUS">
+					<div class="rp-icon rp-lotus-domino"></div>
+					<span>Lotus Domino</span>
+				</a>
+				<a id="ad" data-type="report_query" data-monitorType="AD">
+					<div class="rp-icon rp-microsoft-ad"></div>
+					<span>Microsoft AD</span>
+				</a>
+				<a id="dhcp" data-type="report_query" data-monitorType="DHCP">
+					<div class="rp-icon rp-microsoft-dhcp"></div>
+					<span>Microsoft DHCP</span>
+				</a>				
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold prel">
+			<span>通用协议</span>
+		</div>
+		<div class="row report" id="monitor_report_div">
+			<div class="col-lg-12 mt20">			
+				<a id="commonSNMP" data-type="report_query" data-monitorType="COMMON_SNMP">
+					<div class="rp-icon rp-common-snmp"></div>
+					<span>Common SNMP</span>
+				</a>
+				<a id="CommonURL" data-type="report_query" data-monitorType="COMMON_URL">
+					<div class="rp-icon rp-common-url"></div>
+					<span>Common URL</span>
+				</a>
+				<a id="commonJMX" data-type="report_query" data-monitorType="COMMON_JMX">
+					<div class="rp-icon rp-common-jmx"></div>
+					<span>Common JMX</span>
+				</a>
+				<a id="enhanceURL" data-type="report_query" data-monitorType="URLEXEC">
+					<div class="rp-icon rp-enhance-url"></div>
+					<span>ENHANCE URL</span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading font-bold prel">
+			<span>监控器综合分析</span>
+		</div>
+		<div class="row report" id="monitor_report_div">
+			<div class="col-lg-12 mt20">			
+				<a id="monitorAnaylsis" data-type="monitor_query">
+					<div class="rp-icon rp-jkqzhfxbb"></div>
+					<span>监控器综合分析报表</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="prel bgwh animated fadeInRight" id="report_detail_div" style="display:none">
+	<div class="table-oper" id="table_oper">
+		<a class="oper-array" href="javascript:void(0);">
+			<span>导出操作</span><i class="icon-caret-down"></i>
+			<ul class="oper-list animated fadeInRight" id="export_ul">
+				<li data-id="pdf">导出PDF</li>
+				<li data-id="word">导出WORD</li>
+				<li data-id="html">导出HTML</li>
+				<li data-id="excel">导出EXCEL</li>
+			</ul>
+		</a>
+		<a href="javascript:void(0);" id="close_btn">
+			<span>关闭</span>
+			<i class="icon-remove"></i>
+		</a>
+	</div>
+	<div id="report_detail_show_div" class="tran report-scale"></div>
+</div>

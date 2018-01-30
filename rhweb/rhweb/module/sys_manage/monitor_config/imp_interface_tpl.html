@@ -1,0 +1,146 @@
+<tem>
+
+<!-- 重点接口新增模板 -->
+<div class="template" id="imp_interface_add_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="add_form">
+			<div class="prel" style="border:1px solid #C0C0C0; padding:15px 10px; height:auto;">
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">资产名称</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" 
+							data-id="assetName" validate="stringLimit0"/>
+					</div> 
+
+					<label class="col-lg-2 control-label tr">操作系统类型</label>
+					<div class="col-lg-3">
+						<select class="form-control input-sm" data-id="osType" data-type="select">
+						</select>
+					</div>   
+				</div>
+
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">安全域</label>
+					<div class="col-lg-3">
+						<div class="inputdrop" id="securityDomain"></div>
+					</div> 
+
+					<label class="col-lg-2 control-label tr">资产类型</label>
+					<div class="col-lg-3">
+						<div class="inputdrop" id="assetType"></div>
+					</div>					
+				</div>
+
+				<div class="form-group">
+				    <label class="col-lg-3 control-label tr">业务域</label>
+					<div class="col-lg-3">
+						<div class="inputdrop" id="bussinessDomain"></div>
+					</div>   
+				</div>
+
+				<div class="form-group">
+					<div class="col-lg-3 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="0" name="ipRadioStatus" data-id="ipRadioStatus" checked>
+							  <i></i>
+							  IPV4
+							</label>
+						</div>
+					</div>
+
+					<div class="col-lg-2" style="padding-right:0">
+				        <input type="text" class="form-control input-sm" data-id="ipRadioStatusStartIp" id="ipRadioStatusStartIp" maxlength="15" validate="ipv4">
+			        </div>
+
+			        <div class="col-lg-1" style="padding:6px;width:16px">
+			        	-
+			        </div>
+
+			        <div class="col-lg-2" style="padding-left:0">
+			        	<input type="text" class="form-control input-sm" data-id="ipRadioStatusEndIp" id="ipRadioStatusEndIp" maxlength="15" validate="ipv4">
+			        </div>
+				</div>
+
+		        <div class="form-group">
+					<div class="col-lg-3 tr">
+						<div class="radio">
+							<label class="i-checks">
+							  <input type="radio" value="1" name="ipRadioStatus">
+							  <i></i>
+							  IPV6
+							</label>
+						</div>
+					</div>
+
+					<div class="col-lg-5" style="width:35%">
+				        <input type="text" class="form-control input-sm" data-id="ipRadioStatusIpv6" id="ipRadioStatusIpv6" maxlength="39" validate="ipv6" disabled>
+			        </div>
+
+			        <div class="col-lg-2" style="line-height:26px">
+			        	<a class="a_btn" id="form_query_btn">查询</a>
+			        </div>
+		        </div>
+
+			</div>
+			<div style="background-color:#fff; padding:5px; top:15px; left:40px;" class="pabs">
+				重点接口添加
+			</div>
+		</form>
+
+		<div class="mt15">
+				<div id="dialog_up_table_div" class="table-div" style="height:200px"></div>
+		</div>
+
+		<div class="mt15">
+				<div id="dialog_down_table_div" class="table-div" style="height:200px"></div>
+		</div>
+
+		<form class="bs-example form-horizontal xs-form" id="add_dialog">
+			<div style="padding:15px; height:auto;">
+				<div class="form-group">
+				    <label class="col-lg-2 control-label tr">接口流量阈值</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" 
+							data-id="threshold" validate="required" value="80"/>
+					</div>
+					<label class="col-lg-1 control-label tl">(%)</label>
+				
+				    <label class="col-lg-3 control-label tr" style="width:18%">连续达到阈值次数</label>
+					<div class="col-lg-3">
+						<input type="text" class="form-control input-sm" 
+							data-id="timeCnt" validate="required" value="5"/>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+<!-- 重点接口修改模板 -->
+<div class="template" id="imp_interface_update_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="update_form">
+			<div style="padding:15px; height:auto;">
+				<div class="form-group">
+				    <label class="col-lg-4 control-label tr">接口流量阈值</label>
+					<div class="col-lg-6">
+						<input type="text" class="form-control input-sm" 
+							data-id="threshold" validate="required,between1~100"/>
+					</div>
+					<label class="col-lg-1 control-label tl">(%)</label>
+				</div>
+				
+				<div class="form-group">
+				    <label class="col-lg-4 control-label tr">连续达到阈值次数</label>
+					<div class="col-lg-6">
+						<input type="text" class="form-control input-sm" 
+							data-id="timeCnt" validate="required"/>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</tem>

@@ -1,0 +1,37 @@
+<div data-id="monitor_index" class="h-all">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="detail_store_form">
+			<div class="form-group">
+				<label class="control-label col-lg-2">协议</label>
+				<div class="col-lg-3">
+					<select class="form-control input-sm" data-id="consoleIp" data-type="select">
+						<option name="consoleIp" value="HTTP">HTTP</option>
+						<option name="consoleIp" value="SMTP">SMTP</option>
+						<option name="consoleIp" value="POP3">POP3</option>
+						<option name="consoleIp" value="NNTP">NNTP</option>
+					</select>
+				</div>
+				<label class="control-label col-lg-3">域名</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="monitorDatabaseName" validate="" maxlength="256">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2 required">端口</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="monitorPort" maxlength="5" validate="required,between1~65535" value="25" >
+				</div>
+				<label class="control-label col-lg-3 required">访问超时时间(毫秒)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="timeOut" validate="required,between0~999999999">
+				</div>
+			</div>
+      <div class="table-oper" style="padding-right:8.33%;">
+        <a href="javascript:void(0);" class="dib monitor_btn_styl" data-type="test_btn_in_step5">
+          <span>测试配置</span>
+          <i></i>
+        </a> 
+      </div> 
+		</form>
+	</div>
+</div>

@@ -1,0 +1,967 @@
+<tem>
+<!-- 查询弹出框 -->
+<div class="template" id="query_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>事件名称</label>
+		       <div class="col-lg-4">
+		          <input type="text" class="form-control input-sm" data-id="assetName" queryValue>
+		       </div>
+		       <label class="col-lg-2 control-label" queryStr>应用事件名称</label>
+		       <div class="col-lg-4">
+		          <input type="text" class="form-control input-sm" data-id="assetName" queryValue>
+		       </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>发生源设备类型</label>
+		       <div class="col-lg-4">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			        </div>
+		       <label class="col-lg-2 control-label" queryStr>等级</label>
+		       <div class="col-lg-4">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			    </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>聚合开始起始时间</label>
+		       <div class="col-lg-4">
+			      <div class="input-group w-all">
+			          <input type="text" class="form-control input-sm no-write" 
+			                  id="startDate" validate="required" readonly="">
+			      </div>
+		       </div>
+		       <label class="col-lg-2 control-label" queryStr>聚合开始结束时间</label>
+		       <div class="col-lg-4">
+			      <div class="input-group w-all">
+			          <input type="text" class="form-control input-sm" 
+			                  id="startDate" validate="required">
+			      </div>
+		       </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>聚合结束起始时间</label>
+		       <div class="col-lg-4">
+			      <div class="input-group w-all">
+			          <input type="text" class="form-control input-sm" 
+			                  id="startDate" validate="required">
+			      </div>
+		       </div>
+		       <label class="col-lg-2 control-label" queryStr>聚合结束结束时间</label>
+		       <div class="col-lg-4">
+			      <div class="input-group w-all">
+			          <input type="text" class="form-control input-sm" 
+			                  id="startDate" validate="required">
+			      </div>
+		       </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>状态</label>
+		       <div class="col-lg-4">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			        </div>
+		       <label class="col-lg-2 control-label" queryStr>忽略状态</label>
+		       <div class="col-lg-4">
+		              <select class="form-control input-sm" data-type="sel">
+		                <option value="option 2">分</option>
+		                <option value="option 3">小时</option>
+		                <option value="option 4">天</option>
+		              </select>
+			    </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>类型</label>
+		       <div class="col-lg-4">
+	              <select class="form-control input-sm" data-type="sel">
+	                <option value="option 2">分</option>
+	                <option value="option 3">小时</option>
+	                <option value="option 4">天</option>
+	              </select>
+		        </div>
+			</div>
+			
+			<!-- 源IP -->
+			<div class="form-group">
+				  <div class="border-text">
+				  	<div>源IP</div>
+				  </div>
+			      <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+			          <label class="i-switch bg-primary m-t-xs m-r" style="margin-right: 0">
+			            <input type="radio" checked="" name="switch" value="IPV4">
+			            <i></i>
+			          </label>
+			          <label queryStr>IPV4</label>
+			      </div>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="startIp" id="startIp" validate="ipv4" queryValue>
+			      </div>
+			      <div class="col-lg-1 p0" style="width:auto;padding:0 17px">
+			        -
+			      </div>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" data-id="endIp" id="endIp" validate="ipv4" queryValue>
+			      </div>
+			</div>
+
+		    <div class="form-group">
+		      <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+		        <label class="i-switch bg-warning m-t-xs m-r" style="margin-right: 0">
+		          <input type="radio" name="switch" value="IPV6">
+		          <i></i>
+		        </label>
+		        <label queryStr>IPV6</label>
+		      </div>
+		      <div class="col-lg-4">
+		        <input type="text" class="form-control input-sm" disabled data-id="mainIp" id="mainIp" validate="ipv6">
+		      </div>
+		    </div>
+
+			<!-- 目的IP -->
+		    <div class="form-group">
+		      <div class="border-text">
+			     <div>目的IP</div>
+			  </div>
+		      <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+		          <label class="i-switch bg-primary m-t-xs m-r" style="margin-right: 0">
+		            <input type="radio" checked="" name="switch1" value="IPV4">
+		            <i></i>
+		          </label>
+		          <label queryStr>IPV4</label>
+		      </div>
+		      <div class="col-lg-4">
+		        <input type="text" class="form-control input-sm" data-id="startIp" id="startIp" validate="ipv4" queryValue>
+		      </div>
+		      <div class="col-lg-1 p0" style="width:auto;padding:0 17px">
+		        -
+		      </div>
+		      <div class="col-lg-4">
+		        <input type="text" class="form-control input-sm" data-id="endIp" id="endIp" validate="ipv4" queryValue>
+		      </div>
+			</div>
+
+		    <div class="form-group">
+		      <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+		        <label class="i-switch bg-warning m-t-xs m-r" style="margin-right: 0">
+		          <input type="radio" name="switch1" value="IPV6">
+		          <i></i>
+		        </label>
+		        <label queryStr>IPV6</label>
+		      </div>
+		      <div class="col-lg-4">
+		        <input type="text" class="form-control input-sm" disabled data-id="mainIp" id="mainIp" validate="ipv6">
+		      </div>
+		    </div>
+
+			<!-- 发生源IP -->
+		    <div class="form-group">
+		      <div class="border-text">
+		        <div>发生源IP</div>
+		      </div>
+		      <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+		          <label class="i-switch bg-primary m-t-xs m-r" style="margin-right: 0">
+		            <input type="radio" checked="" name="switch2" value="IPV4">
+		            <i></i>
+		          </label>
+		          <label queryStr>IPV4</label>
+		      </div>
+		      <div class="col-lg-4">
+		        <input type="text" class="form-control input-sm" data-id="startIp" id="startIp" validate="ipv4" queryValue>
+		      </div>
+		      <div class="col-lg-1 p0" style="width:auto;padding:0 17px">
+		        -
+		      </div>
+		      <div class="col-lg-4">
+		        <input type="text" class="form-control input-sm" data-id="endIp" id="endIp" validate="ipv4" queryValue>
+		      </div>
+			</div>
+
+		    <div class="form-group">
+		      <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+		        <label class="i-switch bg-warning m-t-xs m-r" style="margin-right: 0">
+		          <input type="radio" name="switch2" value="IPV6">
+		          <i></i>
+		        </label>
+		        <label queryStr>IPV6</label>
+		      </div>
+		      <div class="col-lg-4">
+		        <input type="text" class="form-control input-sm" disabled data-id="mainIp" id="mainIp" validate="ipv6">
+		      </div>
+		    </div>
+
+
+		</form>
+	</div>
+</div>
+
+<!-- 生成工单弹出框 -->
+<div class="template" id="order_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<h1 style="text-align:center;">事件处置单</h1>
+			</div>
+			<div class="form-group">
+
+			    <label class="col-lg-2 control-label" queryStr>填写日期：</label>
+			    <div class="col-lg-2">
+			    	<label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+			    </div>
+
+			    <label class="col-lg-2 control-label" queryStr>起草人：</label>
+			    <div class="col-lg-2">
+			        <label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+			    </div>
+
+			    <label class="col-lg-2 control-label" queryStr>编号：</label>
+			    <div class="col-lg-2">
+			        <label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-2 control-label" queryStr>工单名称：</label>
+			    <div class="col-lg-2">
+		        	<input type="text" class="form-control input-sm" data-id="assetName" queryValue required> 
+		        </div>
+		        <label class="col-lg-2 control-label" queryStr>资产：</label>
+			    <div class="col-lg-2">
+			    	<input class="inputdrop" data-id="edName" queryValue >
+		        	<a href="javascript:void(0);" id="asset_btn" style="float: right; position:relative; bottom: 23px;left:-5px;">
+						<i class="icon-search"></i>
+					</a> 
+		        </div>
+			    <label class="col-lg-2 control-label" queryStr>工单等级：</label>
+			    <div class="col-lg-2">
+		        	<input type="text" class="form-control input-sm" data-id="assetName" queryValue required> 
+		        </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-2 control-label" queryStr>安全域：</label>
+			    <div class="col-lg-2">
+		        	<div data-id="sdomainName" class="inputdrop"></div>
+		        </div>
+		        <label class="col-lg-2 control-label" queryStr>业务域：</label>
+			    <div class="col-lg-2">
+		        	<div data-id="bdomainName" class="inputdrop"></div>
+		        </div>
+			</div>
+			<div class="form-group">
+			    <div class="tab-pane">
+					<div class="panel-body no-tb-padder">
+						<form class="bs-example form-horizontal xs-form" id="form">
+							<div class="table-oper" id="table_oper">
+								<a href="javascript:void(0);" id="case_btn">
+									<span>相关案例</span>
+									<i class="icon-search"></i>
+								</a>
+							</div>
+							<div id="table_in_query_case" class="table-div" style="height: 378px"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label" queryStr style="padding:0;">事件描述：</label>
+				<div class="col-lg-10" style="padding:0;">
+					<textarea class="form-control input-sm" data-id="supMemo"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+			    <div class="tab-pane">
+					<div class="panel-body no-tb-padder" style="padding:15px 0;">
+						<form class="bs-example form-horizontal xs-form" id="form"  style="margin-top:60px;">
+							<div class="table-oper" id="table_oper">
+								<a href="javascript:void(0);" id="notice_btn">
+									<span>通知</span>
+									<i class="icon-search"></i>
+								</a>
+								<a href="javascript:void(0);" id="email_btn">
+									<span>邮件关联</span>
+									<i class="icon-search"></i>
+								</a>
+							</div>
+							<div id="table_in_query_notice" class="table-div" style="height: 378px"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" style="margin-bottom:40px;">
+			    <div class="col-lg-1" style="padding:0;">
+		        	<input type="checkbox" data-id="check_inp">
+		        </div>
+		        <label class="col-lg-11 control-label" queryStr  style="padding:0;">返回上一环节</label>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-2 control-label" queryStr style="padding:0;">处置人：</label>
+			    <div class="col-lg-4" style="padding:0;">
+			    	<label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+			    </div>
+			    <label class="col-lg-2 control-label" queryStr>处置日期：</label>
+			    <div class="col-lg-4" style="padding:0;">
+			    	<label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-2 control-label" queryStr style="padding:0;">附件：</label>
+			    <div class="col-lg-10" style="padding:0;">
+			    	<label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-2 control-label" queryStr style="padding:0;">处置结果：</label>
+			    <div class="col-lg-10" style="padding:0;">
+			        <textarea class="form-control input-sm" data-id="supMemo"></textarea>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 忽略全部弹出框 -->
+<div class="template" id="lgnore_all_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-2 control-label" queryStr>忽略原因：</label>
+			    <div class="col-lg-10">
+			        <textarea class="form-control input-sm" data-id="ignoreDesc"></textarea>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 忽略弹出框 -->
+<div class="template" id="lgnore_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+			    <label class="col-lg-3 control-label" queryStr>忽略原因：</label>
+			    <div class="col-lg-9">
+			        <textarea class="form-control input-sm" data-id="ignoreDesc"></textarea>
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-3 control-label" queryStr>生成忽略策略：</label>
+			    <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" data-id="faultName" name="test" value="test1"><i></i> 事件名称
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-4">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" data-id="faultModule"  name="test" value="test1"><i></i> 事件描述
+						  </label>
+					</div>
+		       </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 统计弹出框 -->
+<div class="template" id="count_template">
+	<div class="panel-body no-tb-padder">
+
+		<div class="tab-container" id="tab">
+			<div class="tab-content">
+				<!-- tab1 -->
+				<div class="tab-pane">
+					<div class="panel-body no-tb-padder">
+						<div class="table-oper" id="table_oper">
+							<a href="javascript:void(0);" id="figure_show_btn">
+								<span>图形显示</span>
+								<i class="icon-plus"></i>
+							</a>
+							<a href="javascript:void(0);" id="tab_show_btn">
+								<span>表格显示</span>
+								<i class="icon-remove"></i>
+							</a>
+						</div>
+						<div class="form-group">
+							<div id="eventname_analy_chars" style="height: 278px" >1</div>
+							<div id="eventname_analy_tab" class="table-div" style="height: 278px"></div>
+						</div>
+					</div>
+				</div>
+				<!-- tab2 -->
+				<div class="tab-pane">
+					<div class="panel-body no-tb-padder">
+						<div class="table-oper" id="table_oper">
+							<a href="javascript:void(0);" id="figure2_show_btn">
+								<span>图形显示</span>
+								<i class="icon-plus"></i>
+							</a>
+							<a href="javascript:void(0);" id="tab2_show_btn">
+								<span>表格显示</span>
+								<i class="icon-remove"></i>
+							</a>
+						</div>
+						<div class="form-group">
+							<div id="typename_analy_chars" style="height: 278px" >2</div>
+							<div id="typename_analy_tab" class="table-div" style="height: 278px">2</div>
+						</div>
+					</div>
+				</div>
+				<!-- tab3 -->
+				<div class="tab-pane">
+					<div class="panel-body no-tb-padder">
+						<div class="table-oper" id="table_oper">
+							<a href="javascript:void(0);" id="figure3_show_btn">
+								<span>图形显示</span>
+								<i class="icon-plus"></i>
+							</a>
+							<a href="javascript:void(0);" id="tab3_show_btn">
+								<span>表格显示</span>
+								<i class="icon-remove"></i>
+							</a>
+						</div>
+						<div class="form-group">
+							<div id="gradeName_analy_chars" style="height: 278px" >3</div>
+							<div id="gradeName_analy_tab" class="table-div" style="height: 278px">3</div>
+						</div>
+					</div>
+				</div>
+				<!-- tab4 -->
+				<div class="tab-pane">
+					<div class="panel-body no-tb-padder">
+						<div class="table-oper" id="table_oper">
+							<a href="javascript:void(0);" id="figure4_show_btn">
+								<span>图形显示</span>
+								<i class="icon-plus"></i>
+							</a>
+							<a href="javascript:void(0);" id="tab4_show_btn">
+								<span>表格显示</span>
+								<i class="icon-remove"></i>
+							</a>
+						</div>
+						<div class="form-group">
+							<div id="timeName_analy_chars" style="height: 278px" >4</div>
+							<div id="timeName_analy_tab" class="table-div" style="height: 278px">4</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<ul class="nav nav-tabs nav-justified" data-id="tab-ul">
+				<li>
+					<a href="javascript:void(0);" id="event_btn">
+						<span>事件名称</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" id="type_btn">
+						<span>类型</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" id="grade_btn">
+						<span>等级</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:void(0);" id="time_btn">
+						<span>时间</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- 导出EXCEL弹出框 -->
+<div class="template" id="export_template">
+	<div class="panel-body no-tb-padder">
+
+	</div>
+</div>
+
+<!-- 自定义列出框 -->
+<div class="template" id="custom_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+		       <div class="col-lg-12">
+		        	<label>请选择在列表中显示的列：</label>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox"
+						    	data-id="ids" name="ids" value="eventName"><i></i> 事件名称
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox"  name="ids" value="kindName" ><i></i> 类型
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="levelId"><i></i> 等级
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="eventCount"><i></i> 聚合数量
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox"   name="ids" value="srcIpv"><i></i> 源IP
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="srcIpAddr"><i></i> 源IP名称
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="dstIpv"><i></i> 目的IP
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="dstIpAddr"><i></i> 目的IP名称
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="atDate"><i></i> 聚合开始时间
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="upDate"><i></i> 聚合结束时间
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="deviceTypeName"><i></i> 发生源设备类型
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="fromIpv"><i></i> 发生源设备IP
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="srcPort"><i></i> 源端口
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="dstPort"><i></i> 目的端口
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="securityName"><i></i> 安全域
+						  </label>
+					</div>
+		       </div>
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="stateId"><i></i> 状态
+						  </label>
+					</div>
+		       </div>
+			</div>
+			<div class="form-group">
+		       <div class="col-lg-3">
+		        	<div class="checkbox">
+						  <label class="i-checks">
+						    <input type="checkbox" name="ids" value="protocol"><i></i> 协议
+						  </label>
+					</div>
+		       </div>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<!-- 工单资产弹出框 -->
+<div class="template" id="asset_template">
+	<div class="panel-body no-tb-padder">
+		<div class="search-div tran" data-id="search-div">
+			<span style="margin-right:15px">搜索条件</span>
+			<span data-id="queryStr"></span>
+			<i class="icon-remove icon-animate r" id="search-remove-i"></i>
+		</div>
+		<div class="table-oper" id="table_oper">
+			<a href="javascript:void(0);" id="asset_query_btn">
+				<span>查询</span>
+				<i class="icon-search"></i>
+			</a>
+
+		</div>
+		<div id="table_in_asset" class="table-div" style="height: 378px"></div>
+	</div>
+</div>
+
+<!--资产查询模板-->
+<div class="template" id="asset_query_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>资产名称</label>
+		       <div class="col-lg-4">
+		          <input type="text" class="form-control input-sm" data-id="edName" queryValue>
+		       </div>
+		       <label class="col-lg-3 control-label" queryStr>操作系统类型</label>
+		       <div class="col-lg-3">
+		          <input type="text" class="form-control input-sm" data-id="assetName" queryValue>
+		       </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>安全域</label>
+		       <div class="col-lg-4">
+		             <div data-id="sdomainName" class="inputdrop"></div>
+			   </div>
+		       <label class="col-lg-2 control-label" queryStr>业务域</label>
+		       <div class="col-lg-4">
+					<div id="bdomainName" class="inputdrop"></div>
+			    </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>安全类型</label>
+		       <div class="col-lg-4">
+		       		<div data-id="className" class="inputdrop"></div>
+		       </div>
+			</div>
+			
+			<!-- 源IP -->
+			<div class="form-group">
+			      <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+			          <label class="i-switch bg-primary m-t-xs m-r" style="margin-right: 0">
+			            <input type="radio" checked="" name="switch" value="IPV4">
+			            <i></i>
+			          </label>
+			          <label queryStr>IPV4</label>
+			      </div>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" disabled data-id="startIp" id="startIp" validate="ipv4" queryValue>
+			      </div>
+			      <div class="col-lg-1 p0" style="width:auto;padding:0 17px">
+			        -
+			      </div>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" disabled data-id="endIp" id="endIp" validate="ipv4" queryValue>
+			      </div>
+			</div>
+
+		    <div class="form-group">
+			    <div class="col-lg-2" style="padding-left: 35px;padding-right:0">
+			        <label class="i-switch bg-warning m-t-xs m-r" style="margin-right: 0">
+			          <input type="radio" name="switch" value="IPV6">
+			          <i></i>
+			        </label>
+			        <label queryStr>IPV6</label>
+			    </div>
+			      <div class="col-lg-4">
+			        <input type="text" class="form-control input-sm" disabled data-id="mainIp" id="mainIp" validate="ipv6">
+			      </div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 相关案例弹出框 -->
+<div class="template" id="case_template">
+	<div class="panel-body no-tb-padder">
+		<div id="table_in_query_case" class="table-div" style="height: 378px"></div>
+	</div>
+</div>
+
+<!-- 相关案例弹出框 -->
+<div class="template" id="case_template">
+	<div class="panel-body no-tb-padder">
+		<div id="table_in_query_case" class="table-div" style="height: 378px"></div>
+	</div>
+</div>
+
+<!-- 通知弹出框 -->
+<div class="template" id="notice_template">
+	<div class="panel-body no-tb-padder" style="height:500px;">
+		<!-- 左侧 -->
+		<div class="p-panel um-panel" id="left-panel" 
+				style="left: -20px;top: -11px;width: 255px;padding-top:20px;padding-bottom:10px">
+			<div class="um-panel-head">
+				<div class="table-oper tl p5" id="accordion_icon" style="font-size:16px">
+					<i class="icon-bookmark icon-animate ml5 icon-active" title=""
+							data-url="queryTreeByDeviceType" 
+							data-type="MONITOR_TYPE_TREE"></i>
+					<i class="icon-magnet icon-animate ml5" title=""
+							data-url="queryTreeResponsibleUser"
+							data-type="RESPONSIBLE_USER_TREE"></i><!-- 备注：queryTreeResponsibleUser后台改为queryTreeLiablePerson -->
+					<i class="icon-folder-close icon-animate ml5" title=""
+							data-url="getBussinessDomainTree"
+							data-type="BUSSINESS_DOMAIN_TREE"></i>
+				</div>
+			</div>
+			
+			<div class="um-panel-body">
+				<ul id="hi" class="ztree" style="border: 1px #ddd solid;height:100%"></ul>
+			</div>
+			
+		</div>
+		<!-- 右侧 -->
+		<div class="p-panel" id="right-panel" style="top: 0;left: 270px;right: 0;min-width:450px;padding-top:22px;padding-right:10px;">
+
+			<div id="table_divNo" class="table-div" style="height:215px;"></div>
+			<!-- 操作栏 -->
+			<div class="table-oper" id="table_oper" style="margin-top:10px;">
+				<a href="javascript:void(0);" id="export">
+					<span>导出</span>
+					<i class="icon-search"></i>
+				</a>
+				<a href="javascript:void(0);" id="query_btn">
+					<span>查询</span>
+					<i class="icon-search"></i>
+				</a>
+			</div>
+			<div id="table_divNol" class="table-div" style="height:215px;"></div>
+		</div>
+	</div>
+</div>
+
+<!-- 邮件关联弹出框 -->
+<div class="template" id="email_template">
+	<div class="panel-body no-tb-padder">
+		<div id="table_in_query_email" class="table-div" style="height: 378px"></div>
+	</div>
+</div>
+
+<!-- 安全事件详细事件 弹出框-->
+<div class="template" id="sec_event_detail_template">
+	<div class="tab-container" id="tab">
+		<ul class="nav nav-tabs nav-justified" data-id="tab-ul">
+			<li>
+				<a>详细信息</a>
+			</li>
+			<li>
+				<a>原始告警日志查询</a>
+			</li>
+			<li>
+				<a>告警样本分析</a>
+			</li>
+			<li>
+				<a>攻击关联图</a>
+			</li>
+			<li>
+				<a>事件生成策略</a>
+			</li>
+		</ul>
+
+		<div class="tab-content">
+			<!-- tab1 -->
+			<div class="tab-pane">
+		      <div class="panel-body no-tb-padder">
+		        <form class="bs-example form-horizontal xs-form" id="form1">
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">事件名称</label>
+				       <label class="col-lg-4 control-label tl" data-id="eventName"></label>
+				       <label class="col-lg-2 control-label">应用事件名称</label>
+				       <label class="col-lg-4 control-label tl" data-id="alarmName"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">等级</label>
+				       <label class="col-lg-4 control-label tl" data-id="levelId"></label>
+				       <label class="col-lg-2 control-label">类型</label>
+				       <label class="col-lg-4 control-label tl" data-id="kindName"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">聚合数量</label>
+				       <label class="col-lg-4 control-label tl" data-id="eventCount"></label>
+				       <label class="col-lg-2 control-label">状态</label>
+				       <label class="col-lg-4 control-label tl" data-id="stateName"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">聚合开始时间</label>
+				       <label class="col-lg-4 control-label tl" data-id="atDate"></label>
+				       <label class="col-lg-2 control-label">聚合结束时间</label>
+				       <label class="col-lg-4 control-label tl" data-id="upDate"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">引擎</label>
+				       <label class="col-lg-4 control-label tl" data-id="nodeName"></label>
+				       <label class="col-lg-2 control-label">源IP/源端口</label>
+				       <label class="col-lg-4 control-label tl" data-id="srcIpPort"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">目的IP/目的端口</label>
+				       <label class="col-lg-4 control-label tl" data-id="dstIpPort"></label>
+				       <label class="col-lg-2 control-label">源IP资产名称</label>
+				       <label class="col-lg-4 control-label tl" data-id="srcIpName"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">目的IP资产名称</label>
+				       <label class="col-lg-4 control-label tl" data-id="dstIpName"></label>
+				       <label class="col-lg-2 control-label">事件来源</label>
+				       <label class="col-lg-4 control-label tl" data-id="deviceTypeName"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">发生源设备类型</label>
+				       <label class="col-lg-4 control-label tl" data-id="deviceTypeName"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">处理建议</label>
+				       <label class="col-lg-10 control-label tl" data-id="alarmDesc"></label>
+					</div>
+		        </form>
+		      </div> 
+		    </div>
+
+		    <!-- tab2 -->
+			<div class="tab-pane">
+		      <div class="panel-body no-tb-padder">
+		        <form class="bs-example form-horizontal xs-form">
+		        	<div id="ori_alarm_log_table_div" class="table-div" style="height:400px"></div>
+		        </form>
+		      </div>
+		    </div>
+
+		    <!-- tab3 -->
+			<div class="tab-pane">
+		      <div class="panel-body no-tb-padder">
+		        <form class="bs-example form-horizontal xs-form">
+					<div id="alarm_sample_analy_chart_div" class="chart-div" style="height:200px"></div>
+		        	<div id="alarm_sample_analy_table_div" class="table-div mt10" style="height:200px"></div>
+		        </form>
+		      </div>
+		    </div>
+
+		    <!-- tab4 -->
+			<div class="tab-pane">
+		      <div class="panel-body no-tb-padder">
+		        <form class="bs-example form-horizontal xs-form">
+					<div style="height:400px">
+
+						<EMBED src="/flash/Radar.swf" width="100%" height="100%" FlashVars='themeStyleUrl=/flash/styles.swf&amp;themePath=azure&amp;jsonStr={"ipTo":[{"ip":"202.111.185.5"}],"ipFrom":[{"ip":"192.168.10.238"}],"line":[{"toIp":"202.111.185.5","ip":"192.168.10.238"}]}' allowscriptaccess="always"></EMBED>
+					</div>
+		        </form>
+		      </div>
+		    </div>
+
+		    <!-- tab5 -->
+			<div class="tab-pane">
+		      <div class="panel-body no-tb-padder">
+		        <form class="bs-example form-horizontal xs-form">
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">安全策略名称</label>
+				       <label class="col-lg-4 control-label"></label>
+				       <label class="col-lg-2 control-label">匹配规则</label>
+				       <label class="col-lg-4 control-label"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">最大限定时间</label>
+				       <label class="col-lg-4 control-label"></label>
+				       <label class="col-lg-2 control-label">最大聚合次数</label>
+				       <label class="col-lg-4 control-label"></label>
+					</div>
+					<div class="form-group">
+				       <label class="col-lg-2 control-label">事件频率</label>
+				       <label class="col-lg-4 control-label"></label>
+					</div>
+		        </form>
+		      </div>
+		    </div>
+		</div>
+	</div>
+</div>
+
+<!--详情内模板-->
+<div class="template" id="detailmore_template">
+	<div class="panel-body no-tb-padder">
+		<div id="table_in_query_detailmore" class="table-div" style="height: 278px"></div>
+	</div>
+</div>
+<!--工单通知详情-->
+<div class="template" id="notice_detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>通知人</label>
+		       <div class="col-lg-4">
+		        	<label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+		       </div>
+		       <label class="col-lg-2 control-label" queryStr>被通知人</label>
+		       <div class="col-lg-4">
+		       		<label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+		       </div>
+			</div>
+
+			<div class="form-group">
+		       <label class="col-lg-2 control-label" queryStr>通知方式</label>
+		       <div class="col-lg-4">
+		       		<label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+		       </div>
+		       <label class="col-lg-2 control-label" queryStr>通知时间</label>
+		       <div class="col-lg-4">
+		       		<label type="text" class="form-control input-sm" data-id="assetName" queryValue></label>
+		       </div>
+			</div>
+		</form>
+	</div>
+</div>
+</tem>

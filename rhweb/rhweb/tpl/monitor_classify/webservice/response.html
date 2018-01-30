@@ -1,0 +1,66 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>响应时间</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="response_time_chart_div"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js',
+         '/js/plugin/monitor/monitorInfo.js'] ,function (plot ,monitorInfo){
+
+var response_info_chart_url = "monitorview/commonmonitor/webservice/queryResponseTime";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    response_time_chart();
+}
+
+
+window.index_monitor_init = function ()
+{
+	response_time_chart();
+}
+
+//响应时间
+function response_time_chart()
+{
+	um_ajax_get({
+        url : response_info_chart_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var items = data.datas[0].items;
+            var legendArray = ['响应时间(ms)'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var responseTimeObj = new Object();
+            responseTimeObj.name = '响应时间(ms)';
+            responseTimeObj.type = "line";
+            responseTimeObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].lable);
+            	responseTimeObj.data.push(items[i].value);
+            }
+            seriesArray.push(responseTimeObj);
+
+            plot.lineRender($("#response_time_chart_div") ,{
+                legend : legendArray,
+                category :categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+});
+});
+</script>

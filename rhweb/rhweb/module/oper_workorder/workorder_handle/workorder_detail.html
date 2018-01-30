@@ -1,0 +1,23 @@
+<script type="text/javascript" src="/module/oper_workorder/workorder_handle/workorder_detail.js"></script>
+
+<!-- 操作栏 -->
+<div class="table-oper " id="table_oper" style="margin-bottom:-20px">
+	<a href="javascript:void(0);" id="submit_btn" class="bgblue">
+		<span>提交</span>
+	</a>
+	<a href="javascript:void(0);" id="back_btn">
+		<span>返回</span>
+	</a>
+</div>
+
+<div id="workorder_template">
+  
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function (){
+		$("#back_btn").click(function (){
+			window.history.go(-1);
+		});
+	});
+</script>

@@ -1,0 +1,13 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Ping",
+					"fileName"  : "ping",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "ping/base.html","icon" : "monitor-base-info"},
+								{"text" : "连通信息" ,"href" : "ping/conn_info.html","icon" : "monitor-conn-info"},
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

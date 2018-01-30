@@ -1,0 +1,354 @@
+<script src="/module/sys_manage/sys_base_config/sys_option.js"></script>
+
+<div id="sys_option_div" style="min-width:993px;">
+	<div class="panel panel-default animated fadeInRight m0" id="DNS_service_panel">
+		<div class="panel-heading font-bold prel" style="padding: 13px 15px 12px 15px">
+			<span>基本信息</span>
+		</div>
+		<div class="panel-body pb0">
+			<form class="bs-example form-horizontal xs-form" id="sysoption_form" enctype="multipart/form-data">
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">上传附件大小（兆）：</label>
+					<div class="col-lg-2">
+						<input type="hidden" name="formJson">
+						<input type="text" class=" form-control input-sm"  data-id="annexSize"
+							validate="required,between1~100" name="annexSize"/>
+					</div>
+
+					<label class="col-lg-3 control-label tr">上传附件个数（个）：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="annexNum"
+							validate="required,between1~5" name="annexNum" />
+					</div>	
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">默认查询记录条数（条）：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="showRecordCount"
+							validate="required,between1~9999999999" name="showRecordCount"/>
+					</div>
+
+					<label class="col-lg-3 control-label tr">列表每页显示条数 ：</label>
+					<div class="col-lg-2">
+<!-- 						<input type="text" class=" form-control input-sm"  data-id="page_size"
+							validate="required,between1~100" name="page_size"/> -->
+							
+						<select class="form-control input-sm" data-id="page_size" data-type="select">
+							<option value="15">15</option>
+							<option value="30">30</option>
+							<option value="40">40</option>
+							<option value="50">50</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">监控器类型 ：</label>
+					<div class="col-lg-2 mt5" id="monitor_type">
+						<label class="i-checks ml3">
+							<input type="radio" value="1" data-id="monitorNameLanguage" name="monitorNameLanguage" >
+							<i></i>
+						  中文
+						</label>
+						<label class="i-checks ml20">
+							<input type="radio" value="0" name="monitorNameLanguage">
+							<i></i>
+						  英文
+						</label>
+					</div>
+
+					<label class="col-lg-3 control-label tr">事件恢复是否关闭工单 ：</label>
+					<div class="col-lg-2">
+						<select class="form-control input-sm" data-id="workorder_close" data-type="select" name="workorder_close">
+							<option value="1">是</option>
+							<option value="0">否</option>	
+						</select>
+					</div>	
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">报表Logo文件图片 ：</label>
+					<div class="col-lg-2 mt5">
+						<img src="">
+					</div>
+
+					<label class="col-lg-3 control-label tr">工单关闭是否发送通知 ：</label>
+					<div class="col-lg-2">
+						<select class="form-control input-sm" data-id="workorder_send" data-type="select" name="workorder_send">
+							<option value="1" selected>是</option>
+							<option value="0">否</option>
+						</select>	
+					</div>
+					<div class="col-lg-3 tl " style="width: 160px; margin-left:-20px;" id="way_div">
+						<select class="form-control input-sm" multiple data-id="notice" data-type="select" name="notice">
+							<option value="1" selected>邮件</option>
+							<option value="2" selected>短信</option>
+						</select>	
+					</div>	
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">报表Logo文件上传图片 ：</label>
+					<div class="col-lg-3" style="width: 255px;">
+						<div id="ptMap"></div>
+					</div>
+					<label class="col-lg-3 control-label tl" style="padding-left:0">（图片大小不大于100x100px）</label>	
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">样本采样数量 ：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm" value="5" data-id="sampleCnt"
+							validate="required,number" name="sampleCnt" />
+					</div>
+
+					<label class="col-lg-3 control-label tr">样本采样间隔时间（分钟）：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm" value="60" data-id="sampleInterval"
+							validate="required,number" name="sampleInterval" />
+					</div>	
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">日志发生源无报警最大数（小时）：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="sampleAlarmMaxday"
+							validate="required,number" name="sampleAlarmMaxday" />
+					</div>
+
+					<label class="col-lg-3 control-label tr">数据挖掘分析数量总量（万）：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm" value="300" data-id="hisAssoAnalNum"	validate="required,between0~1000" name="hisAssoAnalNum" />
+					</div>	
+				</div>
+
+				<div class="form-group" style="display: none">
+					<label class="col-lg-3 control-label tr">安全事件权值 ：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="securityEvent"
+							validate="required,between0~100" name="securityEvent" />
+					</div>
+
+					<label class="col-lg-3 control-label tr">基线检查事件权值 ：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="baselineSValue"
+							validate="required,between0~100" name="baselineSValue" />
+					</div>	
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">故障事件权值 ：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="faultEvent"
+							validate="required,between0~100" name="faultEvent" />
+					</div>
+
+					<label class="col-lg-3 control-label tr">性能事件权值 ：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="perfEvent"
+							validate="required,between0~100" name="perfEvent" />
+					</div>	
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">配置事件权值 ：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="deplSValue"
+							validate="required,between0~100" name="deplSValue" />
+					</div>
+
+					<label class="col-lg-3 control-label tr">脆弱性事件权值 ：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="weakSValue"
+							validate="required,between0~100" name="weakSValue" />
+					</div>	
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">连续错误锁定次数 ：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="failCount"
+							validate="required,between1~100" name="failCount" />
+					</div>
+
+					<label class="col-lg-3 control-label tr">自动解锁时间（分钟）：</label>
+					<div class="col-lg-2">
+						<input type="text" class=" form-control input-sm"  data-id="unlockDate"
+							validate="required,between1~100" name="unlockDate" />
+					</div>	
+				</div>
+
+				<div class="form-group" >
+					<label class="col-lg-3 control-label tr">口令更换周期 ：</label>
+					<div class="col-lg-2">
+						<input type="text" name="userPassExpireTime" data-id="userPassExpireTime" class="form-control input-sm"
+							validate="number">
+					</div>
+					<label class="col-lg-2 control-label tl" style="padding-left:0">（可不设置，单位为天）</label>
+				</div>
+
+
+				<div class="form-group" id="event_div1">
+					<label class="col-lg-3 control-label tr">事件等级权值 ：</label>
+					<div class=" col-lg-6">
+						<div class="form-group m0">
+							 <label class=" col-lg-1 control-label tc p0 pl10">很低</label>
+							 <div class="col-lg-1 tl p0 ml5" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="seventValue1" validate="required,between0~999" name="seventValue1" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc">低</label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="seventValue2" validate="required,between0~999" name="seventValue2" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc">中</label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="seventValue3" validate="required,between0~999" name="seventValue3" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc">高</label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="seventValue4" validate="required,between0~999" name="seventValue4" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc ml5 p0 pl10">很高</label>
+							 <div class="col-lg-1 tl p0 ml5" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="seventValue5" validate="required,between0~999" name="seventValue5" />
+							 </div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group" id="event_div2">
+					<label class="col-lg-3 control-label tr">全网风险等级权值 ：</label>
+					<div class=" col-lg-6">
+						<div class="form-group m0">
+							 <label class=" col-lg-1 control-label tc p0 pl10">很低</label>
+							 <div class="col-lg-1 tl p0 ml5" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="qwvlow" validate="required,between0~100" name="qwvlow" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc">低</label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="qwlow" validate="required,between0~100" name="qwlow" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc">中</label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm"  style="padding-right:10px;"  data-id="qwnormal" validate="required,between0~100" name="qwnormal" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc">高</label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm " style="padding-right:10px;"   data-id="qwhigh" validate="required,between0~100" name="qwhigh" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc ml5 p0 pl10">很高</label>
+							 <div class="col-lg-1 tl p0 ml5" >
+							 	<input type="text" class=" form-control input-sm " style="padding-right:10px;"  data-id="qwvhigh" validate="required,between0~100" name="qwvhigh" />
+							 </div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group"  id="event_div3">
+					<label class="col-lg-3 control-label tr">域风险等级权值 ：</label>
+					<div class=" col-lg-6">
+						<div class="form-group m0">
+							 <label class=" col-lg-1 control-label tc p0 pl10">很低</label>
+							 <div class="col-lg-1 tl p0 ml5" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="dwvlow" validate="required,between0~100" name="dwvlow" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc">低</label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="dwlow" validate="required,between0~100" name="dwlow" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc">中</label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm"  style="padding-right:10px;"  data-id="dwnormal" validate="required,between0~100" name="dwnormal" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc">高</label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm " style="padding-right:10px;"   data-id="dwhigh" validate="required,between0~100" name="dwhigh" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc ml5 p0 pl10">很高</label>
+							 <div class="col-lg-1 tl p0  ml5" >
+							 	<input type="text" class=" form-control input-sm " style="padding-right:10px;"  data-id="dwvhigh" validate="required,between0~100" name="dwvhigh" />
+							 </div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group"  id="event_div4">
+					<label class="col-lg-3 control-label tr">风险值等级定义 ：</label>
+					<div class=" col-lg-6">
+						<div class="form-group m0">
+							 <label class=" col-lg-1 control-label tc p0 pl10"  >很低 </label>
+							 <div class="col-lg-1 tl p0 ml5" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="vllimilt" validate="required,between0~99" name="vllimilt" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc p0" >≤ 低 </label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm" style="padding-right:10px;"  data-id="llimilt" validate="required,between0~99" name="llimilt" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc p0">≤ 中 </label>
+							 <div class="col-lg-1 tl p0" >
+							 	<input type="text" class=" form-control input-sm"  style="padding-right:10px;"  data-id="mlimilt" validate="required,between0~99" name="mlimilt" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc p0 ">≤ 高 </label>
+							 <div class="col-lg-1 tl p0 " >
+							 	<input type="text" class=" form-control input-sm " style="padding-right:10px;"   data-id="hlimilt" validate="required,between0~99" name="hlimilt" />
+							 </div>
+
+							 <label class=" col-lg-1 control-label tc ml5 p0 pl5" style="width:60px">≤ 很高</label>
+							
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- <div class="oper-row pr20 pb10" id="table_oper" style="margin-top:-20px;">
+			<div class="oper-col" id="submit_btn">
+				<span class="oper-icons">
+					<span class="oper-icon">
+						<i class="icon-png oper-submit"></i>
+						<i class="icon-png oper-submit-active"></i>
+					</span>
+				</span>
+				<span class="oper-title">提交</span>
+			</div>
+			<div class="oper-col" id="reset_btn">
+				<span class="oper-icons">
+					<span class="oper-icon">
+						<i class="icon-png oper-refresh"></i>
+						<i class="icon-png oper-refresh-active"></i>
+					</span>
+				</span>
+				<span class="oper-title">重置</span>
+			</div>
+		</div> -->
+		
+		<div class=" table-oper m0 " style="text-align: center;">
+			<a href="javascript:void(0);" id="submit_btn" class="bgblue">
+				<i class="btn-commen submit-btn"></i>
+				<span>提交</span>
+			</a>
+			<a href="javascript:void(0);" id="reset_btn">
+				<i class="btn-commen reset-btn"></i>
+				<span>重置</span>
+			</a>
+		</div> 
+	
+	</div>
+
+</div>

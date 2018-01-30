@@ -1,0 +1,453 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>CPU、内存使用率</span>
+        <div class="pabs cpu-memo-use mt10">
+            <span>系统负载：</span>
+            <span class="ol-title">最近1分钟</span>
+            <span class="ol-value prel" id = "one_secend">0</span>
+            <span class="ol-title" style="margin-left:20px !important">最近5分钟</span>
+            <span class="ol-value prel" id = "five_secend">0</span>
+            <span class="ol-title" style="margin-left:20px !important">最近15分钟</span>
+            <span class="ol-value prel" id = "fifteen_secend">0</span>
+        </div>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-1 h-all"></div>
+        <div class="col-lg-10 h-all" id="cpu_use_chart"></div>
+        <div class="col-lg-1 h-all"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>CPU、内存使用率</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="cpu_use_line_chart"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>分页空间使用率</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="page_space_chart_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>内存动态信息</span>
+    </div>
+    <div class="monitor-panel" style="height:240px;">
+        <div class="l h-all" style="width:50%" id="phy_memory_info_div"></div>
+        <div class="l h-all" style="width:50%" id="ver_memory_info_div"></div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>磁盘动态信息</span>
+    </div>
+    <div class="monitor-panel" style="height:100px;" id="disk_list">
+        <div class="form-group" id="disk_use_chart">
+            
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>磁盘IO信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="IO_list_div" style="margin-top:20px"></div>
+    </div>
+
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>I-NODE信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="Node_list_div" style="margin-top:20px"></div>
+    </div>
+
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>网卡信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="Network_list_div" style="margin-top:20px"></div>
+    </div>
+
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>系统进程动态信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div class="form-group">
+                <label class="col-lg-2 control-label">使用用户：</label>
+                <div class="col-lg-2 mt5 mb5" id="user_div">
+                    <select class="form-control input-sm" data-type="select"
+                        data-flag="process_sel" id="user_el">
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label" style="width:130px;">映像名称：</label>
+                <div class="col-lg-2 mt5 mb5" id="name_div">
+                    <select class="form-control input-sm" data-type="select"
+                        data-flag="process_sel" id="name_el">
+                    </select>
+                </div>
+                <label class="col-lg-2 control-label" style="width:130px;">排序查询：</label>
+                <div class="col-lg-2 mt5 mb5" id="query_div">
+                    <select class="form-control input-sm" data-type="select"
+                        data-flag="process_sel" disabled id="query_el">
+                        <option value="----">----</option>
+                        <option value="mem_usage">内存使用率</option>
+                        <option value="cpu_usage">CPU使用率</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table_div" id="Process_list_div" style="margin-top:20px"></div>
+        </form>
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js',
+         '/js/plugin/monitor/monitorInfo.js'] ,function (plot ,monitorInfo){
+
+
+var Io_list_url="monitorview/os/windows/queryDiskIOInfo";
+var IO_list_header = [
+                              {text:"磁盘名称" ,name:"physicalVolume"},
+                              {text:"总速度(MB/s)" ,name:"speed"},
+                              {text:"读速度(MB/s)" ,name:"readSpeed"},
+                              {text:"写速度(MB/s)" ,name:"writeSpeed"},
+                              {text:"更新时间" ,name:"enterDate"}
+                           ];
+var Node_list_url="monitorview/os/windows/queryInodeInfo";
+var Node_list_header = [
+                              {text:"磁盘名称" ,name:"mountName"},
+                              {text:"文件系统" ,name:"fileSysType"},
+                              {text:"INODE总大小(KB)" ,name:"totalSize"},
+                              {text:"INODE空闲大小(KB)" ,name:"freeSize"},
+                              {text:"INODE使用大小(KB)" ,name:"usedSize"},
+                              {text:"更新时间" ,name:"enterDate"}
+                           ];
+var Network_list_url="monitorview/os/liunx/queryLinuxIPMacInfo";
+var Network_list_header = [
+                              {text:"网卡名称" ,name:"nicName"},
+                              {text:"MAC地址" ,name:"nicMac"},
+                              {text:"IP地址" ,name:"nicIp"},
+                              {text:"子网掩码" ,name:"nicMask"},
+                              {text:"网关地址" ,name:"nicBroadcast"},
+                              {text:"发送速度" ,name:"nicSend"},
+                              {text:"接收速度" ,name:"nicRecevice"}
+                           ];
+//三个下拉框的链接
+var user_select_url = "monitorview/os/windows/queryUsernameStore";
+var name_select_url = "monitorview/os/windows/queryImagenameStore";
+var query_select_url = "monitorview/os/windows/queryProcessDynamicList";
+
+var Process_list_header = [
+                              {text:"进程ID" ,name:"processId"},
+                              {text:"使用用户" ,name:"userName"},
+                              {text:"映像名称" ,name:"imageName"},
+                              {text:"CPU使用率(%)" ,name:"cpuUsage"},
+                              {text:"内存使用率(%)" ,name:"memUsage"},
+                              {text:"占用CPU时间" ,name:"cpuTime"},
+                              {text:"更新时间" ,name:"enterDate"}
+                           ];
+
+var monitor_CPU_radio_url = "monitorview/os/windows/queryAllUsageInfoCurrent";
+var monitor_CPU_url = "monitorview/os/windows/queryAllUsageInfo";
+var monitor_Memory_url = "monitorview/os/windows/queryMemoryUsageDynamicInfo";
+var first_disk_url = "monitorview/os/windows/queryDiskDynamicInfo";
+var page_space_url = "monitorview/os/windows/querySwapUsageInfo";
+var urlParamObj = index_query_param_get();
+
+view_init();
+event_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    CPU_use_radio();
+    CPU_use();
+    page_space_chart();
+    IO_list();
+    Node_list();
+    Network_list();
+    memory_use_render();
+    first_disk_render();
+    memory_info_render();
+    index_form_init($("#user_div"));
+    index_form_init($("#name_div"));
+    index_form_init($("#query_div"));
+    index_ed_monitor_get();
+}
+
+function event_init()
+{
+    $("[data-flag=process_sel]").change(function (){
+        Process_list()
+    });
+}
+
+window.index_monitor_init = function ()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    CPU_use_radio();
+    CPU_use();
+    page_space_chart();
+    IO_list();
+    Node_list();
+    Network_list();
+    Process_list();
+    memory_use_render();
+    first_disk_render();
+    memory_info_render();
+    index_ed_monitor_get();
+}
+
+function index_ed_monitor_get(){
+    um_ajax_get({
+        url : user_select_url,
+        isLoad : false,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var selBuff = [];
+            for (var i = 0; i < data.length; i++) {
+                selBuff.push({id:data[i].codevalue ,text:data[i].codename});
+            }
+            $("#user_el").select2({
+                  data: selBuff,
+                  width:"100%"
+            });
+            um_ajax_get({
+                url : name_select_url,
+                paramObj : urlParamObj,
+                isLoad : false,
+                successCallBack : function (data){
+                    var selBuff = [];
+                    for (var i = 0; i < data.length; i++) {
+                        selBuff.push({id:data[i].codevalue ,text:data[i].codename});
+                    }
+                    $("#name_el").select2({
+                          data: selBuff,
+                          width:"100%"
+                    });
+                    Process_list();
+                }
+            });
+        }
+    });
+    
+}
+
+//cpu使用率（圆盘）
+function CPU_use_radio(){
+    monitorInfo.cpu_memo_use_rate_radio({
+        url : monitor_CPU_radio_url,
+        paramObj : urlParamObj,
+        use_chart : $("#cpu_use_chart"),
+        one_secend : $("#one_secend"),
+        five_secend : $("#five_secend"),
+        fifteen_secend : $("#fifteen_secend")
+    });
+}
+
+//cpu 使用率
+function CPU_use(){
+    monitorInfo.cpu_memo_use_rate({
+        url : monitor_CPU_url,
+        paramObj : urlParamObj,
+        line_chart : $("#cpu_use_line_chart"),
+    });
+}
+
+
+//分页空间使用率
+function page_space_chart()
+{
+    um_ajax_get({
+        url : page_space_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+            var items = data;
+            var legendArray = ['分页空间使用率(%)'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var responseTimeObj = new Object();
+            responseTimeObj.name = '分页空间使用率(%)';
+            responseTimeObj.type = "line";
+            responseTimeObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].lable);
+                responseTimeObj.data.push(items[i].value);
+            }
+            seriesArray.push(responseTimeObj);
+
+            plot.lineRender($("#page_space_chart_div") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+//内存使用
+function memory_use_render(){
+    um_ajax_get({
+        url : "monitorview/os/windows/queryMemoryDynamicInfo",
+        paramObj : urlParamObj,
+        successCallBack : function(data){
+            $("#memory_use_chart").umDataBind("render" ,data.monitorbaseinfo);
+        }
+    });
+}
+
+
+// 内存动态信息
+function memory_info_render()
+{
+    um_ajax_get({
+        url : "monitorview/os/windows/queryMemoryDynamicInfo",
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function(data){
+            monitorInfo.memory_info_render($("#phy_memory_info_div"),{
+                title : "物理内存",
+                not_used_val : data[0].freePhisicalMemory,
+                used_val : data[0].usedPhisicalMemory,
+            });
+
+            monitorInfo.memory_info_render($("#ver_memory_info_div"),{
+                title : "虚拟内存",
+                not_used_val : data[0].freeVirtualMemory,
+                used_val : data[0].usedVirtualMemory,
+            });
+        }
+    });
+}
+
+//磁盘使用
+function first_disk_render(){
+    monitorInfo.disk_used_chart($("#disk_use_chart") ,{
+        paramObj : urlParamObj
+    }); 
+}
+
+//磁盘IO信息
+function IO_list(){
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#IO_list_div") ,{
+        url : Io_list_url,
+        header : IO_list_header,
+        paramObj : urlParamObj,
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+        allowCheckBox : false
+    });
+}
+
+//NODE信息
+function Node_list(monitorId ,cd){
+    g_grid.render($("#Node_list_div") ,{
+        url : Node_list_url,
+        header : Node_list_header,
+        paramObj : {
+            monitorId : urlParamObj.monitorId,
+            regionId : urlParamObj.regionId,
+            edId : urlParamObj.assetId,
+            time : $("#query_time_label").text()
+        },
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+        allowCheckBox : false
+    });
+}
+//网卡信息
+function Network_list(monitorId ,cd){
+    g_grid.render($("#Network_list_div") ,{
+        url : Network_list_url,
+        header : Network_list_header,
+        paramObj : {
+            monitorId : urlParamObj.monitorId,
+            regionId : urlParamObj.regionId,
+            edId : urlParamObj.assetId
+        },
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+        allowCheckBox : false
+    });
+}
+//系统进程动态信息
+function Process_list(){
+
+    var user_val = $("[data-flag=process_sel]").eq(0).val();
+    var img_val = $("[data-flag=process_sel]").eq(1).val();
+    var sort_val = $("[data-flag=process_sel]").eq(2).val();
+
+    if (user_val == "----" && img_val == "----")
+    {
+        $("[data-flag=process_sel]").eq(2).removeAttr("disabled");
+    }
+    else
+    {
+        $("[data-flag=process_sel]").eq(2).attr("disabled" ,"disabled");
+    }
+    if(sort_val == "----")
+    {
+        $("[data-flag=process_sel]").eq(0).removeAttr('disabled');
+        $("[data-flag=process_sel]").eq(1).removeAttr('disabled');
+    }
+    else
+    {
+        $("[data-flag=process_sel]").eq(0).attr('disabled', 'disabled');
+        $("[data-flag=process_sel]").eq(1).attr('disabled', 'disabled');
+    }
+
+
+    var obj = new Object();
+    obj.monitorId = urlParamObj.monitorId;
+    obj.time = urlParamObj.time;
+    obj.regionId = urlParamObj.regionId;
+    obj.userName = user_val;
+    obj.imageName = img_val;
+    obj.orderBy = sort_val;
+
+    g_grid.render($("#Process_list_div") ,{
+        url : query_select_url,
+        header : Process_list_header,
+        paramObj : obj,
+        gridCss : "um-grid-style",
+        hasBorder : false,
+        hideSearch : true,
+        allowCheckBox : false
+    });
+}
+
+
+});
+});
+</script>

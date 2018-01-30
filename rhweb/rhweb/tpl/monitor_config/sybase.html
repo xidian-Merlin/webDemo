@@ -1,0 +1,21 @@
+<div data-id="monitor_index" class="h-all">
+		<form class="bs-example form-horizontal xs-form" style="margin-top: 5px" id="detail_store_form">
+			<div class="form-group">
+				<label class="control-label col-lg-2">内存使用率阈值(%)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="1" validate="between1~100" ></div>
+				<label class="control-label col-lg-2">连续达到阈值次数</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="2" validate="between1~9" ></div>
+				<label class="col-lg-1 control-label" style="text-align:left;">(1-9)</label>
+			</div>
+		</form>
+		<!-- 操作栏 -->
+		<div class="table-oper" id="table_oper" style="margin-top:-55px;">
+			<a href="javascript:void(0);" id="database_add_btn">
+				<span>添加数据库实例</span> 
+				<i class="icon-plus"></i>
+			</a>
+		</div>
+		<div class="tab-div h-all" data-id="database-nu" data-type="tpl" style=""></div>
+</div>

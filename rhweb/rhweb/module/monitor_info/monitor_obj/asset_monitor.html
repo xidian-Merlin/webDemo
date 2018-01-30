@@ -1,0 +1,36 @@
+<script type="text/javascript" src="module/monitor_info/monitor_obj/asset_monitor.js"></script>
+
+<!-- 左侧 -->
+<div class="p-panel um-panel left-panel" id="left-panel" style="width:210px">
+	<div class="um-panel-head" id="accordion_icon">
+		<div class="col-lg-4 unit-col" data-name="assetTypeTreeWithCnt" data-type="4" data-tree="ASSET_TYPE_TREE"
+			style="padding:0 5px">资产类型</div>
+		<div class="col-lg-4 unit-col" data-name="sdTreeWithCnt" data-type="3" data-tree="SECURITY_DOMAIN_TREE"
+			style="padding:0 5px">安全域</div>
+		<div class="col-lg-4 unit-col" data-name="bdTreeWithCnt" data-type="1" data-tree="BUSSINESS_DOMAIN_TREE"
+			style="padding:0 5px">业务域</div>
+	</div>
+	<div class="um-panel-body">
+		<ul id="accordion" class="ztree" style="height:100%;overflow:hidden"></ul>
+	</div>
+</div>
+
+<!-- 右侧 -->
+<div class="p-panel um-panel right-panel" id="right-panel"
+	style="left:210px;overflow-x:hidden">
+	<div class="um-panel-head">
+		<div class="table-oper" id="table_oper">
+			<a href="javascript:void(0);" id="refresh_btn" class="bgblue">
+				<i class="btn-commen refresh-white-btn"></i>
+				<span>刷新</span>
+			</a>
+		</div>
+	</div>
+	<div class="um-panel-body">
+		<div id="table_div" class="table-div table-list"></div>
+	</div>
+	<div id="table_slide_btn" class="slide_btn" style="display:none">
+		<i data-status="active" data-id="slide_left" class="icon-double-angle-left"></i>
+		<i id="slide_right" data-id="slide_right" class="icon-double-angle-right dn h-all" style="line-height:70px;"></i>
+	</div>
+</div>

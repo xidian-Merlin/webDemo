@@ -1,0 +1,57 @@
+<div data-id="monitor_index" class="h-all">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="detail_store_form">
+			<div class="form-group">
+				<label class="control-label col-lg-2">CPU使用率阈值(%)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="cpuUseRate" maxlength="3" value="80" validate="between1~100">
+				</div>
+				<label class="control-label col-lg-2">连续达到阈值次数</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="cpuGetTimes" maxlength="1" value="3" validate="between1~9" >
+				</div>
+				<label class="col-lg-1 control-label" style="text-align:left;">(1-9)</label>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">卷读(MBps)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="monitorDatabaseName" maxlength="10" validate="between0~9999999999" >
+				</div>
+				<label class="control-label col-lg-2">卷读等待时间(ms)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="trustName" maxlength="10" validate="between0~9999999999" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">卷写(MBps)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="trustPassWord" maxlength="10" validate="between0~9999999999" >
+				</div>
+				<label class="control-label col-lg-2">卷写等待时间(ms)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="windowsDomain" maxlength="10" validate="between0~9999999999" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">MDISK读(MBps)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="consoleIp" maxlength="10" validate="between0~9999999999" >
+				</div>
+				<label class="control-label col-lg-2">MDISK读等待时间(ms)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="rcCmd" maxlength="10" validate="between0~9999999999" >
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-2">MDISK写(MBps)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="scCmd" maxlength="10" validate="between0~9999999999" >
+				</div>
+				<label class="control-label col-lg-2">MDISK写等待时间(ms)</label>
+				<div class="col-lg-3">
+					<input type="text" class="form-control input-sm" data-id="cycleTime" maxlength="10" validate="between0~9999999999" >
+				</div>
+			</div>		
+		</form>
+	</div>
+</div>

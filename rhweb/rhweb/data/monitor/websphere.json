@@ -1,0 +1,19 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Websphere",
+					"fileName"  : "websphere",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "websphere/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "会话动态信息" ,"href" : "websphere/session.html" ,"icon" : "monitor-session"},
+								{"text" : "进程池动态信息" ,"href" : "websphere/process_pool.html" ,"icon" : "monitor-process-pool"},
+								{"text" : "JDBC连接池动态信息" ,"href" : "websphere/jdbc_pool.html" ,"icon" : "monitor-jdbc-pool"},
+								{"text" : "事务数动态信息" ,"href" : "websphere/event_dynamic.html" ,"icon" : "monitor-event-dynamic"},
+								{"text" : "事务的平均持续时间" ,"href" : "websphere/event_average_time.html" ,"icon" : "monitor-event-average-time"},
+								{"text" : "JVM动态信息" ,"href" : "websphere/jvm_dynamic.html" ,"icon" : "monitor-jvm-dynamic"},
+								{"text" : "应用信息" ,"href" : "websphere/application.html" ,"icon" : "monitor-application"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

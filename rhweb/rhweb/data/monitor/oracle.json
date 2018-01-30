@@ -1,0 +1,21 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Oracle",
+					"fileName"  : "oracle",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "oracle/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "实例" ,"href" : "oracle/instance.html" ,"icon" : "monitor-instance"},
+								{"text" : "表空间" ,"href" : "oracle/tablespace.html" ,"icon" : "monitor-tablespace"},
+								{"text" : "会话信息" ,"href" : "oracle/link.html" ,"icon" : "monitor-link"},
+								{"text" : "回退块/内存块" ,"href" : "oracle/rollback.html" ,"icon" : "monitor-rollback"},
+								{"text" : "SGA/PGA" ,"href" : "oracle/sga.html" ,"icon" : "monitor-pga"},
+								{"text" : "性能信息" ,"href" : "oracle/perform.html" ,"icon" : "monitor-perform"},
+								{"text" : "锁信息" ,"href" : "oracle/lock.html" ,"icon" : "monitor-lock"},
+								{"text" : "文件信息" ,"href" : "oracle/file.html" ,"icon" : "monitor-file"},
+								{"text" : "用户信息" ,"href" : "oracle/user_access.html" ,"icon" : "monitor-user-info"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

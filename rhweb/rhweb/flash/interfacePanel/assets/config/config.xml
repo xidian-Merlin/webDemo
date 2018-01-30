@@ -1,0 +1,12 @@
+<config>
+	<edit>
+		<selectBoxDataSource>
+		</selectBoxDataSource>
+		<topBarDataSource>
+			<item img="assets/topBar/showPanel.png" label="显示/隐藏接口面板" value="showPanel"/>
+			<item img="assets/topBar/edit.png" label="编辑" value="edit"/>
+		</topBarDataSource>
+		<importUrl>interfaceInfo/queryMonitorInterfaceXml</importUrl>
+		<saveUrl>interfaceInfo/saveMonitorInterfaceXml</saveUrl>
+	</edit>
+</config>

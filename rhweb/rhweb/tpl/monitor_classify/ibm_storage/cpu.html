@@ -1,0 +1,66 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>CPU使用率</span>
+    </div>
+    <div class="monitor-panel" style="height:300px">
+        <div class="col-lg-12 h-all" id="cpu_use_line_chart"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'],function (plot){
+
+var cpu_use_line_chart_url = "monitorview/storage/ibmStorage/queryCpuInfo";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    cpu_use_line_chart();
+}
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+//cpu内存使用率
+function cpu_use_line_chart()
+{
+    um_ajax_get({
+        url : cpu_use_line_chart_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            var cpuStore = data.cpuStore;
+            var memStore = data.memStore;
+            var legendArray = ['CPU使用率（%）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var seriesObj = new Object();
+            seriesObj.name = 'CPU使用率（%）';
+            seriesObj.type = "line";
+            seriesObj.data = [];
+            for (var i = 0; i < cpuStore.length; i++) {
+                categoryArray.push(cpuStore[i].updateDate);
+                seriesObj.data.push(cpuStore[i].cpuUsage);
+            }
+            seriesArray.push(seriesObj);
+
+            plot.lineRender($("#cpu_use_line_chart") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+
+});
+});
+</script>

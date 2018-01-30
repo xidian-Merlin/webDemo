@@ -1,0 +1,146 @@
+<!-- 详情模板 -->
+<div class="template detail-info" id="detail_template">
+	<div class="panel-body no-tb-padder" id="detail_template_div">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-4 control-label">数据库名：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="dbName"></label>
+				</div>
+				<label class="col-lg-3 control-label">活动事务：</label>
+				<div class="col-lg-3">
+					<label type="text" class="control-label tl control-label-text" data-id="activeTransactions"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">备份、重建操作吞吐量：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="bkpRstroCount"></label>
+				</div>
+				<label class="col-lg-3 control-label">每秒被批量拷贝的行数量：</label>
+				<div class="col-lg-3">
+					<label type="text" class="control-label tl control-label-text" data-id="bulkCopyRows"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">每秒被批量拷贝的数（KB）：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="bulkCopyCount"></label>
+				</div>
+				<label class="col-lg-3 control-label">所有数据文件总量（KB）：</label>
+				<div class="col-lg-3">
+					<label type="text" class="control-label tl control-label-text" data-id="dataFileSize"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">已使用数据空间（KB）：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="dataFileUsed"></label>
+				</div>
+				<label class="col-lg-3 control-label">数据剩余空间（KB）：</label>
+				<div class="col-lg-3">
+					<label type="text" class="control-label tl control-label-text" data-id="dataFileRemain"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">数据空间使用率（%）：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="perDataFileUsed"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">日志高速缓存命中率（%）：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="logCacheHitradio"></label>
+				</div>
+				<label class="col-lg-3 control-label">每秒读取日志缓存数量：</label>
+				<div class="col-lg-3">
+					<label type="text" class="control-label tl control-label-text" data-id="logCacheReads"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">日志文件大小（KB）：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="logFile"></label>
+				</div>
+				<label class="col-lg-3 control-label">每秒日志刷新等待数：</label>
+				<div class="col-lg-3">
+					<label type="text" class="control-label tl control-label-text" data-id="logFlushWaitTime"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">已使用日志空间（KB）：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="logFileUsed"></label>
+				</div>
+				<label class="col-lg-3 control-label">日志剩余空间（KB）：</label>
+				<div class="col-lg-3">
+					<label type="text" class="control-label tl control-label-text" data-id="logFileRemain"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">每秒日志刷新的数量：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="logFlush"></label>
+				</div>
+				<label class="col-lg-3 control-label">日志增长数量：</label>
+				<div class="col-lg-3">
+					<label type="text" class="control-label tl control-label-text" data-id="logGrowths"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">日志收缩数量：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="logShrinks"></label>
+				</div>
+				<label class="col-lg-3 control-label">当前使用日志比例（%）：</label>
+				<div class="col-lg-3">
+					<label type="text" class="control-label tl control-label-text" data-id="perlogused"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">库文件大小：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="totalSize"></label>
+				</div>
+				<label class="col-lg-3 control-label">锁数：</label>
+				<div class="col-lg-3" >
+					<label type="text" class="control-label tl control-label-text" data-id="lockCount"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">事务总数：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="totalTranscation"></label>
+				</div>
+				<label class="col-lg-3 control-label">会话数：</label>
+				<div class="col-lg-3" >
+					<label type="text" class="control-label tl control-label-text" data-id="sessionCount"></label>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label">每秒事务数量：</label>
+				<div class="col-lg-2">
+					<label type="text" class="control-label tl control-label-text" data-id="transcation"></label>
+				</div>
+				<label class="col-lg-3 control-label">更新时间：</label>
+				<div class="col-lg-3" >
+					<label type="text" class="control-label tl control-label-text" data-id="updateDateP"></label>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>

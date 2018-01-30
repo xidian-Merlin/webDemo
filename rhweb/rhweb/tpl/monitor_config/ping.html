@@ -1,0 +1,66 @@
+<div data-id="monitor_index" class="h-all ovxh">
+<!-- 对应icmp -->
+	<div id="detail_store_form"></div>
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group" data-view="hide_when_SNMP">
+				<div class="col-lg-5" id="ping_info">
+					<div class="form-group">
+						<label class="control-label col-lg-6">PING IP</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control input-sm" data-id="urlAddress" data-flag="urlAddress" validate="ipv4">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-lg-6">超时时间(s)</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control input-sm" data-id="timeOut" data-flag="timeOut" maxlength="4" validate="between1~9999">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-lg-6">TTL(存活时间)</label>
+						<div class="col-lg-6">
+							<input type="text" class="form-control input-sm" data-id="tryTtl" data-flag="tryTtl" validate="number">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-1">
+					<div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="ping_add" title="添加">
+						<i class="icon-chevron-right"></i>
+					</div>
+					<div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="ping_remove" title="删除">
+						<i class="icon-chevron-left"></i>
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-ping" style="height:200px;"></div>
+				</div>
+			</div>
+
+			<div class="form-group" id="traceroute_info">
+				<label class="control-label col-lg-3">TRACEROUTE IP</label>
+				<div class="col-lg-2">
+					<input type="text" class="form-control input-sm" data-id="urlAddress" data-flag="urlAddress2" validate="ipv4">
+				</div>
+				<div class="col-lg-1">
+					<div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:5px;font-size:20px;" data-id="traceroute_add" title="添加">
+						<i class="icon-chevron-right"></i>
+					</div>
+					<div class="pabs square" style="z-index:2000;right:50%;margin-right:-10px;top:45px;font-size:20px;" data-id="traceroute_remove" title="删除">
+						<i class="icon-chevron-left"></i>
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="table_div" id="grid-traceroute" style="height:200px;"></div>
+				</div>
+			</div>
+
+      <div class="table-oper" style="padding-right:8.33%;">
+        <a href="javascript:void(0);" class="dib monitor_btn_styl" data-type="test_btn_in_step5">
+          <span>测试配置</span>
+          <i></i>
+        </a> 
+      </div> 
+		</form>
+	</div>
+</div>

@@ -1,0 +1,90 @@
+<div class="mt5 mb5" style="height: 30px" id="query_sel_div">
+	<select class="form-control input-sm" data-type="select"
+		id="query_sel">
+	</select>
+</div>
+
+<div class="panel panel-default m0">
+	<div class="panel-heading font-bold prel">
+		<span>查询结果</span>
+	</div>
+	<div class="monitor-panel">
+		<div class="table_div" id="query_result_div"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+	
+var query_content_url = "monitorview/commonmonitor/commonscript/getCommonScriptContent";
+var query_result_url = "monitorview/commonmonitor/commonscript/getCommonScriptResult";
+var query_result_header = [
+							{text:"执行结果" ,name:"result"},
+							{text:"响应时间" ,name:"enterDate"}
+						  ];
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+event_init();
+
+function view_init()
+{
+	index_form_init($("#query_sel_div"));
+	query_result_sel_render();
+}
+
+function event_init()
+{
+	$("#query_sel").change(function (){
+		query_result_list({
+				param : {monitorId : $(this).val(),
+						 flag : 1 ,
+						 inpuDate:$("#query_time_label").text()}
+			});
+	});
+}
+
+window.index_monitor_init = function ()
+{
+	view_init();
+}
+
+
+function query_result_sel_render(){
+	um_ajax_get({
+		url : query_content_url,
+		paramObj : urlParamObj,
+		isLoad : false,
+		successCallBack : function (data){
+			g_formel.selectEl_render($("#query_sel") ,{
+				data : data,
+				id : "codevalue",
+				text : "codename"
+			});
+		}
+	});
+}
+
+
+function query_result_list(){
+	g_grid.render($("#query_result_div") ,{
+		url : query_result_url,
+		header : query_result_header,
+		paramObj : {monitorId : urlParamObj.monitorId ,
+		            assetId : urlParamObj.assetId,
+		            edId : urlParamObj.assetId,
+		            time:$("#query_time_label").text(),
+		            regionId : urlParamObj.regionId,
+		            scriptNo : $("#query_sel").val()
+		            },
+		gridCss : "um-grid-style",
+		hasBorder : false,
+		hideSearch : true,
+		allowCheckBox : false
+	});
+}
+
+
+});
+</script>

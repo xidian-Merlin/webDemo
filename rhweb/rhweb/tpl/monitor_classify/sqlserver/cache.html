@@ -1,0 +1,82 @@
+<div class="panel panel-default m0">
+    <div class="panel-heading font-bold prel">
+        <span>高速缓存信息</span>
+    </div>
+	<div class="monitor-panel">
+		<div class="table_div" id="database_info_div"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'],function (plot){
+
+var ed_monitor_url = "monitorView/queryEdMonitor";
+
+var current_database_url = "monitorview/db/sqlserver/queryMsSqlCache";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+	ed_monitor_get();
+}
+
+window.index_monitor_init = function ()
+{
+	ed_monitor_get();
+}
+
+function ed_monitor_get()
+{
+    urlParamObj.instStatus = 1;
+    urlParamObj.monitorTypeNameLanguage = 1;
+    urlParamObj.edId = urlParamObj.assetId;
+    um_ajax_get({
+        url : ed_monitor_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+           current_database_list(data.edmonitorstore[1].monitorId);      
+        }
+    });
+}
+
+function current_database_list(monitorId)
+{
+    um_ajax_get({
+        url : current_database_url,
+        paramObj : {monitorId : monitorId,
+					time : $("#query_time_label").text(),
+					},
+        successCallBack : function (data){
+            var items = data;
+            var legendArray = ['命中率（%）'];
+            var categoryArray = [];
+            var seriesArray = [];
+            
+            var responseObj = new Object();
+            responseObj.name = '命中率（%）';
+            responseObj.type = "line";
+            responseObj.data = [];
+            for (var i = 0; i < items.length; i++) {
+                categoryArray.push(items[i].updateDateC);
+                responseObj.data.push(items[i].cacheHitRadio);
+            }
+            seriesArray.push(responseObj);
+
+            plot.lineRender($("#database_info_div") ,{
+                legend : legendArray,
+                category : categoryArray,
+                series : seriesArray
+            });
+        }
+    });
+}
+
+
+});
+});
+</script>

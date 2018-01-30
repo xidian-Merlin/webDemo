@@ -1,0 +1,95 @@
+<tem>
+
+<!-- 报表查询模板 -->
+<div class="template" id="report_query_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form" id="query_form">
+			<div class="form-group">
+				<label class="col-lg-4 control-label tr">资产名称：</label>
+				<div class="col-lg-6">
+					<!-- <div type="text" class="form-control input-sm tl" data-id="assetName" validate="required">						
+									</div>	 -->		
+					<select class="form-control input-sm" data-id="assetId" data-type="select">
+					</select>
+				</div>
+				<!-- <div class="col-lg-1 tl p5">
+					<i class="icon-search" id="query_btn"></i>	
+				</div> -->
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label tr" queryStr>监控器名称：</label>
+				<div class="col-lg-6 tl">
+					<select class="form-control input-sm" data-id="monitorId" data-type="select">
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-lg-4 control-label tr" queryStr>数据时间：</label>
+				<div class="col-lg-6">
+					<div class="input-group w-all">
+						<input type="text" class="form-control input-sm tl" data-type="date" container="body" data-id="endDate" validate="required">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-6" style="color:red; margin-left:120px;">
+					注：可查询所选时间之前24小时内的最新历史数据！
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<!-- 控制器查询 -->
+<div class="template" id="monitor_query_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group">
+				<label class="col-lg-3 control-label">监控器种类 :</label>
+			    <div class="col-lg-3">
+			    	<!-- <input type="hidden" data-id="usergId"> -->
+			    	<select class="form-control input-sm" data-id="monitorClass" data-type="select">
+			    		<option>---</option>
+			    		<option>数据库</option>
+			    		<option>安全设备</option>
+			    		<option>操作系统</option>
+			    		<option>网络设备</option>
+			    		<option>应用软件</option>
+			    		<option>存储备份</option>
+			    		<option>通用协议</option>
+			    		<option>中间件</option>
+			    		<option>通用监控器</option>
+					</select>
+			    </div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-1">
+			        
+			    </div>
+			    <div class="col-lg-5">
+		    		<!-- 右移箭头 -->
+					<div style="right:-40px;top:41px;font-size:20px;z-index:2000" 
+						id="chevron-right" class="pabs square">
+						<i class="icon-chevron-right"></i>
+					</div>
+					
+					<!-- 左移箭头 -->
+					<div style="right:-40px;top:85px;font-size:20px;z-index:2000" 
+					id="chevron-left" class="pabs square">
+						<i class="icon-chevron-left"></i>
+					</div>
+			    	<div class="table-div" id="left_table" style="height:190px"></div>
+			    </div>
+			    <div class="col-lg-1">
+			        
+			    </div>
+			    <div class="col-lg-5">
+			        <div class="table-div" id="right_table" style="height:190px"></div>
+			    </div>
+			</div>
+		</form>
+	</div>
+</div>
+</tem>

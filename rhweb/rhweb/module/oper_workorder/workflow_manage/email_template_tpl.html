@@ -1,0 +1,31 @@
+<tem>
+
+<!-- 编辑 -->
+<div class="template" id="edit_template">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="panel-body no-tb-padder">
+				<div class="form-group">
+			      <label class="col-lg-2 control-label required">模板名称</label>
+			      <div class="col-lg-9">
+			      	<input type="hidden" data-id="emailTemplateID">
+			        <input type="text" maxlength="32" class="form-control input-sm" data-id="emailTemplateName"
+			        	validate="required">
+			      </div>
+			      </div>
+			      <div class="form-group">
+			      <label class="col-lg-2 control-label required">模板内容</label>
+			      <div class="col-lg-9">
+			        <textarea maxlength="512" class="form-control input-sm" rows="" cols="" data-id="emailTemplateContent" validate="required"></textarea>
+			      </div>
+			    </div>
+			    
+			    <div class="form-group">
+			      <label class="col-lg-2 control-label">备注</label>
+			      <div class="col-lg-9">
+					<textarea maxlength="2000" class="form-control input-sm" rows="" cols="" data-id="remark"></textarea>
+			      </div>
+			    </div>
+			</div>
+		</form>
+</div>
+</tem>

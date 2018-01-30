@@ -1,0 +1,16 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Tomcat",
+					"fileName"  : "tomcat",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "tomcat/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "JVM信息" ,"href" : "tomcat/jvm_info.html" ,"icon" : "monitor-jvm-dynamic"},
+								{"text" : "系统概述" ,"href" : "tomcat/general.html" ,"icon" : "monitor-system"},
+								{"text" : "线程池信息" ,"href" : "tomcat/thread.html" ,"icon" : "monitor-thread"},
+								{"text" : "请求信息" ,"href" : "tomcat/request.html" ,"icon" : "monitor-requests"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}

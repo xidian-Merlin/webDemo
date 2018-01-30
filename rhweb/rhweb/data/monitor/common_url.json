@@ -1,0 +1,13 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Common URL",
+					"fileName" : "common_url",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "common_url/base.html","icon" : "monitor-base-info"},
+								{"text" : "响应时间" ,"href" : "common_url/response.html","icon" : "monitor-response"},
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

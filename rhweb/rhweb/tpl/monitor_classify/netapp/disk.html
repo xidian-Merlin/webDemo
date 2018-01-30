@@ -1,0 +1,62 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>RAID信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div class="table_div" id="disk_info"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var disk_info_url = "monitorview/storage/netapp/queryDiskList";
+
+var disk_info_header = [
+                            {text:'磁盘索引',name:"raidIndex"},
+                            {text:'磁盘名称',name:"raidName"},
+                            {text:'磁盘状态',name:"raidStatus"},
+                            {text:'磁盘温度',name:"raidTemperature"},
+                            {text:'剩余空间',name:"leftnum"},
+                            {text:'总空间',name:"total"},
+                            {text:'更新时间',name:"enterDate"}
+                         ];
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    disk_info();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+
+function disk_info()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    g_grid.render($("#disk_info"),{
+         header:disk_info_header,
+         url:disk_info_url,
+         paramObj:urlParamObj,
+         paginator:false,
+         gridCss : "um-grid-style",
+         hasBorder : false,
+         hideSearch : true,
+         allowCheckBox : false,
+         autoHeight : true,
+         showCount : true
+    });
+}
+
+
+});
+});
+</script>

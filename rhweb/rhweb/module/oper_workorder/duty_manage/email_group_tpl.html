@@ -1,0 +1,96 @@
+<tem>
+
+<!-- 编辑 -->
+<div class="template" id="edit_template">
+	<form class="bs-example form-horizontal xs-form"  style="height:450px;">
+		<div class="panel-body no-tb-padder">			
+			<div class="form-group">
+			    <label class="col-lg-3 control-label required tr">邮件用户组名称 :</label>
+			    <div class="col-lg-7">
+			        <input type="text" class="form-control input-sm tl" data-id="groupName"
+			        	validate="required,stringLimit3" maxlength="32">
+			    </div>
+			</div>
+			<div class="form-group">
+			    <label class="col-lg-3 control-label tr">邮件用户组备注 :</label>
+			    <div class="col-lg-7">
+			    	<textarea class="form-control input-sm tl" maxlength="256" data-id="remark"></textarea>
+			    </div>
+			</div>
+	    </div>
+	    <!-- 左侧 -->
+		<div class="p-panel um-panel" id="left-panel" 
+				style="left: 10px;top: -11px;width: 200px; height:280px;padding-top:20px;padding-bottom:10px;overflow:hidden">
+			<div class="um-panel-head bdd" style="height:30px;height:30px;border-bottom:none">
+				<div class="table-oper tl p5" id="accordion_icon">
+					<i class="ml5 icon-active prel"
+						style="font-size:12px;top:-15px;font-style: normal;cursor: pointer;" title="按安全域显示"
+							data-url="AssetUserGroup/queryTreeList" 
+							data-key="securityDomainTreeStore"
+							data-type="SECURITY_DOMAIN_TREE">安全域</i>
+					<span class="prel" style="top: -16px;left:3px"> | </span>
+					<i class="ml5 prel"
+						style="font-size:12px;top:-15px;font-style: normal;cursor: pointer;"  title="按业务域显示"
+							data-url="AssetUserGroup/queryTreeList"
+							data-key="businessDomainTreeStore"
+							data-type="BUSINESS_DOMAIN_TREE">业务域</i>
+				</div>
+			</div>
+			
+			<div class="um-panel-body" style="padding-top: 0;border-top: none;top: 30px">
+				<ul id="left_tree" class="ztree" style="border: 1px #ddd solid;height:100%;overflow: auto"></ul>
+			</div>			
+		</div>
+		<!-- 右侧 -->
+		<div class="p-panel" id="right-panel" style="top: 120px;left: 250px;right: 0;padding-top:22px;padding-right:10px;height:250px;width:690px;">			
+			<div class="form-group">
+				<label class="col-lg-6 control-label tl">待添加用户</label>
+				<label class="col-lg-5 control-label tl">已添加用户</label>
+			</div>			
+		
+			<div class="form-group">
+				<div class="col-lg-5" >
+					<div id="ipList_left_table" data-id="ipRang" class="table-div" style="height:240px"></div>
+				</div>
+				<div class="col-lg-1">
+					<!-- 右移箭头 -->
+					<div style="right:12px;top:80px;font-size:20px;z-index:2000" 
+							id="chevron-right" class="pabs square">
+						<i class="icon-chevron-right"></i>
+					</div>
+					<!-- 左移箭头 -->
+					<div style="right:12px;top:130px;font-size:20px;z-index:2000" 
+							id="chevron-left" class="pabs square">
+						<i class="icon-chevron-left"></i>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div id="ipList_right_table" data-id="ipRange" class="table-div" style="height:240px"></div>
+				</div>
+			</div>			
+		</div>
+	</form>
+</div>
+
+<!-- 详情模板 -->
+<div class="template detail-info" id="detail_template">
+	<div class="panel-body no-tb-padder">
+		<form class="bs-example form-horizontal xs-form">
+			<div class="form-group">
+		    	<label class="col-lg-3 control-label">邮件通知组名称：</label>
+		        <label type="text" class="col-lg-8 control-label tl" data-id="groupName"></label>
+			</div>
+
+			<div class="form-group">
+		    	<label class="col-lg-3 control-label">组内成员：</label>
+		       	 <div id="email_detail_div" class="table-div col-lg-8" style="height:250px"></div>
+			</div>
+
+			<div class="form-group">
+		    	<label class="col-lg-3 control-label">邮件通知组备注：</label>
+		    	<label type="text" class="col-lg-8 control-label tl" data-id="remark"></label>
+			</div>
+		</form>
+	</div>
+</div>
+</tem>

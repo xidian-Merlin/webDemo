@@ -1,0 +1,12 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "VENUS LOAD",
+					"fileName"  : "venus_load",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "venus_load/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "运行信息" ,"href" : "venus_load/storge.html" ,"icon" : "monitor-cpu-percent"}
+							  ]
+				 }
+}

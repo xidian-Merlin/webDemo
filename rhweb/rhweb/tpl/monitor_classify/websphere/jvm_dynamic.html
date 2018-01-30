@@ -1,0 +1,79 @@
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>JVM动态信息</span>
+    </div>
+    <div class="monitor-panel">
+        <form class="bs-example form-horizontal xs-form">
+            <div id="base_info_monitor_div">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">高水位（KB）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="highWaterMark"></label>
+                    <label class="col-lg-2 control-label">低水位（KB）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="lowWaterMark"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">当前（KB）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="currentWaterMark"></label>
+                    <label class="col-lg-2 control-label">JVM的CUP使用率（百分比）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="cpuUseRate"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">高范围（KB）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="highBound"></label>
+                    <label class="col-lg-2 control-label">低范围（KB）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="lowBound"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">JVM空闲内存（KB）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="freeMemory"></label>
+                    <label class="col-lg-2 control-label">JVM使用内存（KB）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="usedMemory"></label>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">JVM运行时间数（毫秒）：</label>
+                    <label class="col-lg-3 control-label tl" data-id="runningTime"></label>
+                    <label class="col-lg-2 control-label">更新时间：</label>
+                    <label class="col-lg-3 control-label tl" data-id="jvmEnterDate"></label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function (){
+require(['/js/plugin/monitor/monitor.js'] ,function (monitor){
+
+var base_info_url = "monitorview/middleware/websphere/queryJvmList";
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+function view_init()
+{
+    base_info_render();
+}
+
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function base_info_render()
+{
+    urlParamObj.time = $("#query_time_label").text();   
+    um_ajax_get({
+        url : base_info_url,
+        paramObj : urlParamObj,
+        successCallBack : function (data){
+            $("#base_info_monitor_div").umDataBind("render" ,data);
+        }
+    });
+}
+
+
+});
+});
+</script>

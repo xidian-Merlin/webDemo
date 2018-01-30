@@ -1,0 +1,13 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "CommonDB",
+					"fileName" : "commondb",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "commondb/base.html","icon" : "monitor-base-info"},
+								{"text" : "SQL信息" ,"href" : "commondb/sql_info.html","icon" : "monitor-sql-info"},
+								{"text" : "事件信息" ,"href" : "common/event.html","icon" : "monitor-event"}
+							  ]
+				 }
+}

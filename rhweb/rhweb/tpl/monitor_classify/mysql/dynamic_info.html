@@ -1,0 +1,305 @@
+<div class="panel panel-default mt0">
+    <div class="panel-heading font-bold prel">
+        <span>Mysql线程信息</span>
+    </div>
+    <div class="monitor-panel" id="thread_info_div">
+        <form class="bs-example form-horizontal xs-form">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">缓存中的线程数：</label>
+                <label class="col-lg-3 control-label tl" data-id="threadCached"></label>
+                <label class="col-lg-3 control-label">为处理远程连接请求创建的线程数：</label>
+                <label class="col-lg-3 control-label tl" data-id="threadCreated"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">当前打开的连接数：</label>
+                <label class="col-lg-3 control-label tl" data-id="threadsConnected"></label>
+                <label class="col-lg-3 control-label">处于非休眠状态的线程数：</label>
+                <label class="col-lg-3 control-label tl" data-id="threadsRunning"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">更新时间：</label>
+                <label class="col-lg-3 control-label tl" data-id="updateDateTd"></label>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default mt0">
+    <div class="panel-heading font-bold prel">
+        <span>Mysql缓存信息</span>
+    </div>
+    <div class="monitor-panel" id="cache_info_div">
+        <form class="bs-example form-horizontal xs-form">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">临时文件数目：</label>
+                <label class="col-lg-3 control-label tl" data-id="createdTmpFile"></label>
+                <label class="col-lg-3 control-label">临时表数目：</label>
+                <label class="col-lg-3 control-label tl" data-id="createdTmpTables"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">查询缓存中空闲内存块数量：</label>
+                <label class="col-lg-3 control-label tl" data-id="qcacheFreeBlocks"></label>
+                <label class="col-lg-3 control-label">查询缓存中空闲内存数量（B）：</label>
+                <label class="col-lg-3 control-label tl" data-id="qcacheFreeMemory"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">查询缓存的请求命中率（%）：</label>
+                <label class="col-lg-3 control-label tl" data-id="qcacheHits"></label>
+                <label class="col-lg-3 control-label">查询缓存中删除的查询数量：</label>
+                <label class="col-lg-3 control-label tl" data-id="qcacheInserts"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">低内存从查询缓存删除的查询数量：</label>
+                <label class="col-lg-3 control-label tl" data-id="qcacheLowmemPrunes"></label>
+                <label class="col-lg-3 control-label">注册在查询缓存中查询请求数量：</label>
+                <label class="col-lg-3 control-label tl" data-id="qcacheQueryInCached"></label>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">查询缓存中块的总数目：</label>
+                <label class="col-lg-3 control-label tl" data-id="qcacheTotalBlocks"></label>
+                <label class="col-lg-3 control-label">使用内存大小（B）：</label>
+                <label class="col-lg-3 control-label tl" data-id="memsize"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">打开表的数量：</label>
+                <label class="col-lg-3 control-label tl" data-id="openTables"></label>
+                <label class="col-lg-3 control-label">打开过表的数量：</label>
+                <label class="col-lg-3 control-label tl" data-id="openedTables"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">表缓存配置数：</label>
+                <label class="col-lg-3 control-label tl" data-id="tableCache"></label>
+                <label class="col-lg-3 control-label">更新时间：</label>
+                <label class="col-lg-3 control-label tl" data-id="updateDateQ"></label>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="panel panel-default mt0">
+    <div class="panel-heading font-bold prel">
+        <span>Mysql计数器信息</span>
+    </div>
+    <div class="monitor-panel" id="count_info_div">
+        <form class="bs-example form-horizontal xs-form">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">打开连接数：</label>
+                <label class="col-lg-3 control-label tl" data-id="currentConn"></label>
+                <label class="col-lg-3 control-label">中断连接数：</label>
+                <label class="col-lg-3 control-label tl" data-id="interruptConn"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">试图连接数：</label>
+                <label class="col-lg-3 control-label tl" data-id="attemptConn"></label>
+                <label class="col-lg-3 control-label">回滚数：</label>
+                <label class="col-lg-3 control-label tl" data-id="rollbacks"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">更新时间：</label>
+                <label class="col-lg-3 control-label tl" data-id="updateDate"></label>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="panel panel-default mt0">
+    <div class="panel-heading font-bold prel">
+        <span>Mysql页、锁</span>
+    </div>
+    <div class="monitor-panel" id="lock_info_div">
+        <form class="bs-example form-horizontal xs-form">
+            <div class="form-group">
+                <label class="col-lg-3 control-label">包含数据的页数量：</label>
+                <label class="col-lg-3 control-label tl" data-id="pagesData"></label>
+                <label class="col-lg-3 control-label">脏页数目：</label>
+                <label class="col-lg-3 control-label tl" data-id="pagesDirty"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">缓冲池中页刷新请求数目：</label>
+                <label class="col-lg-3 control-label tl" data-id="pagesFlushed"></label>
+                <label class="col-lg-3 control-label">空闲页的数量：</label>
+                <label class="col-lg-3 control-label tl" data-id="pagesFree"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">页缓冲池的大小（B）：</label>
+                <label class="col-lg-3 control-label tl" data-id="pagesTotal"></label>
+                <label class="col-lg-3 control-label">页的大小（B）：</label>
+                <label class="col-lg-3 control-label tl" data-id="pageSizeLock"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">当前被等待的行锁的数量：</label>
+                <label class="col-lg-3 control-label tl" data-id="rowLockCurrentWaits"></label>
+                <label class="col-lg-3 control-label">共计消耗在获取行锁上的时间（s）：</label>
+                <label class="col-lg-3 control-label tl" data-id="rowLockTime"></label>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">为获取行锁平均等待时间（s）：</label>
+                <label class="col-lg-3 control-label tl" data-id="rowLockTimeAvg"></label>
+                <label class="col-lg-3 control-label">更新时间：</label>
+                <label class="col-lg-3 control-label tl" data-id="updateDatePL"></label>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="panel panel-default mt10">
+    <div class="panel-heading font-bold prel">
+        <span>Mysql锁信息</span>
+    </div>
+    <div class="monitor-panel">
+        <div style="height:290px" id="lock_chart"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+
+$(document).ready(function (){
+require(['/js/plugin/plot/plot.js'] ,function (plot){
+
+
+var thread_info_url = "monitorview/db/mysql/queryMySqlThread";
+
+var cache_info_url = "monitorview/db/mysql/queryMySqlQcache";
+
+var lock_info_url = "monitorview/db/mysql/queryMySqlPagesLock";
+
+var lock_chart_url = "monitorview/db/mysql/queryMySqlLock"
+
+var count_info_url = "monitorview/db/mysql/queryMySqlCounter"
+
+var urlParamObj = index_query_param_get();
+
+view_init();
+
+window.index_monitor_init = function ()
+{
+    view_init();
+}
+
+function view_init()
+{
+    urlParamObj.time = $("#query_time_label").text();
+    thread_info_get();
+}
+
+function thread_info_get()
+{
+    g_dialog.waitingAlert();
+    um_ajax_get({
+        url : thread_info_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+            $("#thread_info_div").umDataBind("render" ,data[0]);
+            cache_info_get();
+        }
+    });
+}
+
+function cache_info_get()
+{
+    um_ajax_get({
+        url : cache_info_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+            $("#cache_info_div").umDataBind("render" ,data[0]);
+            lock_info_get();
+            count_info_get();
+        }
+    });
+}
+
+function count_info_get()
+{
+    um_ajax_get({
+        url : count_info_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+            $("#count_info_div").umDataBind("render" ,data[0]);
+            lock_chart_get();
+        }
+    });
+}
+
+function lock_info_get()
+{
+    um_ajax_get({
+        url : lock_info_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+            $("#lock_info_div").umDataBind("render" ,data[0]);
+            lock_chart_get();
+        }
+    });
+}
+
+function lock_chart_get()
+{
+    um_ajax_get({
+        url : lock_chart_url,
+        paramObj : urlParamObj,
+        isLoad : false,
+        successCallBack : function (data){
+            var legendArray = ['表直接锁定次数' ,'锁等待次数'];
+            var categoryArray = [];
+            var seriesArray = [];
+            var tableLocksWaitedValueArray = [];
+            var tableLocksImmeValueArray = [];
+            for (var i = 0; i < data.length; i++) {
+                categoryArray.push(data[i].enterDate);
+                tableLocksWaitedValueArray.push(data[i].tableLocksWaited);
+                tableLocksImmeValueArray.push(data[i].tableLocksImme);
+            }
+            var seriesObj = new Object();
+            seriesObj.name = '表直接锁定次数';
+            seriesObj.type = "line";
+            seriesObj.data = tableLocksWaitedValueArray;
+
+            var seriesObj1 = new Object();
+            seriesObj1.name = '锁等待次数';
+            seriesObj1.type = "line";
+            seriesObj1.data = tableLocksImmeValueArray;
+
+            seriesArray.push(seriesObj);
+            seriesArray.push(seriesObj1);
+
+            plot.lineRender($("#lock_chart") ,{
+                legend : legendArray,
+                category :categoryArray,
+                series : seriesArray,
+                lineStyle : true,
+                color_array : ['#62cb31' ,'#23b7e5' ,'#f4bc37']
+            });
+            g_dialog.waitingAlertHide();
+        }
+    });
+}
+
+
+
+});
+});
+
+
+</script>

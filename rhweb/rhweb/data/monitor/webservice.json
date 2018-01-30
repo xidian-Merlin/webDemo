@@ -1,0 +1,13 @@
+{
+	"resultCode": 0,
+	"resultMsg":"",
+	"resultObj" :{
+					"name"  : "Webservice",
+					"fileName"  : "webservice",
+					"quota" : [
+								{"text" : "基本信息" ,"href" : "webservice/base.html" ,"icon" : "monitor-base-info"},
+								{"text" : "响应时间" ,"href" : "webservice/response.html" ,"icon" : "monitor-event-average-time"},
+								{"text" : "事件信息" ,"href" : "common/event.html" ,"icon" : "monitor-event"}
+							  ]
+				 }
+}
