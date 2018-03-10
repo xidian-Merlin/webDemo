@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta lang="en">
+    <style type="text/css">
+        .dustbin{
+            background-color: lightgray;
+            text-align: center;
+            font-size: 16px;
+            margin: 0px;
+            padding: 0px;
+            border-style: dashed;
+            width: 50px;
+            height: 200px;
+            float: left;
+        }
+
+        .dragbox{
+            margin-left: 10px;
+            float: left;
+            height: 200px;
+            width: 40%;
+
+        }
+        .draglist{
+            width: inherit;
+            height: auto;
+            margin-bottom: 10px;
+            border-style: solid;
+            border-color: lightgray;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="dustbin" ondragover="allowDrop(event)" ondrop="drop(event)"><br />拉<br />圾<br />箱</div>
+<div class="dragbox" ondragover="allowDrop(event)" ondrop="drop(event)">
+    <div class="draglist" title="拖拽我" id="div1" draggable="true" ondragstart="drag(event)">列表1</div>
+    <div class="draglist" title="拖拽我" id="div2" draggable="true" ondragstart="drag(event)">列表2</div>
+    <div class="draglist" title="拖拽我" id="div3" draggable="true" ondragstart="drag(event)">列表3</div>
+    <div class="draglist" title="拖拽我" id="div4" draggable="true" ondragstart="drag(event)">列表4</div>
+    <div class="draglist" title="拖拽我" id="div5" draggable="true" ondragstart="drag(event)">列表5</div>
+</div>
+</body>
+<script>
+    function allowDrop(ev)
+    {
+        ev.preventDefault();
+    }
+
+    function drag(ev)
+    {
+        ev.dataTransfer.setData("Text",ev.target.id);
+    }
+
+    function drop(ev)
+    {
+        ev.preventDefault();
+        var data=ev.dataTransfer.getData("Text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+</script>
+</html>
